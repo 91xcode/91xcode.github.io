@@ -1,0 +1,96 @@
+
+ <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
+
+<div id="dplayer1">
+	
+	<div id="dplayer"></div>
+</div>
+
+          <div class="list-box J-medal">
+              <ul class="nav-type">
+                  <li class="channel">
+                      <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://1252093142.vod2.myqcloud.com/4704461fvodcq1252093142/48c8a9475285890781000441992/playlist.m3u8');">CCTV1-综合</a></div>
+                  </li>
+                  <li class="channel">
+                      <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv2.m3u8');">CCTV2-财经</a></div>
+                  </li>
+                 <li class="channel">
+                      <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8');">CCTV3-综艺</a></div>
+                  </li>
+              </ul>
+          </div>
+
+
+
+
+<script>
+
+//http://1252093142.vod2.myqcloud.com/4704461fvodcq1252093142/48c8a9475285890781000441992/playlist.m3u8
+	 function play(n) {
+
+layer.open({
+    type: 1 ,//Layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）,
+        title: "播放窗口",
+    maxmin: !0,
+    shadeClose: !0,
+    //area: ['390px', '330px'],   //宽高
+    area: [(document.body.clientWidth, "px"), "43%"],
+    shade: 0.4,   //遮罩透明度
+    content: $("#dplayer1"),//支持获取DOM元素
+    //btn: ['确定', '取消'], //按钮组
+    scrollbar: false ,//屏蔽浏览器滚动条
+    // yes: function(index){//layer.msg('yes');    //点击确定回调
+    //     layer.close(index);
+    //     // showToast();
+
+    // },
+    // btn2: function(){//layer.alert('aaa',{title:'msg title'});  点击取消回调
+    //     layer.msg('bbb');//layer.closeAll();
+    // }
+    // 
+
+});
+
+	 	            	 	    const dp = new DPlayer({
+		        container: document.getElementById('dplayer'),
+		        video: {
+		            url: n,
+		            type: 'hls'
+		        },
+		    });
+	 	   //  const dp = new DPlayer({
+		    //     container: document.getElementById('dplayer'),
+		    //     video: {
+		    //         url: n,
+		    //         type: 'hls'
+		    //     },
+		    // });
+	 }
+
+
+
+// layer.open({
+//     type: 2 ,//Layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）,
+//     title: 'title here',   //标题
+//     area: ['390px', '330px'],   //宽高
+//     shade: 0.4,   //遮罩透明度
+//     content: $("#dplayer"),//支持获取DOM元素
+//     //btn: ['确定', '取消'], //按钮组
+//     scrollbar: false ,//屏蔽浏览器滚动条
+//     // yes: function(index){//layer.msg('yes');    //点击确定回调
+//     //     layer.close(index);
+//     //     showToast();
+//     // },
+//     // btn2: function(){//layer.alert('aaa',{title:'msg title'});  点击取消回调
+//     //     layer.msg('bbb');//layer.closeAll();
+//     // }
+// });
+
+
+</script>

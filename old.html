@@ -8,7 +8,7 @@
     <META name="keywords" content="电视直播，网络电视,网络电视直播,网络电视在线直播">
     <link rel="shortcut icon" href="https://qnoss.lanlanlife.com/07c0549dbae43a31c377e4b06e145b08_128x128.png" />
     <link href="https://cdn.staticfile.org/video.js/7.3.0/video-js.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./static/style.css?v=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.wyteam.net/webapps/iptv/style.css?v=1.0" />
 </head>
 <body>
 <header class="header">
@@ -263,32 +263,6 @@
                 <div class="clear"></div>
             </ul>
         </div>
-
-        <div class="big_title"><span></span>
-            <h2>其他频道</h2></div>
-        <div class="list-box J-medal">
-            <ul class="nav-type">
-                <li class="channel">
-                    <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://1252093142.vod2.myqcloud.com/4704461fvodcq1252093142/48c8a9475285890781000441992/playlist.m3u8');">m3u8测试</a></div>
-                </li>
-                <li class="channel">
-                    <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://223.110.245.167/ott.js.chinamobile.com/PLTV/3/224/3221226922/index.m3u8');">凤凰卫视</a></div>
-                </li>
-                <li class="channel">
-                    <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://223.110.245.167/ott.js.chinamobile.com/PLTV/3/224/3221226923/index.m3u8');">凤凰资讯</a></div>
-                </li>
-                <li class="channel">
-                    <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://zhibo.hkstv.tv/livestream/zb2yhapo/playlist.m3u8');">香港卫视</a></div>
-                </li>
-                <li class="channel">
-                    <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://183.207.249.35/PLTV/3/224/3221226975/index.m3u8');">凤凰香港</a></div>
-                </li>
-                <li class="channel">
-                    <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://stream.mastvnet.com/MASTV/sd/live.m3u8');">澳亚卫视</a></div>
-                </li>
-                <div class="clear"></div>
-            </ul>
-        </div>
     </div>
 </div>
 <div class="footer_content">
@@ -301,48 +275,16 @@
 </div>
 <div class="footer_content">
     <CENTER><SPAN style="CLEAR: both; MARGIN-: 10px; FONT-SIZE: 14px; COLOR: #666666; LINE-HEIGHT: 20px; FONT-FAMILY: arial; HEIGHT: 10px; TEXT-ALIGN: center">
-        <a id="powered_by_wenyateam">Powered by 91xcode</a>
-        <br>&copy;2021-2022 All Rights Reserved &nbsp; <br>
+        <a id="powered_by_wenyateam">Powered by 温雅团队</a>
+        <br>&copy;2017-2019 All Rights Reserved &nbsp; <br>
     </SPAN></CENTER>
 </div>
-
-<div id="dplayer1">
-    <div id="dplayer"></div>
-</div>
-<!--http://1252093142.vod2.myqcloud.com/4704461fvodcq1252093142/48c8a9475285890781000441992/playlist.m3u8-->
 <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
-<script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/video.js/7.3.0/video.min.js"></script> 
+<script type="text/javascript" src="./static/iptv_new.js"></script>
 
-<script>
-function play(n) {
-    layer.open({
-        type: 1 ,//Layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）,
-        title: "播放窗口",
-        maxmin: !0,
-        shadeClose: !0,
-        //area: ['390px', '330px'],   //宽高
-        area: [(document.body.clientWidth, "px"), "43%"],
-        shade: 0.4,   //遮罩透明度
-        content: $("#dplayer1"),//支持获取DOM元素
-        scrollbar: false ,//屏蔽浏览器滚动条
-    });
 
-        const dp = new DPlayer({
-            container: document.getElementById('dplayer'),
-            video: {
-                url: n,
-                type: 'hls'
-            },
-        });
 
-    }
-</script>
 </body>
 </html>
-
-
-
-
