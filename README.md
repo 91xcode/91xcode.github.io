@@ -3,7 +3,7 @@
 
 
 '''
-由于chrome浏览器不支持跨域url访问，因此请使用safr或者windows edge 浏览器，某些链接可能失效。
+由于chrome浏览器不支持跨域url访问，因此请使用Safri浏览器或者windows edge 浏览器，某些链接可能失效。
 
 
 
