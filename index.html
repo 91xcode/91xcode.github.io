@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>最爱导航网</title>
+    <link rel="shortcut icon" href="best.ico" type="image/x-icon" />
+    <!-- <link type="text/css" rel="stylesheet" href="css/gray.css"/> -->
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/site.min.css?v5">
+    <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+    <style>
+        table tr td a {
+            color: #6F5499;
+        }
+        .text-white {
+            color: #fff;
+        }
+        .octicon {
+            display: inline-block;
+            fill: currentColor;
+            vertical-align: text-top;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">导航</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://github.com/91xcode/91xcode.github.io" target="_blank"><svg height="20" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9">
+                <div class=""></div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱名站</th>
+                                    <tr>
+                                        <td><a target="_blank" href="https://www.sina.com.cn">新浪</a></td>
+                                        <td><a target="_blank" href="https://www.sohu.com">搜狐</a></td>
+                                        <td><a target="_blank" href="http://www.163.com">网易</a></td>
+                                        <td><a target="_blank" href="https://www.qq.com">腾讯</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://weibo.com/" name="2" tj="mz21">微博</a></td>
+                                        <td><a target="_blank" href="https://www.baidu.com/">百度</a></td>
+                                        <td><a target="_blank" href="http://cn.bing.com/">必应</a></td>
+                                        <td><a target="_blank" href="http://www.ifeng.com/">凤凰</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.xinhuanet.com/" name="2" tj="mz21">新华</a></td>
+                                        <td><a target="_blank" href="http://www.people.com.cn/" name="2" tj="mz21">人民</a></td>
+                                        <td><a target="_blank" href="http://www.huanqiu.com/" name="2" tj="mz21">环球</a></td>
+                                        <td><a target="_blank" href="http://www.youth.cn/" name="2" tj="mz21">青年</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.wenweipo.com/" name="2" tj="mz13">文汇</a></td>
+                                        <td><a target="_blank" href="https://www.nytsyn.com/" name="2" tj="mz13">时报</a></td>
+                                        <td><a target="_blank" href="http://www.zaobao.com/" name="2" tj="mz13">早报</a></td>
+                                        <td><a target="_blank" href="http://www.cankaoxiaoxi.com/" name="2" tj="mz13">参考</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱购物</th>
+                                    <tr>
+                                        <td><a target="_blank" href="https://www.jd.com/" name="2" tj="mz21">京东</a></td>
+                                        <td><a target="_blank" href="http://www.tmall.com/" name="2" tj="mz21">天猫</a></td>
+                                        <td><a target="_blank" href="http://www.dangdang.com/" name="2" tj="mz21">当当</a></td>
+                                        <td><a target="_blank" href="https://www.amazon.cn/" name="2" tj="mz21">亚马逊</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.suning.com/" name="2" tj="mz13">苏宁</a></td>
+                                        <td><a target="_blank" href="http://www.gome.com.cn/" name="2" tj="mz13">国美</a></td>
+                                        <td><a target="_blank" href="https://www.taobao.com/" name="2" tj="mz13">淘宝</a></td>
+                                        <td><a target="_blank" href="http://www.yhd.com/" name="2" tj="mz13">1号店</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.jumei.com/" name="2" tj="mz21">聚美</a></td>
+                                        <td><a target="_blank" href="https://ju.taobao.com/" name="2" tj="mz21">聚划算</a></td>
+                                        <td><a target="_blank" href="http://www.vip.com/" name="2" tj="mz21">唯品会</a></td>
+                                        <td><a target="_blank" href="http://www.mogujie.com/" name="2" tj="mz13">蘑菇街</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.kaola.com/" name="2" class="menu-hd J_bd"
+                                       tj="mz16">考拉</a></td>
+                                        <td><a target="_blank" href="http://www.wbiao.cn/" name="2" class="menu-hd J_bd"
+                                       tj="mz16">万表网</a></td>
+                                        <td><a target="_blank" href="http://www.jiuxian.com/" name="2" tj="mz21">酒仙网</a></td>
+                                        <td><a target="_blank" href="http://www.12306.cn/" name="2" class="menu-hd"
+                                       tj="mz14">12306</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱影音</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.iqiyi.com/" name="2" tj="mz21">奇艺</a></td>
+                                        <td><a target="_blank" href="http://www.youku.com/" name="2" class="menu-hd" tj="mz12">优酷</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.pptv.com/" name="2" tj="mz21">PPTV</a></td>
+                                        <td><a target="_blank" href="https://v.qq.com/" name="2" class="menu-hd"
+                                    tj="mz14">腾讯视频</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.fun.tv/" name="2" tj="mz21">风行</a></td>
+                                        <td><a target="_blank" href="http://www.hunantv.com/" name="2" tj="mz21">芒果</a></td>
+                                        <td><a target="_blank" href="http://www.wasu.cn/" name="2" tj="mz21">华数</a></td>
+                                        <td><a target="_blank" href="https://tv.sohu.com/" name="2" tj="mz21">搜狐视频</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.kugou.com/" name="2" tj="mz21">酷狗</a></td>
+                                        <td><a target="_blank" href="http://www.xiami.com/" name="2" class="menu-hd" tj="mz14">虾米</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://music.migu.cn/" name="2" class="menu-hd"
+                                       tj="mz12">咪咕</a></td>
+                                        <td><a target="_blank" href="http://music.163.com/" name="2" tj="mz21">云音乐</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.kuwo.cn/" name="2" tj="mz21">酷我</a></td>
+                                        <td><a target="_blank" href="http://www.1ting.com/" name="2" tj="mz21">一听</a></td>
+                                        <td><a target="_blank" href="http://douban.fm/" name="2" tj="mz21">豆瓣</a></td>
+                                        <td><a target="_blank" href="http://www.yinyuetai.com/" name="2" tj="mz21">音悦台</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱论坛</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.tianya.cn/">天涯</a></td>
+                                        <td><a target="_blank" href="http://www.mop.com/">猫扑</a></td>
+                                        <td><a target="_blank" href="http://www.kdnet.net/">凯迪</a></td>
+                                        <td><a target="_blank" href="http://tieba.baidu.com/">贴吧</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.zhihu.com/" name="2" tj="mz21">知乎</a></td>
+                                        <td><a target="_blank" href="http://www.douban.com/">豆瓣</a></td>
+                                        <td><a target="_blank" href="http://www.xici.net/">西祠</a></td>
+                                        <td><a target="_blank" href="http://www.newsmth.net/">水木</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.xilu.com/" name="2" tj="mz21">西陆</a></td>
+                                        <td><a target="_blank" href="http://www.tiexue.net/" name="2" tj="mz21">铁血</a></td>
+                                        <td><a target="_blank" href="http://bbs.ruanfenquan.com/" name="2" tj="mz21">软粉</a></td>
+                                        <td><a target="_blank" href="http://www.cnblogs.com/" name="2" tj="mz21">博客园</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://bbs.kafan.cn/" name="2" tj="mz21">卡饭</a></td>
+                                        <td><a target="_blank" href="http://www.ltaaa.com/" name="2" tj="mz13">龙腾</a></td>
+                                        <td><a target="_blank" href="http://www.mayigeek.com/" name="2" tj="mz13">码易</a></td>
+                                        <td><a target="_blank" href="https://www.v2ex.com/" name="2" tj="mz13">V2EX</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱技术</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://jdk.java.net/" name="2"
+                                       class="menu-hd" tj="mz11">Java</a></td>
+                                        <td><a target="_blank"
+                                       href="https://sourceforge.net/" name="2"
+                                       class="menu-hd" tj="mz12">SForge</a></td>
+                                        <td><a target="_blank" href="https://www.python.org/" name="2" class="menu-hd"
+                                       tj="mz14">Python</a></td>
+                                        <td><a target="_blank" href="http://www.linuxeden.com/" name="2" class="menu-hd"
+                                       tj="mz15">Eden</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.w3school.com.cn/" name="2" tj="mz21">W3S</a>
+                                        <td><a target="_blank" href="https://stackoverflow.com/" name="2" tj="mz21">Stack</a></td>
+                                        <td><a target="_blank" href="http://www.apache.org/" name="2" class="menu-hd J_bd"
+                                       tj="mz16">Apache</a></td>
+                                        <td><a target="_blank" href="http://www.csdn.net/" name="2" class="menu-hd" tj="mz13">CSDN</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.imooc.com/course/list" name="2"
+                                       tj="mz21">Imooc</a></td>
+                                        <td><a target="_blank" href="https://github.com/" name="2" tj="mz21">GitHub</a></td>
+                                        <td><a target="_blank" href="http://www.apkbus.com/" name="2" tj="mz21">Android</a></td>
+                                        </td>
+                                        <td><a target="_blank" href="http://bbs.pcbeta.com/" name="2" tj="mz13">PCbeta</a></td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://36kr.com/" name="2" class="menu-hd J_bd" tj="mz16">36Kr</a>
+                                        </td>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.infoq.com/cn/" name="2" class="menu-hd J_bd"
+                                       tj="mz16">InfoQ</a></td>
+                                        <td><a target="_blank" href="http://www.itpub.net/" name="2" tj="mz21">Itpub</a></td>
+                                        <td><a target="_blank" href="http://www.runoob.com/" name="2" class="menu-hd" tj="mz14">Runoob</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱邮箱</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://email.163.com/" name="2" tj="mz21">163邮</a></td>
+                                        <td><a target="_blank" href="http://www.263.net/" name="2" class="menu-hd" tj="mz14">263邮</a>
+                                        </td>
+                                        <td><a target="_blank" href="https://mail.google.com/" name="2" class="menu-hd"
+                                       tj="mz12">Gmail</a></td>
+                                        <td><a target="_blank" href="https://login.live.com/" name="2" tj="mz21">Hotmail</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="https://mail.qq.com/" name="2" tj="mz21">QQ邮</a></td>
+                                        <td><a target="_blank" href="http://mail.10086.cn/" name="2" tj="mz21">139邮</a></td>
+                                        <td><a target="_blank" href="http://mail.189.cn/webmail/" name="2" tj="mz21">189邮</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://mail.wo.cn/mail/login.action" name="2"
+                                       tj="mz21">Wo邮</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://mail.21cn.com/" name="2" tj="mz21">21邮</a></td>
+                                        <td><a target="_blank" href="http://www.188.com/" name="2" class="menu-hd" tj="mz14">188邮</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://mail.eyou.net/" name="2" class="menu-hd" tj="mz12">亿邮</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://web.mail.tom.com/" name="2" tj="mz21">TOM邮</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://mail.sina.com.cn/" name="2" tj="mz21">新浪邮</a></td>
+                                        <td><a target="_blank" href="http://mail.sohu.com/" name="2" tj="mz21">搜狐邮</a></td>
+                                        <td><a target="_blank" href="https://login.yahoo.com/config/mail?&.src=ym&.intl=cn"
+                                       name="2" tj="mz21">雅虎邮</a></td>
+                                        <td><a target="_blank" href="https://mail.aliyun.com/" name="2" tj="mz21">阿里邮</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱交友</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.jiayuan.com/">佳缘</a></td>
+                                        <td><a target="_blank" href="http://www.baihe.com/">百合</a></td>
+                                        <td><a target="_blank" href="http://www.zhenai.com/">珍爱</a></td>
+                                        <td><a target="_blank" href="http://love.163.com/">花田</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.youyuan.com/" name="2" tj="mz21">有缘</a></td>
+                                        <td><a target="_blank" href="http://www.yuanlai.com/">缘来</a></td>
+                                        <td><a target="_blank" href="http://www.lol99.com/">真情</a></td>
+                                        <td><a target="_blank" href="http://www.zhiji.com/">知己</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://fcwr.jstv.com/" name="2" tj="mz13">非诚</a></td>
+                                        <td><a target="_blank" href="http://www.veyue.com/" name="2" tj="mz13">微约</a></td>
+                                        <td><a target="_blank" href="http://www.hongniang.com/" name="2" tj="mz13">红娘</a></td>
+                                        <td><a target="_blank" href="https://qzone.qq.com/" name="2" tj="mz13">QQ空间</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.renren.com/" name="2" tj="mz21">人人</a></td>
+                                        <td><a target="_blank" href="http://www.kaixin001.com/" name="2" tj="mz21">开心</a></td>
+                                        <td><a target="_blank" href="https://www.linkedin.com/" name="2" tj="mz21">领英</a></td>
+                                        <td><a target="_blank" href="http://www.renhe.cn/" name="2" tj="mz21">人和</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱女性</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.rayli.com.cn/" name="2"
+                                       class="menu-hd" tj="mz11">瑞丽</a></td>
+                                        <td><a target="_blank"
+                                       href="http://www.bazaar.com.cn/" name="2"
+                                       class="menu-hd" tj="mz12">芭莎</a></td>
+                                        <td><a target="_blank" href="http://www.aili.com/" name="2" class="menu-hd"
+                                       tj="mz14">爱丽</a></td>
+                                        <td><a target="_blank" href="http://www.ixinwei.com/" name="2" class="menu-hd"
+                                       tj="mz15">昕薇</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.yoka.com/" name="2" tj="mz21">YOKA</a></td>
+                                        <td><a target="_blank" href="http://www.onlylady.com/" name="2" tj="mz21">OnlyLady</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.ellechina.com/" name="2" class="menu-hd J_bd"
+                                       tj="mz16">ELLE</a></td>
+                                        <td><a target="_blank" href="http://www.vogue.com.cn/" name="2" class="menu-hd"
+                                       tj="mz13">VOGUE</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.7y7.com/" name="2" tj="mz21">7丽</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.mimito.com.cn/" name="2" tj="mz21">女人街</a></td>
+                                        <td><a target="_blank" href="http://www.mcchina.com/" name="2" tj="mz21">嘉人</a></td>
+                                        <td><a target="_blank" href="http://www.cosmopolitan.com.cn/" name="2"
+                                       tj="mz13">时尚</a></td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.haibao.com/" name="2" class="menu-hd J_bd" tj="mz16">海报</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.ileehoo.com/" name="2" tj="mz21">轻奢</a></td>
+                                        <td><a target="_blank" href="http://www.boohee.com/" name="2" class="menu-hd J_bd"
+                                       tj="mz16">薄荷</a></td>
+                                        <td><a target="_blank" href="http://www.faxingw.cn/" name="2" class="menu-hd" tj="mz14">发型</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱旅游</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.ctrip.com/" name="2" tj="mz21">携程</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.tuniu.com/" name="2" class="menu-hd" tj="mz14">途牛</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.elong.com/" name="2" class="menu-hd"
+                                       tj="mz12">艺龙</a></td>
+                                        <td><a target="_blank" href="http://www.qunar.com/" name="2" tj="mz21">去哪儿</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.springtour.com/" name="2" tj="mz21">春秋</a></td>
+                                        <td><a target="_blank" href="http://www.qyer.com/" name="2" tj="mz21">穷游</a></td>
+                                        <td><a target="_blank" href="http://www.mioji.com/" name="2" tj="mz21">妙计</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.lvmama.com/" name="2" tj="mz21">驴妈妈</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.ly.com/" name="2" tj="mz21">同程</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.mangocity.com/" name="2" class="menu-hd" tj="mz14">芒果</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.cncn.com/" name="2" class="menu-hd"
+                                       tj="mz12">欣欣</a></td>
+                                        <td><a target="_blank" href="http://www.mafengwo.cn/" name="2" tj="mz21">马蜂窝</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.lotour.com/" name="2" tj="mz21">乐途</a></td>
+                                        <td><a target="_blank" href="http://www.uzai.com/" name="2" tj="mz21">悠哉</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.5fen.com/" name="2" tj="mz21">五分</a></td>
+                                        <td><a target="_blank" href="http://www.tripadvisor.cn/" name="2" tj="mz21">猫途鹰</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱汽车</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.autohome.com.cn/">车家</a></td>
+                                        <td><a target="_blank" href="http://www.yiche.com/">易车</a></td>
+                                        <td><a target="_blank" href="http://www.xcar.com.cn/">爱卡</a></td>
+                                        <td><a target="_blank" href="http://www.cheshi.com/">车市</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.cheyun.com/" name="2" tj="mz21">车云</a></td>
+                                        <td><a target="_blank" href="https://www.21rv.com/">房车</a></td>
+                                        <td><a target="_blank" href="http://www.58che.com">58车</a></td>
+                                        <td><a target="_blank" href="https://www.renrenche.com/">人车</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://cn.haoche51.com/" name="2" tj="mz21">好车</a></td>
+                                        <td><a target="_blank" href="http://www.chekb.com/" name="2" tj="mz21">车碑</a></td>
+                                        <td><a target="_blank" href="http://www.16888.com/" name="2" tj="mz21">车主</a></td>
+                                        <td><a target="_blank" href="http://www.evzhidao.com/" name="2" tj="mz21">EV知道</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.chewen.com/" name="2" tj="mz13">车问</a></td>
+                                        <td><a target="_blank" href="http://www.xincheping.com/" name="2" tj="mz13">新车</a></td>
+                                        <td><a target="_blank" href="http://www.guazi.com/" name="2" tj="mz13">瓜子</a></td>
+                                        <td><a target="_blank" href="http://www.chexun.com/" name="2" tj="mz13">车讯</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱招聘</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.zhaopin.com/" name="2"
+                                       class="menu-hd" tj="mz11">智联</a></td>
+                                        <td><a target="_blank"
+                                       href="http://www.51job.com/" name="2"
+                                       class="menu-hd" tj="mz12">前程</a></td>
+                                        <td><a target="_blank" href="http://www.chinahr.com/" name="2" class="menu-hd"
+                                       tj="mz14">英才</a></td>
+                                        <td><a target="_blank" href="http://www.liepin.com/" name="2" class="menu-hd"
+                                       tj="mz15">猎聘</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.kanzhun.com/" name="2" tj="mz21">看准</a></td>
+                                        <td><a target="_blank" href="http://www.jobcn.com/" name="2" tj="mz21">卓博</a></td>
+                                        <td><a target="_blank" href="http://www.yingjiesheng.com/" name="2" class="menu-hd J_bd"
+                                       tj="mz16">应届</a></td>
+                                        <td><a target="_blank" href="http://www.job9151.com/" name="2" class="menu-hd" tj="mz13">校联</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.bosszhipin.com/home/" name="2"
+                                       tj="mz21">直聘</a></td>
+                                        <td><a target="_blank" href="http://www.lagou.com/" name="2" tj="mz21">拉钩</a></td>
+                                        <td><a target="_blank" href="http://www.wealink.com/" name="2" tj="mz21">若邻</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.neitui.me/" name="2" tj="mz13">内推</a></td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.bole.com.cn/" name="2" class="menu-hd J_bd" tj="mz16">伯乐</a>
+                                        </td>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.ganji.com/zhaopin/" name="2" class="menu-hd J_bd"
+                                       tj="mz16">赶集</a></td>
+                                        <td><a target="_blank" href="http://www.baixing.com/gongzuo/" name="2" tj="mz21">百姓</a></td>
+                                        <td><a target="_blank" href="http://www.58.com/?path=job.shtml" name="2" class="menu-hd" tj="mz14">58同城</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱小说</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.qidian.com/" name="2" tj="mz21">起点</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.hongxiu.com/" name="2" class="menu-hd" tj="mz14">红袖</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.xxsy.net/" name="2" class="menu-hd"
+                                       tj="mz12">潇湘</a></td>
+                                        <td><a target="_blank" href="http://www.zhulang.com/" name="2" tj="mz21">逐浪</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://chuangshi.qq.com/" name="2" tj="mz21">创世</a></td>
+                                        <td><a target="_blank" href="http://www.qwsy.com/" name="2" tj="mz21">蔷薇</a></td>
+                                        <td><a target="_blank" href="http://www.kanshu.com/" name="2" tj="mz21">看书</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.motie.com/" name="2" tj="mz21">磨铁</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.tiandizw.com/" name="2" tj="mz21">天地</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.tadu.com/" name="2" class="menu-hd" tj="mz14">塔读</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.huanxia.com/" name="2" class="menu-hd"
+                                       tj="mz12">幻侠</a></td>
+                                        <td><a target="_blank" href="http://yuedu.163.com/" name="2" tj="mz21">云阅读</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.hongshu.com/" name="2" tj="mz21">红薯</a></td>
+                                        <td><a target="_blank" href="http://www.zongheng.com/" name="2" tj="mz21">纵横</a></td>
+                                        <td><a target="_blank" href="http://b.faloo.com/" name="2" tj="mz21">飞卢</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.kujiang.com/" name="2" tj="mz21">酷匠</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱游戏</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.battlenet.com.cn/wow/">魔兽</a></td>
+                                        <td><a target="_blank" href="http://xyq.163.com/">梦幻</a></td>
+                                        <td><a target="_blank" href="http://lol.qq.com/">LOL</a></td>
+                                        <td><a target="_blank" href="http://mh.tiancity.com/">洛奇</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://mir2.sdo.com/" name="2" tj="mz21">传奇</a></td>
+                                        <td><a target="_blank" href="http://d.163.com/">暗黑</a></td>
+                                        <td><a target="_blank" href="http://sc2.blizzard.cn/">星际</a></td>
+                                        <td><a target="_blank" href="http://zt.ztgame.com/">征途</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://zhuxian.wanmei.com/" name="2" tj="mz21">诛仙</a></td>
+                                        <td><a target="_blank" href="http://au.9you.com/" name="2" tj="mz21">劲舞</a></td>
+                                        <td><a target="_blank" href="http://popkart.tiancity.com/" name="2" tj="mz21">卡丁</a></td>
+                                        <td><a target="_blank" href="http://cf.qq.com/" name="2" tj="mz21">穿越</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.duowan.com/" name="2" tj="mz13">多玩</a></td>
+                                        <td><a target="_blank" href="http://www.doyo.cn/" name="2" tj="mz13">逗游</a></td>
+                                        <td><a target="_blank" href="http://www.4399.com/" name="2" tj="mz13">4399</a></td>
+                                        <td><a target="_blank" href="http://www.17173.com/" name="2" tj="mz13">17173</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱快递</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.sf-express.com/" name="2"
+                                       class="menu-hd" tj="mz11">顺丰</a></td>
+                                        <td><a target="_blank"
+                                       href="http://www.ems.com.cn/" name="2"
+                                       class="menu-hd" tj="mz12">EMS</a></td>
+                                        <td><a target="_blank" href="http://www.yundaex.com/" name="2" class="menu-hd"
+                                       tj="mz14">韵达</a></td>
+                                        <td><a target="_blank" href="http://www.zjs.com.cn" name="2" class="menu-hd"
+                                       tj="mz15">宅急送</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.sto.cn" name="2" tj="mz21">申通</a></td>
+                                        <td><a target="_blank" href="http://www.ytoexpress.com/" name="2" tj="mz21">圆通</a></td>
+                                        <td><a target="_blank" href="http://www.zto.cn" name="2" class="menu-hd J_bd"
+                                       tj="mz16">中通</a></td>
+                                        <td><a target="_blank" href="http://www.800bestex.com/" name="2" class="menu-hd" tj="mz13">汇通</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.ttkdex.com/" name="2"
+                                       tj="mz21">天天</a></td>
+                                        <td><a target="_blank" href="http://www.qfkd.com.cn" name="2" tj="mz21">全峰</a></td>
+                                        <td><a target="_blank" href="http://www.deppon.com" name="2" tj="mz21">德邦</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.hoau.net" name="2" tj="mz13">华宇</a></td>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.sure56.com" name="2" class="menu-hd J_bd" tj="mz16">速尔</a>
+                                        </td>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.uc56.com" name="2" class="menu-hd J_bd"
+                                       tj="mz16">优速</a></td>
+                                        <td><a target="_blank" href="http://www.lbex.net/" name="2" tj="mz21">龙邦</a></td>
+                                        <td><a target="_blank" href="http://www.kuaidi100.com/" name="2" class="menu-hd" tj="mz14">100</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <div class="col-xs-12 col-sm-6 col-lg-4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody style="text-align: center">
+                                    <th colspan="4">最爱银行</th>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.icbc.com.cn/" name="2" tj="mz21">工行</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.abchina.com/cn/" name="2" class="menu-hd" tj="mz14">农行</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.boc.cn/" name="2" class="menu-hd"
+                                       tj="mz12">中行</a></td>
+                                        <td><a target="_blank" href="http://www.ccb.com/" name="2" tj="mz21">建行</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.bankcomm.com/" name="2" tj="mz21">交行</a></td>
+                                        <td><a target="_blank" href="http://www.cmbchina.com/" name="2" tj="mz21">招商</a></td>
+                                        <td><a target="_blank" href="http://www.cebbank.com/" name="2" tj="mz21">光大</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.spdb.com.cn/" name="2" tj="mz21">浦发</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.psbc.com/" name="2" tj="mz21">邮储</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://bank.ecitic.com/" name="2" class="menu-hd" tj="mz14">中信</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.cib.com.cn/" name="2" class="menu-hd"
+                                       tj="mz12">兴业</a></td>
+                                        <td><a target="_blank" href="http://www.cmbc.com.cn/" name="2" tj="mz21">民生</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a target="_blank" href="http://www.hxb.com.cn/" name="2" tj="mz21">华夏</a></td>
+                                        <td><a target="_blank" href="http://bank.pingan.com/" name="2" tj="mz21">平安</a></td>
+                                        <td><a target="_blank" href="http://www.cgbchina.com.cn/" name="2" tj="mz21">广发</a>
+                                        </td>
+                                        <td><a target="_blank" href="http://www.bankofbeijing.com.cn/" name="2" tj="mz21">北京</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/.col-xs-6.col-lg-4-->
+                    <!--/.col-xs-6.col-lg-4-->
+                </div>
+                <!--/row-->
+            </div>
+            <!--/.col-xs-12.col-sm-9-->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+                <div class="panel panel-info" style="width: 265px;">
+                    <div class="mod-calendar">
+                        <div class="info"></div>
+                    </div>
+                </div>
+                <div class="panel panel-info" style="width: 265px;">
+                    <div id="he-plugin-standard"></div>
+                    <script>
+                    WIDGET = {
+                        CONFIG: {
+                            "layout": 2,
+                            "width": "265",
+                            "height": "270",
+                            "background": 1,
+                            "dataColor": "FFFFFF",
+                            "borderRadius": 5,
+                            "key": "bd90c7e1ed5a454880f841006dbdfbe6"
+                        }
+                    }
+                    </script>
+                    <script src="https://widget.heweather.net/standard/static/js/he-standard-common.js?v=1.1"></script>
+                </div>
+            </div>
+            <!--/.sidebar-offcanvas-->
+        </div>
+        <!--/row-->
+        <hr>
+        <footer>
+            <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>
+        </footer>
+    </div>
+    <!--/.container-->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/offcanvas.js"></script>
+    <script src="http://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
+    <script type="text/javascript">
+    $(window).scroll(
+        function() {
+            $(this).scrollTop() > 300 ? $(".gotop-btn").css("display", "block") : $(".gotop-btn").hide()
+        }
+    )
+    </script>
+    <a style="position: fixed; display: none;" class="gotop-btn" href="#top" id="scrollUp"><i
+        class="fa fa-angle-up"></i></a>
+</body>
+
+</html>
