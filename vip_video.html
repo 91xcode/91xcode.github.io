@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>全网VIP视频在线播放</title>
+  <style>
+    div,h1,h2,h3,h4,h5,h6,p,span,input,button,table,li,th,td,option,a {
+      margin: 0 auto;
+      text-align: center;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .btn {
+      width: 180px;
+      margin: 0 auto;
+    }
+    .btn a {
+      width: 100%;
+      color: #5cb85c;
+      display: block;
+      padding:10px 30px;
+      border-radius: 18px;
+      border: 3px solid #5cb85c;
+    }
+    .btn a:hover {
+      color: #fff;
+      background: #5cb85c;
+    }
+    ul,h3 {
+        margin: 0;
+        display: block;
+        list-style-type: disc;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        -webkit-padding-start: 10px;
+    }
+    ul li {
+        /*padding: 4px 0;*/
+        list-style: none;
+        *line-height: 30px;
+        *font-size: 16px;
+        *white-space: nowrap;
+        /*display: list-item;*/
+        text-align: left;
+        line-height: 2em;
+        /*text-align: -webkit-match-parent;*/
+    }
+    #core {
+      width: 800px;
+      /*overflow: hidden;*/
+      display: block;
+      position: relative;
+    }
+    #player {
+      margin: 0 auto;
+      border: 1px solid #5cb85c;
+      position: absolute;
+      left: 0;
+      z-index: 999;
+    }
+    .right {
+      width: 240px;
+      right: -260px;
+      position: absolute;
+    }
+    .left {
+      left: -260px;
+      width: 240px;
+      position: absolute;
+    }
+    .left div p {
+        line-height: 2em;
+    }
+    .middle {
+    	position: relative;
+    	width: 800px;
+    	height: 450px;
+    }
+    .middle p {
+    	position: absolute;
+    	font-size: 36px;
+    	width: 800px;
+    	top: 50%;
+    	margin-top: -18px;
+    	color: red;
+    }
+  </style>
+   <script type="text/javascript">eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('b a(){0 6=1.2("9").4;0 5=1.2("3");0 3=1.2("3").c;0 8=5.e[3].4;0 7=1.2("f");7.d=8+6}',16,16,'var|document|getElementById|jx|value|jxurl|diz|cljurl|jxv|url|dihejx|function|selectedIndex|src|options|player'.split('|'),0,{}))
+
+   function dihejx() {
+       var diz = document.getElementById("url").value;
+       var jxurl = document.getElementById("jx");
+       var jx = document.getElementById("jx").selectedIndex;
+       var jxv = jxurl.options[jx].value;
+       var cljurl = document.getElementById("player");
+       window.open(jxv + diz,"_blank");
+   }
+   </script>
+   </head>
+<body >
+  <div  style="float: none;">
+  <h3  align="center">全网VIP视频在线播放</h3>
+<hr style="border:0.5px solid #ddd;">
+  <section style="padding: 10px 10px; border-width: 0px 0px 0px; border-style: solid none none; border-left-color: rgb(219, 219, 219); border-top-color: rgb(255, 255, 255); border-bottom-left-radius: 2%; border-bottom-right-radius: 2%;">
+      <p style="letter-spacing: 1px; text-align: center;">
+          <span style="color: #7F7F7F;">全网VIP视频免会员免广告观看！若播放异常，请尝试更换接口哦！</span>
+      </p>
+  </section>
+  <div>
+    <div>
+     <div id="core"> 
+     <div class="left">
+        <h3>温馨提示:</h3>
+        <div>     
+              <p>本站视频源于互联网视频网站，仅供学习交流！</p>现已支持以下网站VIP视频：<br><br>
+              <a href="https://www.mgtv.com" target="_blank">芒果</a>&nbsp;&nbsp;<a href="https://www.iqiyi.com" target="_blank">爱奇艺</a>&nbsp;&nbsp;
+              <a href="https://v.qq.com/" target="_blank">腾讯</a>&nbsp;&nbsp;<a href="https://www.youku.com/" target="_blank">优酷</a>&nbsp;&nbsp;
+              <a href="https://www.bilibili.com/" target="_blank">B站</a>
+        </div>
+      </div>
+      <div class="right">
+        <h3>操作指南</h3>
+        <ul>
+              <li>第&nbsp;一&nbsp;步&nbsp;进入各大视频网站，找到想要观看的VIP视频，然后复制视频链接</li>
+              <li>第&nbsp;二&nbsp;步&nbsp;将复制的链接粘贴到本站播放地址，并点击开始播放</li>
+              <li>第&nbsp;三&nbsp;步&nbsp;等待解析完成，即可免费观看VIP视频</li>
+        </ul>
+      </div>
+      <div class="middle">
+      	<p>请不要相信视频中出现的任何广告内容!</p>
+      	<iframe src="" id="player" width="800px" height="450px" allowTransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>  
+      </div>
+     </div>
+    </div>
+   </div><br>
+   <div >  
+     <div style="width: 100%;">
+      <span style="display: inline-block; width:100px;">选择接口</span>
+      <select  id="jx" style="width:600px;height:36px;">
+        <option value="https://mi.renrenmi.net/dp/?url=" selected="">&nbsp;&nbsp;01号--全网稳定通用VIP播放系统</option>
+        <option value="https://jx.renrenmi.cc/?url=">&nbsp;&nbsp;02号--全网稳定通用VIP播放系统</option>
+        <option value="https://jx.renrenmi.cc/dp/?url=">&nbsp;&nbsp;03号--全网稳定通用VIP播放系统</option>
+        <option value="https://jiexi.muyu.love/?url=">&nbsp;&nbsp;04号--全网稳定通用VIP播放系统</option>
+        <option value="https://www.tlkj.vip/jiexi/?url=">&nbsp;&nbsp;05号--稳定通用VIP播放系统&nbsp;&nbsp;&nbsp;&nbsp;芒果 | 爱奇艺 | 腾讯 | 优酷</option>
+        <option value="https://www.ckplayer.vip/jiexi/?url=">&nbsp;&nbsp;06号--稳定通用VIP播放系统&nbsp;&nbsp;&nbsp;&nbsp;芒果 | 爱奇艺 | 腾讯 | 优酷</option>
+        <option value="https://www.8090.la/api/?url=">&nbsp;&nbsp;07号--稳定通用VIP播放系统&nbsp;&nbsp;&nbsp;&nbsp;芒果 | 爱奇艺 | 腾讯 | 优酷</option> 
+        <option value="https://www.8090g.cn/jiexi/?url=">&nbsp;&nbsp;08号--稳定通用VIP播放系统&nbsp;&nbsp;&nbsp;&nbsp;芒果 | 爱奇艺 | 腾讯 | 优酷</option>
+        <option value="https://z1.m1907.cn/?jx=">&nbsp;&nbsp;09号--全网通用VIP播放系统&nbsp;&nbsp;&nbsp;&nbsp;芒果 | 爱奇艺 | 腾讯 | 优酷 | B站 | 有广告</option> 
+        <option value="https://z1.m1907.cn/?a=">&nbsp;&nbsp;10号--全网通用VIP播放系统&nbsp;&nbsp;&nbsp;&nbsp;芒果 | 爱奇艺 | 腾讯 | 优酷 | B站 | 有广告</option> 
+        <option value="https://jx.70808.net/?url=">&nbsp;&nbsp;11号--全网通用VIP播放系统&nbsp;&nbsp;&nbsp;&nbsp;芒果 | 爱奇艺 | 腾讯 | 优酷 | B站 | 有广告</option> 
+        <option value="https://api.08bk.com/vip/?url=">&nbsp;&nbsp;12号--全网通用VIP播放系统&nbsp;&nbsp;&nbsp;&nbsp;芒果 | 爱奇艺 | 腾讯 | 优酷 | B站 | 有广告</option> 
+      </select>
+     </div>
+     <br>
+     <div style="width: 100%;">
+      <span style="display: inline-block; width:100px;">播放地址</span>
+      <input type="search" style="width:600px;height:36px;" placeholder="在这里粘贴视频地址" id="url">
+     </div>
+     <br>
+     <div>
+      <div id="bf" class="btn " onClick="dihejx()"><a href="##">点击开始播放</a></div>
+      <!-- <button id="bf" type="button" class="btn btn-success btn-lg btn-block" onClick="dihejx2()">New-点击全屏解析</button> -->
+     </div>  
+    </div>
+      <br>
+    <div style="text-align: center;">
+      <div> &nbsp;&nbsp;&nbsp;Copyright © 完美vip视频解析</div>
+      <p>本站不进行任何资源存储，只提供影视检索服务</p>
+    </div>
+</body>
+</html>
