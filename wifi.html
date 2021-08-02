@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC&display=swap&subset=chinese-simplified" rel="stylesheet">
+    <script>
+    
+        //---------------------------------------------------------------------
+        // QRCode for JavaScript
+        //
+        // Copyright (c) 2009 Kazuhiko Arase
+        //
+        // URL: http://www.d-project.com/
+        //
+        // Licensed under the MIT license:
+        //   http://www.opensource.org/licenses/mit-license.php
+        //
+        // The word "QR Code" is registered trademark of
+        // DENSO WAVE INCORPORATED
+        //   http://www.denso-wave.com/qrcode/faqpatent-e.html
+        //
+        //---------------------------------------------------------------------
+    
+        //---------------------------------------------------------------------
+        // QR8bitByte
+        //---------------------------------------------------------------------
+    
+        function QR8bitByte(data) {
+            this.mode = QRMode.MODE_8BIT_BYTE;
+            this.data = data;
+        }
+    
+        QR8bitByte.prototype = {
+    
+            getLength: function (buffer) {
+                return this.data.length;
+            },
+    
+            write: function (buffer) {
+                for (var i = 0; i < this.data.length; i++) {
+                    // not JIS ...
+                    buffer.put(this.data.charCodeAt(i), 8);
+                }
+            }
+        };
+    
+        //---------------------------------------------------------------------
+        // QRCode
+        //---------------------------------------------------------------------
+    
+        function QRCode(typeNumber, errorCorrectLevel) {
+            this.typeNumber = typeNumber;
+            this.errorCorrectLevel = errorCorrectLevel;
+            this.modules = null;
+            this.moduleCount = 0;
+            this.dataCache = null;
+            this.dataList = new Array();
+        }
+    
+        QRCode.prototype = {
+    
+            addData: function (data) {
+                var newData = new QR8bitByte(data);
+                this.dataList.push(newData);
+                this.dataCache = null;
+            },
+    
+            isDark: function (row, col) {
+                if (row < 0 || this.moduleCount <= row || col < 0 || this.moduleCount <= col) {
+                    throw new Error(row + "," + col);
+                }
+                return this.modules[row][col];
+            },
+    
+            getModuleCount: function () {
+                return this.moduleCount;
+            },
+    
+            make: function () {
+                // Calculate automatically typeNumber if provided is < 1
+                if (this.typeNumber < 1) {
+                    var typeNumber = 1;
+                    for (typeNumber = 1; typeNumber < 40; typeNumber++) {
+                        var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, this.errorCorrectLevel);
+    
+                        var buffer = new QRBitBuffer();
+                        var totalDataCount = 0;
+                        for (var i = 0; i < rsBlocks.length; i++) {
+                            totalDataCount += rsBlocks[i].dataCount;
+                        }
+    
+                        for (var i = 0; i < this.dataList.length; i++) {
+                            var data = this.dataList[i];
+                            buffer.put(data.mode, 4);
+                            buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber));
+                            data.write(buffer);
+                        }
+                        if (buffer.getLengthInBits() <= totalDataCount * 8)
+                            break;
+                    }
+                    this.typeNumber = typeNumber;
+                }
+                this.makeImpl(false, this.getBestMaskPattern());
+            },
+    
+            makeImpl: function (test, maskPattern) {
+    
+                this.moduleCount = this.typeNumber * 4 + 17;
+                this.modules = new Array(this.moduleCount);
+    
+                for (var row = 0; row < this.moduleCount; row++) {
+    
+                    this.modules[row] = new Array(this.moduleCount);
+    
+                    for (var col = 0; col < this.moduleCount; col++) {
+                        this.modules[row][col] = null;//(col + row) % 3;
+                    }
+                }
+    
+                this.setupPositionProbePattern(0, 0);
+                this.setupPositionProbePattern(this.moduleCount - 7, 0);
+                this.setupPositionProbePattern(0, this.moduleCount - 7);
+                this.setupPositionAdjustPattern();
+                this.setupTimingPattern();
+                this.setupTypeInfo(test, maskPattern);
+    
+                if (this.typeNumber >= 7) {
+                    this.setupTypeNumber(test);
+                }
+    
+                if (this.dataCache == null) {
+                    this.dataCache = QRCode.createData(this.typeNumber, this.errorCorrectLevel, this.dataList);
+                }
+    
+                this.mapData(this.dataCache, maskPattern);
+            },
+    
+            setupPositionProbePattern: function (row, col) {
+    
+                for (var r = -1; r <= 7; r++) {
+    
+                    if (row + r <= -1 || this.moduleCount <= row + r) continue;
+    
+                    for (var c = -1; c <= 7; c++) {
+    
+                        if (col + c <= -1 || this.moduleCount <= col + c) continue;
+    
+                        if ((0 <= r && r <= 6 && (c == 0 || c == 6))
+                                || (0 <= c && c <= 6 && (r == 0 || r == 6))
+                                || (2 <= r && r <= 4 && 2 <= c && c <= 4)) {
+                            this.modules[row + r][col + c] = true;
+                        } else {
+                            this.modules[row + r][col + c] = false;
+                        }
+                    }
+                }
+            },
+    
+            getBestMaskPattern: function () {
+    
+                var minLostPoint = 0;
+                var pattern = 0;
+    
+                for (var i = 0; i < 8; i++) {
+    
+                    this.makeImpl(true, i);
+    
+                    var lostPoint = QRUtil.getLostPoint(this);
+    
+                    if (i == 0 || minLostPoint > lostPoint) {
+                        minLostPoint = lostPoint;
+                        pattern = i;
+                    }
+                }
+    
+                return pattern;
+            },
+    
+            createMovieClip: function (target_mc, instance_name, depth) {
+    
+                var qr_mc = target_mc.createEmptyMovieClip(instance_name, depth);
+                var cs = 1;
+    
+                this.make();
+    
+                for (var row = 0; row < this.modules.length; row++) {
+    
+                    var y = row * cs;
+    
+                    for (var col = 0; col < this.modules[row].length; col++) {
+    
+                        var x = col * cs;
+                        var dark = this.modules[row][col];
+    
+                        if (dark) {
+                            qr_mc.beginFill(0, 100);
+                            qr_mc.moveTo(x, y);
+                            qr_mc.lineTo(x + cs, y);
+                            qr_mc.lineTo(x + cs, y + cs);
+                            qr_mc.lineTo(x, y + cs);
+                            qr_mc.endFill();
+                        }
+                    }
+                }
+    
+                return qr_mc;
+            },
+    
+            setupTimingPattern: function () {
+    
+                for (var r = 8; r < this.moduleCount - 8; r++) {
+                    if (this.modules[r][6] != null) {
+                        continue;
+                    }
+                    this.modules[r][6] = (r % 2 == 0);
+                }
+    
+                for (var c = 8; c < this.moduleCount - 8; c++) {
+                    if (this.modules[6][c] != null) {
+                        continue;
+                    }
+                    this.modules[6][c] = (c % 2 == 0);
+                }
+            },
+    
+            setupPositionAdjustPattern: function () {
+    
+                var pos = QRUtil.getPatternPosition(this.typeNumber);
+    
+                for (var i = 0; i < pos.length; i++) {
+    
+                    for (var j = 0; j < pos.length; j++) {
+    
+                        var row = pos[i];
+                        var col = pos[j];
+    
+                        if (this.modules[row][col] != null) {
+                            continue;
+                        }
+    
+                        for (var r = -2; r <= 2; r++) {
+    
+                            for (var c = -2; c <= 2; c++) {
+    
+                                if (r == -2 || r == 2 || c == -2 || c == 2
+                                        || (r == 0 && c == 0)) {
+                                    this.modules[row + r][col + c] = true;
+                                } else {
+                                    this.modules[row + r][col + c] = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+    
+            setupTypeNumber: function (test) {
+    
+                var bits = QRUtil.getBCHTypeNumber(this.typeNumber);
+    
+                for (var i = 0; i < 18; i++) {
+                    var mod = (!test && ((bits >> i) & 1) == 1);
+                    this.modules[Math.floor(i / 3)][i % 3 + this.moduleCount - 8 - 3] = mod;
+                }
+    
+                for (var i = 0; i < 18; i++) {
+                    var mod = (!test && ((bits >> i) & 1) == 1);
+                    this.modules[i % 3 + this.moduleCount - 8 - 3][Math.floor(i / 3)] = mod;
+                }
+            },
+    
+            setupTypeInfo: function (test, maskPattern) {
+    
+                var data = (this.errorCorrectLevel << 3) | maskPattern;
+                var bits = QRUtil.getBCHTypeInfo(data);
+    
+                // vertical
+                for (var i = 0; i < 15; i++) {
+    
+                    var mod = (!test && ((bits >> i) & 1) == 1);
+    
+                    if (i < 6) {
+                        this.modules[i][8] = mod;
+                    } else if (i < 8) {
+                        this.modules[i + 1][8] = mod;
+                    } else {
+                        this.modules[this.moduleCount - 15 + i][8] = mod;
+                    }
+                }
+    
+                // horizontal
+                for (var i = 0; i < 15; i++) {
+    
+                    var mod = (!test && ((bits >> i) & 1) == 1);
+    
+                    if (i < 8) {
+                        this.modules[8][this.moduleCount - i - 1] = mod;
+                    } else if (i < 9) {
+                        this.modules[8][15 - i - 1 + 1] = mod;
+                    } else {
+                        this.modules[8][15 - i - 1] = mod;
+                    }
+                }
+    
+                // fixed module
+                this.modules[this.moduleCount - 8][8] = (!test);
+    
+            },
+    
+            mapData: function (data, maskPattern) {
+    
+                var inc = -1;
+                var row = this.moduleCount - 1;
+                var bitIndex = 7;
+                var byteIndex = 0;
+    
+                for (var col = this.moduleCount - 1; col > 0; col -= 2) {
+    
+                    if (col == 6) col--;
+    
+                    while (true) {
+    
+                        for (var c = 0; c < 2; c++) {
+    
+                            if (this.modules[row][col - c] == null) {
+    
+                                var dark = false;
+    
+                                if (byteIndex < data.length) {
+                                    dark = (((data[byteIndex] >>> bitIndex) & 1) == 1);
+                                }
+    
+                                var mask = QRUtil.getMask(maskPattern, row, col - c);
+    
+                                if (mask) {
+                                    dark = !dark;
+                                }
+    
+                                this.modules[row][col - c] = dark;
+                                bitIndex--;
+    
+                                if (bitIndex == -1) {
+                                    byteIndex++;
+                                    bitIndex = 7;
+                                }
+                            }
+                        }
+    
+                        row += inc;
+    
+                        if (row < 0 || this.moduleCount <= row) {
+                            row -= inc;
+                            inc = -inc;
+                            break;
+                        }
+                    }
+                }
+    
+            }
+    
+        };
+    
+        QRCode.PAD0 = 0xEC;
+        QRCode.PAD1 = 0x11;
+    
+        QRCode.createData = function (typeNumber, errorCorrectLevel, dataList) {
+    
+            var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectLevel);
+    
+            var buffer = new QRBitBuffer();
+    
+            for (var i = 0; i < dataList.length; i++) {
+                var data = dataList[i];
+                buffer.put(data.mode, 4);
+                buffer.put(data.getLength(), QRUtil.getLengthInBits(data.mode, typeNumber));
+                data.write(buffer);
+            }
+    
+            // calc num max data.
+            var totalDataCount = 0;
+            for (var i = 0; i < rsBlocks.length; i++) {
+                totalDataCount += rsBlocks[i].dataCount;
+            }
+    
+            if (buffer.getLengthInBits() > totalDataCount * 8) {
+                throw new Error("code length overflow. ("
+                        + buffer.getLengthInBits()
+                        + ">"
+                        + totalDataCount * 8
+                        + ")");
+            }
+    
+            // end code
+            if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+                buffer.put(0, 4);
+            }
+    
+            // padding
+            while (buffer.getLengthInBits() % 8 != 0) {
+                buffer.putBit(false);
+            }
+    
+            // padding
+            while (true) {
+    
+                if (buffer.getLengthInBits() >= totalDataCount * 8) {
+                    break;
+                }
+                buffer.put(QRCode.PAD0, 8);
+    
+                if (buffer.getLengthInBits() >= totalDataCount * 8) {
+                    break;
+                }
+                buffer.put(QRCode.PAD1, 8);
+            }
+    
+            return QRCode.createBytes(buffer, rsBlocks);
+        }
+    
+        QRCode.createBytes = function (buffer, rsBlocks) {
+    
+            var offset = 0;
+    
+            var maxDcCount = 0;
+            var maxEcCount = 0;
+    
+            var dcdata = new Array(rsBlocks.length);
+            var ecdata = new Array(rsBlocks.length);
+    
+            for (var r = 0; r < rsBlocks.length; r++) {
+    
+                var dcCount = rsBlocks[r].dataCount;
+                var ecCount = rsBlocks[r].totalCount - dcCount;
+    
+                maxDcCount = Math.max(maxDcCount, dcCount);
+                maxEcCount = Math.max(maxEcCount, ecCount);
+    
+                dcdata[r] = new Array(dcCount);
+    
+                for (var i = 0; i < dcdata[r].length; i++) {
+                    dcdata[r][i] = 0xff & buffer.buffer[i + offset];
+                }
+                offset += dcCount;
+    
+                var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+                var rawPoly = new QRPolynomial(dcdata[r], rsPoly.getLength() - 1);
+    
+                var modPoly = rawPoly.mod(rsPoly);
+                ecdata[r] = new Array(rsPoly.getLength() - 1);
+                for (var i = 0; i < ecdata[r].length; i++) {
+                    var modIndex = i + modPoly.getLength() - ecdata[r].length;
+                    ecdata[r][i] = (modIndex >= 0) ? modPoly.get(modIndex) : 0;
+                }
+    
+            }
+    
+            var totalCodeCount = 0;
+            for (var i = 0; i < rsBlocks.length; i++) {
+                totalCodeCount += rsBlocks[i].totalCount;
+            }
+    
+            var data = new Array(totalCodeCount);
+            var index = 0;
+    
+            for (var i = 0; i < maxDcCount; i++) {
+                for (var r = 0; r < rsBlocks.length; r++) {
+                    if (i < dcdata[r].length) {
+                        data[index++] = dcdata[r][i];
+                    }
+                }
+            }
+    
+            for (var i = 0; i < maxEcCount; i++) {
+                for (var r = 0; r < rsBlocks.length; r++) {
+                    if (i < ecdata[r].length) {
+                        data[index++] = ecdata[r][i];
+                    }
+                }
+            }
+    
+            return data;
+    
+        }
+    
+        //---------------------------------------------------------------------
+        // QRMode
+        //---------------------------------------------------------------------
+    
+        var QRMode = {
+            MODE_NUMBER: 1 << 0,
+            MODE_ALPHA_NUM: 1 << 1,
+            MODE_8BIT_BYTE: 1 << 2,
+            MODE_KANJI: 1 << 3
+        };
+    
+        //---------------------------------------------------------------------
+        // QRErrorCorrectLevel
+        //---------------------------------------------------------------------
+    
+        var QRErrorCorrectLevel = {
+            L: 1,
+            M: 0,
+            Q: 3,
+            H: 2
+        };
+    
+        //---------------------------------------------------------------------
+        // QRMaskPattern
+        //---------------------------------------------------------------------
+    
+        var QRMaskPattern = {
+            PATTERN000: 0,
+            PATTERN001: 1,
+            PATTERN010: 2,
+            PATTERN011: 3,
+            PATTERN100: 4,
+            PATTERN101: 5,
+            PATTERN110: 6,
+            PATTERN111: 7
+        };
+    
+        //---------------------------------------------------------------------
+        // QRUtil
+        //---------------------------------------------------------------------
+    
+        var QRUtil = {
+    
+            PATTERN_POSITION_TABLE: [
+                [],
+                [6, 18],
+                [6, 22],
+                [6, 26],
+                [6, 30],
+                [6, 34],
+                [6, 22, 38],
+                [6, 24, 42],
+                [6, 26, 46],
+                [6, 28, 50],
+                [6, 30, 54],
+                [6, 32, 58],
+                [6, 34, 62],
+                [6, 26, 46, 66],
+                [6, 26, 48, 70],
+                [6, 26, 50, 74],
+                [6, 30, 54, 78],
+                [6, 30, 56, 82],
+                [6, 30, 58, 86],
+                [6, 34, 62, 90],
+                [6, 28, 50, 72, 94],
+                [6, 26, 50, 74, 98],
+                [6, 30, 54, 78, 102],
+                [6, 28, 54, 80, 106],
+                [6, 32, 58, 84, 110],
+                [6, 30, 58, 86, 114],
+                [6, 34, 62, 90, 118],
+                [6, 26, 50, 74, 98, 122],
+                [6, 30, 54, 78, 102, 126],
+                [6, 26, 52, 78, 104, 130],
+                [6, 30, 56, 82, 108, 134],
+                [6, 34, 60, 86, 112, 138],
+                [6, 30, 58, 86, 114, 142],
+                [6, 34, 62, 90, 118, 146],
+                [6, 30, 54, 78, 102, 126, 150],
+                [6, 24, 50, 76, 102, 128, 154],
+                [6, 28, 54, 80, 106, 132, 158],
+                [6, 32, 58, 84, 110, 136, 162],
+                [6, 26, 54, 82, 110, 138, 166],
+                [6, 30, 58, 86, 114, 142, 170]
+            ],
+    
+            G15: (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0),
+            G18: (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0),
+            G15_MASK: (1 << 14) | (1 << 12) | (1 << 10) | (1 << 4) | (1 << 1),
+    
+            getBCHTypeInfo: function (data) {
+                var d = data << 10;
+                while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15) >= 0) {
+                    d ^= (QRUtil.G15 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G15)));
+                }
+                return ((data << 10) | d) ^ QRUtil.G15_MASK;
+            },
+    
+            getBCHTypeNumber: function (data) {
+                var d = data << 12;
+                while (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18) >= 0) {
+                    d ^= (QRUtil.G18 << (QRUtil.getBCHDigit(d) - QRUtil.getBCHDigit(QRUtil.G18)));
+                }
+                return (data << 12) | d;
+            },
+    
+            getBCHDigit: function (data) {
+    
+                var digit = 0;
+    
+                while (data != 0) {
+                    digit++;
+                    data >>>= 1;
+                }
+    
+                return digit;
+            },
+    
+            getPatternPosition: function (typeNumber) {
+                return QRUtil.PATTERN_POSITION_TABLE[typeNumber - 1];
+            },
+    
+            getMask: function (maskPattern, i, j) {
+    
+                switch (maskPattern) {
+    
+                    case QRMaskPattern.PATTERN000 :
+                        return (i + j) % 2 == 0;
+                    case QRMaskPattern.PATTERN001 :
+                        return i % 2 == 0;
+                    case QRMaskPattern.PATTERN010 :
+                        return j % 3 == 0;
+                    case QRMaskPattern.PATTERN011 :
+                        return (i + j) % 3 == 0;
+                    case QRMaskPattern.PATTERN100 :
+                        return (Math.floor(i / 2) + Math.floor(j / 3)) % 2 == 0;
+                    case QRMaskPattern.PATTERN101 :
+                        return (i * j) % 2 + (i * j) % 3 == 0;
+                    case QRMaskPattern.PATTERN110 :
+                        return ((i * j) % 2 + (i * j) % 3) % 2 == 0;
+                    case QRMaskPattern.PATTERN111 :
+                        return ((i * j) % 3 + (i + j) % 2) % 2 == 0;
+    
+                    default :
+                        throw new Error("bad maskPattern:" + maskPattern);
+                }
+            },
+    
+            getErrorCorrectPolynomial: function (errorCorrectLength) {
+    
+                var a = new QRPolynomial([1], 0);
+    
+                for (var i = 0; i < errorCorrectLength; i++) {
+                    a = a.multiply(new QRPolynomial([1, QRMath.gexp(i)], 0));
+                }
+    
+                return a;
+            },
+    
+            getLengthInBits: function (mode, type) {
+    
+                if (1 <= type && type < 10) {
+    
+                    // 1 - 9
+    
+                    switch (mode) {
+                        case QRMode.MODE_NUMBER    :
+                            return 10;
+                        case QRMode.MODE_ALPHA_NUM    :
+                            return 9;
+                        case QRMode.MODE_8BIT_BYTE    :
+                            return 8;
+                        case QRMode.MODE_KANJI    :
+                            return 8;
+                        default :
+                            throw new Error("mode:" + mode);
+                    }
+    
+                } else if (type < 27) {
+    
+                    // 10 - 26
+    
+                    switch (mode) {
+                        case QRMode.MODE_NUMBER    :
+                            return 12;
+                        case QRMode.MODE_ALPHA_NUM    :
+                            return 11;
+                        case QRMode.MODE_8BIT_BYTE    :
+                            return 16;
+                        case QRMode.MODE_KANJI    :
+                            return 10;
+                        default :
+                            throw new Error("mode:" + mode);
+                    }
+    
+                } else if (type < 41) {
+    
+                    // 27 - 40
+    
+                    switch (mode) {
+                        case QRMode.MODE_NUMBER    :
+                            return 14;
+                        case QRMode.MODE_ALPHA_NUM    :
+                            return 13;
+                        case QRMode.MODE_8BIT_BYTE    :
+                            return 16;
+                        case QRMode.MODE_KANJI    :
+                            return 12;
+                        default :
+                            throw new Error("mode:" + mode);
+                    }
+    
+                } else {
+                    throw new Error("type:" + type);
+                }
+            },
+    
+            getLostPoint: function (qrCode) {
+    
+                var moduleCount = qrCode.getModuleCount();
+    
+                var lostPoint = 0;
+    
+                // LEVEL1
+    
+                for (var row = 0; row < moduleCount; row++) {
+    
+                    for (var col = 0; col < moduleCount; col++) {
+    
+                        var sameCount = 0;
+                        var dark = qrCode.isDark(row, col);
+    
+                        for (var r = -1; r <= 1; r++) {
+    
+                            if (row + r < 0 || moduleCount <= row + r) {
+                                continue;
+                            }
+    
+                            for (var c = -1; c <= 1; c++) {
+    
+                                if (col + c < 0 || moduleCount <= col + c) {
+                                    continue;
+                                }
+    
+                                if (r == 0 && c == 0) {
+                                    continue;
+                                }
+    
+                                if (dark == qrCode.isDark(row + r, col + c)) {
+                                    sameCount++;
+                                }
+                            }
+                        }
+    
+                        if (sameCount > 5) {
+                            lostPoint += (3 + sameCount - 5);
+                        }
+                    }
+                }
+    
+                // LEVEL2
+    
+                for (var row = 0; row < moduleCount - 1; row++) {
+                    for (var col = 0; col < moduleCount - 1; col++) {
+                        var count = 0;
+                        if (qrCode.isDark(row, col)) count++;
+                        if (qrCode.isDark(row + 1, col)) count++;
+                        if (qrCode.isDark(row, col + 1)) count++;
+                        if (qrCode.isDark(row + 1, col + 1)) count++;
+                        if (count == 0 || count == 4) {
+                            lostPoint += 3;
+                        }
+                    }
+                }
+    
+                // LEVEL3
+    
+                for (var row = 0; row < moduleCount; row++) {
+                    for (var col = 0; col < moduleCount - 6; col++) {
+                        if (qrCode.isDark(row, col)
+                                && !qrCode.isDark(row, col + 1)
+                                && qrCode.isDark(row, col + 2)
+                                && qrCode.isDark(row, col + 3)
+                                && qrCode.isDark(row, col + 4)
+                                && !qrCode.isDark(row, col + 5)
+                                && qrCode.isDark(row, col + 6)) {
+                            lostPoint += 40;
+                        }
+                    }
+                }
+    
+                for (var col = 0; col < moduleCount; col++) {
+                    for (var row = 0; row < moduleCount - 6; row++) {
+                        if (qrCode.isDark(row, col)
+                                && !qrCode.isDark(row + 1, col)
+                                && qrCode.isDark(row + 2, col)
+                                && qrCode.isDark(row + 3, col)
+                                && qrCode.isDark(row + 4, col)
+                                && !qrCode.isDark(row + 5, col)
+                                && qrCode.isDark(row + 6, col)) {
+                            lostPoint += 40;
+                        }
+                    }
+                }
+    
+                // LEVEL4
+    
+                var darkCount = 0;
+    
+                for (var col = 0; col < moduleCount; col++) {
+                    for (var row = 0; row < moduleCount; row++) {
+                        if (qrCode.isDark(row, col)) {
+                            darkCount++;
+                        }
+                    }
+                }
+    
+                var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+                lostPoint += ratio * 10;
+    
+                return lostPoint;
+            }
+    
+        };
+    
+    
+        //---------------------------------------------------------------------
+        // QRMath
+        //---------------------------------------------------------------------
+    
+        var QRMath = {
+    
+            glog: function (n) {
+    
+                if (n < 1) {
+                    throw new Error("glog(" + n + ")");
+                }
+    
+                return QRMath.LOG_TABLE[n];
+            },
+    
+            gexp: function (n) {
+    
+                while (n < 0) {
+                    n += 255;
+                }
+    
+                while (n >= 256) {
+                    n -= 255;
+                }
+    
+                return QRMath.EXP_TABLE[n];
+            },
+    
+            EXP_TABLE: new Array(256),
+    
+            LOG_TABLE: new Array(256)
+    
+        };
+    
+        for (var i = 0; i < 8; i++) {
+            QRMath.EXP_TABLE[i] = 1 << i;
+        }
+        for (var i = 8; i < 256; i++) {
+            QRMath.EXP_TABLE[i] = QRMath.EXP_TABLE[i - 4]
+                    ^ QRMath.EXP_TABLE[i - 5]
+                    ^ QRMath.EXP_TABLE[i - 6]
+                    ^ QRMath.EXP_TABLE[i - 8];
+        }
+        for (var i = 0; i < 255; i++) {
+            QRMath.LOG_TABLE[QRMath.EXP_TABLE[i]] = i;
+        }
+    
+        //---------------------------------------------------------------------
+        // QRPolynomial
+        //---------------------------------------------------------------------
+    
+        function QRPolynomial(num, shift) {
+    
+            if (num.length == undefined) {
+                throw new Error(num.length + "/" + shift);
+            }
+    
+            var offset = 0;
+    
+            while (offset < num.length && num[offset] == 0) {
+                offset++;
+            }
+    
+            this.num = new Array(num.length - offset + shift);
+            for (var i = 0; i < num.length - offset; i++) {
+                this.num[i] = num[i + offset];
+            }
+        }
+    
+        QRPolynomial.prototype = {
+    
+            get: function (index) {
+                return this.num[index];
+            },
+    
+            getLength: function () {
+                return this.num.length;
+            },
+    
+            multiply: function (e) {
+    
+                var num = new Array(this.getLength() + e.getLength() - 1);
+    
+                for (var i = 0; i < this.getLength(); i++) {
+                    for (var j = 0; j < e.getLength(); j++) {
+                        num[i + j] ^= QRMath.gexp(QRMath.glog(this.get(i)) + QRMath.glog(e.get(j)));
+                    }
+                }
+    
+                return new QRPolynomial(num, 0);
+            },
+    
+            mod: function (e) {
+    
+                if (this.getLength() - e.getLength() < 0) {
+                    return this;
+                }
+    
+                var ratio = QRMath.glog(this.get(0)) - QRMath.glog(e.get(0));
+    
+                var num = new Array(this.getLength());
+    
+                for (var i = 0; i < this.getLength(); i++) {
+                    num[i] = this.get(i);
+                }
+    
+                for (var i = 0; i < e.getLength(); i++) {
+                    num[i] ^= QRMath.gexp(QRMath.glog(e.get(i)) + ratio);
+                }
+    
+                // recursive call
+                return new QRPolynomial(num, 0).mod(e);
+            }
+        };
+    
+        //---------------------------------------------------------------------
+        // QRRSBlock
+        //---------------------------------------------------------------------
+    
+        function QRRSBlock(totalCount, dataCount) {
+            this.totalCount = totalCount;
+            this.dataCount = dataCount;
+        }
+    
+        QRRSBlock.RS_BLOCK_TABLE = [
+    
+            // L
+            // M
+            // Q
+            // H
+    
+            // 1
+            [1, 26, 19],
+            [1, 26, 16],
+            [1, 26, 13],
+            [1, 26, 9],
+    
+            // 2
+            [1, 44, 34],
+            [1, 44, 28],
+            [1, 44, 22],
+            [1, 44, 16],
+    
+            // 3
+            [1, 70, 55],
+            [1, 70, 44],
+            [2, 35, 17],
+            [2, 35, 13],
+    
+            // 4
+            [1, 100, 80],
+            [2, 50, 32],
+            [2, 50, 24],
+            [4, 25, 9],
+    
+            // 5
+            [1, 134, 108],
+            [2, 67, 43],
+            [2, 33, 15, 2, 34, 16],
+            [2, 33, 11, 2, 34, 12],
+    
+            // 6
+            [2, 86, 68],
+            [4, 43, 27],
+            [4, 43, 19],
+            [4, 43, 15],
+    
+            // 7
+            [2, 98, 78],
+            [4, 49, 31],
+            [2, 32, 14, 4, 33, 15],
+            [4, 39, 13, 1, 40, 14],
+    
+            // 8
+            [2, 121, 97],
+            [2, 60, 38, 2, 61, 39],
+            [4, 40, 18, 2, 41, 19],
+            [4, 40, 14, 2, 41, 15],
+    
+            // 9
+            [2, 146, 116],
+            [3, 58, 36, 2, 59, 37],
+            [4, 36, 16, 4, 37, 17],
+            [4, 36, 12, 4, 37, 13],
+    
+            // 10
+            [2, 86, 68, 2, 87, 69],
+            [4, 69, 43, 1, 70, 44],
+            [6, 43, 19, 2, 44, 20],
+            [6, 43, 15, 2, 44, 16],
+    
+            // 11
+            [4, 101, 81],
+            [1, 80, 50, 4, 81, 51],
+            [4, 50, 22, 4, 51, 23],
+            [3, 36, 12, 8, 37, 13],
+    
+            // 12
+            [2, 116, 92, 2, 117, 93],
+            [6, 58, 36, 2, 59, 37],
+            [4, 46, 20, 6, 47, 21],
+            [7, 42, 14, 4, 43, 15],
+    
+            // 13
+            [4, 133, 107],
+            [8, 59, 37, 1, 60, 38],
+            [8, 44, 20, 4, 45, 21],
+            [12, 33, 11, 4, 34, 12],
+    
+            // 14
+            [3, 145, 115, 1, 146, 116],
+            [4, 64, 40, 5, 65, 41],
+            [11, 36, 16, 5, 37, 17],
+            [11, 36, 12, 5, 37, 13],
+    
+            // 15
+            [5, 109, 87, 1, 110, 88],
+            [5, 65, 41, 5, 66, 42],
+            [5, 54, 24, 7, 55, 25],
+            [11, 36, 12],
+    
+            // 16
+            [5, 122, 98, 1, 123, 99],
+            [7, 73, 45, 3, 74, 46],
+            [15, 43, 19, 2, 44, 20],
+            [3, 45, 15, 13, 46, 16],
+    
+            // 17
+            [1, 135, 107, 5, 136, 108],
+            [10, 74, 46, 1, 75, 47],
+            [1, 50, 22, 15, 51, 23],
+            [2, 42, 14, 17, 43, 15],
+    
+            // 18
+            [5, 150, 120, 1, 151, 121],
+            [9, 69, 43, 4, 70, 44],
+            [17, 50, 22, 1, 51, 23],
+            [2, 42, 14, 19, 43, 15],
+    
+            // 19
+            [3, 141, 113, 4, 142, 114],
+            [3, 70, 44, 11, 71, 45],
+            [17, 47, 21, 4, 48, 22],
+            [9, 39, 13, 16, 40, 14],
+    
+            // 20
+            [3, 135, 107, 5, 136, 108],
+            [3, 67, 41, 13, 68, 42],
+            [15, 54, 24, 5, 55, 25],
+            [15, 43, 15, 10, 44, 16],
+    
+            // 21
+            [4, 144, 116, 4, 145, 117],
+            [17, 68, 42],
+            [17, 50, 22, 6, 51, 23],
+            [19, 46, 16, 6, 47, 17],
+    
+            // 22
+            [2, 139, 111, 7, 140, 112],
+            [17, 74, 46],
+            [7, 54, 24, 16, 55, 25],
+            [34, 37, 13],
+    
+            // 23
+            [4, 151, 121, 5, 152, 122],
+            [4, 75, 47, 14, 76, 48],
+            [11, 54, 24, 14, 55, 25],
+            [16, 45, 15, 14, 46, 16],
+    
+            // 24
+            [6, 147, 117, 4, 148, 118],
+            [6, 73, 45, 14, 74, 46],
+            [11, 54, 24, 16, 55, 25],
+            [30, 46, 16, 2, 47, 17],
+    
+            // 25
+            [8, 132, 106, 4, 133, 107],
+            [8, 75, 47, 13, 76, 48],
+            [7, 54, 24, 22, 55, 25],
+            [22, 45, 15, 13, 46, 16],
+    
+            // 26
+            [10, 142, 114, 2, 143, 115],
+            [19, 74, 46, 4, 75, 47],
+            [28, 50, 22, 6, 51, 23],
+            [33, 46, 16, 4, 47, 17],
+    
+            // 27
+            [8, 152, 122, 4, 153, 123],
+            [22, 73, 45, 3, 74, 46],
+            [8, 53, 23, 26, 54, 24],
+            [12, 45, 15, 28, 46, 16],
+    
+            // 28
+            [3, 147, 117, 10, 148, 118],
+            [3, 73, 45, 23, 74, 46],
+            [4, 54, 24, 31, 55, 25],
+            [11, 45, 15, 31, 46, 16],
+    
+            // 29
+            [7, 146, 116, 7, 147, 117],
+            [21, 73, 45, 7, 74, 46],
+            [1, 53, 23, 37, 54, 24],
+            [19, 45, 15, 26, 46, 16],
+    
+            // 30
+            [5, 145, 115, 10, 146, 116],
+            [19, 75, 47, 10, 76, 48],
+            [15, 54, 24, 25, 55, 25],
+            [23, 45, 15, 25, 46, 16],
+    
+            // 31
+            [13, 145, 115, 3, 146, 116],
+            [2, 74, 46, 29, 75, 47],
+            [42, 54, 24, 1, 55, 25],
+            [23, 45, 15, 28, 46, 16],
+    
+            // 32
+            [17, 145, 115],
+            [10, 74, 46, 23, 75, 47],
+            [10, 54, 24, 35, 55, 25],
+            [19, 45, 15, 35, 46, 16],
+    
+            // 33
+            [17, 145, 115, 1, 146, 116],
+            [14, 74, 46, 21, 75, 47],
+            [29, 54, 24, 19, 55, 25],
+            [11, 45, 15, 46, 46, 16],
+    
+            // 34
+            [13, 145, 115, 6, 146, 116],
+            [14, 74, 46, 23, 75, 47],
+            [44, 54, 24, 7, 55, 25],
+            [59, 46, 16, 1, 47, 17],
+    
+            // 35
+            [12, 151, 121, 7, 152, 122],
+            [12, 75, 47, 26, 76, 48],
+            [39, 54, 24, 14, 55, 25],
+            [22, 45, 15, 41, 46, 16],
+    
+            // 36
+            [6, 151, 121, 14, 152, 122],
+            [6, 75, 47, 34, 76, 48],
+            [46, 54, 24, 10, 55, 25],
+            [2, 45, 15, 64, 46, 16],
+    
+            // 37
+            [17, 152, 122, 4, 153, 123],
+            [29, 74, 46, 14, 75, 47],
+            [49, 54, 24, 10, 55, 25],
+            [24, 45, 15, 46, 46, 16],
+    
+            // 38
+            [4, 152, 122, 18, 153, 123],
+            [13, 74, 46, 32, 75, 47],
+            [48, 54, 24, 14, 55, 25],
+            [42, 45, 15, 32, 46, 16],
+    
+            // 39
+            [20, 147, 117, 4, 148, 118],
+            [40, 75, 47, 7, 76, 48],
+            [43, 54, 24, 22, 55, 25],
+            [10, 45, 15, 67, 46, 16],
+    
+            // 40
+            [19, 148, 118, 6, 149, 119],
+            [18, 75, 47, 31, 76, 48],
+            [34, 54, 24, 34, 55, 25],
+            [20, 45, 15, 61, 46, 16]
+        ];
+    
+        QRRSBlock.getRSBlocks = function (typeNumber, errorCorrectLevel) {
+    
+            var rsBlock = QRRSBlock.getRsBlockTable(typeNumber, errorCorrectLevel);
+    
+            if (rsBlock == undefined) {
+                throw new Error("bad rs block @ typeNumber:" + typeNumber + "/errorCorrectLevel:" + errorCorrectLevel);
+            }
+    
+            var length = rsBlock.length / 3;
+    
+            var list = new Array();
+    
+            for (var i = 0; i < length; i++) {
+    
+                var count = rsBlock[i * 3 + 0];
+                var totalCount = rsBlock[i * 3 + 1];
+                var dataCount = rsBlock[i * 3 + 2];
+    
+                for (var j = 0; j < count; j++) {
+                    list.push(new QRRSBlock(totalCount, dataCount));
+                }
+            }
+    
+            return list;
+        }
+    
+        QRRSBlock.getRsBlockTable = function (typeNumber, errorCorrectLevel) {
+    
+            switch (errorCorrectLevel) {
+                case QRErrorCorrectLevel.L :
+                    return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+                case QRErrorCorrectLevel.M :
+                    return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+                case QRErrorCorrectLevel.Q :
+                    return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+                case QRErrorCorrectLevel.H :
+                    return QRRSBlock.RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+                default :
+                    return undefined;
+            }
+        }
+    
+        //---------------------------------------------------------------------
+        // QRBitBuffer
+        //---------------------------------------------------------------------
+    
+        function QRBitBuffer() {
+            this.buffer = new Array();
+            this.length = 0;
+        }
+    
+        QRBitBuffer.prototype = {
+    
+            get: function (index) {
+                var bufIndex = Math.floor(index / 8);
+                return ((this.buffer[bufIndex] >>> (7 - index % 8)) & 1) == 1;
+            },
+    
+            put: function (num, length) {
+                for (var i = 0; i < length; i++) {
+                    this.putBit(((num >>> (length - i - 1)) & 1) == 1);
+                }
+            },
+    
+            getLengthInBits: function () {
+                return this.length;
+            },
+    
+            putBit: function (bit) {
+    
+                var bufIndex = Math.floor(this.length / 8);
+                if (this.buffer.length <= bufIndex) {
+                    this.buffer.push(0);
+                }
+    
+                if (bit) {
+                    this.buffer[bufIndex] |= (0x80 >>> (this.length % 8));
+                }
+    
+                this.length++;
+            }
+        };
+    
+        /*
+        Copyright (c) 2011 Jerome Etienne, http://jetienne.com
+    
+    Permission is hereby granted, free of charge, to any person obtaining
+    a copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+    
+    The above copyright notice and this permission notice shall be
+    included in all copies or substantial portions of the Software.
+    
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+    NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+    OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+    WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+         */
+    
+        (function () {
+            window.qrcode = function (element, options) {
+    
+                var createCanvas = function () {
+                    // create the qrcode itself
+                    var qrcode = new QRCode(options.typeNumber, options.correctLevel);
+                    qrcode.addData(options.text);
+                    qrcode.make();
+    
+                    // create canvas element
+                    var canvas = document.createElement('canvas');
+                    canvas.width = options.width;
+                    canvas.height = options.height;
+                    var ctx = canvas.getContext('2d');
+    
+                    // compute tileW/tileH based on options.width/options.height
+                    var tileW = options.width / qrcode.getModuleCount();
+                    var tileH = options.height / qrcode.getModuleCount();
+    
+                    // draw in the canvas
+                    for (var row = 0; row < qrcode.getModuleCount(); row++) {
+                        for (var col = 0; col < qrcode.getModuleCount(); col++) {
+                            ctx.fillStyle = qrcode.isDark(row, col) ? options.foreground : options.background;
+                            var w = (Math.ceil((col + 1) * tileW) - Math.floor(col * tileW));
+                            var h = (Math.ceil((row + 1) * tileW) - Math.floor(row * tileW));
+                            ctx.fillRect(Math.round(col * tileW), Math.round(row * tileH), w, h);
+                        }
+                    }
+                    // return just built canvas
+                    return canvas;
+                };
+    
+                element.innerHTML = '';
+                element.appendChild(createCanvas());
+    
+            };
+        })();
+    
+    </script>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content="My WiFi Sign" />
+    <meta property="og:description" content="An easy to use WiFi sign generator" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.mywifisign.com/" />
+    <meta property="og:image" content="https://www.mywifisign.com/assets/facebook+og-1200x630.png" />
+    <meta name="Description" content="This tool let’s you quickly create a printable sign with your WiFi credentials.">
+
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@justshipped">
+    <meta name="twitter:creator" content="@justshipped">
+    <meta name="twitter:title" content="My WiFi Sign">
+    <meta name="twitter:description" content="This tool let’s you quickly create a printable sign with your WiFi credentials.">
+    <meta name="twitter:image" content="https://www.mywifisign.com/assets/facebook+og-1200x630.png">
+
+    <link rel="icon" href="https://mywifisign.com/assets/favicon.png">
+
+    <title>My WiFi Sign</title>
+
+
+    <script>
+        (function () {
+
+            const DESIRED_FONT_SIZE = 32;
+            const HIDDEN_DEFAULT_PASSWORD_ID = 'hidden-default-password';
+            const HIDDEN_DEFAULT_SSID_ID = 'hidden-default-ssid';
+
+            window.wifi = {
+                print: print,
+                download: download,
+                setInputPreview: setInputPreview,
+                generateQrCode: generateQrCode,
+            };
+
+            function getDefaultValue(hiddenId) {
+                return document.getElementById(hiddenId).innerText;
+            }
+
+            function isFormValid() {
+                return document.querySelector('form').reportValidity();
+            }
+
+            function escape_string(string) {
+                var to_escape = ['\\', ';', ',', ':', '"'];
+                var output = "";
+                for (var i = 0; i < string.length; i++) {
+                    if (to_escape.indexOf(string[i]) !== -1) {
+                        output += '\\' + string[i];
+                    } else {
+                        output += string[i];
+                    }
+                }
+                return output;
+            }
+
+            function generateQrCode() {
+                var qrstring = 'WIFI:S:' + escape_string(document.getElementById('input-ssid').value) + ';T:' + 'WPA' + ';P:' + escape_string(document.getElementById('input-password').value) + ';';
+
+                const svgWidth = document.querySelector("#svg-sign").width.baseVal.value;
+                const hw = Math.floor(svgWidth * 0.4);
+
+                window.qrcode(document.getElementById("qr-container"), {
+                    text: qrstring,
+                    render      : "canvas",
+                    width       : 500,
+                    height      : 500,
+                    typeNumber  : -1,
+                    correctLevel    : QRErrorCorrectLevel.L,
+                    background      : "#ffffff",
+                    foreground      : "#000000"
+                });
+
+                const qrcodeCanvas = document.querySelector("#qr-container canvas");
+                const qrcodeImage = new Image()
+                qrcodeImage.alt = 'QR Code';
+                qrcodeImage.id = 'qrcode-image';
+                qrcodeImage.width = 160;
+                qrcodeImage.height = 160;
+                qrcodeImage.src = qrcodeCanvas.toDataURL("image/png");
+
+                const qrcodeContainer = document.querySelector("#sign-wifi-qrcode");
+                qrcodeContainer.innerHTML = '';
+                qrcodeContainer.appendChild(qrcodeImage);
+            }
+
+            function saveAs(blob, fileName) {
+                //Thanks to https://stackoverflow.com/questions/23451726/saving-binary-data-as-file-using-javascript-from-a-browser 😍
+                var url = window.URL.createObjectURL(blob);
+                var anchorElem = document.createElement("a");
+                anchorElem.style = "display: none";
+                anchorElem.href = url;
+                anchorElem.download = fileName;
+                document.body.appendChild(anchorElem);
+                anchorElem.click();
+                document.body.removeChild(anchorElem);
+                setTimeout(function() {
+                    window.URL.revokeObjectURL(url);
+                }, 1000);
+            }
+
+            function print() {
+                if(isFormValid()) {
+                    requestPDF().then(function (blob) {
+                        window.location.href = URL.createObjectURL(blob);
+                    })
+                }
+            }
+
+            function download() {
+                if(isFormValid()) {
+                    requestPDF().then(function (blob) {
+                        saveAs(blob, 'WifiSign.pdf')
+                    })
+                }
+            }
+
+            function setInputPreview(id, value) {
+                value = value || getDefaultValue(id === 'ssid' ? HIDDEN_DEFAULT_SSID_ID : HIDDEN_DEFAULT_PASSWORD_ID);
+                document.getElementById(id).innerText = value;
+
+                generateQrCode();
+
+                function adjustFontSize(str, id) {
+                    var currentFontSize = DESIRED_FONT_SIZE;
+                    var targetDiv = document.getElementById(id);
+                    targetDiv.style.fontSize = DESIRED_FONT_SIZE + 'px';
+                    while(targetDiv.offsetWidth > 423 || currentFontSize <= 1) {
+                        currentFontSize--;
+                        targetDiv.style.fontSize = currentFontSize + 'px';
+                    }
+                }
+
+                adjustFontSize(ssid, 'ssid');
+                adjustFontSize(password, 'password');
+
+            }
+
+            function requestPDF() {
+                return new Promise(function (resolve, reject) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", '/wifisign');
+                    xhr.responseType = "arraybuffer";
+                    xhr.setRequestHeader('Content-type', 'application/json');
+                    xhr.onerror = reject;
+                    xhr.onload = function () {
+                        if (this.status === 201) resolve(new Blob([xhr.response], {type: "application/pdf"}));
+                    };
+                    xhr.send(JSON.stringify({
+                        protocol: 'protocol',
+                        locale: window.location.pathname.split('/')[1],
+                        password: document.getElementById('input-password').value,
+                        ssid: document.getElementById('input-ssid').value
+                    }))
+                });
+            }
+
+            function adjustLayout(e) {
+                var about = document.querySelector('.about')
+                var preview = document.querySelector('.preview')
+
+                var greatestHeight = about.scrollHeight;
+                if (preview.scrollHeight > greatestHeight) {
+                    greatestHeight = preview.scrollHeight;
+                }
+                if (window.innerHeight > greatestHeight) {
+                    greatestHeight = window.innerHeight;
+                }
+                preview.style.height = greatestHeight + 'px';
+                preview.style.height = greatestHeight + 'px';
+            }
+
+            function setDefaultSignValues(hiddenId, signId) {
+                document.getElementById(signId).innerText = getDefaultValue(hiddenId);
+            }
+
+            window.onresize = adjustLayout;
+
+            window.onload = function() {
+                setDefaultSignValues('hidden-default-password', 'password');
+                setDefaultSignValues('hidden-default-ssid', 'ssid');
+                generateQrCode();
+                adjustLayout();
+                var dropdownButton = document.querySelector(".dropdown-button");
+                var dropdown = dropdownButton.parentNode.parentNode;
+                dropdownButton.addEventListener("click",function(e) {
+                    dropdown.classList.toggle("is-active")
+                });
+                document.querySelector("body").addEventListener("click", function() {
+                    dropdown.classList.remove("is-active");
+                }, true);
+                var path = window.location.pathname;
+                var currentLang = document.querySelector(`a.dropdown-item[href='${path}']`);
+                console.log(currentLang);
+                document.querySelector("#current-lang").innerHTML = currentLang.innerHTML.trim();
+            }
+        })();
+    </script>
+
+    <style>
+
+        body {
+            font-family: Poppins, Noto Sans SC, Montserrat, sans-serif !important;
+        }
+
+        body, html {
+            height: 100%;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            margin: 0;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 42px;
+            line-height: 48px;
+            color: #000000;
+        }
+
+        h3 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: #000000;
+            margin: 0;
+        }
+
+        p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 22px;
+            color: #000000;
+        }
+
+        a {
+            color: #000000;
+            font-weight: 500;
+        }
+        p + h2 {
+            margin: 0 0 0 0;
+        }
+
+        h3 + p {
+            margin: 8px 0 0 0;
+        }
+
+        p + h3 {
+            margin: 28px 0 0 0;
+        }
+
+        .controls + h2 {
+            margin: 0 0 0 0;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            margin: 40px 0 0 0;
+        }
+
+        input {
+            transition: all 0.2s;
+            outline: 0 solid rgba(255, 199, 0, 0.6);
+            width: 360px;
+            height: 48px;
+            margin: 10px;
+            margin-left: 0;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 22px;
+            padding-left: 10px;
+        }
+
+        input:focus {
+            outline: 3px solid rgba(255, 199, 0, 0.6);
+        }
+
+        input:hover {
+            outline: 3px solid rgba(255, 199, 0, 0.6);
+        }
+
+        .btn-solid {
+            transition: all 0.2s;
+            width: 160px;
+            height: 48px;
+            margin-left: 20px;
+            margin-right: 20px;
+            background-color: black;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 22px;
+            color: #FFFFFF;
+        }
+
+        .btn-solid:hover {
+            background-color: #FFC700;
+            color: black;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        a:hover {
+            transition: background-color 0.2s;
+            background-color: #FFC700;
+        }
+
+        button:focus {
+            outline: 2px solid rgba(255, 199, 0, 0.6);
+        }
+
+        button:active {
+            background: #FEA905;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .svg-container {
+            position: relative;
+            padding-left: 20%;
+            padding-right: 20%;
+            margin-top: 60px;
+        }
+
+        .site-wrapper {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            min-height: 100%;
+        }
+
+        .down-arrow-svg {
+            display: none;
+        }
+
+        #select-langs {
+            font-family: Poppins, Noto Sans SC, Montserrat, sans-serif;
+            font-size: 16px;
+            line-height: 22px;
+            border: none;
+            background: transparent;
+        }
+        #select-langs:after {
+            position: absolute;
+            content: "";
+            top: 14px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: #fff transparent transparent transparent;
+            }
+
+        @media only screen and (max-width: 1000px) {
+
+            .down-arrow-svg {
+                display: inline;
+            }
+
+            div.logo-container {
+                text-align: center;
+                position: relative;
+                margin: 20px;
+            }
+
+            p.overlay-text {
+                width: 80%;
+                font-size: 2.5vw;
+            }
+
+            .svg-container {
+                position: relative;
+                padding-left: 10%;
+                padding-right: 10%;
+                margin-top: 60px;
+            }
+
+            .site-wrapper {
+                flex-direction: column;
+            }
+            div.section {
+                width: 100%;
+                height: auto;
+            }
+            .site-wrapper {
+                overflow: visible;
+            }
+            div.about-copy {
+                display: none;
+            }
+            div.preview-copy {
+                display: block;
+            }
+            .preview {
+                margin-top: 60px;
+            }
+            div.button-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                min-width: 412px;
+            }
+
+            div.button-container > button {
+                margin: 0;
+            }
+
+            div.top-margin {
+                margin-top: 48px;
+            }
+
+            div.logo-top-container {
+                justify-content: center;
+            }
+
+        }
+
+        .about-copy {
+            display: block;
+        }
+        .preview-copy {
+            display: none;
+
+            background-color: white;
+        }
+
+        .section {
+            width: 50%;
+            height: 100vh;
+            align-self: stretch;
+        }
+
+        .about {
+            background-color: white;
+        }
+
+        .preview > h2 {
+            color: white;
+        }
+
+        .preview > p {
+            color: white;
+        }
+
+        .preview {
+            background-color: black;
+        }
+
+        .logo-container + .top-margin {
+            margin-top: 40px;
+        }
+
+        .logo-container {
+            position: relative;
+            margin: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            text-align: center;
+        }
+
+        .copyright {
+            color: #5b616b;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 22px;
+            margin: 60px 0 40px 0;
+        }
+
+        .top-margin {
+            margin-top: 120px;
+        }
+
+        .text-content {
+            padding: 60px 10% 0 10%;
+        }
+
+        .overlay-text {
+            position: absolute;
+            font-size: 1.3vw;
+            width: 60%;
+            text-align: center;
+        }
+
+        .overlay-panel {
+            position: absolute;
+            padding-left: 20%;
+            padding-right: 20%;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+
+        #ssid {
+            top: 67%;
+        }
+
+        #password {
+            top: 78.5%;
+        }
+
+        .absolute-svg-wrapper {
+            position: absolute;
+        }
+
+        .absolute-overlay-wrapper {
+            position: absolute;
+        }
+
+        .what-is-this {
+            font-style: normal;
+            font-weight: 300;
+            font-size: 42px;
+            line-height: 48px;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .logo-top-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .logo-top-svg {
+            margin-right: 12px;
+        }
+
+        .logo-title {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 24px;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        label {
+            font-style: normal;
+            font-weight: 300;
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+        }
+
+        #qr-container {
+            display: none;
+        }
+
+        .dropdown-button {
+            font-size: 16px;
+            line-height: 22px;
+            cursor: pointer;
+            border: none;
+            background:transparent;
+            padding: 12px 20px;
+            font-family: Poppins, Noto Sans SC, Montserrat, sans-serif;
+            color: black;
+            transition: all 0.2s ease-in-out;
+        }
+        .dropdown-button:hover {
+            background:#FFC700;
+        }
+        .dropdown-button:focus {
+            outline:none;
+        }
+
+        .dropdown {
+            display: inline-flex;
+            position: relative;
+            vertical-align: top;
+        }
+
+        .dropdown.is-active .dropdown-menu, .dropdown.is-hoverable:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            display: none;
+            right: 0;
+            min-width: 12rem;
+            padding-top: 4px;
+            position: absolute;
+            top: 100%;
+            z-index: 20;
+        }
+
+        .dropdown-content {
+            background-color: white;
+            border: 1px solid black;
+            width: 100%;
+        }
+
+        .dropdown-item {
+            color: black;
+            display: block;
+            font-family: Poppins, Noto Sans SC, Montserrat, sans-serif;
+            font-size: 16px;
+            padding: 12px 20px;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        a.dropdown-item,
+        button.dropdown-item {
+            padding-right: 3rem;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        a.dropdown-item:hover,
+            button.dropdown-item:hover {
+            background-color: #FFC700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="site-wrapper">
+    <div id="qr-container"></div>
+    <div class="section about">
+        <div class="logo-container">
+            <div class="logo-top-container">
+                <svg class="logo-top-svg" width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M27.8025 5.65138C20.269 -1.88379 7.53352 -1.88379 0 5.65138L2.32992 7.9813C8.60292 1.70831 19.1996 1.70831 25.4726 7.9813L27.8025 5.65138ZM23.2449 10.6193C20.7947 8.16749 17.4761 6.81798 13.9005 6.81798C10.3249 6.81798 7.00628 8.16749 4.55607 10.6193L6.88599 12.9493C8.715 11.1203 11.2048 10.1118 13.9005 10.1118C16.5962 10.1135 19.0859 11.1203 20.915 12.9493L23.2449 10.6193ZM17.196 16.7045C17.196 18.5246 15.7205 20 13.9005 20C12.0804 20 10.605 18.5246 10.605 16.7045C10.605 14.8844 12.0804 13.409 13.9005 13.409C15.7205 13.409 17.196 14.8844 17.196 16.7045Z" fill="black"/>
+                </svg>
+                <p class="logo-title">我的WiFi卡片</p>
+            </div>
+            <div class="dropdown">
+                <div class="dropdown-trigger">
+                    <button class="dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
+                        <span style="margin-right: 4px;" id="current-lang">English</span>
+                        <span>
+                            <svg width="10" height="10" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.85 5.55L0 0.700001L0.7 0L4.85 4.15L9 0L9.7 0.700001L4.85 5.55Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                        <a href="/en" class="dropdown-item">
+                        English
+                        </a>
+                        <a href="/de" class="dropdown-item">
+                        Deutsch
+                        </a>
+                        <a href="/el" class="dropdown-item">
+                        Ελληνικά
+                        </a>
+                        <a href="/hu" class="dropdown-item">
+                        Magyar
+                        </a>
+                        <a href="/sv" class="dropdown-item">
+                        Svenska
+                        </a>
+                        <a href="/zh-hans" class="dropdown-item">
+                        简体中文
+                        </a>
+                        <a href="/zh-hant" class="dropdown-item">
+                        繁體中文
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center-content top-margin">
+            <h2>创建</h2>
+            <p style="margin: 8px 0 0 0">请填写你的WiFi信息</p>
+        </div>
+        <form name="main" onsubmit="return false" class="center-content controls">
+            <label>
+                WiFi名称
+                <input maxlength="63" oninput="wifi.setInputPreview('ssid', this.value)" id="input-ssid" required
+                       placeholder="SpaceX WiFi">
+            </label>
+            <label>
+                密码
+                <input maxlength="63" oninput="wifi.setInputPreview('password', this.value)" id="input-password" required
+                       placeholder="Mars2021">
+            </label>
+            <div class="button-container">
+                <button class="btn-solid" name="print" onclick="wifi.print() && e.preventDefault()">打印</button>
+                <button class="btn-solid" name="download" onclick="wifi.download() && e.preventDefault()">下载</button>
+            </div>
+        </form>
+
+        <div class="about-copy"><div class="text-content">
+    <h3 class="what-is-this">这是什么？</h3>
+    <p>这个网站可以让你方便地创建一张A4大小的卡片，包含你的WiFi信息和可供手机扫描连接WiFi的二维码。你只需要在👆上面的表格输入WiFi信息，就可以 🖨打印或者下载PDF了。</p>
+    <h3>好吧，我要这个二维码干嘛？</h3>
+    <p>问得好！ 🤓 这个二维码可以让你用手机或者平板自带的相机，一步到位连接WiFi，省去了寻找WiFi，输入密码等等繁杂的手续。</p>
+    <h3>用这个安全吗？</h3>
+    <p>非常安全！你的WiFi信息会被安全地传输，只用于创建一张卡片，绝不会被储存或者分享给任何人。</p>
+
+</div>
+
+</div>
+
+    </div>
+
+    <div class="section preview">
+        <div class="center-content top-margin">
+            <h2 style="color: white">预览<svg style="margin-left: 8px;" class="down-arrow-svg" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M25.3047 11.3582H22.4571C22.2954 11.3582 22.1407 11.4285 22.0317 11.5516L14.336 20.4215V0.625C14.336 0.470312 14.2094 0.34375 14.0547 0.34375H11.9454C11.7907 0.34375 11.6641 0.470312 11.6641 0.625V20.4215L3.96842 11.5516C3.86295 11.4285 3.70826 11.3582 3.54303 11.3582H0.69537C0.456308 11.3582 0.32623 11.643 0.484433 11.8223L12.1528 25.2695C12.2583 25.3912 12.3887 25.4888 12.5351 25.5557C12.6816 25.6226 12.8408 25.6572 13.0018 25.6572C13.1628 25.6572 13.322 25.6226 13.4685 25.5557C13.615 25.4888 13.7454 25.3912 13.8508 25.2695L25.5157 11.8223C25.6739 11.6395 25.5438 11.3582 25.3047 11.3582Z" fill="white"/>
+</svg>
+</h2>
+        </div>
+        <div class="svg-container">
+            <style>
+            
+                body {
+                    font-family: Poppins, Noto Sans SC, Montserrat, sans-serif !important;
+                }
+            
+                .sign-input-label {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 12px;
+                    line-height: 16px;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    color: #000000;
+                    margin: 0;
+                }
+            
+                .sign-wifi-title {
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: 42px;
+                    line-height: 48px;
+                    color: #000000;
+                }
+            
+                #sign-wifi-qrcode {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+            
+                .sign-default-network {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 32px;
+                    line-height: 32px;
+                    color: #000000;
+                    margin: 0;
+                }
+            
+                .sign-input-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            
+                .sign-subtext {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 16px;
+                    text-align: center;
+                    color: #000000;
+                    width: 400px;
+                }
+            
+                .sign-footer {
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: 12px;
+                    line-height: 15px;
+                    color: #000000;
+                    margin: 0;
+                }
+            
+                #qrcode {
+                  display: block;
+                  background-color: red;
+                }
+            
+            </style>
+            
+             <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC&display=swap&subset=chinese-simplified" rel="stylesheet">
+            
+            <svg id="svg-sign" style="height: 100%; width:100%;" height="100%" width="100%" viewBox="0 0 480 621" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="480" height="621">
+                    <rect width="480" height="621" fill="white"/>
+                </mask>
+            
+                <g mask="url(#mask0)">
+                    <rect width="480" height="621" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M197.924 53.9119C187.377 43.3627 169.547 43.3627 159 53.9119L162.262 57.1738C171.044 48.3916 185.879 48.3916 194.662 57.1738L197.924 53.9119ZM191.543 60.8671C188.113 57.4345 183.467 55.5452 178.461 55.5452C173.455 55.5452 168.809 57.4345 165.379 60.8671L168.64 64.129C171.201 61.5684 174.687 60.1566 178.461 60.1566C182.235 60.1589 185.72 61.5684 188.281 64.129L191.543 60.8671ZM183.074 69.3863C183.074 71.9344 181.009 74 178.461 74C175.913 74 173.847 71.9344 173.847 69.3863C173.847 66.8382 175.913 64.7726 178.461 64.7726C181.009 64.7726 183.074 66.8382 183.074 69.3863Z"
+                          fill="black"/>
+                    <path d="M436.375 307.806L449.353 311.314C451.02 311.765 452.684 310.809 453.135 309.142L459.057 287.234C459.507 285.567 458.551 283.903 456.884 283.452L443.906 279.944L416.997 272.671L404.018 269.163C402.351 268.712 400.687 269.668 400.237 271.335L394.315 293.243C393.864 294.91 394.82 296.574 396.487 297.025L409.466 300.533"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M438.467 300.067L411.557 292.793L406.955 309.82L433.865 317.094L438.467 300.067Z" stroke="#DDDDDD"
+                          stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M445.354 274.586L418.445 267.313L416.964 272.79L443.874 280.063L445.354 274.586Z" stroke="#DDDDDD"
+                          stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M449.64 289.927L451.426 290.41" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M448.643 293.618L450.429 294.101" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M381.347 237.554C381.625 237.462 381.776 237.163 381.685 236.885C381.593 236.607 381.294 236.456 381.016 236.547C380.738 236.639 380.587 236.938 380.679 237.216C380.77 237.494 381.069 237.645 381.347 237.554Z"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M389.803 238.117L374.71 243.083C372.949 243.662 371.054 242.705 370.475 240.944L360.048 209.248C359.469 207.487 360.426 205.593 362.186 205.013L377.28 200.048C379.041 199.469 380.935 200.426 381.515 202.186L391.941 233.883C392.521 235.644 391.564 237.538 389.803 238.117Z"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M368.405 206.685L373.101 205.14" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M369.652 237.312L390.615 230.416" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M79.635 316.644C79.956 316.727 80.2829 316.533 80.3653 316.212C80.4476 315.891 80.2541 315.564 79.9331 315.482C79.6121 315.4 79.2852 315.593 79.2029 315.914C79.1205 316.235 79.314 316.562 79.635 316.644Z"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M94.5496 324.909L62.6809 316.736C60.6467 316.214 59.4223 314.145 59.944 312.111L71.5948 266.681C72.1165 264.647 74.1855 263.422 76.2197 263.944L108.088 272.117C110.123 272.639 111.347 274.708 110.825 276.742L99.1744 322.172C98.6528 324.206 96.5837 325.43 94.5496 324.909Z"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M88.2283 271.463L93.5559 272.829" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M61.7723 306.592L100.228 316.454" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M34.6845 192.666L33.4106 196.516" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M40.5065 190.939L36.6465 201.475" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M96.5384 201.125L39.6654 228.081L23.5031 193.981C22.4751 191.812 23.3624 189.326 25.5313 188.298L74.8132 164.94C76.9821 163.912 79.4685 164.799 80.4965 166.968L96.6589 201.067L96.5384 201.125Z"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M99.5841 206.616L42.1087 233.858C38.7349 235.457 34.6311 234.894 30.9899 232.193L105.334 196.955C105.063 201.364 102.958 205.017 99.5841 206.616Z"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M402.15 121.574L398.169 123.649" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M408.054 124.403L397.107 130.109" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M441.422 178.307L383.135 159.96C380.864 159.246 379.653 156.923 380.368 154.652L392.838 115.037C393.552 112.766 395.875 111.556 398.145 112.271L456.433 130.617C458.704 131.332 459.914 133.654 459.199 135.925L446.73 175.541C445.929 177.646 443.567 178.982 441.422 178.307Z"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M413.906 163.961C414.325 164.093 414.77 163.86 414.902 163.442C415.033 163.024 414.801 162.579 414.383 162.447C413.965 162.316 413.519 162.548 413.388 162.966C413.256 163.384 413.488 163.829 413.906 163.961Z"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M417.634 181.635L400.602 176.274L405.552 167.155L418.925 171.365L417.634 181.635Z" stroke="#DDDDDD"
+                          stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M396.691 175.043L421.545 182.866" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M382.671 147.335L448.907 168.183" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M119.424 118.805C116.824 114.248 113.009 108.025 109.311 103.157C105.857 98.622 99.1141 98.2236 95.1025 102.437L93.7343 103.855C92.9951 104.693 92.0506 105.292 91.031 105.705L86.1185 107.694C85.099 108.107 84.0043 108.334 82.8898 108.246L81.0138 108.143C75.2932 107.87 70.6349 112.885 71.309 118.546C72.0405 124.615 73.6682 131.832 74.9336 136.822C75.5763 139.474 79.1253 139.979 80.5639 137.67C82.6115 134.468 84.8046 130.559 85.8304 127.23C86.3068 125.743 87.472 124.624 89.03 124.208C90.9964 123.736 92.9804 123.04 94.9269 122.252C96.966 121.426 98.8374 120.453 100.616 119.517C102.024 118.731 103.64 118.724 105.017 119.461C108.069 121.138 112.457 122.382 116.064 123.295C118.611 123.99 120.716 121.195 119.424 118.805Z"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M78.8152 119.498L84.0985 117.359" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M80.4522 115.814L82.5917 121.098" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M102.822 109.777L103.656 109.439" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M97.9091 111.766L98.7433 111.428" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M101.646 112.734L101.946 113.476" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M99.6564 107.822L99.9567 108.563" stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M88.5836 106.588C88.5836 106.588 88.2121 102.207 84.2105 100.051C78.9242 97.1212 83.2048 90.6407 83.2048 90.6407"
+                          stroke="#DDDDDD" stroke-width="1.652" stroke-miterlimit="10" stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </g>
+                <foreignObject x="0" y="135" width="480" height="260">
+                    <div id="sign-wifi-qrcode" xmlns="http://www.w3.org/1999/xhtml">
+                        <img id="qrcode-image" alt="QR Code" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="160" height="160" style="margin: auto;" />
+                    </div>
+                </foreignObject>
+                <foreignObject x="211" y="36" width="270" height="50">
+                    <div class="sign-wifi-title" xmlns="http://www.w3.org/1999/xhtml">
+                        WiFi
+                    </div>
+                </foreignObject>
+                <foreignObject x="0" y="424" width="480" height="20">
+                    <p class="sign-input-label" xmlns="http://www.w3.org/1999/xhtml">
+                        名称
+                    </p>
+                </foreignObject>
+                <foreignObject x="0" y="497" width="480" height="20">
+                    <p class="sign-input-label" xmlns="http://www.w3.org/1999/xhtml">
+                        密码
+                    </p>
+                </foreignObject>
+                <foreignObject x="0" y="442" width="480" height="50">
+                    <div class="sign-input-wrapper" xmlns="http://www.w3.org/1999/xhtml">
+                        <p id="ssid" class="sign-default-network" xmlns="http://www.w3.org/1999/xhtml">
+                            
+                        </p>
+                    </div>
+                </foreignObject>
+                <foreignObject x="0" y="515" width="480" height="50">
+                    <div class="sign-input-wrapper" xmlns="http://www.w3.org/1999/xhtml">
+                        <p id="password" class="sign-default-network" xmlns="http://www.w3.org/1999/xhtml">
+                            
+                        </p>
+                    </div>
+                </foreignObject>
+                <foreignObject x="0" y="325" width="480" height="85">
+                    <div class="sign-input-wrapper" xmlns="http://www.w3.org/1999/xhtml">
+                        <p id="password" class="sign-subtext" xmlns="http://www.w3.org/1999/xhtml">
+                            要连接WiFi，请用手机或平板自带的相机扫描二维码。<br>其他设备请用下方的WiFi名称和密码连接。
+                        </p>
+                    </div>
+                </foreignObject>
+                <foreignObject x="0" y="580" width="480" height="50">
+                    <div class="sign-input-wrapper" xmlns="http://www.w3.org/1999/xhtml">
+                        <p id="password" class="sign-footer" xmlns="http://www.w3.org/1999/xhtml">
+                            创建你自己的WiFi卡片：<b>mywifisign.com</b>
+                        </p>
+                    </div>
+                </foreignObject>
+            </svg>
+            
+        </div>
+        <br><br>
+        <div class="preview-copy"><div class="text-content">
+    <h3 class="what-is-this">这是什么？</h3>
+    <p>这个网站可以让你方便地创建一张A4大小的卡片，包含你的WiFi信息和可供手机扫描连接WiFi的二维码。你只需要在👆上面的表格输入WiFi信息，就可以 🖨打印或者下载PDF了。</p>
+    <h3>好吧，我要这个二维码干嘛？</h3>
+    <p>问得好！ 🤓 这个二维码可以让你用手机或者平板自带的相机，一步到位连接WiFi，省去了寻找WiFi，输入密码等等繁杂的手续。</p>
+    <h3>用这个安全吗？</h3>
+    <p>非常安全！你的WiFi信息会被安全地传输，只用于创建一张卡片，绝不会被储存或者分享给任何人。</p>
+
+</div>
+
+</div>
+    </div>
+
+    <div style="display: none" id="hidden-default-password">Mars2021</div>
+    <div style="display: none" id="hidden-default-ssid">ziroom202_5G</div>
+
+</div>
+
+</body>
+</html>
