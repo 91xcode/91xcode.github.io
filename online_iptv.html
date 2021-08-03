@@ -330,8 +330,8 @@ function play(n) {
         shade: 0.4,   //遮罩透明度
         content: $("#dplayer1"),//支持获取DOM元素
         scrollbar: false ,//屏蔽浏览器滚动条
-         success: function(layero){
-          console.log(layero)
+        success: function(layero){
+          //console.log(layero)
           //处理layer层中video播放器全屏样式问题
           setTimeout(function() {
           　　 $(layero).removeClass('layer-anim');
