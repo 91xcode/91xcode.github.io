@@ -2,7 +2,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="applicable-device" content="mobile">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>网络电视</title>
     <META name="description" content="电视直播网提供网络电视直播，网络电视在线观看,更多网络电视尽在电视直播网!">
@@ -319,6 +318,16 @@
 
 <script>
 function play(n) {
+
+
+    var browser = DetectBrowser();
+        if (browser != "Safari") {
+            layer.alert("只支持Safari浏览器!");
+            return false;
+        }
+
+
+
     layer.open({
         type: 1 ,//Layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）,
         title: "播放窗口",
@@ -360,6 +369,34 @@ function play(n) {
         });
 
     }
+
+
+
+    /*******************************************************
+*
+* 函数名称：DetectBrowser()()
+* 功    能：自动判断当前使用浏览器
+* 说 明：自动判断浏览器引擎，返回结果为当前浏览器名称
+*
+**********************************************************/
+function DetectBrowser() {
+    var Sys = {};
+    var ua = navigator.userAgent.toLowerCase();
+    var s;
+    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+    (s = ua.match(/rv:([\d.]+)/)) ? Sys.ie = s[1] :
+    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+    var browser = "Unknown";
+    if (Sys.ie) { browser = "IE"; }
+    if (Sys.firefox) { browser = "Firefox"; }
+    if (Sys.chrome) { browser = "Chrome"; }
+    if (Sys.opera) { browser = "Opera"; }
+    if (Sys.safari) { browser = "Safari"; }
+    return browser;
+}
 </script>
 </body>
 </html>
