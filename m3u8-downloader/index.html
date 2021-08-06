@@ -341,11 +341,7 @@
         <a class="m-p-tamper" target="_blank" href="https://greasyfork.org/zh-CN/scripts/422237-m3u8-downloader">油猴插件</a>
         <a class="m-p-github" target="_blank" href="https://github.com/Momo707577045/m3u8-downloader">github</a>
         <a class="m-p-other" target="_blank" href="http://blog.luckly-mjw.cn/tool-show/index.html">其他实用工具</a>
-        <a class="m-p-language" href="http://blog.luckly-mjw.cn/tool-show/m3u8-downloader/index-en.html">English version</a>
-        <!--广告-->
-        <a v-if="isShowRefer" class="m-p-refer" target="_blank" href="https://segmentfault.com/a/1190000024416860">
-    <img src="https://blog.luckly-mjw.cn/tool-show/m3u8-downloader/imgs/001.png" class="link">
-    <img src="https://blog.luckly-mjw.cn/tool-show/m3u8-downloader/imgs/003.png" class="text">
+
     <i class="close" @click.prevent="isShowRefer=false"></i>
   </a>
         <!--文件载入-->
@@ -382,11 +378,10 @@
         </template>
     </section>
 </body>
-
 <!--vue 前端框架-->
-<script src="https://blog.luckly-mjw.cn/tool-show/m3u8-downloader/vue.js"></script>
-<script src="https://blog.luckly-mjw.cn/tool-show/m3u8-downloader/aes-decryptor.js"></script>
-<script src="https://blog.luckly-mjw.cn/tool-show/m3u8-downloader/mux-mp4.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/m3u8-downloader/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/m3u8-downloader/aes-decryptor.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/m3u8-downloader/mux-mp4.js"></script>
 <script>
 // script注入
 new Vue({
@@ -701,8 +696,8 @@ new Vue({
 
         // 暂停与恢复
         togglePause() {
-                 this.isPause = !this.isPause
-                !this.isPause && this.retryAll()
+            this.isPause = !this.isPause
+            !this.isPause && this.retryAll()
         },
 
         // 重新下载某个片段
