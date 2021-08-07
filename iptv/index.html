@@ -321,11 +321,11 @@
     function play(n) {
 
 
-        // var browser = DetectBrowser();
-        // if (browser != "Safari") {
-        //     layer.alert("只支持Safari浏览器!");
-        //     return false;
-        // }
+        var browser = DetectBrowser();
+        if (browser != "Safari") {
+            layer.alert("只支持Safari浏览器!");
+            return false;
+        }
 
 
 
