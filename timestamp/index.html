@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>时间戳转换工具</title>
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/timestamp/index.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/timestamp/vue.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/timestamp/require.js"></script>
+    <style>
+        table tr td a {
+            color: #6F5499;
+        }
+        .text-white {
+            color: #fff;
+        }
+        .octicon {
+            display: inline-block;
+            fill: currentColor;
+            vertical-align: text-top;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse" style="background-color: #6F5499;border-color: #6F5499;padding-left: 30px">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://91xcode.github.io" style="color: #ffffff;">导航</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://github.com/91xcode/91xcode.github.io" target="_blank"><svg height="20" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                            </svg></a></li>
+                    <li><a href="about/index.html" style="color: #ffffff;">关于</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" id="pageContainer">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-12">
+            	<span class="x-gmt-setting">选择时区：<select class="form-control" v-model="curGMT">
+                            <option value="-12">埃尼威托克岛 (GMT-12)</option>
+                            <option value="-11">萨摩亚群岛 (GMT-11)</option>
+                            <option value="-10">夏威夷 (GMT-10)</option>
+                            <option value="-9">阿拉斯加 (GMT-9)</option>
+                            <option value="-8">太平洋时间 (GMT-8)</option>
+                            <option value="-7">山脉时间 (GMT-7)</option>
+                            <option value="-6">中央标准时间 (GMT-6)</option>
+                            <option value="-5">东部时间 (GMT-5)</option>
+                            <option value="-4">大西洋时间 (GMT-4)</option>
+                            <option value="-3">Brazilia (GMT-3)</option>
+                            <option value="-2">大西洋中部时间(GMT-2)</option>
+                            <option value="-1">亚述尔群岛 (GMT-1)</option>
+                            <option value="0">格林威治标准（GMT）</option>
+                            <option value="1">罗马 (GMT +1)</option>
+                            <option value="2">以色列 (GMT +2)</option>
+                            <option value="3">莫斯科 (GMT +3)</option>
+                            <option value="4">巴库 (GMT +4)</option>
+                            <option value="5">New Delhi (GMT +5)</option>
+                            <option value="6">Dhakar (GMT +6)</option>
+                            <option value="7">曼谷 (GMT +7)</option>
+                            <option value="8">北京 (GMT +8)</option>
+                            <option value="9">东京 (GMT +9)</option>
+                            <option value="10">悉尼 (GMT +10)</option>
+                            <option value="11">Magadan (GMT +11)</option>
+                            <option value="12">惠灵顿 (GMT +12)</option>
+                        </select></span>
+        <div class="panel-body mod-stamp">
+            <h4 class="x-wd">&gt;&gt; Unix时间戳定义</h4>
+            <div class="x-cnt">
+                <div class="row"><span>现在的当地时间为：</span> <input class="form-control ui-d-ib" id="txtNowDate" ref="txtNowDate" v-model="txtNowDate" type="text"> <input class="mod-time-input form-control ui-d-ib btn btn-primary ui-ml-10 ui-mr-10" id="btnToggle" ref="btnToggle" @click="unixToggle()" class="-e-btn" type="button" value="暂停" tabindex="-1"></div>
+                <div class="row ui-mt-10"><span>现在的Unix时间戳：</span> <input class="form-control ui-d-ib" id="txtNowS" v-model="txtNowS" type="text" readonly="readonly" title="点击自动复制到剪贴板" @click="copyToClipboard($event.target.value)">秒 <input class="form-control ui-d-ib ui-ml-20" id="txtNowMs" v-model="txtNowMs" type="text" readonly="readonly" title="点击自动复制到剪贴板" @click="copyToClipboard($event.target.value)">毫秒</div>
+            </div>
+            <h4 class="x-wd">&gt;&gt; Unix时间戳 转 当地时间</h4>
+            <div class="row x-cnt"><input class="form-control ui-d-ib" id="txtSrcStamp" ref="txtSrcStamp" v-model="txtSrcStamp" type="text" placeholder="时间戳(eg:1388307215)" tabindex="1"> <select ref="selSecFrom" id="selSecFrom" v-model="secFrom" class="form-control x-sel-sec">
+                    <option value="s">秒(s)</option>
+                    <option value="ms">毫秒(ms)</option>
+                </select> <input class="mod-time-input form-control ui-d-ib btn btn-primary ui-ml-10 ui-mr-10" id="btnStampToLocale" ref="btnStampToLocale" @click="stampToLocale()" class="-e-btn" type="button" value="转换" tabindex="-1"> <input class="form-control ui-d-ib" id="txtDesDate" ref="txtDesDate" v-model="txtDesDate" type="text" readonly="readonly" @click="copyToClipboard($event.target.value)"></div>
+            <h4 class="x-wd">&gt;&gt; 当地时间 转 Unix时间戳</h4>
+            <div class="row x-cnt"><input class="form-control ui-d-ib" id="txtLocale" ref="txtLocale" v-model="txtLocale" type="text" placeholder="时间(eg:2015-04-01 10:01:01:620)"> <input class="mod-time-input form-control ui-d-ib btn btn-primary ui-ml-10 ui-mr-10" id="btnLocaleToStamp" @click="localeToStamp()" class="-e-btn" type="button" value="转换" tabindex="-1"> <input class="form-control ui-d-ib" id="txtDesStamp" ref="txtDesStamp" v-model="txtDesStamp" type="text" readonly="readonly" @click="copyToClipboard($event.target.value)"> <select ref="selSecTo" id="selSecTo" v-model="secTo" class="form-control x-sel-sec">
+                    <option value="s">秒(s)</option>
+                    <option value="ms">毫秒(ms)</option>
+                </select></div>
+            <h4 class="x-wd">&gt;&gt; 世界时钟</h4>
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>地区</th>
+                        <th>时间</th>
+                        <th>地区</th>
+                        <th>时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>当地时间</th>
+                        <td>{{worldTime['local']}}</td>
+                        <th>格林威治时间（GMT）</th>
+                        <td>{{worldTime['gmt']}}</td>
+                    </tr>
+                    <tr>
+                        <th>埃尼威托克岛 (GMT-12)</th>
+                        <td>{{worldTime['-12']}}</td>
+                        <th>罗马 (GMT +1)</th>
+                        <td>{{worldTime['+1']}}</td>
+                    </tr>
+                    <tr>
+                        <th>萨摩亚群岛 (GMT-11)</th>
+                        <td>{{worldTime['-11']}}</td>
+                        <th>以色列 (GMT +2)</th>
+                        <td>{{worldTime['+2']}}</td>
+                    </tr>
+                    <tr>
+                        <th>夏威夷 (GMT-10)</th>
+                        <td>{{worldTime['-10']}}</td>
+                        <th>莫斯科 (GMT +3)</th>
+                        <td>{{worldTime['+3']}}</td>
+                    </tr>
+                    <tr>
+                        <th>阿拉斯加 (GMT-9)</th>
+                        <td>{{worldTime['-9']}}</td>
+                        <th>巴库 (GMT +4)</th>
+                        <td>{{worldTime['+4']}}</td>
+                    </tr>
+                    <tr>
+                        <th>太平洋时间 (GMT-8)</th>
+                        <td>{{worldTime['-8']}}</td>
+                        <th>New Delhi (GMT +5)</th>
+                        <td>{{worldTime['+5']}}</td>
+                    </tr>
+                    <tr>
+                        <th>山脉时间 (GMT-7)</th>
+                        <td>{{worldTime['-7']}}</td>
+                        <th>Dhakar (GMT +6)</th>
+                        <td>{{worldTime['+6']}}</td>
+                    </tr>
+                    <tr>
+                        <th>中央标准时间 (GMT-6)</th>
+                        <td>{{worldTime['-6']}}</td>
+                        <th>曼谷 (GMT +7)</th>
+                        <td>{{worldTime['+7']}}</td>
+                    </tr>
+                    <tr>
+                        <th>东部时间 (GMT-5)</th>
+                        <td>{{worldTime['-5']}}</td>
+                        <th>北京 (GMT +8)</th>
+                        <td>{{worldTime['+8']}}</td>
+                    </tr>
+                    <tr>
+                        <th>大西洋时间 (GMT-4)</th>
+                        <td>{{worldTime['-4']}}</td>
+                        <th>东京 (GMT +9)</th>
+                        <td>{{worldTime['+9']}}</td>
+                    </tr>
+                    <tr>
+                        <th>Brazilia (GMT-3)</th>
+                        <td>{{worldTime['-3']}}</td>
+                        <th>悉尼 (GMT +10)</th>
+                        <td>{{worldTime['+10']}}</td>
+                    </tr>
+                    <tr>
+                        <th>大西洋中部时间(GMT-2)</th>
+                        <td>{{worldTime['-2']}}</td>
+                        <th>Magadan (GMT +11)</th>
+                        <td>{{worldTime['+11']}}</td>
+                    </tr>
+                    <tr>
+                        <th>亚述尔群岛 (GMT-1)</th>
+                        <td>{{worldTime['-1']}}</td>
+                        <th>惠灵顿 (GMT +12)</th>
+                        <td>{{worldTime['+12']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+            </div>
+        </div>
+        <!--/row-->
+        <hr>
+        <footer>
+            <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>
+        </footer>
+    </div>
+    <!--/.container-->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/timestamp/index.js"></script>
+     <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+    <script src="http://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
+    <script type="text/javascript">
+    $(window).scroll(
+        function() {
+            $(this).scrollTop() > 300 ? $(".gotop-btn").css("display", "block") : $(".gotop-btn").hide()
+        }
+    )
+    </script>
+    <a style="position: fixed; display: none;" class="gotop-btn" href="#top" id="scrollUp"><i class="fa fa-angle-up"></i></a>
+</body>
+
+</html>

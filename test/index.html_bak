@@ -9,14 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>导航</title>
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@1.0/91xcode.github.io/best.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@1.0/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@1.0/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@1.0/bootstrap-3.3.4-dist/css/carousel.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/91xcode/static@1.0/bootstrap-3.3.4-dist/css/site.min.css?v5">
-    <script src="https://cdn.jsdelivr.net/gh/91xcode/static@1.0/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/site.min.css?v5">
+    <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
     <style>
         table tr td a {
             color: #6F5499;
@@ -387,8 +387,8 @@
     <!-- Bootstrap core JavaScript
 ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/gh/91xcode/static@1.0/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/91xcode/static@1.0/bootstrap-3.3.4-dist/js/offcanvas.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/offcanvas.js"></script>
     <script src="https://cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
     <script type="text/javascript">
     $(window).scroll(
