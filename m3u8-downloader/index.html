@@ -740,7 +740,8 @@ new Vue({
 
         // 暂停与恢复
         togglePause() {
-            this.isPause = !this.isPause!this.isPause && this.retryAll()
+            this.isPause = !this.isPause
+            !this.isPause && this.retryAll()
         },
 
         // 重新下载某个片段
