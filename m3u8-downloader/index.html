@@ -341,9 +341,8 @@
         <a class="m-p-tamper" target="_blank" href="https://greasyfork.org/zh-CN/scripts/422237-m3u8-downloader">油猴插件</a>
         <a class="m-p-github" target="_blank" href="https://github.com/Momo707577045/m3u8-downloader">github</a>
         <a class="m-p-other" target="_blank" href="http://blog.luckly-mjw.cn/tool-show/index.html">其他实用工具</a>
-
-    <i class="close" @click.prevent="isShowRefer=false"></i>
-  </a>
+        <i class="close" @click.prevent="isShowRefer=false"></i>
+        </a>
         <!--文件载入-->
         <div class="m-p-temp-url">测试链接：http://1257120875.vod2.myqcloud.com/0ef121cdvodtransgzp1257120875/3055695e5285890780828799271/v.f230.m3u8</div>
         <section class="m-p-input-container">
@@ -526,19 +525,64 @@ new Vue({
             this.ajax({
                 url: this.url,
                 success: (m3u8Str) => {
+                    // this.tsUrlList = []
+                    // this.finishList = []
+
+                    // // 提取 ts 视频片段地址
+                    // m3u8Str.split('\n').forEach((item) => {
+                    //     if (item.toLowerCase().indexOf('.ts') > -1) {
+                    //         this.tsUrlList.push(this.applyURL(item, this.url))
+                    //         this.finishList.push({
+                    //             title: item,
+                    //             status: ''
+                    //         })
+                    //     }
+                    // })
+                    // 
+                    // 
+                    // 
+                    
+                    //找到真实地址开始的标识
                     this.tsUrlList = []
                     this.finishList = []
-
+                    var rtn = false;
+                    var start = false;
                     // 提取 ts 视频片段地址
-                    m3u8Str.split('\n').forEach((item) => {
+                    m3u8Str.split('\n').some((item) => {
                         if (item.toLowerCase().indexOf('.ts') > -1) {
                             this.tsUrlList.push(this.applyURL(item, this.url))
                             this.finishList.push({
                                 title: item,
                                 status: ''
                             })
+                        } else if (item.toUpperCase().indexOf('#EXT-X-STREAM-INF') > -1) { //找到真实地址开始的标识
+                            start = true;
+                        } else if (start && item.toLowerCase().indexOf('.m3u8') > -1) { //找到真实地址
+                            var keyUrl = item;
+                            if (keyUrl.startsWith('http')) {
+                                this.url = keyUrl;
+                            } else {
+                                if (keyUrl.startsWith('/')) {
+                                    keyUrl = keyUrl.substring(1);
+                                }
+                                keyUrl = this.url.substring(0, this.url.lastIndexOf("/") + 1) + keyUrl;
+                                this.url = keyUrl;
+                            }
+                            console.log("keyUrl:" + keyUrl);
+                            rtn = true;
+                            this.getM3U8();
+                            return true;
                         }
                     })
+                    if (rtn) {
+                        return;
+                    }
+
+
+
+
+
+
 
                     // 仅获取视频片段数
                     if (onlyGetRange) {
@@ -696,8 +740,7 @@ new Vue({
 
         // 暂停与恢复
         togglePause() {
-            this.isPause = !this.isPause
-            !this.isPause && this.retryAll()
+            this.isPause = !this.isPause!this.isPause && this.retryAll()
         },
 
         // 重新下载某个片段
