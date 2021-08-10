@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>网抑云启动!</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="网抑云启动">
+    <meta name="author" content="网抑云启动">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/163-music/css/loading.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/163-music/css/baoguo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--UC强制全屏-->
+    <meta name="full-screen" content="yes">
+    <!--UC应用模式-->
+    <meta name="browsermode" content="application">
+    <!--QQ强制全屏-->
+    <meta name="x5-fullscreen" content="true">
+    <!--QQ应用模式-->
+    <meta name="x5-page-mode" content="app">
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+</head>
+
+<body>
+    <div class="box">
+        <div id="search_button">
+            <!--歌曲封面-->
+            <div id="pic"><img src=""></div>
+            <!--播放按钮-->
+            <div id="player_btn"><img src="https://cdn.jsdelivr.net/gh/91xcode/static@master/163-music/images/play.png"></div>
+        </div>
+        <div id="info_top">
+            <!--歌曲名-->
+            <div id="info_song"></div>
+            <!--歌曲作者-->
+            <div id="info_song_auther"></div>
+            <!--水波-->
+            <div class="watertiv">
+                <div class="water_1"></div>
+                <div class="water_2"></div>
+            </div>
+        </div>
+        <div class="info">
+            <div id="info_tag" style="border-radius: 20px;margin-top: 10px;text-align: center;"></div>
+            <div id="info_tag1" style="border-radius: 20px;margin-top: 10px;text-align: center;"></div>
+        </div>
+        <!--切换下一条-->
+        <div class="info" style="border-radius: 20px;margin-top: 10px;text-align: center;">
+            <a id="next" style="font-size: 13px;">切换下一首</a>
+        </div>
+        <div class="info" style="border-radius: 20px;margin-top: 10px;text-align: center;">
+            <a id="back" style="font-size: 13px;">返回首页</a>
+        </div>
+        <!--版权-->
+        <div id="about">Copyright © 2021-2030</div>
+    </div>
+    <!--audio-->
+    <div id="music" style="display: none"></div>
+    <!--背景-->
+    <div class="bg_image"></div>
+    <div class="bg_image_pattern"></div>
+    <!--loading-->
+    <div class="baoguo_loading_frame">
+        <div class="loader_overlay"></div>
+        <div class="loader_cogs">
+            <div class="loader_cogs__top">
+                <div class="top_part"></div>
+                <div class="top_part"></div>
+                <div class="top_part"></div>
+                <div class="top_hole"></div>
+            </div>
+            <div class="loader_cogs__left">
+                <div class="left_part"></div>
+                <div class="left_part"></div>
+                <div class="left_part"></div>
+                <div class="left_hole"></div>
+            </div>
+            <div class="loader_cogs__bottom">
+                <div class="bottom_part"></div>
+                <div class="bottom_part"></div>
+                <div class="bottom_part"></div>
+                <div class="bottom_hole"></div>
+            </div>
+            <!--<p style="font-size:13px">Loading...</p>-->
+        </div>
+    </div>
+    <!--jQuery-->
+     <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+    <!--核心js-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/163-music/js/baoguo-more.js"></script>
+</body>
+
+</html>
