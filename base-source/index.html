@@ -148,7 +148,8 @@
 <section id="app" v-cloak>
   <div class="c-tips" :class="{'c-tips--show':showTips}">{{tips}}</div>
 
-  <a class="p-other" target="_blank" href="http://blog.luckly-mjw.cn/tool-show/index.html">其他实用工具</a>
+  <!-- <a class="p-other" target="_blank" href="http://blog.luckly-mjw.cn/tool-show/index.html">其他实用工具</a> -->
+  <a class="p-other" target="_blank" href="https://91xcode.github.io/">首页</a>
 
   <!--提示-->
   <section class="p-action g-box">baseSource 常用资源文件(点击复制资源)</section>
@@ -156,8 +157,8 @@
   <section class="p-picture g-box">
     <h1>常用图片</h1>
     <ul class="picture">
-      <li @click="copyToClipboard('http://upyun.luckly-mjw.cn/Assets/base-source/png-background.png')">
-        <img src="http://upyun.luckly-mjw.cn/Assets/base-source/png-background.png" class="case"/>
+      <li @click="copyToClipboard('https://cdn.jsdelivr.net/gh/91xcode/static@master/base-source/png-background.png')">
+        <img src="https://cdn.jsdelivr.net/gh/91xcode/static@master/base-source/png-background.png" class="case"/>
       </li>
       <li v-for="item in pictureList" @click="copyToClipboard(item)">
         <img :src="item" class="case"/>
@@ -208,43 +209,22 @@ new Vue({
       tipsTimeout: 0,
       pictureList: [
         'picture-avatar-01.png',
-        'picture-avatar-02.png',
-        'picture-avatar-03.png',
         'picture-avatar-04.png',
-        'picture-avatar-05.png',
         'picture-pure-01.png',
         'picture-pure-02.png',
         'picture-pure-03.png',
         'picture-pure-04.png',
         'picture-pure-05.png',
         'picture-pure-06.png',
-        'picture-rect-01.png',
-        'picture-rect-02.png',
-        'picture-rect-03.png',
-        'picture-rect-04.png',
-        'picture-long-01.jpg',
-        'picture-wide-01.jpeg',
-        'icon-arrow.png',
-        'icon-cancel.png',
-        'icon-lock.png',
-        'icon-question.png',
-        'icon-dotted.png',
-        'icon-dotted-y.png',
       ],
       audioList:
         [
-          'music-long-01.mp3',
-          'music-long-02.mp3',
-          'music-long-03.mp3',
-          'music-short-01.m4a',
-          'music-short-02.m4a',
-          'music-short-03.m4a',
-          'music-short-04.m4a',
-          'music-short-05.m4a',
+          '20.mp3',
+          '21.mp3',
         ],
       videoList:
         [
-          'video-long-01.mp4',
+          'hello-siri.mp4',
           'video-short-01.ogg',
         ],
       dataList:
@@ -277,7 +257,7 @@ new Vue({
     ['pictureList', 'audioList', 'videoList'].forEach((subject) => {
       let tempList = []
       this[subject].forEach((item) => {
-        tempList.push('http://www.luckly-mjw.cn/baseSource/' + item);
+        tempList.push('https://cdn.jsdelivr.net/gh/91xcode/static@master/base-source/' + item);
       })
       this[subject] = tempList;
     })
