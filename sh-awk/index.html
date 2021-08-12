@@ -13,7 +13,6 @@
     <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
-
     <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
     <style>
         table tr td a {
@@ -50,116 +49,153 @@
             </div>
         </div>
     </nav>
-        <div class="container">
- 
-        <div class="row">
- 
-            <div class="col-sm-12">
- 
-                <h1>Page Title</h1>
- 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin feugiat hendrerit feugiat. In cursus nisl id arcu ullamcorper, eget euismod ante tincidunt. Cras placerat facilisis semper. Nam vel nisl sit amet justo interdum luctus. Mauris eu felis pretium velit mollis molestie. Nam aliquet a tellus ut pretium. Pellentesque fermentum nulla tempus mauris sagittis, eget imperdiet quam tristique. Pellentesque quis mauris mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales turpis fringilla ligula rutrum, eget mattis justo bibendum. Integer imperdiet mi non cursus bibendum. Nullam vitae cursus justo. Integer quis elit sit amet arcu pellentesque google sit amet a sapien. Aliquam tincidunt felis eget quam euismod cursus. Suspendisse lobortis ut elit vitae rhoncus. Ut tincidunt, ante eu egestas sodales, dui nulla aliquet mi, a eleifend lacus risus sit amet lacus.</p>
- 
-            </div>
- 
-        </div>
- 
-    </div>
-<!--     <div class="container">
-        <div class="row row-offcanvas row-offcanvas-right">
-            <div class="col-xs-12 col-sm-12">
-                <div class="jumbotron">
-                    <h3 align="center">git 操作</h3>
-                    <pre>
-    从github上clone子分支
-
-    正常情况下，我们在github上看到一个clone地址，git clone xxxxxxx.git后，默认clone进入的是master分支，如果想切换到某一个子分支，可以使用
-
-    git checkout -b child_repos origin/child_repos
-
-    其中，child_repos指的是目标子分支名，
-
-    这时，使用git branch可以看到自己已经在子分支上，正常
-
-    git pull origin child_repos
-
-    git push origin child_repos
-
-    即可。
-
-    准备合并dev分支，请注意--no-ff参数，表示禁用Fast forward：
-
-    $ git merge --no-ff -m "merge with no-ff" dev
-    Merge made by the 'recursive' strategy.
-     readme.txt |    1 +
-     1 file changed, 1 insertion(+)
-
-
-    幸好，Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：
-
-    $ git stash
-    Saved working directory and index state WIP on dev: 6224937 add merge
-    HEAD is now at 6224937 add merge
-
-    现在，用git status查看工作区，就是干净的（除非有没有被Git管理的文件），因此可以放心地创建分支来修复bug。
-
-
-    修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
-
-    当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。
 
 
 
-    查看远程库信息，使用git remote -v；
+ <div class="container">
 
-    本地新建的分支如果不推送到远程，对其他人就是不可见的；
-
-    从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
-
-    在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
-
-    建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
-
-    从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+      <div class="row row-offcanvas row-offcanvas-right">
 
 
+<div class="col-xs-12 col-sm-12">
+    <div class="row">
+        <div class="col-xs-12 col-lg-12">
+                <h2>shell awk </h2>
+<pre>
+1.awk 文本转换成数组
 
-    命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+    vim sk.txt
 
-    git tag -a <tagname> -m "blablabla..."可以指定标签信息；
-
-    git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
-
-    命令git tag可以查看所有标签。
-
-
-
-    命令git push origin <tagname>可以推送一个本地标签；
-
-    命令git push origin --tags可以推送全部未推送过的本地标签；
-
-    命令git tag -d <tagname>可以删除一个本地标签；
-
-    命令git push origin :refs/tags/<tagname>可以删除一个远程标签。
+    zhangsan    80
+    lisi        81.5
+    wangwu      93
+    zhangsan    85
 
 
+    awk -F: '{print $NF}'  sk.txt
+    cat sk.txt |awk -F" " '{for(i=1;i<=2;i++){print "\""$1"\"=>" "\""$2"\","}}' 
 
+
+    vim 1.txt
+
+    zhangsan    80
+    lisi        81.5
+    wangwu      93
+    zhangsan    85
+    lisi        88
+    wangwu      97
+    zhangsan    90
+    lisi        92
+    wangwu      88
+
+
+    要求输出格式：（average：平均成绩，total：总成绩）
+
+    name#######average#######total
+    zhangsan     xxx          xxx
+    lisi         xxx          xxx
+    wangwu       xxx          xxx
+
+
+    #!/bin/bash 
+
+    echo -e "name\taverage\ttotal"
+    for i in  `awk '{print $1}' 1.txt|sort |uniq`
+    do
+    a=`grep $i 1.txt|awk '{print $NF}'|awk '{tot +=$1};END{print tot}'`
+    b=`grep $i 1.txt|awk '{print $NF}'|awk '{tot +=$1};END{print tot/2}'`
+    echo -e "$i\t$b\t$a"
+    done
+
+2.目录按大小排序
+    du -hd1 | sort -hr
+
+3.批量删除进程
+    ps -ef | grep  php-fpm| grep -v grep | awk '{print $2}'| xargs kill -9
+
+4.vim文件开头注释和取消注释
+    添加注释
+    :7,15s/^/#/g
+    取消注释
+    :7,15s/^#//g
+
+5.查看去掉注释的内容
+
+    查看文件排除以#开关和空白行，适合查看配置文件。
+    egrep -v "^#|^$"  filename
+    sed '/#.*$/d; /^ *$/d'
+
+    符号注释：-v排除；^#：表示以#符号开头； ^$表示空行
+
+6.# 定时清理
+    30 1 * * * /bin/find /data/filecache/ -type f -mtime +365 -exec rm -f {} \; >/dev/null 2>&1
+
+    -mtime＋1 表示文件修改时间为大于1天的文件，即距离当前时间2天（48小时）之外的文件
+    这里-mtime +1 为什么是48小时以外，而不是24小时以外呢，因为n只能是整数，比1大的下一个整数是2，所以是48小时以外的
+
+7.查看所有用户的crontab
+    for u in `cat /etc/passwd | cut -d":" -f1`;do crontab -l -u $u;done|grep reimport
+
+8.mac xargs与cp结合批量copy文件
+
+    ls *.dmg |xargs -I {} sudo  cp {} install
+
+    只显示目录
+    ls -F | grep '/$'  或者 ls -al | grep "^d"
+
+    只显示文件
+
+    ls -al | grep "^-"
+
+
+9.分别单独压缩当前目录中的子目录，并以子目录的名字命名其压缩文件
+    for f in ./*;do if [ -d $f ]; then tar -zcvf $f.tgz $f; fi; done
+
+10.设置ls -l命令中显示的日期格式
+    ls -lh --time-style '+%Y-%m-%d %H:%M:%S'
+
+11.处理json
+    echo '{"name": "lucy", "age": "18"}' | python -m json.tool
+
+    python -mjson.tool somejson.txt
+
+    curl xxx | python -m json.tool
+12.测试邮件网关
+    mail -s "Subject" xx@ab.com <<< 'Message'
 
 </pre>
-                </div>
-            </div>
-        </div> -->
-        
-        <hr>
-        <footer>
-            <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>
-        </footer>
+
+        </div>
     </div>
-    <!--/.container-->
-    <!-- Bootstrap core JavaScript
-================================================== -->
+
+</div>
+
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+
+    </div><!--/.container-->
+
+
+
+
+    <hr>
+    <footer>
+        <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>
+    </footer>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <!-- Back2top -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.js"></script>
+    <script type="text/javascript">
+    Back2top.init();
+    </script>
 </body>
 
 </html>
