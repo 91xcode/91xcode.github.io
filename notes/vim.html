@@ -60,144 +60,28 @@
 <div class="col-xs-12 col-sm-12">
     <div class="row">
         <div class="col-xs-12 col-lg-12 ">
-                <h2>shell awk </h2>
+                <h2>git more ssh-key </h2>
 <pre class="text-justify">
-1.awk 文本转换成数组
+    
+    背景：vim操作
 
-    vim sk.txt
+    取消高亮
+    :nohl
 
-    zhangsan    80
-    lisi        81.5
-    wangwu      93
-    zhangsan    85
+    拷贝整个文件 :%y
+    代码格式化：gg=G（即连续按2个g，再按=，再按G）
 
+    :set paste
+    进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形
 
-    awk -F: '{print $NF}'  sk.txt
-    cat sk.txt |awk -F" " '{for(i=1;i<=2;i++){print "\""$1"\"=>" "\""$2"\","}}' 
+    文件最末端：G
+    文件最开始端：gg
+    显示行号： :set nu
+    隐藏行号:  :set nu!
+    $  移至当行行尾，
+    0（数字） 移至当行行首，
+    b移动到单词第一个字母 w移动到单词最后一个字母
 
-
-    vim 1.txt
-
-    zhangsan    80
-    lisi        81.5
-    wangwu      93
-    zhangsan    85
-    lisi        88
-    wangwu      97
-    zhangsan    90
-    lisi        92
-    wangwu      88
-
-
-    要求输出格式：（average：平均成绩，total：总成绩）
-
-    name#######average#######total
-    zhangsan     xxx          xxx
-    lisi         xxx          xxx
-    wangwu       xxx          xxx
-
-
-    #!/bin/bash 
-
-    echo -e "name\taverage\ttotal"
-    for i in  `awk '{print $1}' 1.txt|sort |uniq`
-    do
-    a=`grep $i 1.txt|awk '{print $NF}'|awk '{tot +=$1};END{print tot}'`
-    b=`grep $i 1.txt|awk '{print $NF}'|awk '{tot +=$1};END{print tot/2}'`
-    echo -e "$i\t$b\t$a"
-    done
-
-2.目录按大小排序
-    du -hd1 | sort -hr
-
-3.批量删除进程
-    ps -ef | grep  php-fpm| grep -v grep | awk '{print $2}'| xargs kill -9
-
-4.vim文件开头注释和取消注释
-    添加注释
-    :7,15s/^/#/g
-    取消注释
-    :7,15s/^#//g
-
-5.查看去掉注释的内容
-
-    查看文件排除以#开关和空白行，适合查看配置文件。
-    egrep -v "^#|^$"  filename
-    sed '/#.*$/d; /^ *$/d'
-
-    符号注释：-v排除；^#：表示以#符号开头； ^$表示空行
-
-6.# 定时清理
-    30 1 * * * /bin/find /data/filecache/ -type f -mtime +365 -exec rm -f {} \; >/dev/null 2>&1
-
-    -mtime＋1 表示文件修改时间为大于1天的文件，即距离当前时间2天（48小时）之外的文件
-    这里-mtime +1 为什么是48小时以外，而不是24小时以外呢，因为n只能是整数，比1大的下一个整数是2，所以是48小时以外的
-
-7.查看所有用户的crontab
-    for u in `cat /etc/passwd | cut -d":" -f1`;do crontab -l -u $u;done|grep reimport
-
-8.mac xargs与cp结合批量copy文件
-
-    ls *.dmg |xargs -I {} sudo  cp {} install
-
-    只显示目录
-    ls -F | grep '/$'  或者 ls -al | grep "^d"
-
-    只显示文件
-
-    ls -al | grep "^-"
-
-9.在每行记录的开头加上当前路径
-    ls | sed "s:^:`pwd`/:"
-
-
-9.分别单独压缩当前目录中的子目录，并以子目录的名字命名其压缩文件
-    for f in ./*;do if [ -d $f ]; then tar -zcvf $f.tgz $f; fi; done
-
-10.设置ls -l命令中显示的日期格式
-    ls -lh --time-style '+%Y-%m-%d %H:%M:%S'
-
-11.处理json
-    echo '{"name": "lucy", "age": "18"}' | python -m json.tool
-
-    python -mjson.tool somejson.txt
-
-    curl xxx | python -m json.tool
-12.测试邮件网关
-    mail -s "Subject" xx@ab.com <<< 'Message'
-
-脚本命令
-- 获取脚本文件所在目录
-    script_path=$(cd `dirname $0`; pwd)
-- 获取脚本文件的上级目录
-    script_path=$(cd `dirname $0`; pwd)
-    root_path=$(cd `dirname "$script_path"`; pwd)
-- 格式化当前时间
-    datetime=$(date +"%Y-%m-%d %H:%M:%S")
-- 用ps命令
-    ps aux | grep <pid>
-    USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-    jxcdn     1954  0.0  0.1 360544 29376 ?        Ssl  Apr13   7:56 memcached -m 128 -p 11211
-
-    其中RSS列表示实际使用内存(单位: KB)。可以看出，与/proc/[pid]/status的值是一致的。
-- 将命令的执行结果赋值给变量：
-    ar='pwd'
-    # 或者
-    ar=$(pwd)
-
-    echo $ar
-
-- 调试 bash 脚本的技巧#
-    加 -x 参数运行 bash 脚本时，会显示执行的语句
-    # 也可以在 demo.sh 中加上 set -x
-    bash -x demo.sh
-
-
-- 时间范围： 按照时间范围搜索日志
-    awk '$2>"17:30:00" && $2<"18:00:00"' trace.log
-    日志形式如下, $2代表第二列即11:44:58, awk需要指定列
-
-    11-21 16:44:58 /user/info/
 
 </pre>
 
