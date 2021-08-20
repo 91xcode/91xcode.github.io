@@ -60,74 +60,15 @@
                     <pre>
     从github上clone子分支
 
-    正常情况下，我们在github上看到一个clone地址，git clone xxxxxxx.git后，默认clone进入的是master分支，如果想切换到某一个子分支，可以使用
+    1.正常情况下，我们在github上看到一个clone地址，git clone xxxxxxx.git后，默认clone进入的是master分支，如果想切换到某一个子分支，可以使用
 
-    git checkout -b child_repos origin/child_repos
+        git branch -a
 
-    其中，child_repos指的是目标子分支名，
+        git checkout -b feature/account_list_20210810 remotes/origin/feature/account_list_20210810
 
-    这时，使用git branch可以看到自己已经在子分支上，正常
+    2.在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
 
-    git pull origin child_repos
-
-    git push origin child_repos
-
-    即可。
-
-    准备合并dev分支，请注意--no-ff参数，表示禁用Fast forward：
-
-    $ git merge --no-ff -m "merge with no-ff" dev
-    Merge made by the 'recursive' strategy.
-     readme.txt |    1 +
-     1 file changed, 1 insertion(+)
-
-
-    幸好，Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：
-
-    $ git stash
-    Saved working directory and index state WIP on dev: 6224937 add merge
-    HEAD is now at 6224937 add merge
-
-    现在，用git status查看工作区，就是干净的（除非有没有被Git管理的文件），因此可以放心地创建分支来修复bug。
-
-
-    修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
-
-    当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场。
-
-
-
-    查看远程库信息，使用git remote -v；
-
-    本地新建的分支如果不推送到远程，对其他人就是不可见的；
-
-    从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
-
-    在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
-
-    建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
-
-    从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
-
-
-
-    命令git tag <name>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
-
-    git tag -a <tagname> -m "blablabla..."可以指定标签信息；
-
-    git tag -s <tagname> -m "blablabla..."可以用PGP签名标签；
-
-    命令git tag可以查看所有标签。
-
-
-
-    命令git push origin <tagname>可以推送一个本地标签；
-
-    命令git push origin --tags可以推送全部未推送过的本地标签；
-
-    命令git tag -d <tagname>可以删除一个本地标签；
-
-    命令git push origin :refs/tags/<tagname>可以删除一个远程标签。
+    3.建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
 
 
 
@@ -147,13 +88,14 @@
          命令行 : $ git branch -a
 
     使用git拉代码时可以使用 -b 指定分支
-    指定拉 master 分支代码
 
-    git clone -b master http://gitslab.yiqing.com/declare/about.git
+    1.指定拉 master 分支代码
 
-    指定拉 develop 分支代码
+        git clone -b master http://gitslab.yiqing.com/declare/about.git
 
-    git clone -b develop http://gitslab.yiqing.com/declare/about.git
+    2.指定拉 develop 分支代码
+
+        git clone -b develop http://gitslab.yiqing.com/declare/about.git
 
 
 </pre>
