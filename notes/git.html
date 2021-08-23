@@ -98,6 +98,20 @@
         git clone -b develop http://gitslab.yiqing.com/declare/about.git
 
 
+
+    git branch -a 这条命令并没有每一次都从远程更新仓库信息，我们可以手动更新一下
+
+        git fetch origin 
+        git branch -a
+
+        当我们删除远程分支后执行git branch -a本地却依然能看到远程分支
+
+        这个时候我们只需要执行git remote prune origin清理一下就可以了
+
+        然后再次执行git branch -a就看不到啦
+
+
+
 </pre>
                 </div>
             </div>
