@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>rg</title>
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+    <style>
+        table tr td a {
+            color: #6F5499;
+        }
+        .text-white {
+            color: #fff;
+        }
+        .octicon {
+            display: inline-block;
+            fill: currentColor;
+            vertical-align: text-top;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://91xcode.github.io">导航</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://github.com/91xcode/91xcode.github.io" target="_blank"><svg height="20" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></li>
+                    <li><a href="/about/index.html">关于</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+ <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+
+
+<div class="col-xs-12 col-sm-12">
+    <div class="row">
+        <div class="col-xs-12 col-lg-12 ">
+                <h2>Mac记录</h2>
+<pre class="text-justify">
+    
+    
+    (1) Mac键盘图标与对应快捷按键
+
+
+    　　⌘——Command （）
+    　　⌃ ——Control
+    　　⌥——Option （alt）
+    　　⇧——Shift
+    　　⇪——Caps Lock
+    　　fn——功能键就是fn
+
+        ⌘/：command
+
+        ⇧：shift
+
+        ⌥：option(alt)
+
+        ^：control
+
+        ↩/⌅：enter(return)
+
+        ⇥：tab
+
+        ⎋：esc（左上方的escape键）
+
+        ⏏：eject（右上方的介质推出键）
+
+        ⇪：caps lock
+
+        mac 快捷键强制关闭程序 command+option+esc
+
+
+
+
+    (2) 软件
+        brew install iterm2
+
+
+    (3) 其他
+        Vi 内全局替换
+
+        # 使用 str2 替换 str1
+        :%s/str1/str2/g
+
+        # 多个匹配，例如把所有的 '\t' 替换为 ','
+        # 一个或多个用 '\+' 而不是 '+'
+        :%s/\t\+/,/g
+
+        如果要长期有效，可以在 ~/.vimrc 里加上对应的设置，例如
+
+        set hlsearch
+        set number
+        colorscheme torte
+        set mouse=a
+        syntax on
+        Bat
+        Bat 是语法高亮的 cat (Clone of cat with syntax highlighting and Git integration), 主页为 https://github.com/sharkdp/bat，可以使用 brew 安装: brew install bat，可以在 .bash_profile 里给其设置别名为 cat 用于替代 cat: alias cat="bat":
+
+        查看端口占用
+        使用 lsof -i:port 查看端口是否被某个进程占用了，例如 lsof -i:8080。
+
+        查看使用端口的 PID
+        lsof -n -P | grep :80
+
+        使用文件名查找
+        find dir -name filename，例如 find . -name mvc.xml
+
+        使用文件大小查找
+        find . -size +200M
+
+        使用文件修改时间查找
+        find . -ctime -10s
+
+        查找后使用 grep
+        find . -name "*.java" | xargs grep -n --color "topic"
+
+        查找后打开文件
+        1
+        find . -name mac-tips.md | xargs open
+        统计多个文件的行数
+        1
+        find . -name "*.java" | xargs wc -l
+
+        awk 输出列
+
+        // 输出第一列
+        echo 1 2 3 4 5 | awk '{ print $1 }'
+
+        // 输出第三列到最后一列
+        echo 1 2 3 4 5 | awk '{ for (i=3; i<=NF; i++) print $i }'
+
+        // 列求和
+        cat m.txt | awk '{a+=$1} END {print a}'
+
+        sort & uniq
+
+        // 按行排序，并去掉重复行
+        sort a.txt | uniq
+
+        // 按行排序，并去掉重复行，统计最后的行数
+        sort a.txt | uniq -c
+
+        zip
+
+        // 把文件夹 H5 和文件 x.html 压缩成 result.zip
+        zip -r result.zip H5 x.html
+
+        unzip
+
+        // -d 指定输出目录
+        // 如果没有 -d + targetDir，则解压到当前目录
+        unzip signup.zip [-d targetDir]
+
+        tar
+
+        // 压缩为 archive.tar
+        tar -cf archive.tar file1 file2 file3
+
+        // 解压 archive.tar
+        tar -xf archive.tar
+
+        # Create compressed gzip archive.
+        tar -czf file.tar.gz file1 file2
+
+        # Extract .gz archive.
+        tar -xzf file.tar.gz
+
+        查看不同状态的链接数量
+
+        netstat -n | awk '/^tcp/ {++state[$NF]} END {for(key in state) print key,"\t",state[key]}'
+
+        输出:
+        SYN_SENT    1
+        CLOSE_WAIT  4
+        ESTABLISHED 7
+
+        转换文件编码
+
+        // 单个文件转码
+        iconv -f GB18030 -t UTF8 201607-data.txt > 201607.txt
+
+        // 查找文件并转码
+        find *.txt -exec sh -c "iconv -f GB18030 -t UTF8 {} > {}.txt" \;
+
+        显示目录树
+        使用 brew 安装 tree: brew install tree
+        执行命令 tree 就能显示当前目录的树形结构
+
+        .
+        ├── LICENSE.txt
+        ├── build.gradle
+        └── src
+            ├── main
+            │   ├── java
+            │   ├── resources
+            │   └── webapp
+            │       └── WEB-INF
+            │           └── web.xml
+            └── test
+                ├── java
+                └── resources
+
+        9 directories, 3 files
+
+        计算文件的 MD5
+
+        md5 fileName
+
+        计算字符串 MD5
+
+        # 下面 3 种方式都可以
+        md5 -s Welcome
+        md5 -s 'Welcome'
+        md5 -s "Welcome"
+
+        echo -n Welcome | md5
+        echo -n 'Welcome' | md5
+        echo -n "Welcome" | md5
+
+    递归创建目录
+    # p 是 plus 之意
+    mkdir -p a/b/c
+
+    Chrome 清除缓存插件
+    Chrome 应用商店里搜索 clear Cache，找到 clear Cache, clean cache, 清理缓存 并安装
+
+    查看文件夹大小
+
+    du -sh
+
+    cp 复制文件夹
+    # 把文件夹 srcDir 复制到 destDir, srcDir 为 destDir 的子文件夹
+    cp -r srcDir destDir
+
+    # 把文件夹 srcDir 下的文件及子文件夹复制到 destDir
+    cp -r srcDir/ destDir
+
+    scp 上传和下载文件
+    scp src dst:
+
+    上传文件: scp /Users/Biao/Desktop/a.zip root@192.168.82.130:/root
+    下载文件: scp root@192.168.82.130:/root/a.zip /Users/Biao/Desktop
+    指定端口使用 -P port: scp -P 29443 root@192.168.82.130:/root/a.zip .
+
+    mv 移动目录
+
+    # 移动目录和重命名都是使用命令 mv，区别就是后面的 /
+    mv srcDir destDir/
+
+    Quick Look plugins
+    可以使用 brew cask 安装 Quick Look 插件，具体请参考 https://github.com/sindresorhus/quick-look-plugins。
+
+    brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook suspicious-package quicklookase qlvideo
+
+
+</pre>
+
+        </div>
+    </div>
+
+</div>
+
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+
+    </div><!--/.container-->
+
+
+
+
+    <hr>
+    <footer>
+        <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>
+    </footer>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <!-- Back2top -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.js"></script>
+    <script type="text/javascript">
+    Back2top.init();
+    </script>
+</body>
+
+</html>
