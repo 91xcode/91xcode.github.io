@@ -17,7 +17,7 @@
     <div class="wrapper wp-json" id="pageContainer">
         <div class="panel panel-default" style="margin-bottom: 0px;">
             <div class="panel-heading">
-                <h3 class="panel-title"><span class="x-xdemo" ref="demoLink1" @click="setDemo">示例1：JSON片段</span> <a class="x-xdemo" href="https://i.snssdk.com/slardar/sdk_setting?bid=lark_open_web" target="_blank">示例2：在线JSON</a> <span id="layoutBar"><button id="btnLeftRight" ref="btnLeftRight" class="selected" @click="changeLayout('left-right')">左右布局</button><button id="btnUpDown" ref="btnUpDown" @click="changeLayout('up-down')">上下布局</button></span></h3>
+                <h3 class="panel-title"><span class="x-xdemo" ref="demoLink1" @click="setDemo">示例1：JSON片段</span> <span class="x-xdemo"  @click="setDemo2">示例2：在线JSON</span> <span id="layoutBar"><button id="btnLeftRight" ref="btnLeftRight" class="selected" @click="changeLayout('left-right')">左右布局</button><button id="btnUpDown" ref="btnUpDown" @click="changeLayout('up-down')">上下布局</button></span></h3>
             </div>
         </div>
         <div class="x-toolbar x-inpage"><button id="btnFormat" class="btn btn-primary btn-xs ui-mr-10" @click="format">格式化</button> <button id="btnCompress" class="btn btn-success btn-xs" @click="compress">压缩</button> <span class="x-split">|</span> <input type="checkbox" v-model="jsonLintSwitch" id="jsonLint" @click="lintOn"><label for="jsonLint">JSONLint</label> <span class="x-split">|</span> <input type="checkbox" v-model="autoDecode" id="endecode" @click="autoDecodeFn"><label for="endecode">自动解码</label> <span class="x-split">|</span> <input type="checkbox" v-model="overrideJson" id="jsonOvrd" @click="setCache"><label for="jsonOvrd">节点编辑</label> <span class="x-split">|</span> <span class="x-sort"><span class="x-stitle">排序：</span> <label for="sort_null">默认</label> <input type="radio" name="jsonsort" id="sort_null" value="0" checked="checked" @click="format"> <label for="sort_asc">升序</label> <input type="radio" name="jsonsort" id="sort_asc" value="1" @click="format"> <label for="sort_desc">降序</label> <input type="radio" name="jsonsort" id="sort_desc" value="-1" @click="format"> </span><span class="x-split">|</span> <span class="x-endecode"><button class="xjf-btn xjf-btn-left" @click="uniEncode">Uni编码</button><button class="xjf-btn xjf-btn-mid" @click="uniDecode">Uni解码</button><button class="xjf-btn xjf-btn-right" @click="urlDecode">URL解码</button> </span><span id="optionBar"></span></div>
@@ -40,7 +40,8 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/json-format/vendor/codemirror/placeholder.js?v=1c8b56be"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/json-format/json-lint.js?v=9d40e97d"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/json-format/content-script.js?v=cc14877d"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/json-format/index_more.js?v=065782ae" type="module"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/json-format/index_more_x.js" ></script>
+     <!-- <script type="text/javascript" src="index_more_x.js" ></script> -->
     <div id="pageFooter" class="hide" style="display: none">
     </div>
 </body>
