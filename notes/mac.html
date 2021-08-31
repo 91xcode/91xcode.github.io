@@ -94,138 +94,168 @@
 
         mac 快捷键强制关闭程序 command+option+esc
 
+        mac 打开 Finder，同时按下 command、shift、G  进入任何目录
+
+
+        Mac升级10.15 Catalina，根目录无权限 完美解决办法
+        重启电脑，按住 cmd+R 进入恢复模式
+        关闭SIP： csrutil disable，然后重启
+        重新挂载根目录：sudo mount -uw /，接下来划重点：现在已经可以在根目录创建文件夹，但是，你在根目录创建之后，一旦重启电脑，你创建的目录又是只读权限了。所以，正确的做法是把你需要的目录软链接到根目录, 例如： sudo ln -s /usr/local/Cellar/openresty/nginx/html/data /data
+        重新进入恢复模式，重新打开SIP： csrutil enable
+
+
+        mac  切换版本
+        brew switch formula version
+
+        brew switch python 3.7.4_1
+
 
 
 
     (2) 软件
         brew install iterm2
 
+        brew cask install homebrew/cask-fonts/font-fira-code
 
-    (3) 其他
+
+        brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
+        brew install ripgrep-bin
+
+        brew install archey
+
+        brew install htop
+
+        brew cask install another-redis-desktop-manager
+
+        brew cask install cheatsheet
+
+        brew install wget
+
+        brew install tree
+
+
+    (3) vim配置
+
+        cp /usr/share/vim/vimrc ~/.vimrc
+
+        然后在  set backspace=2下面一行插入如下代码
+
+        syntax on    "自动语法高亮
+        set nocompatible  "去掉有关vi一致性模式，避免以前版本的bug和局限
+        set nu!                                    "显示行号
+        set autoindent   "vim使用自动对齐，也就是把当前行的对齐格式应用到下一行(自动缩进）
+        set smartindent "依据上面的对齐格式，智能的选择对齐方式，对于类似C语言编写上有用
+        set showmatch "设置匹配模式，类似当输入一个左括号时会匹配相应的右括号
+        set hls  " 搜索时高亮显示被找到的文本
+        set incsearch  " 输入搜索内容时就显示搜索结果
+        set shiftwidth=4  " 设定 << 和 >> 命令移动时的宽度为 4
+        set ts=4  "设置tab键为4个空格，
+        set ruler "在编辑过程中，在右下角显示光标位置的状态行
+        set encoding=utf-8
+        set fileencodings=utf-8,chinese,latin-1
+        set cursorline  " 突出显示当前行
         Vi 内全局替换
 
-        # 使用 str2 替换 str1
-        :%s/str1/str2/g
 
-        # 多个匹配，例如把所有的 '\t' 替换为 ','
-        # 一个或多个用 '\+' 而不是 '+'
-        :%s/\t\+/,/g
+    (4) find
 
-        如果要长期有效，可以在 ~/.vimrc 里加上对应的设置，例如
+        指定(排除)目录查找文件
+        find . -path "./document" -prune -o -name "*.txt" -print
 
-        set hlsearch
-        set number
-        colorscheme torte
-        set mouse=a
-        syntax on
-        Bat
-        Bat 是语法高亮的 cat (Clone of cat with syntax highlighting and Git integration), 主页为 https://github.com/sharkdp/bat，可以使用 brew 安装: brew install bat，可以在 .bash_profile 里给其设置别名为 cat 用于替代 cat: alias cat="bat":
 
-        查看端口占用
-        使用 lsof -i:port 查看端口是否被某个进程占用了，例如 lsof -i:8080。
+        查找指定文件 复制到指定目录中
+        find . -name "*.jpeg" -exec mv {} liu \;
 
-        查看使用端口的 PID
-        lsof -n -P | grep :80
+        find . -type f -mtime +10 -name "*.txt" -exec cp {} OLD \;
 
-        使用文件名查找
-        find dir -name filename，例如 find . -name mvc.xml
 
-        使用文件大小查找
-        find . -size +200M
+        Linux 批量删除
+        find  *\(1\).jpg -exec rm -rf {} \;
 
-        使用文件修改时间查找
-        find . -ctime -10s
+        mac xargs与cp结合批量copy文件
+        ls *.dmg |xargs -I {} sudo  cp {} install
 
-        查找后使用 grep
-        find . -name "*.java" | xargs grep -n --color "topic"
+        Mac批量删除进程
+        ps -ef | grep Pandas.py | grep -v 'grep' | awk '{print $2}' | xargs kill -9
 
-        查找后打开文件
-        1
-        find . -name mac-tips.md | xargs open
-        统计多个文件的行数
-        1
-        find . -name "*.java" | xargs wc -l
 
-        awk 输出列
+        行首或行尾插入：
+        sed 'p;s/^.*$/--------/' file
+        awk '{print $0;print "-------"}' file
 
-        // 输出第一列
-        echo 1 2 3 4 5 | awk '{ print $1 }'
 
-        // 输出第三列到最后一列
-        echo 1 2 3 4 5 | awk '{ for (i=3; i<=NF; i++) print $i }'
+        确定文本打印处于start_pattern 和end_pattern之间的文本
+        awk '/GitHub520 Host Start/, /GitHub520 Host End/' /etc/hosts
 
-        // 列求和
-        cat m.txt | awk '{a+=$1} END {print a}'
+        shell 常规
+        #!/usr/bin/env bash
+        PREFIX=$(cd "$(dirname "$0")"; pwd)
+        cd $PREFIX
 
-        sort & uniq
 
-        // 按行排序，并去掉重复行
-        sort a.txt | uniq
+        目录按大小排序
+        du -hd1 | sort -hr
 
-        // 按行排序，并去掉重复行，统计最后的行数
-        sort a.txt | uniq -c
+        软连接
 
-        zip
+        ln -s  myfile mylink      建立myfile 文件的软链接 mylink
 
-        // 把文件夹 H5 和文件 x.html 压缩成 result.zip
-        zip -r result.zip H5 x.html
 
-        unzip
+        删除软链接
 
-        // -d 指定输出目录
-        // 如果没有 -d + targetDir，则解压到当前目录
-        unzip signup.zip [-d targetDir]
+        正确的是：rm -rf hb_link
 
-        tar
+        错误的是：rm -rf hb_link/ 这个会把整个目录都删了
 
-        // 压缩为 archive.tar
-        tar -cf archive.tar file1 file2 file3
+        过滤掉注释的行
+        egrep -v "^#|^$" /var/spool/cron/root
 
-        // 解压 archive.tar
-        tar -xf archive.tar
+    (5) vim操作
 
-        # Create compressed gzip archive.
-        tar -czf file.tar.gz file1 file2
+        取消高亮
+        :nohl
 
-        # Extract .gz archive.
-        tar -xzf file.tar.gz
+        拷贝整个文件 :%y
+        代码格式化：gg=G（即连续按2个g，再按=，再按G）
 
-        查看不同状态的链接数量
+        :set paste
+        进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形
 
-        netstat -n | awk '/^tcp/ {++state[$NF]} END {for(key in state) print key,"\t",state[key]}'
+        文件最末端：G
+        文件最开始端：gg
+        显示行号： :set nu
+        隐藏行号:  :set nu!
+        $  移至当行行尾，
+        0（数字） 移至当行行首，
+        b移动到单词第一个字母 w移动到单词最后一个字母
 
-        输出:
-        SYN_SENT    1
-        CLOSE_WAIT  4
-        ESTABLISHED 7
+    (6) 下载
 
-        转换文件编码
+        下载指定页面的全部资源
+        wget -r -p -np -k -P . https://www.baidufe.com/fehelper/naotu/index.html
 
-        // 单个文件转码
-        iconv -f GB18030 -t UTF8 201607-data.txt > 201607.txt
+        多线程下载
+        axel -n 10 -o /tmp/ https://download3.vmware.com/software/fusion/file/VMware-Fusion-11.5.5-16269456.dmg
 
-        // 查找文件并转码
-        find *.txt -exec sh -c "iconv -f GB18030 -t UTF8 {} > {}.txt" \;
+        指定10个线程，存到/tmp/：如果下载过程中下载中断可以再执行下载命令即可恢复上次的下载进度
 
-        显示目录树
-        使用 brew 安装 tree: brew install tree
-        执行命令 tree 就能显示当前目录的树形结构
+    (7) supervisorctl
 
-        .
-        ├── LICENSE.txt
-        ├── build.gradle
-        └── src
-            ├── main
-            │   ├── java
-            │   ├── resources
-            │   └── webapp
-            │       └── WEB-INF
-            │           └── web.xml
-            └── test
-                ├── java
-                └── resources
+        supervisorctl stop program_name  # 停止某一个进程，program_name 为 [program:x] 里的 x
+        supervisorctl start program_name  # 启动某个进程
+        supervisorctl restart program_name  # 重启某个进程
+        supervisorctl stop groupworker:  # 结束所有属于名为 groupworker 这个分组的进程 (start，restart 同理)
+        supervisorctl stop groupworker:name1  # 结束 groupworker:name1 这个进程 (start，restart 同理)
+        supervisorctl stop all  # 停止全部进程，注：start、restartUnlinking stale socket /tmp/supervisor.sock
+        、stop 都不会载入最新的配置文件
+        supervisorctl reload  # 载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程
+        supervisorctl update  # 根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启
 
-        9 directories, 3 files
+    (0) 其他
+
+        file_put_contents('/data/appdata/cheetahgo_adv_log/ads.txt', 'data'.$data.PHP_EOL, FILE_APPEND);
+
+        file_put_contents('/data/appdata/cheetahgo_adv_log/ads.txt', "Arr:".var_export($contentArr, TRUE), FILE_APPEND);
 
         计算文件的 MD5
 
@@ -242,40 +272,54 @@
         echo -n 'Welcome' | md5
         echo -n "Welcome" | md5
 
-    递归创建目录
-    # p 是 plus 之意
-    mkdir -p a/b/c
+        查看文件夹大小
 
-    Chrome 清除缓存插件
-    Chrome 应用商店里搜索 clear Cache，找到 clear Cache, clean cache, 清理缓存 并安装
+        du -sh
 
-    查看文件夹大小
+        cp 复制文件夹
+        # 把文件夹 srcDir 复制到 destDir, srcDir 为 destDir 的子文件夹
+        cp -r srcDir destDir
 
-    du -sh
+        # 把文件夹 srcDir 下的文件及子文件夹复制到 destDir
+        cp -r srcDir/ destDir
 
-    cp 复制文件夹
-    # 把文件夹 srcDir 复制到 destDir, srcDir 为 destDir 的子文件夹
-    cp -r srcDir destDir
+        scp 上传和下载文件
+        scp src dst:
 
-    # 把文件夹 srcDir 下的文件及子文件夹复制到 destDir
-    cp -r srcDir/ destDir
+        上传文件: scp /Users/Biao/Desktop/a.zip root@192.168.82.130:/root
+        下载文件: scp root@192.168.82.130:/root/a.zip /Users/Biao/Desktop
+        指定端口使用 -P port: scp -P 29443 root@192.168.82.130:/root/a.zip .
 
-    scp 上传和下载文件
-    scp src dst:
+        mv 移动目录
 
-    上传文件: scp /Users/Biao/Desktop/a.zip root@192.168.82.130:/root
-    下载文件: scp root@192.168.82.130:/root/a.zip /Users/Biao/Desktop
-    指定端口使用 -P port: scp -P 29443 root@192.168.82.130:/root/a.zip .
+        # 移动目录和重命名都是使用命令 mv，区别就是后面的 /
+        mv srcDir destDir/
 
-    mv 移动目录
+        Quick Look plugins
+        可以使用 brew cask 安装 Quick Look 插件，具体请参考 https://github.com/sindresorhus/quick-look-plugins。
 
-    # 移动目录和重命名都是使用命令 mv，区别就是后面的 /
-    mv srcDir destDir/
+        brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook suspicious-package quicklookase qlvideo
 
-    Quick Look plugins
-    可以使用 brew cask 安装 Quick Look 插件，具体请参考 https://github.com/sindresorhus/quick-look-plugins。
 
-    brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook suspicious-package quicklookase qlvideo
+        直接关闭brew执行命令时的自动更新
+
+        # 1. 编辑配置文件
+        vim ~/.bash_profile
+
+        # 2. 文件内新增一行
+        export HOMEBREW_NO_AUTO_UPDATE=true
+
+        # 3. 重新加载配置文件
+        source ~/.bash_profile
+
+
+        1、贷款公式。
+
+        按年息走：实际年利率=名义年利率
+
+        按月息走：实际年利率=月息*12*2.1
+
+        按日息走：实际年利率=日息*360
 
 
 </pre>
@@ -286,15 +330,12 @@
 </div>
 
 
-      </div><!--/row-->
+      </div>
 
       <hr>
 
-      <footer>
-        <p>&copy; 2016 Company, Inc.</p>
-      </footer>
 
-    </div><!--/.container-->
+    </div>
 
 
 
