@@ -8,7 +8,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>rg</title>
+    <title>mac记录</title>
     <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -154,7 +154,7 @@
         set encoding=utf-8
         set fileencodings=utf-8,chinese,latin-1
         set cursorline  " 突出显示当前行
-        Vi 内全局替换
+        
 
 
     (4) find
@@ -209,6 +209,9 @@
 
         过滤掉注释的行
         egrep -v "^#|^$" /var/spool/cron/root
+
+        去掉文件中空行
+        awk NF  aaaa.txt
 
     (5) vim操作
 
