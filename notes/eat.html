@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>吃啥</title>
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
+</head>
+
+<style type="text/css">
+    
+        .li-item {
+            border: 1px solid #ececec;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .layui-layer-demo {
+            top: 30% !important;
+        }
+
+
+        
+</style>
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://91xcode.github.io">导航</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://github.com/91xcode/91xcode.github.io" target="_blank"><svg height="20" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></li>
+                    <li><a href="/about/index.html">关于</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-12 ">
+                        <div class="container">
+                            <h3>今天吃什么,中午吃什么</h3>
+                            <!--                         <ul id="myTab" class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#home" data-toggle="tab">今天吃什么</a>
+                            </li>
+                        </ul> -->
+                            <hr>
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane fade in active" id="home">
+                                    <div class="row top10">
+                                        <div style="height: 500px;" class="col-lg-5 col-xs-12 top10" id="allmap"></div>
+                                        <div class="col-lg-7 col-xs-12 top10">
+                                            <div class="col-lg-12 col-xs-12 top10  form-horizontal">
+                                                <label class="col-lg-2 col-xs-12 top10 control-label">类型</label>
+                                                <div class="col-lg-2 col-xs-12 top10">
+                                                    <select id="type" class="form-control">
+                                                        <option value="中餐">中餐</option>
+                                                        <option value="美食">美食</option>
+                                                        <option value="快餐">快餐</option>
+                                                        <option value="火锅">火锅</option>
+                                                        <option value="咖啡厅">咖啡厅</option>
+                                                        <option value="肯德基">肯德基</option>
+                                                        <option value="自助餐">自助餐</option>
+                                                        <option value="小吃">小吃</option>
+                                                        <option value="蛋糕房">蛋糕房</option>
+                                                        <option value="西餐">西餐</option>
+                                                        <option value="川菜">川菜</option>
+                                                        <option value="麦当劳">麦当劳</option>
+                                                        <option value="海鲜">海鲜</option>
+                                                        <option value="日本料理">日本料理</option>
+                                                        <option value="湘菜">湘菜</option>
+                                                        <option value="韩国料理">韩国料理</option>
+                                                        <option value="麻辣烫">麻辣烫</option>
+                                                        <option value="茶餐厅">茶餐厅</option>
+                                                        <option value="甜品店">甜品店</option>
+                                                        <option value="奶茶">奶茶</option>
+                                                        <option value="冷饮店">冷饮店</option>
+                                                        <option value="必胜客">必胜客</option>
+                                                        <option value="早餐">早餐</option>
+                                                        <option value="晚餐">晚餐</option>
+                                                        <option value="下午茶">下午茶</option>
+                                                    </select>
+                                                </div>
+                                                <label class="col-lg-2 col-xs-12 top10 control-label">范围M</label>
+                                                <div class="col-lg-2 col-xs-12 top10">
+                                                    <input type="text" value="1000" id="k" class="form-control">
+                                                </div>
+                                                <div class="col-lg-1 col-xs-12 top10">
+                                                    <input type="button" class="btn btn-success" value="筛选" id="get">
+                                                </div>
+                                                <div class="col-lg-1 col-xs-12 top10">
+                                                    <input type="button" class="btn btn-primary" value="随便吃" id="rand">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-xs-12 top10">
+                                                <h2>周边</h2>
+                                                <div id="result"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <hr>
+    <footer>
+        <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>
+    </footer>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=B13d386658b7f5e9c2e2294e0314afbe"></script>
+    <script>
+    var restaurantList = [];
+    // 百度地图API功能
+    var map = new BMap.Map("allmap"); // 创建Map实例
+    var mPoint = new BMap.Point(116.404, 39.915);
+    map.enableScrollWheelZoom();
+    map.centerAndZoom(mPoint, 15);
+
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+
+            get(r.point.lng, r.point.lat);
+
+            layer.msg('已切换:' + r.address['city']);
+            console.log(r);
+            // layer.msg('您的位置：' + r.point.lng + ',' + r.point.lat);
+        } else {
+            layer.msg('failed' + this.getStatus());
+        }
+    }, { enableHighAccuracy: true })
+
+
+    //单击获取点击的经纬度
+    map.addEventListener("click", function(e) {
+        get(e.point.lng, e.point.lat)
+    });
+
+    function get(lng, lat) {
+        var type = $('#type').val(),
+            k = $('#k').val();
+
+        k = parseInt(k);
+
+        mPoint = new BMap.Point(lng, lat);
+        map.enableScrollWheelZoom();
+
+        map.clearOverlays(); //清理
+        var circle = new BMap.Circle(mPoint, k, { fillColor: "blue", strokeWeight: 1, fillOpacity: 0.3, strokeOpacity: 0.3 });
+        map.addOverlay(circle);
+
+        var local = new BMap.LocalSearch(map, {
+            renderOptions: { map: map, autoViewport: false },
+            onSearchComplete: function(results) {
+                // 判断状态是否正确
+                if (local.getStatus() == BMAP_STATUS_SUCCESS) {
+                    var s = [],
+                        html = "";
+                    restaurantList = [];
+                    for (var i = 0; i < results.getCurrentNumPois(); i++) {
+                        restaurantList.push({ 'title': results.getPoi(i).title, 'lng': results.getPoi(i).point['lng'], 'lat': results.getPoi(i).point['lat'], 'result': results.getPoi(i) });
+                        // s.push(results.getPoi(i).title + ", " + results.getPoi(i).address);
+                        html += "<div class='col-lg-12 col-xs-12 top10 li-item' title='" + results.getPoi(i).address + "'>" + results.getPoi(i).title + "</div>";
+                    }
+                    // document.getElementById("result").innerHTML = s.join("<br/>");
+                    $('#result').html(html);
+                }
+            },
+        });
+        local.searchNearby(type, mPoint, k);
+    }
+
+    $(function() {
+
+        $('#get').click(function() {
+            get(mPoint.lng, mPoint.lat);
+        });
+
+
+        $('#rand').click(function() {
+            var item = restaurantList[Math.floor(Math.random() * restaurantList.length)];
+            console.log(item);
+            var w = "420px",
+                h = "240px";
+            // if (isMobile) {
+            //     w = "300px";
+            //     h = "200px";
+            // }
+            layer.open({
+                type: 1,
+                //skin: 'layui-layer-demo', //样式类名
+                closeBtn: 0, //不显示关闭按钮
+                anim: 2,
+                shadeClose: true, //开启遮罩关闭
+                title: '吃这个吧',
+                area: [w, h], //宽高
+                content: '<div class="col-lg-12 col-xs-12 top10" style="text-align: center;"><h2><a href="' + item.result['detailUrl'] + '" target="_blank">' + item.title + '</a></h2></div><div class="col-lg-12 col-xs-12 top10">电话:' + item.result['phoneNumber'] + '</div><div class="col-lg-12 col-xs-12 top10">地址:<a href="' + item.result['url'] + '" target="_blank">' + item.result['address'] + '</a></div><div class="col-lg-12 col-xs-12 top10">以上仅供参考</div>'
+            });
+
+        });
+    });
+    </script>
+    <!-- Back2top -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.js"></script>
+    <script type="text/javascript">
+    Back2top.init();
+    </script>
+</body>
+
+</html>
