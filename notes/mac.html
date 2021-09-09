@@ -112,7 +112,8 @@
 
 
 
-    (2) 软件
+    (2) Mac 常用软件推荐
+
         brew install iterm2
 
         brew cask install homebrew/cask-fonts/font-fira-code
@@ -136,8 +137,17 @@
         神器 tldr
         brew tap tldr-pages/tldr && brew install tldr
 
+        压缩 解压
+        brew install Keka
 
-    (3) vim配置
+    (3) Chrome插件推荐
+
+    (4) Mac终端替代工具iTerm2
+
+
+    (5) mac vim
+
+        vim配置
 
         cp /usr/share/vim/vimrc ~/.vimrc
 
@@ -157,10 +167,30 @@
         set encoding=utf-8
         set fileencodings=utf-8,chinese,latin-1
         set cursorline  " 突出显示当前行
+
+
+        vim操作
+
+        取消高亮
+        :nohl
+
+        拷贝整个文件 :%y
+        代码格式化：gg=G（即连续按2个g，再按=，再按G）
+
+        :set paste
+        进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形
+
+        文件最末端：G
+        文件最开始端：gg
+        显示行号： :set nu
+        隐藏行号:  :set nu!
+        $  移至当行行尾，
+        0（数字） 移至当行行首，
+        b移动到单词第一个字母 w移动到单词最后一个字母
         
 
 
-    (4) find
+    (6) find
 
         指定(排除)目录查找文件
         find . -path "./document" -prune -o -name "*.txt" -print
@@ -218,26 +248,7 @@
         去掉文件中空行
         awk NF  aaaa.txt
 
-    (5) vim操作
-
-        取消高亮
-        :nohl
-
-        拷贝整个文件 :%y
-        代码格式化：gg=G（即连续按2个g，再按=，再按G）
-
-        :set paste
-        进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形
-
-        文件最末端：G
-        文件最开始端：gg
-        显示行号： :set nu
-        隐藏行号:  :set nu!
-        $  移至当行行尾，
-        0（数字） 移至当行行首，
-        b移动到单词第一个字母 w移动到单词最后一个字母
-
-    (6) 下载
+    (7) 下载
 
         下载指定页面的全部资源
         wget -r -p -np -k -P . https://www.baidufe.com/fehelper/naotu/index.html
@@ -247,7 +258,7 @@
 
         指定10个线程，存到/tmp/：如果下载过程中下载中断可以再执行下载命令即可恢复上次的下载进度
 
-    (7) supervisorctl
+    (8) supervisorctl
 
         supervisorctl stop program_name  # 停止某一个进程，program_name 为 [program:x] 里的 x
         supervisorctl start program_name  # 启动某个进程
@@ -258,6 +269,9 @@
         、stop 都不会载入最新的配置文件
         supervisorctl reload  # 载入最新的配置文件，停止原有进程并按新的配置启动、管理所有进程
         supervisorctl update  # 根据最新的配置文件，启动新配置或有改动的进程，配置没有改动的进程不会受影响而重启
+
+    (9) Markdown 语法快速入门
+
 
     (0) 其他
 
@@ -320,6 +334,7 @@
         # 3. 重新加载配置文件
         source ~/.bash_profile
 
+    (x) 生活
 
         1、贷款公式。
 
