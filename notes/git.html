@@ -8,7 +8,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>导航</title>
+    <title>Git记录</title>
     <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/css/gray.css" />
     <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
@@ -44,7 +44,7 @@
         <div class="row row-offcanvas row-offcanvas-right">
             <div class="col-xs-12 col-sm-12">
                 <div class="jumbotron">
-                    <h3 align="center">git记录</h3>
+                    <h3 align="center">Git记录</h3>
                     <pre>
     
 
@@ -119,6 +119,23 @@
             这个时候我们只需要执行git remote prune origin清理一下就可以了
 
             然后再次执行git branch -a就看不到啦
+
+    9.git-代码冲突常见解决方法
+
+        1) 在合并过程中不能做部分提交
+
+        git commit -im "commit message" xx
+
+        2) 某个文件恢复到指定分支的版本
+
+        git checkout branch_name -- filename
+
+        3) 比较2个分支的指定文件
+
+        git diff branch_name1 branch_name2 具体文件路径
+
+
+
 
 
 
