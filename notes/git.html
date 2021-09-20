@@ -134,7 +134,12 @@
 
         git diff branch_name1 branch_name2 具体文件路径
 
+    10. git 文件太大 克隆失败的解决方法
+        当使用git clone 产生这个问题的时候，在第一次克隆的时候，把克隆深度设置为1，然后再fetch
 
+        git clone  https://example.com/example/example.git --depth  1
+        cd example
+        git fetch --unshallow
 
 
 
