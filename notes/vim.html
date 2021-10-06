@@ -8,25 +8,12 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>导航</title>
+    <title>Vim</title>
     <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
-    <style>
-        table tr td a {
-            color: #6F5499;
-        }
-        .text-white {
-            color: #fff;
-        }
-        .octicon {
-            display: inline-block;
-            fill: currentColor;
-            vertical-align: text-top;
-        }
-    </style>
 </head>
 
 <body>
@@ -43,105 +30,124 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="https://github.com/91xcode/91xcode.github.io" target="_blank"><svg height="20" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a></li>
+                    <li><a href="https://github.com/91xcode/91xcode.github.io" target="_blank"><svg height="20" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                            </svg></a></li>
                     <li><a href="/about/index.html">关于</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-12 ">
+                        <pre>
+
+                        ##############################################################################
+                        # VIM CHEATSHEET (中文速查表)   
+                        # Version: 47, Last Modified:
+                        # 
+                        ##############################################################################
 
 
 
- <div class="container">
+                        ##############################################################################
+                        # 常用操作
+                        ##############################################################################
 
-      <div class="row row-offcanvas row-offcanvas-right">
+                        取消高亮
+                        :nohl
 
+                        拷贝整个文件 :%y
+                        代码格式化：gg=G（即连续按2个g，再按=，再按G）
 
-<div class="col-xs-12 col-sm-12">
-    <div class="row">
-        <div class="col-xs-12 col-lg-12 ">
-                <h2>vim记录</h2>
-<pre class="text-justify">
-    
+                        :set paste
+                        进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形
 
+                        文件最末端：G
+                        文件最开始端：gg
+                        显示行号： :set nu
+                        隐藏行号:  :set nu!
+                        $  移至当行行尾，
+                        0（数字） 移至当行行首，
+                        b移动到单词第一个字母 w移动到单词最后一个字母
 
-    (1) vim操作常规
-
-
-    背景：vim操作
-
-    取消高亮
-    :nohl
-
-    拷贝整个文件 :%y
-    代码格式化：gg=G（即连续按2个g，再按=，再按G）
-
-    :set paste
-    进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形
-
-    文件最末端：G
-    文件最开始端：gg
-    显示行号： :set nu
-    隐藏行号:  :set nu!
-    $  移至当行行尾，
-    0（数字） 移至当行行首，
-    b移动到单词第一个字母 w移动到单词最后一个字母
-
-    /xxx(?xxx)   
-    表示在整篇文档中搜索匹配xxx的字符串, / 表示向下查找, ? 表示向上查找其中xxx可以是正规表达式,关于正规式就不多说了.
-
-
-
-
-    - 搜索高亮: :set hlsearch
-    - 显示行号: :set number
-    - 可使用鼠标点击: :set mouse=a
-    - 搜索: /+keyword
-    - 大小写不敏感搜索:
-        - /+keyword\c
-        - :set ic，然后 /+keyword
-    - 删除当前行: dd
-    - 删除光标后的字符: x
-    - 复制当前行: yy
-    - 粘贴复制的行: p
-    - 回到第一行: gg
-    - 跳到最后行: GG
-    - 回到行首: 0
-    - 跳到行尾: $
-    - 光标处插入: i
-    - 光标后插入: a
-    - 插入新一行: o
-    - 撤销操作: u
-    - 光标移到屏幕顶部: H
-    - 光标移到屏幕中部: M
-    - 光标移到屏幕底部: L
-    - 单词出现的次数: :%s/pattern//gn
-    - 上一页: ctrl+b
-    - 下一页: ctrl+f
+                        /xxx(?xxx)   
+                        表示在整篇文档中搜索匹配xxx的字符串, / 表示向下查找, ? 表示向上查找其中xxx可以是正规表达式,关于正规式就不多说了.
 
 
 
 
+                        - 搜索高亮: :set hlsearch
+                        - 显示行号: :set number
+                        - 可使用鼠标点击: :set mouse=a
+                        - 搜索: /+keyword
+                        - 大小写不敏感搜索:
+                            - /+keyword\c
+                            - :set ic，然后 /+keyword
+                        - 删除当前行: dd
+                        - 删除光标后的字符: x
+                        - 复制当前行: yy
+                        - 粘贴复制的行: p
+                        - 回到第一行: gg
+                        - 跳到最后行: GG
+                        - 回到行首: 0
+                        - 跳到行尾: $
+                        - 光标处插入: i
+                        - 光标后插入: a
+                        - 插入新一行: o
+                        - 撤销操作: u
+                        - 光标移到屏幕顶部: H
+                        - 光标移到屏幕中部: M
+                        - 光标移到屏幕底部: L
+                        - 单词出现的次数: :%s/pattern//gn
+                        - 上一页: ctrl+b
+                        - 下一页: ctrl+f
 
-</pre>
 
+
+                        ##############################################################################
+                        # 常用设置
+                        ##############################################################################
+
+                        :set nocompatible   设置不兼容原始 vi 模式（必须设置在最开头）
+                        :set bs=?           设置BS键模式，现代编辑器为 :set bs=eol,start,indent
+                        :set sw=4           设置缩进宽度为 4
+                        :set ts=4           设置制表符宽度为 4
+                        :set noet           设置不展开 tab 成空格
+                        :set et             设置展开 tab 成空格
+                        :set winaltkeys=no  设置 GVim 下正常捕获 ALT 键
+                        :set nowrap         关闭自动换行
+                        :set ttimeout       允许终端按键检测超时（终端下功能键为一串ESC开头的扫描码）
+                        :set ttm=100        设置终端按键检测超时为100毫秒
+                        :set term=?         设置终端类型，比如常见的 xterm
+                        :set ignorecase     设置搜索忽略大小写(可缩写为 :set ic)
+                        :set noignorecase   设置搜索不忽略大小写(可缩写为 :set noic)
+                        :set smartcase      智能大小写，默认忽略大小写，除非搜索内容里包含大写字母
+                        :set list           设置显示制表符和换行符
+                        :set number         设置显示行号，禁止显示行号可以用 :set nonumber
+                        :set relativenumber 设置显示相对行号（其他行与当前行的距离）
+                        :set paste          进入粘贴模式（粘贴时禁用缩进等影响格式的东西）
+                        :set nopaste        结束粘贴模式
+                        :set spell          允许拼写检查
+                        :set hlsearch       设置高亮查找
+                        :set ruler          总是显示光标位置
+                        :set incsearch      查找输入时动态增量显示查找结果
+                        :set insertmode     Vim 始终处于插入模式下，使用 ctrl-o 临时执行命令
+                        :set all            列出所有选项设置情况
+                        :syntax on          允许语法高亮
+                        :syntax off         禁止语法高亮
+
+
+                </pre>
+                    </div>
+                </div>
+            </div>
         </div>
+        <hr>
     </div>
-
-</div>
-
-
-      </div>
-
-      <hr>
-
-
-
-    </div>
-
-
-
-
     <hr>
     <footer>
         <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>shell</title>
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://91xcode.github.io">导航</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://github.com/91xcode/91xcode.github.io" target="_blank"><svg height="20" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                            </svg></a></li>
+                    <li><a href="/about/index.html">关于</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-12 ">
+                        <pre>
+
+
+
+
+                        ##############################################################################
+                        # Find CHEATSHEET (中文速查表)  -  
+                        # Version: 47, Last Modified:
+                        ##############################################################################
+
+
+
+
+
+
+                        ##############################################################################
+                        # 常规操作
+                        ##############################################################################
+
+                        1.awk 文本转换成数组
+
+                            vim sk.txt
+
+                            zhangsan    80
+                            lisi        81.5
+                            wangwu      93
+                            zhangsan    85
+
+
+                            awk -F: '{print $NF}'  sk.txt
+                            cat sk.txt |awk -F" " '{for(i=1;i<=2;i++){print "\""$1"\"=>" "\""$2"\","}}' 
+
+
+                            vim 1.txt
+
+                            zhangsan    80
+                            lisi        81.5
+                            wangwu      93
+                            zhangsan    85
+                            lisi        88
+                            wangwu      97
+                            zhangsan    90
+                            lisi        92
+                            wangwu      88
+
+
+                            要求输出格式：（average：平均成绩，total：总成绩）
+
+                            name#######average#######total
+                            zhangsan     xxx          xxx
+                            lisi         xxx          xxx
+                            wangwu       xxx          xxx
+
+
+                            #!/bin/bash 
+
+                            echo -e "name\taverage\ttotal"
+                            for i in  `awk '{print $1}' 1.txt|sort |uniq`
+                            do
+                            a=`grep $i 1.txt|awk '{print $NF}'|awk '{tot +=$1};END{print tot}'`
+                            b=`grep $i 1.txt|awk '{print $NF}'|awk '{tot +=$1};END{print tot/2}'`
+                            echo -e "$i\t$b\t$a"
+                            done
+
+                        2.目录按大小排序
+                            du -hd1 | sort -hr
+
+                        3.批量删除进程
+                            ps -ef | grep  php-fpm| grep -v grep | awk '{print $2}'| xargs kill -9
+
+                        4.vim文件开头注释和取消注释
+                            添加注释
+                            :7,15s/^/#/g
+                            取消注释
+                            :7,15s/^#//g
+
+                        5.查看去掉注释的内容
+
+                            查看文件排除以#开关和空白行，适合查看配置文件。
+                            egrep -v "^#|^$"  filename
+                            sed '/#.*$/d; /^ *$/d'
+
+                            符号注释：-v排除；^#：表示以#符号开头； ^$表示空行
+
+                        6.# 定时清理
+                            30 1 * * * /bin/find /data/filecache/ -type f -mtime +365 -exec rm -f {} \; >/dev/null 2>&1
+
+                            -mtime＋1 表示文件修改时间为大于1天的文件，即距离当前时间2天（48小时）之外的文件
+                            这里-mtime +1 为什么是48小时以外，而不是24小时以外呢，因为n只能是整数，比1大的下一个整数是2，所以是48小时以外的
+
+                        7.查看所有用户的crontab
+                            for u in `cat /etc/passwd | cut -d":" -f1`;do crontab -l -u $u;done|grep reimport
+
+                        8.mac xargs与cp结合批量copy文件
+
+                            ls *.dmg |xargs -I {} sudo  cp {} install
+
+                            只显示目录
+                            ls -F | grep '/$'  或者 ls -al | grep "^d"
+
+                            只显示文件
+
+                            ls -al | grep "^-"
+
+                        9.在每行记录的开头加上当前路径
+                            ls | sed "s:^:`pwd`/:"
+
+
+                        9.分别单独压缩当前目录中的子目录，并以子目录的名字命名其压缩文件
+                            for f in ./*;do if [ -d $f ]; then tar -zcvf $f.tgz $f; fi; done
+
+                        10.设置ls -l命令中显示的日期格式
+                            ls -lh --time-style '+%Y-%m-%d %H:%M:%S'
+
+                        11.处理json
+                            echo '{"name": "lucy", "age": "18"}' | python -m json.tool
+
+                            python -mjson.tool somejson.txt
+
+                            curl xxx | python -m json.tool
+                        12.测试邮件网关
+                            mail -s "Subject" xx@ab.com <<< 'Message'
+
+                        脚本命令
+                        - 获取脚本文件所在目录
+                            script_path=$(cd `dirname $0`; pwd)
+                        - 获取脚本文件的上级目录
+                            script_path=$(cd `dirname $0`; pwd)
+                            root_path=$(cd `dirname "$script_path"`; pwd)
+                        - 格式化当前时间
+                            datetime=$(date +"%Y-%m-%d %H:%M:%S")
+                        - 用ps命令
+                            ps aux | grep <pid>
+                            USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+                            jxcdn     1954  0.0  0.1 360544 29376 ?        Ssl  Apr13   7:56 memcached -m 128 -p 11211
+
+                            其中RSS列表示实际使用内存(单位: KB)。可以看出，与/proc/[pid]/status的值是一致的。
+                        - 将命令的执行结果赋值给变量：
+                            ar='pwd'
+                            # 或者
+                            ar=$(pwd)
+
+                            echo $ar
+
+                        - 调试 bash 脚本的技巧#
+                            加 -x 参数运行 bash 脚本时，会显示执行的语句
+                            # 也可以在 demo.sh 中加上 set -x
+                            bash -x demo.sh
+
+
+                        - 时间范围： 按照时间范围搜索日志
+                            awk '$2>"17:30:00" && $2<"18:00:00"' trace.log
+                            日志形式如下, $2代表第二列即11:44:58, awk需要指定列
+
+                            11-21 16:44:58 /user/info/
+
+                </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <hr>
+    <footer>
+        <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>
+    </footer>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <!-- Back2top -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.js"></script>
+    <script type="text/javascript">
+    Back2top.init();
+    </script>
+</body>
+
+</html>
