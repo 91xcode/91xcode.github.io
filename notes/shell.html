@@ -166,26 +166,97 @@
                         12.测试邮件网关
                             mail -s "Subject" xx@ab.com <<< 'Message'
 
-                        脚本命令
+                        
+
+                        ##############################################################################
+                        # 脚本命令
+                        ##############################################################################
+
                         - 获取脚本文件所在目录
                             script_path=$(cd `dirname $0`; pwd)
+
                         - 获取脚本文件的上级目录
                             script_path=$(cd `dirname $0`; pwd)
                             root_path=$(cd `dirname "$script_path"`; pwd)
+
                         - 格式化当前时间
                             datetime=$(date +"%Y-%m-%d %H:%M:%S")
+
                         - 用ps命令
                             ps aux | grep <pid>
                             USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
                             jxcdn     1954  0.0  0.1 360544 29376 ?        Ssl  Apr13   7:56 memcached -m 128 -p 11211
 
                             其中RSS列表示实际使用内存(单位: KB)。可以看出，与/proc/[pid]/status的值是一致的。
+
+                            
                         - 将命令的执行结果赋值给变量：
                             ar='pwd'
                             # 或者
                             ar=$(pwd)
 
                             echo $ar
+
+
+                        -  print0 使用”作为文件的定界符，这样就可以搜索包含空格的文件；
+
+                             find . -name "*.jpeg" -exec mv {} liu \;
+
+                            查找当前目录或者子目录下所有.txt文件，但是跳过子目录sk
+
+                            find . -path "./sk" -prune -o -name "*.txt" -print
+
+                            查找指定文件 复制到指定目录中
+                            find . -name "*.jpeg" -exec mv {} liu \;
+
+                            find . -type f -mtime +10 -name "*.txt" -exec cp {} OLD \;
+
+
+                            Linux 批量删除
+                            find  *\(1\).jpg -exec rm -rf {} \;
+
+                            mac xargs与cp结合批量copy文件
+                            ls *.dmg |xargs -I {} sudo  cp {} install
+
+                            Mac批量删除进程
+                            ps -ef | grep Pandas.py | grep -v 'grep' | awk '{print $2}' | xargs kill -9
+
+
+                            行首或行尾插入：
+                            sed 'p;s/^.*$/--------/' file
+                            awk '{print $0;print "-------"}' file
+
+
+                            确定文本打印处于start_pattern 和end_pattern之间的文本
+                            awk '/GitHub520 Host Start/, /GitHub520 Host End/' /etc/hosts
+
+                            shell 常规
+                            #!/usr/bin/env bash
+                            PREFIX=$(cd "$(dirname "$0")"; pwd)
+                            cd $PREFIX
+
+
+                            目录按大小排序
+                            du -hd1 | sort -hr
+
+                            软连接
+
+                            ln -s  myfile mylink      建立myfile 文件的软链接 mylink
+
+                            ln -s /path/to/file_or_directory path/to/symlink
+
+
+                            删除软链接
+
+                            正确的是：rm -rf hb_link
+
+                            错误的是：rm -rf hb_link/ 这个会把整个目录都删了
+
+                            过滤掉注释的行
+                            egrep -v "^#|^$" /var/spool/cron/root
+
+                            去掉文件中空行
+                            awk NF  aaaa.txt
 
                         - 调试 bash 脚本的技巧#
                             加 -x 参数运行 bash 脚本时，会显示执行的语句
@@ -198,6 +269,294 @@
                             日志形式如下, $2代表第二列即11:44:58, awk需要指定列
 
                             11-21 16:44:58 /user/info/
+
+
+                        -  备份文件
+                            cp ~/file.txt{,.bak}
+
+                        - shell 调试开关
+                            使用 sh 执行脚本的时候加上 -x 参数：
+
+                            sh -x xxx.sh
+
+                            或者在脚本内部用 set 命令打开/关闭调试开关:
+
+                            #!/bin/bash
+
+                            set -x
+                            # your codes
+                            set +x
+
+                        - 想知道home目录下各个目录占用情况
+                            du -h –-max-depth=1 /home(或者 du -h -d 1)
+                            18G    /home/hyb
+                            16K    /home/lost+found
+                            18G    /home/
+
+
+                        - vim ~/.zsh 复制提示覆盖 和 history展示时间 source ~/.zsh
+                            alias cp="cp -i"
+                            HIST_STAMPS="yyyy-mm-dd"
+
+
+                        -   其他
+                            # 快速创建项目目录
+                            mkdir -p work/{project1,project2}/{src,bin,bak}
+
+                            # 按日期范围查找文件
+                            find . -type f -newermt "2010-01-01" ! -newermt "2010-06-01"
+
+                            # 显示当前正在使用网络的进程
+                            lsof -P -i -n | cut -f 1 -d " "| uniq | tail -n +2
+
+                            # Vim 中保存一个没有权限的文件
+                            :w !sudo tee > /dev/null %
+
+                            # 在 .bashrc / .bash_profile 中加载另外一个文件（比如你保存在 github 上的配置）
+                            source ~/github/profiles/my_bash_init.sh
+
+
+                            若要在复制文件时获取当前进度，可使用 pv，pycp，progress，rsync --progress。若所执行的复制为block块拷贝，可以使用 dd status=progress。
+
+
+                        -  Mac下手动创建指定容量测试文件（空白文件） (https://curder.gitbooks.io/blog/content/mac-osx/fast-creation-of-large-files-under-mac-osx.html)
+
+                            我们可以使用终端创建一些指定大小的文件
+
+                            mkfile -n size[b|k|m|g] 文件名
+
+                            例如：创建一个1G的文件Demo.pdf
+                            mkfile -n 1g ~/Desktop/Demo.pdf
+                            但是这个命令似乎在Mac下是OK的
+                            在Linux和Unix下面的话 我们可以使用dd
+
+                            创建一个1M大小的文件
+                            dd if=/dev/zero of=file.txt bs=1024 count=1
+                            创建一个100M大小的文件
+                            dd if=/dev/zero of=file.txt bs=1024 count=0 seek=$[1024 * 100]
+                            创建一个1G大小的文件
+                            dd if=/dev/zero of=file.txt bs=1024 count=0 seek=$[1024 * 1024]
+
+
+                         -  当你需要对文本文件做集合交、并、差运算时，sort 和 uniq 会是你的好帮手。具体例子请参照代码后面的，此处假设 a 与 b 是两内容不同的文件。这种方式效率很高，并且在小文件和上 G 的文件上都能运用（注意尽管在 /tmp 在一个小的根分区上时你可能需要 -T 参数，但是实际上 sort 并不被内存大小约束），参阅前文中关于 LC_ALL 和 sort 的 -u 参数的部分。
+
+                              sort a b | uniq > c   # c 是 a 并 b
+                              sort a b | uniq -d > c   # c 是 a 交 b
+                              sort a b b | uniq -u > c   # c 是 a - b
+
+                            使用 grep . *（每行都会附上文件名）或者 head -100 *（每个文件有一个标题）来阅读检查目录下所有文件的内容。这在检查一个充满配置文件的目录（如 /sys、/proc、/etc）时特别好用。
+
+                            计算文本文件第三列中所有数的和（可能比同等作用的 Python 代码快三倍且代码量少三倍）：
+
+                              awk '{ x += $3 } END { print x }' myfile
+
+                            如果你想在文件树上查看大小/日期，这可能看起来像递归版的 ls -l 但比 ls -lR 更易于理解：
+
+                              find . -type f -ls
+
+
+
+                        ##############################################################################
+                        # 冷门但有用
+                        ##############################################################################
+
+
+                        expr：计算表达式或正则匹配
+
+                        m4：简单的宏处理器
+
+                        yes：多次打印字符串
+
+                        cal：漂亮的日历
+
+                        env：执行一个命令（脚本文件中很有用）
+
+                        printenv：打印环境变量（调试时或在写脚本文件时很有用）
+
+                        look：查找以特定字符串开头的单词或行
+
+                        cut，paste 和 join：数据修改
+
+                        fmt：格式化文本段落
+
+                        pr：将文本格式化成页／列形式
+
+                        fold：包裹文本中的几行
+
+                        column：将文本格式化成多个对齐、定宽的列或表格
+
+                        expand 和 unexpand：制表符与空格之间转换
+
+                        nl：添加行号
+
+                        seq：打印数字
+
+                        bc：计算器
+
+                        factor：分解因数
+
+                        gpg：加密并签名文件
+
+                        toe：terminfo 入口列表
+
+                        nc：网络调试及数据传输
+
+                        socat：套接字代理，与 netcat 类似
+
+                        slurm：网络流量可视化
+
+                        dd：文件或设备间传输数据
+
+                        file：确定文件类型
+
+                        tree：以树的形式显示路径和文件，类似于递归的 ls
+
+                        stat：文件信息
+
+                        time：执行命令，并计算执行时间
+
+                        timeout：在指定时长范围内执行命令，并在规定时间结束后停止进程
+
+                        lockfile：使文件只能通过 rm -f 移除
+
+                        logrotate： 切换、压缩以及发送日志文件
+
+                        watch：重复运行同一个命令，展示结果并／或高亮有更改的部分
+
+                        when-changed：当检测到文件更改时执行指定命令。参阅 inotifywait 和 entr。
+
+                        tac：反向输出文件
+
+                        shuf：文件中随机选取几行
+
+                        comm：一行一行的比较排序过的文件
+
+                        strings：从二进制文件中抽取文本
+
+                        tr：转换字母
+
+                        iconv 或 uconv：文本编码转换
+
+                        split 和 csplit：分割文件
+
+                        sponge：在写入前读取所有输入，在读取文件后再向同一文件写入时比较有用，例如 grep -v something some-file | sponge some-file
+
+                        units：将一种计量单位转换为另一种等效的计量单位（参阅 /usr/share/units/definitions.units）
+
+                        apg：随机生成密码
+
+                        xz：高比例的文件压缩
+
+                        ldd：动态库信息
+
+                        nm：提取 obj 文件中的符号
+
+                        ab 或 wrk：web 服务器性能分析
+
+                        strace：调试系统调用
+
+                        mtr：更好的网络调试跟踪工具
+
+                        cssh：可视化的并发 shell
+
+                        rsync：通过 ssh 或本地文件系统同步文件和文件夹
+
+                        wireshark 和 tshark：抓包和网络调试工具
+
+                        ngrep：网络层的 grep
+
+                        host 和 dig：DNS 查找
+
+                        lsof：列出当前系统打开文件的工具以及查看端口信息
+
+                        dstat：系统状态查看
+
+                        glances：高层次的多子系统总览
+
+                        iostat：硬盘使用状态
+
+                        mpstat： CPU 使用状态
+
+                        vmstat： 内存使用状态
+
+                        htop：top 的加强版
+
+                        last：登入记录
+
+                        w：查看处于登录状态的用户
+
+                        id：用户/组 ID 信息
+
+                        sar：系统历史数据
+
+                        iftop 或 nethogs：套接字及进程的网络利用情况
+
+                        ss：套接字数据
+
+                        dmesg：引导及系统错误信息
+
+                        sysctl： 在内核运行时动态地查看和修改内核的运行参数
+
+                        hdparm：SATA/ATA 磁盘更改及性能分析
+
+                        lsblk：列出块设备信息：以树形展示你的磁盘以及磁盘分区信息
+
+                        lshw，lscpu，lspci，lsusb 和 dmidecode：查看硬件信息，包括 CPU、BIOS、RAID、显卡、USB设备等
+
+                        lsmod 和 modinfo：列出内核模块，并显示其细节
+
+                        fortune，ddate 和 sl：额，这主要取决于你是否认为蒸汽火车和莫名其妙的名人名言是否“有用”
+
+
+
+
+
+
+                        ##############################################################################
+                        # 单行脚本
+                        ##############################################################################
+
+                        一些命令组合的例子：
+
+                            当你需要对文本文件做集合交、并、差运算时，sort 和 uniq 会是你的好帮手。具体例子请参照代码后面的，此处假设 a 与 b 是两内容不同的文件。这种方式效率很高，并且在小文件和上 G 的文件上都能运用（注意尽管在 /tmp 在一个小的根分区上时你可能需要 -T 参数，但是实际上 sort 并不被内存大小约束），参阅前文中关于 LC_ALL 和 sort 的 -u 参数的部分。
+
+                              sort a b | uniq > c   # c 是 a 并 b
+                              sort a b | uniq -d > c   # c 是 a 交 b
+                              sort a b b | uniq -u > c   # c 是 a - b
+
+                            使用 grep . *（每行都会附上文件名）或者 head -100 *（每个文件有一个标题）来阅读检查目录下所有文件的内容。这在检查一个充满配置文件的目录（如 /sys、/proc、/etc）时特别好用。
+
+                            计算文本文件第三列中所有数的和（可能比同等作用的 Python 代码快三倍且代码量少三倍）：
+
+                              awk '{ x += $3 } END { print x }' myfile
+
+                            如果你想在文件树上查看大小/日期，这可能看起来像递归版的 ls -l 但比 ls -lR 更易于理解：
+
+                              find . -type f -ls
+
+                            假设你有一个类似于 web 服务器日志文件的文本文件，并且一个确定的值只会出现在某些行上，假设一个 acct_id 参数在 URI 中。如果你想计算出每个 acct_id 值有多少次请求，使用如下代码：
+
+                              egrep -o 'acct_id=[0-9]+' access.log | cut -d= -f2 | sort | uniq -c | sort -rn
+
+                            要持续监测文件改动，可以使用 watch，例如检查某个文件夹中文件的改变，可以用 watch -d -n 2 'ls -rtlh | tail'；或者在排查 WiFi 设置故障时要监测网络设置的更改，可以用 watch -d -n 2 ifconfig。
+
+                            运行这个函数从这篇文档中随机获取一条技巧（解析 Markdown 文件并抽取项目）：
+
+                              function taocl() {
+                                curl -s https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README-zh.md|
+                                  pandoc -f markdown -t html |
+                                  iconv -f 'utf-8' -t 'unicode' |
+                                  xmlstarlet fo --html --dropdtd |
+                                  xmlstarlet sel -t -v "(html/body/ul/li[count(p)>0])[$RANDOM mod last()+1]" |
+                                  xmlstarlet unesc | fmt -80
+                              }
+
+                        ##############################################################################
+                        # 备注
+                        ##############################################################################
+
+
+                        https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md
 
                 </pre>
                     </div>

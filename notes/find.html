@@ -152,6 +152,59 @@
                         find . -path "./sk" -prune -o -name "*.txt" -print
 
 
+                        查找指定文件 复制到指定目录中
+                        find . -name "*.jpeg" -exec mv {} liu \;
+
+                        find . -type f -mtime +10 -name "*.txt" -exec cp {} OLD \;
+
+
+                        Linux 批量删除
+                        find  *\(1\).jpg -exec rm -rf {} \;
+
+                        mac xargs与cp结合批量copy文件
+                        ls *.dmg |xargs -I {} sudo  cp {} install
+
+                        Mac批量删除进程
+                        ps -ef | grep Pandas.py | grep -v 'grep' | awk '{print $2}' | xargs kill -9
+
+
+                        行首或行尾插入：
+                        sed 'p;s/^.*$/--------/' file
+                        awk '{print $0;print "-------"}' file
+
+
+                        确定文本打印处于start_pattern 和end_pattern之间的文本
+                        awk '/GitHub520 Host Start/, /GitHub520 Host End/' /etc/hosts
+
+                        shell 常规
+                        #!/usr/bin/env bash
+                        PREFIX=$(cd "$(dirname "$0")"; pwd)
+                        cd $PREFIX
+
+
+                        目录按大小排序
+                        du -hd1 | sort -hr
+
+                        软连接
+
+                        ln -s  myfile mylink      建立myfile 文件的软链接 mylink
+
+                        ln -s /path/to/file_or_directory path/to/symlink
+
+
+                        删除软链接
+
+                        正确的是：rm -rf hb_link
+
+                        错误的是：rm -rf hb_link/ 这个会把整个目录都删了
+
+                        过滤掉注释的行
+                        egrep -v "^#|^$" /var/spool/cron/root
+
+                        去掉文件中空行
+                        awk NF  aaaa.txt
+
+
 
                         </pre>
                     </div>
