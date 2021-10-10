@@ -299,6 +299,16 @@
                             HIST_STAMPS="yyyy-mm-dd"
 
 
+                        -指定 include.conf 文件將 AAA 取代為 BBB
+
+                            sed -i 's/AAA/BBB/g' include.conf
+                             
+
+                            搜尋 / 底下所有 AAA 取代為 BBB
+
+                            find . -type f -exec sed -i 's/AAA/BBB/g' {}\;
+
+
                         -   其他
                             # 快速创建项目目录
                             mkdir -p work/{project1,project2}/{src,bin,bak}
