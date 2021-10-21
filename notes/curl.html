@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>curl</title>
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://91xcode.github.io">导航</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://github.com/91xcode/91xcode.github.io" target="_blank"><svg height="20" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                            </svg></a></li>
+                    <li><a href="/about/index.html">关于</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-12">
+                        <pre>
+
+
+                        ##############################################################################
+                        # curl CHEATSHEET (中文速查表)  -  
+                        # Version: 47, Last Modified:
+                        ##############################################################################
+
+
+
+                        ##############################################################################
+                        # 常规操作
+                        # https://www.jianshu.com/p/bc2403306999
+                        # http://blog.sina.com.cn/s/blog_148641ae70102vsfg.html
+                        ##############################################################################
+
+
+                        curl是Linux上经常用的一个小工具，curl是一个利用URL语法在命令行方式下工作的文件传输工具。它支持很多协议：FTP,  FTPS,  HTTP, HTTPS, GOPHER等。
+
+                        curl命令可以用来构造http请求。参数有很多，常用的参数如下：
+
+
+                        通用语法：
+                        curl [option] [URL...]
+                        在处理URL时其支持类型于SHELL的名称扩展功能，如http://www.linux.com/archive[1996-1999]/vol[1-4]/part{a,b,c}.html可以生成多个期望的URL
+
+
+                        curl的选项功能：
+
+                        不带任何参数时 curl 将返回指定url中的数据并打印在屏幕上
+                        -u 使用用户名和密码登陆。如curl -uname:passwd URL
+                        -b/--cookie    向服务器提交cookie，若无=则name视为文件名，例如：curl -b cookie.txt
+                        -o out  将指定curl返回保存为out文件，内容从html/jpg到各种MIME类型文件。如curl -o page.html URL
+                        -d   向服务器POST表单数据 例如：curl -d "order=111&count=2" http://www.linux.com/buy
+                        -A/--user-agent    指定发送请求的用户代理，例如：curl -A My-Agent/1.0.0
+                        -x  ip:port 指定使用的http代理，例如：curl -x 192.168.1.1:8080
+                        -D head.txt  将服务器的返回的header保存为文件，头部的cookie也可被保存，例如：curl -D header.txt
+                        如果希望从本地文件中获取表单数据，则在文件名前加@ ，例如：curl -d @data.xml
+                        若希望从标准输入获取则用 curl -d "name=username&passwd=pwd"
+                        -L 当页面有跳转的时候，输出跳转到的页面
+                        -I  header信息  当有跳转时，可以通过 curl -L -I URL|grep Location 来确定跳转到的新url地址
+                        -c 保存服务器的cookie文件
+                        -e url  设置引用头的值
+                        -T localfile  向服务器PUT文件 例如：curl -T 1.mp3  www.linux.com/upload.php
+                        -F 向服务器POST表单，例如：curl -F "web=@index.html;type=text/html" url.com
+                        -E cert.pem  指定本地证书
+                        -H   为HTTP请求设置任意header及值。如curl -H "Connection:keep-alive"
+                        -X/--request method 用户定义的HTTP请求方法名如 curl -X GET www.baidu.com
+                        --compressed 采用压缩方式接收返回数据
+                        --connect-timeout 设置超时时间
+                        -v 详细输出，包含请求和响应的首部
+                        --retry num
+                        --retry timeo 指定重试的次数和间隔
+                        --tcp-nodelay 打开TCP_NODELAY选项  不进行捎带确认
+                        -O  按服务器上的名称保存下载的文件
+                        -r/--range  from-to 下载指定range内的数据
+                        -C 在保存文件时进行续传
+
+
+                        环境变量：http_proxy [protocol://][:port]
+
+
+                        curl应用：
+
+                        场景一：测试域名绑定
+
+                            我常需要在开发环境中，测试某台服务器上的Web Server是否正确绑定了域名。比如，我希望在服务器192.168.1.10上绑定www.kuqin.com。但需要修改hosts才能看到效果，这活儿很累人。
+
+                            所谓“域名绑定”，就是把host映射到对应的目录。如果手头有cURL，可以使用 -H 参数，在请求头信息中多写一个 Host 字段。就可以测试是否配置正确了。
+
+                            # curl -H "Host: www.kuqin.com" http://192.168.1.10/
+
+                        场景二：查看头信息
+
+                            响应头信息中包含了很多东西。除了HTTP版本和响应代码，还有Server、Content-Type、Content-Length等信息，如果有写入Cookie的操作，也会体现在头信息中。
+
+                            使用curl的 -I 参数，就可以看到这些头信息。比如淘宝的：
+
+                            # curl -I http://www.taobao.com/
+
+                            HTTP/1.1 200 OK Date: Sun, 14 Feb 2010 08:57:35 GMT Server: Apache Set-Cookie: abt=b; expires=Sun, 28-Feb-2010 08:57:35 GMT; path=/; domain=www.taobao.com at_catetype: b (咦，这是什么？) Set-Cookie: _lang=zh_CN:GBK; Domain=.taobao.com; Path=/ Cache-Control: max-age=3600 Expires: Sun, 14 Feb 2010 09:57:35 GMT Vary: Accept-Encoding Content-Type: text/html; charset=GB2312 Content-Language: cn
+
+                            我昨天也修改了一下我服务器的server信息，大家感兴趣可以 curl -I http://www.kuqin.com/ 看看。
+
+                            这里插一句，不建议把使用Web服务器的版本暴露出来（其实服务器信息也最好隐藏掉，或者把Apache伪装成nginx什么的  ）。免得突然爆出漏洞时，措手不及，被人利用。
+
+                        场景三：跟踪URL跳转
+
+                            如果遇到了一个多次跳转的URL，可以先用curl的 -L 参数看看，这个URL最终跳转到了什么地方。-L 参数最好配合 -I 使用，不然cURL会把最后一次请求获得的数据输出到控制台。
+
+                            没有合适的URL拿来做例子，意会一下吧 
+
+                        场景四：发送压缩的请求
+
+                            cURL提供了一个 –compress 参数，可以用来发送支持压缩的请求。但使用了–compress之后，虽然传输过程是压缩的，cURL的输出还是解压之后的，难以看到效果。
+
+                            我一般用 -H 参数，自己写一个 Accept-Encoding 字段在头信息中。
+
+                            curl -H "Accept-Encoding: gzip" http://www.kuqin.com/
+
+                            如果直接运行上面的命令，会得到一堆乱码，因为cURL输出的内容，是压缩后的数据。不妨在后面接一个gunzip试试。
+
+                            curl -H "Accept-Encoding: gzip" http://www.kuqin.com/ | gunzip
+
+                            使用gunzip解压之后，信息又被还原了。
+
+                        场景五：忽略证书错误
+
+                            平日上网，遇到证书错误一定要小心。但我在工作中，经常需要用自签的假证书搭建开发环境。cURL在遇到证书错误时罢工，使用 -k 参数就可以让它不做证书校验。
+
+
+                        场景六：获取指定网页源码
+                            [root@jfht ~]# curl http://www.sunrisecorp.net/
+
+                        场景七：查看响应头信息
+
+                            [root@jfht ~]# curl -I http://www.sunrisecorp.net/
+                            HTTP/1.1 200 OK
+                            Server: Apache-Coyote/1.1
+                            Accept-Ranges: bytes
+                            ETag: W/"17801-1285643951000"
+                            Last-Modified: Tue, 28 Sep 2010 03:19:11 GMT
+                            Content-Type: text/html
+                            Content-Length: 17801
+                            Date: Tue, 12 Oct 2010 12:49:20 GMT
+
+                        场景八：检查网页是否可正常访问
+
+                            curl -s -I --connect-timeout 5 --max-time 10 http://localhost:$1/$2 | grep -q '200 OK'
+
+                            curl --connect-timeout 15 --max-time 30 --head --silent "$URL" | grep 'HTTP/1.1 200 OK' 
+
+
+                        场景九：使用HttpPost上传数据
+
+
+                            curl --verbose --upload-file reqtmp.xml  --header "Content-Type: text/xml" "$URL" --output rsptmp.xml 
+                            场景十：使用proxy的脚本
+                            curl --silent --max-time 60 --proxy http://10.32.187.170:8080 "http://host/boss/sync.jsp?seq=1251747862492&mobile=$mobile&serviceCodes=$codes&areaId=$area_id&opening=$opening" 
+
+
+                        场景十一：自动跳转
+
+                            有的网址是自动跳转的。使用-L参数，curl就会跳转到新的网址。
+
+                                　　curl -L www.tvbs.cc
+
+                            键入上面的命令，结果就自动跳转为www.tvbs.cc。
+
+
+                        场景十二：显示通信过程
+
+                        -v参数可以显示一次http通信的整个过程，包括端口连接和http request头信息。
+
+                            　　curl -v www.tvbs.cc
+
+                            　　* About to connect() to www.sina.com port 80 (#0)
+                            * Trying 61.172.201.195... connected
+                            * Connected to www.sina.com (61.172.201.195) port 80 (#0)
+                            > GET / HTTP/1.1
+                            > User-Agent: curl/7.21.3 (i686-pc-linux-gnu) libcurl/7.21.3 OpenSSL/0.9.8o zlib/1.2.3.4 libidn/1.18
+                            > Host: www.sina.com
+                            > Accept: */*
+                            >
+                            * HTTP 1.0, assume close after body
+                            < HTTP/1.0 301 Moved Permanently
+                            < Date: Sun, 04 Sep 2011 00:42:39 GMT
+                            < Server: Apache/2.0.54 (Unix)
+                            < Location: http://www.sina.com.cn/
+                            < Cache-Control: max-age=3600
+                            < Expires: Sun, 04 Sep 2011 01:42:39 GMT
+                            < Vary: Accept-Encoding
+                            < Content-Length: 231
+                            < Content-Type: text/html; charset=iso-8859-1
+                            < X-Cache: MISS from sh201-19.sina.com.cn
+                            < Connection: close
+                            <<br> 
+
+                        场景十三：发送表单信息
+
+                            发送表单信息有GET和POST两种方法。GET方法相对简单，只要把数据附在网址后面就行。
+
+                                　　curl tvbs.cc/form.cgi?data=xxx
+
+                            POST方法必须把数据和网址分开，curl就要用到--data参数。
+
+                                　　curl --data "data=xxx" tvbs.cc/form.cgi
+
+                            如果你的数据没有经过表单编码，还可以让curl为你编码，参数是--data-urlencode。
+
+                                　　curl --data-urlencode "date=April 1" tvbs.cc/form.cgi
+
+
+                        场景十四：文件上传
+
+                            假定文件上传的表单是下面这样：
+
+                            你可以用curl这样上传文件：
+
+                            curl --form upload=@localfilename --form press=OK [URL]
+
+                        场景十五：Referer字段
+
+                                有时你需要在http request头信息中，提供一个referer字段，表示你是从哪里跳转过来的。
+
+                                    　　curl --referer http://www.tvbs.cc
+
+                                    http://www.tvbs.cc
+
+                                    User Agent字段
+
+                                    这个字段是用来表示客户端的设备信息。服务器有时会根据这个字段，针对不同设备，返回不同格式的网页，比如手机版和桌面版。
+
+                                    iPhone4的User Agent是
+
+                                        　　Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7
+
+                                    curl可以这样模拟：
+
+                                        　　curl --user-agent "[User Agent]" [URL]
+
+                        场景十六：cookie
+
+                                    使用--cookie参数，可以让curl发送cookie。
+
+                                        　　curl --cookie "name=xxx" www.tvbs.cc
+
+                                    至于具体的cookie的值，可以从http response头信息的Set-Cookie字段中得到。
+
+                        场景十七：增加头信息
+
+                                    有时需要在http request之中，自行增加一个头信息。--header参数就可以起到这个作用。
+
+                                        　　curl --header "xxx: xxxxxx" http://tvbs.cc
+
+                        场景十八：HTTP认证
+
+                                    有些网域需要HTTP认证，这时curl需要用到--user参数。
+
+                                        　　curl --user name:password tvbs.cc
+
+                                    http://linux.cn/article-4957-1.html
+
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <hr>
+    <footer>
+        <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>
+    </footer>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <!-- Back2top -->
+    <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.js"></script>
+    <script type="text/javascript">
+    Back2top.init();
+    </script>
+</body>
+
+</html>
