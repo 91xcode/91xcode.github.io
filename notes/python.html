@@ -59,55 +59,87 @@
 
                         1.python生成requirements.txt方法
 
-                        # 安装
-                        pip install pipreqs
-                        # 在当前目录生成
-                        pipreqs . --encoding=utf8 --force
+                            # 安装
+                            pip install pipreqs
+                            # 在当前目录生成
+                            pipreqs . --encoding=utf8 --force
 
-                        注意--encoding=utf8为使用utf8编码，不然可能会报UnicodeDecodeError: 'gbk' codec can't decode byte 0xae in position 406: illegal multibyte sequence 的错误。
+                            注意--encoding=utf8为使用utf8编码，不然可能会报UnicodeDecodeError: 'gbk' codec can't decode byte 0xae in position 406: illegal multibyte sequence 的错误。
 
-                        --force强制执行，当 生成目录下的requirements.txt存在时覆盖。
+                            --force强制执行，当 生成目录下的requirements.txt存在时覆盖。
 
-                        使用requirements.txt安装依赖的方式：
-                        pip install -r requirements.txt
+                            使用requirements.txt安装依赖的方式：
+                            pip install -r requirements.txt
 
 
                         2.注释
-                        print '[*] Searching ...'
-                        print '[*]' + '-' * 60
-                        print '[*] 开始存储数据到数据库...'
-                        print '*' * 60
-                        print '[√] 数据采集完成，共采集%s条' % str(len(QUERY_LIST))
-                        print '[√] 数据存储完成，共存储%s条' % save_count
+                            print '[*] Searching ...'
+                            print '[*]' + '-' * 60
+                            print '[*] 开始存储数据到数据库...'
+                            print '*' * 60
+                            print '[√] 数据采集完成，共采集%s条' % str(len(QUERY_LIST))
+                            print '[√] 数据存储完成，共存储%s条' % save_count
 
                         3.python 字符串拼接
-                        第一种：
-                         nowtime = int(time.time())
-                         oaid = f'{product_id}__OAID__{nowtime}'
+                            第一种：
+                             nowtime = int(time.time())
+                             oaid = f'{product_id}__OAID__{nowtime}'
 
-                        第二种：
+                            第二种：
 
-                        message = '''
-                        Information of %s:
-                        Name:%s
-                        Age:%s
-                        Sex:%s
-                        '''%(name,name,age,sex)
-                        print(message)
+                            message = '''
+                            Information of %s:
+                            Name:%s
+                            Age:%s
+                            Sex:%s
+                            '''%(name,name,age,sex)
+                            print(message)
 
-                        输出结果如下：
+                            输出结果如下：
 
-                        Information of Alex:
-                            Name:Alex
-                            Age:38
-                            Sex:girl
+                            Information of Alex:
+                                Name:Alex
+                                Age:38
+                                Sex:girl
+
+                        4.python3 字符串md5
+
+                            def getMD5(s):
+                                '''
+                                    获取字符串的md5
+                                '''
+                                m = hashlib.md5()
+                                m.update(str(s).encode('utf-8'))
+                                return m.hexdigest()
 
 
+                        5.使用python自带的json，将数据转换为json数据时，datetime格式的数据报错：datetimeTypeError: datetime.datetime(2017, 3, 21, 2, 11, 21) is not JSON serializable
+
+                            就是重写构造json类，遇到日期特殊处理，其余的用内置的就行。
+
+                            import json  
+                            import datetime  
+                              
+                            class DateEncoder(json.JSONEncoder):  
+                                def default(self, obj):  
+                                    if isinstance(obj, datetime.datetime):  
+                                        return obj.strftime('%Y-%m-%d %H:%M:%S')  
+                                    elif isinstance(obj, date):  
+                                        return obj.strftime("%Y-%m-%d")  
+                                    else:  
+                                        return json.JSONEncoder.default(self, obj) 
+
+                            使用时，调用上面定义的函数即可，如下：
+                            print json.dumps(self_data, cls=DateEncoder)  
                         
 
 
 
-                       
+                       6.python把秒换成时分秒的方法
+                            from time import strftime
+                            from time import gmtime
+
+                            strftime("%H:%M:%S", gmtime(5555))
 
 
 
