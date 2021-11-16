@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.flat.min.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="https://thirdqq.qlogo.cn/g?b=sdk&k=fXJhGbvrIeja8vD6FckWXA&s=640">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>MD5在线加密工具 - 刘明野的工具箱</title>
+    <meta name="keywords" content="MD5,加密,MD5加密工具">
+    <meta name="description" content="本工具可以提供32位,16位等MD5在线加密。">
+</head>
+
+<body>
+    <header class="am-topbar am-topbar-inverse">
+        <div class="am-container">
+            <p class="am-topbar-brand"><a href="./" class="am-topbar-logo">MD5加密</a></p>
+            <a class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航</span> <span class="am-icon-bars"></span></a>
+            <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+                <ul class="am-nav am-nav-pills am-topbar-nav">
+                    <li><a href="/">首页</a></li>
+                </ul>
+                <div class="am-topbar-right">
+                    <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" data-am-modal="{target: '#fenxiang'}">分享</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="am-container">
+        <div class="logo">MD5加密工具</div>
+        <form method="post" id="str-post" class="am-margin-top">
+            <label>请输入欲加密的字符串：</label>
+            <div class="am-input-group am-input-group-primary">
+                <input type="text" name="q" placeholder="请输入要加密的字符串" autocomplete="off" class="am-form-field">
+                <span class="am-input-group-btn">
+                    <button class="am-btn am-btn-primary" type="submit">加密</button>
+                </span>
+            </div>
+            <div class="am-form-group">
+                <label class="am-radio-inline"><input type="radio" name="t" value="0" data-am-ucheck checked>32位[大]</label>
+                <label class="am-radio-inline"><input type="radio" name="t" value="1" data-am-ucheck>32位[小]</label>
+                <label class="am-radio-inline"><input type="radio" name="t" value="2" data-am-ucheck>16位[大]</label>
+                <label class="am-radio-inline"><input type="radio" name="t" value="3" data-am-ucheck>16位[小]</label>
+            </div>
+        </form>
+        <label>加密结果：</label>
+        <span id="result"><input type="text" autocomplete="off" class="am-form-field md5-result"></span>
+
+
+
+
+        <label>字母大小写转换工具</label>
+        <div class="am-input-group am-input-group-primary">
+            <textarea class="am-form-field" id="con" name="content" style="padding:4px;color:#333;font-size:18px">http://www.jsdaima.com/</textarea>
+            <input class="am-btn am-btn-primary" onclick="strtolow()" value="转换成小写" type="button">
+            <input class="am-btn am-btn-primary" onclick="strtoup()" value="转换成大写" type="button">
+            <input class="am-btn am-btn-primary" onclick="Empty();" value="清空结果" type="button">
+        </div>
+
+
+
+        
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    function strtoup() {
+        var cons = document.getElementById('con').value;
+        if (!cons) {
+            alert('请输入需要转换的内容!');
+            return false;
+        };
+        var con = document.getElementById("con");
+        con.value = con.value.toUpperCase();
+    }
+
+    function strtolow() {
+        var cons = document.getElementById('con').value;
+        if (!cons) {
+            alert('请输入需要转换的内容!');
+            return false;
+        };
+        var con = document.getElementById("con");
+        con.value = con.value.toLowerCase();
+    }
+
+    function Empty() {
+        document.getElementById('con').value = '';
+        document.getElementById('con').select();
+    }
+    </script>
+</body>
+
+</html>
