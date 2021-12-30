@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>发票小助手</title>
+    <style>
+        html, body {
+			font-size: 14px;
+			font-family: 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
+			padding: 0;
+			margin: 0;
+			background: #F2F2F2;
+			height: 100%;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		.tb-body-wrapper {
+			position: absolute;
+			top: 70px;
+			bottom:0;
+			left: 0;
+			right: 0;
+			overflow-y: auto
+		}
+
+		.ddd2 .tb-body-wrapper{
+			top: 33px;
+		}
+
+		.tb-head-wrapper {
+			background: #f7f7f7
+		}
+
+		.table {
+			width: 100%;
+		}
+
+		.tb-table-wrapper {
+			background: #fff;
+			box-shadow: 0 0 6px rgba(0,0,0,.2);
+			position: absolute;
+			top: 45px;
+			bottom: 10px;
+			left: 10px;
+			right: 5px;
+		}
+
+		.ddd2 .tb-table-wrapper {
+			left: 5px;
+			right: 10px;
+		}
+
+		.table td,.table th {
+			padding: 5px 10px;
+			position: relative;
+			text-align: left;
+		}
+
+		.table .tb-row {
+			border-bottom: 1px solid #ddd
+		}
+
+		.table a {
+			color: #0078D7;
+			cursor: pointer
+		}
+
+		.table .td-control {
+			position: relative;
+			margin: 0 -5px
+		}
+
+		input, select, button {
+			height: 25px;
+			line-height: 23px;
+			padding: 0 5px;
+			border-radius: 2px;
+			border: 1px solid #A9A9A9;
+			vertical-align: top;
+			font-family: 'Helvetica Neue', 'Microsoft Yahei', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
+		}
+		button {
+			background: #0078D7;
+			color: #fff;
+			border: 1px solid #0078D7;
+		}
+		.table input, .table select{
+			width: 100%;
+		}
+
+		input:focus,select:focus {
+			border-color: #0078D7;
+			outline: none
+		}
+		.ddd {
+			width: 50%;
+			height: 100%;
+			float: left;
+			padding: 10px 5px 10px 10px;
+			position: relative;
+		}
+
+		.ddd2 {
+			padding: 10px 10px 10px 5px;
+		}
+		.table-h {
+			height: 35px;
+			line-height: 25px;
+			padding-bottom: 10px;
+		}
+		.right {
+			float: right;
+			margin-left: 10px;
+		}
+		#search {
+			margin-left: -5px;
+		}
+		#man-type {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: #F2F2F2;
+			display: none;
+		}
+		#man-type .ddd {
+			margin: 0 auto;
+			width: 600px;
+			float: none;
+		}
+	</style>
+    <link rel=icon href=favicon.ico>
+</head>
+
+<body>
+    <div class="ddd">
+        <div class="table-h">
+            <button class="right" id="clear">清空数据</button>
+            <button class="right" id="man-type-btn">管理类别</button>
+            <input name="key" type="text"><button id="search">搜索</button>
+        </div>
+        <table id="table" class="table"></table>
+    </div>
+    <div class="ddd ddd2">
+        <div class="table-h"><b>汇总</b></div>
+        <table id="table2" class="table"></table>
+    </div>
+    <div id="man-type">
+        <div class="ddd">
+            <div class="table-h">
+                <b>管理类别</b>
+                <button class="right" id="back">返回</button>
+            </div>
+            <div class="table-type"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-1.8@1.8.3/jquery.min.js"></script>
+    <script>
+    (function() {
+        if (!window.jQuery) {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/jquery-1.8@1.8.3/jquery.min.js"><\/script>');
+        }
+    })();
+    </script>
+    <script>
+    	
+
+
+    	$.result = function(t, e, a, i, n) {
+    if (arguments.length <= 3 && (i = !0),
+    e in t) {
+        var s = t[e];
+        return "function" == $.type(s) ? s.apply(n || t, a) : s
+    }
+    return i
+}
+;
+var digitUppercase = function(t) {
+    var e = ["角", "分"]
+      , a = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"]
+      , i = [["元", "万", "亿"], ["", "拾", "佰", "仟"]]
+      , n = 0 > t ? "欠" : "";
+    t = Math.abs(t);
+    for (var s = "", h = 0; h < e.length; h++)
+        s += (a[Math.floor(10 * t * Math.pow(10, h)) % 10] + e[h]).replace(/零./, "");
+    s = s || "整",
+    t = Math.floor(t);
+    for (var h = 0; h < i[0].length && t > 0; h++) {
+        for (var o = "", d = 0; d < i[1].length && t > 0; d++)
+            o = a[t % 10] + i[1][d] + o,
+            t = Math.floor(t / 10);
+        s = o.replace(/(零.)*零$/, "").replace(/^$/, "零") + i[0][h] + s
+    }
+    return n + s.replace(/(零.)*零元/, "元").replace(/(零.)+/g, "零").replace(/^整$/, "零元整")
+};
+~function(t) {
+    t.fn.table = function(a) {
+        return this.each(function() {
+            var i = t(this)
+              , n = new e(i,a);
+            i.data("table", n)
+        })
+    }
+    ;
+    var e = function(e, a) {
+        if (t.extend(this, {
+            key: "id",
+            model: [],
+            data: [],
+            editData: function(t, e) {
+                e()
+            },
+            sync: function(t, e, a) {
+                a(e)
+            },
+            $table: e
+        }, a),
+        "function" == t.type(this.data)) {
+            this._fetchData = this.data;
+            var i = this;
+            this._fetchData(function(t) {
+                i.data = t,
+                i.init()
+            })
+        } else
+            this.init()
+    };
+    t.extend(e.prototype, {
+        init: function() {
+            var e = this;
+            this.actions = [],
+            this.modelByName = {},
+            t.each(e.model, function() {
+                var a = this;
+                if (e.modelByName[a.name] = a,
+                a.key && (e.key = this.name),
+                a.actions && t.each(a.actions, function() {
+                    this.actionId || (this.actionId = e.actions.length,
+                    e.actions.push(this))
+                }),
+                a.select && !a.format) {
+                    var i = {};
+                    t.each(this.select, function(t) {
+                        t || a.defaultValue || (a.defaultValue = this[0]),
+                        i[this[0]] = this[1]
+                    }),
+                    a.format = function(t) {
+                        return i[t || a.defaultValue]
+                    }
+                }
+            }),
+            this.dataById = {},
+            this.guid = 1,
+            t.each(this.data, function() {
+                e.indexData(this)
+            }),
+            this.actions.save = {
+                handler: this.saveRow
+            },
+            this.actions.edit = {
+                handler: this.editRow
+            },
+            this.actions["delete"] = {
+                handler: this.deleteRow
+            },
+            this.actions.cancel = {
+                handler: this.refreshRow
+            },
+            this.initStruct(),
+            this.initEvent()
+        },
+        indexData: function(t) {
+            t.__id = this.guid++,
+            this.dataById[t.__id] = t
+        },
+        initStruct: function() {
+            this.$table.wrap('<div class="tb-table-wrapper">'),
+            this.$root = this.$table.parent(),
+            this.initHead(),
+            this.initBody(),
+            this.create !== !1 && this.createRow()
+        },
+        initHead: function() {
+            var t = this;
+            t.$head || (t.$head = t.$table.clone(),
+            t.$head.empty().addClass("tb-head").wrap('<div class="tb-head-wrapper">'),
+            t.$table.before(t.$head.parent())),
+            t.$head.html(t.genRow())
+        },
+        resize: function() {
+            this.$head.css({
+                width: this.$table.outerWidth()
+            }),
+            this.$table.trigger("sizechange")
+        },
+        initBody: function() {
+            var e = this;
+            e.$body || (e.$body = t("<tbody>"),
+            e.$table.wrap('<div class="tb-body-wrapper">'),
+            e.$table.append(this.$body));
+            var a = "";
+            t.each(e.data, function() {
+                a += e.genRow(this)
+            }),
+            this.$body.html(a)
+        },
+        genRow: function(e) {
+            var a = ""
+              , i = this;
+            return e ? (a += '<tr class="tb-row" data-id="' + e.__id + '">',
+            t.each(this.model, function() {
+                var t = e[this.name];
+                this.actions ? t = i.genActions(this.actions, e) : this.format && (t = this.format(t, e)),
+                t = null == t ? "" : t,
+                a += '<td width="' + (this.width || "") + '">' + t + "</td>"
+            })) : (a += "<tr>",
+            t.each(i.model, function() {
+                a += '<th width="' + (this.width || "") + '">' + this.label + "</th>"
+            })),
+            a += "</tr>"
+        },
+        genActions: function(e, a) {
+            var i = "";
+            return t.each(e, function() {
+                if (t.result(this, "show", [a], !0)) {
+                    var e = t.result(this, "enable", [a], !0);
+                    i += "<a " + (e ? " data-action=" + this.actionId : "class=disabled") + " >" + t.result(this, "title", [a], "") + "</a> "
+                }
+            }),
+            i
+        },
+        initEvent: function() {
+            var e = this;
+            this.$root.on("click", "[data-action]", function(a) {
+                var i = t(this)
+                  , n = i.closest("tr")
+                  , s = e.actions[i.data("action")]
+                  , h = n.data("id")
+                  , o = e.dataById[h] || {};
+                t.result(s, "handler", [o, n, a], !1, e)
+            })
+        },
+        getRow: function(t) {
+            return this.$table.find("[data-id=" + t + "]")
+        },
+        createRow: function(e) {
+            var a = this;
+            e || (e = {});
+            var i = t(a.genRow(e));
+            i.addClass("create"),
+            a.$head.append(i),
+            a.editRow(e, i),
+            a.resize()
+        },
+        editRow: function(e, a) {
+            var i = this;
+            a.addClass("edit"),
+            a.find("td").each(function(a) {
+                var n = i.model[a]
+                  , s = t(this)
+                  , h = e[n.name];
+                if (n.input && s.html('<div class="td-control"><input placeholder="' + n.label + '" autocomplete="off" name="' + n.name + '" value="' + (null == h ? "" : h) + '"></div>'),
+                n.select) {
+                    var o = '<div class="td-control"><select name="' + n.name + '">';
+                    t.each(n.select, function() {
+                        o += "<option " + (h == this[0] ? "selected" : "") + ' value="' + this[0] + '">' + this[1] + "</option>"
+                    }),
+                    o += "</select></div>",
+                    s.html(o)
+                }
+                n.actions && s.html('<a data-action="save">' + ("__id"in e ? "保存" : "添加") + "</a> " + ("__id"in e ? '<a data-action="cancel">取消</a>' : ""))
+            })
+        },
+        search: function(e) {
+            var a = this
+              , i = a.$table.find(".tb-row:not(.create)");
+            if (!e)
+                return i.show(),
+                void a.resize();
+            var n = new RegExp(e,"g");
+            i.each(function() {
+                var e, i = t(this), s = a.dataById[i.data("id")];
+                t.each(a.model, function() {
+                    if (this.search) {
+                        var t = s[this.name];
+                        if (n.test(t))
+                            return void (e = !0);
+                        this.format && (t = this.format(t, s),
+                        e = n.test(t))
+                    }
+                }),
+                i[e ? "show" : "hide"]()
+            }),
+            a.resize()
+        },
+        saveRow: function(e, a) {
+            var i = this
+              , n = t.extend({}, e)
+              , s = !e.__id;
+            if (s)
+                var h = {};
+            var o = !0;
+            a.find("input,select").each(function() {
+                var e = i.modelByName[this.name]
+                  , a = t(this).val() || e.defaultValue;
+                return e.validate && e.validate(a) === !1 ? (o = !1,
+                !1) : (e.keepLastValue && s && (h[this.name] = a),
+                void (n[this.name] = a))
+            }),
+            o && i.sync(s ? "create" : "update", n, function(o) {
+                t.extend(e, n, o),
+                s ? (i.indexData(e),
+                i.data.unshift(e),
+                a.remove(),
+                i.createRow(h),
+                i.$body.prepend(i.genRow(e))) : a.replaceWith(i.genRow(e)),
+                i.resize()
+            })
+        },
+        refreshRow: function(t, e) {
+            e.replaceWith(this.genRow(t))
+        },
+        deleteRow: function(e, a) {
+            var i = this;
+            i.sync("delete", e, function() {
+                a.remove();
+                var n = t.inArray(e, i.data);
+                i.data.splice(n, 1),
+                delete i.dataById[e.__id],
+                i.resize()
+            })
+        }
+    })
+}(jQuery);
+
+    </script>
+    <script>
+    var id = 0;
+    var _types = [
+        '打车费',
+        '办公用品',
+        '日用品',
+        '餐费',
+        '劳保用品',
+        '过桥费',
+        '停车费',
+        '加油费',
+        '火车票',
+        '飞机票',
+        '过路费',
+        '食品',
+        '礼品'
+    ];
+
+    if (localStorage['types']) {
+        _types = JSON.parse(localStorage['types']);
+    }
+
+    var types = [];
+    for (var i = 0; i < _types.length; i++) {
+        types.push([_types[i], _types[i]]);
+    }
+
+    var model = [
+        { label: '类别', width: 200, name: 'type', search: true, keepLastValue: true, select: types },
+        {
+            label: '数量',
+            width: 200,
+            name: 'count',
+            input: true,
+            defaultValue: 1,
+            validate: function(val) {
+                return /^[\d\.]*$/.test(val) && !isNaN(+val);
+            }
+        },
+        {
+            label: '金额',
+            width: 200,
+            name: 'money',
+            validate: function(val) {
+                return /^[\d\.]+$/.test(val) && +val;
+            },
+            input: true
+        },
+        {
+            label: '操作',
+            width: 200,
+            actions: [{ title: '编辑', actionId: 'edit' }, { title: '删除', actionId: 'delete' }]
+        }
+    ];
+
+    var sum = function() {
+
+        var sumData = [];
+        var totalSum = {
+            type: '合计',
+            count: 0,
+            money: 0,
+            cnmoney: digitUppercase(0)
+        }
+        var sumDataIndex = {};
+        $.each(table.data, function() {
+            var o = this;
+            var sum = sumDataIndex[o.type];
+            var money = (+o.money) * o.count;
+            if (!sum) {
+                sumDataIndex[o.type] = {
+                    type: o.type,
+                    count: +o.count,
+                    money: money,
+                    cnmoney: digitUppercase(money)
+                }
+                sumData.push(sumDataIndex[o.type]);
+            } else {
+                sum.count += +o.count;
+                sum.money = +(sum.money + money).toFixed(2);
+                sum.cnmoney = digitUppercase(sum.money);
+            }
+
+            totalSum.count += +o.count;
+            totalSum.money = +(totalSum.money + money).toFixed(2);
+            totalSum.cnmoney = digitUppercase(totalSum.money);
+        })
+
+        sumData.push(totalSum);
+        table2.data = sumData;
+        table2.initBody();
+
+    }
+
+    var table = $('#table').table({
+        model: model,
+        sync: function(type, data, success) {
+            data.id = id++;
+
+            success(data);
+            localStorage['fapiaodata'] = JSON.stringify(table.data);
+            sum();
+
+        },
+        data: function(success) {
+            var data = []
+            if (localStorage['fapiaodata']) {
+                data = JSON.parse(localStorage['fapiaodata']);
+            }
+            success(data);
+        }
+    }).data('table');
+
+
+
+    var table2 = $('#table2').table({
+        model: [{ label: '类别', width: 200, name: 'type' },
+            { label: '数量', width: 200, name: 'count' },
+            { label: '金额', width: 200, name: 'money' },
+            { label: '大写', width: 200, name: 'cnmoney' },
+        ],
+        data: [],
+        create: false
+    }).data('table');
+
+    sum();
+
+    $('#search').click(function() {
+        table.search($('[name=key]').val())
+    })
+
+    $('[name=key]').on('input propertychange', function() {
+        table.search(this.value);
+    })
+
+    $(document).on('keypress', 'input[name=money]', function(e) {
+        if (e.which == 13) {
+            $(this).closest('tr').find('[data-action=save]').click();
+            setTimeout(function() {
+                $('input[name=money]').focus();
+            }, 0);
+        }
+    })
+
+    $('#clear').click(function() {
+        localStorage['fapiaodata'] = JSON.stringify([]);
+        location.reload();
+    })
+
+    $(window).on('resize', function() {
+        table.resize();
+    })
+
+    $('#man-type-btn').click(function() {
+        $('#man-type').show();
+        $('.table-type').html('<table id="table-type" class=table>');
+        var table3 = $('#table-type').table({
+            model: [{
+                    label: '类别',
+                    width: 400,
+                    name: 'mantype',
+                    input: true,
+                    validate: function(val) {
+                        if (!val) return false;
+
+                        var valid = true;
+                        $.each(table3.data, function() {
+                            if (val === this.mantype) {
+                                valid = false;
+                                alert('已存在类别：' + val);
+                                return false;
+                            }
+                        })
+                        return valid;
+                    }
+                },
+                { label: '操作', width: 200, actions: [{ title: '编辑', actionId: 'edit' }, { title: '删除', actionId: 'delete' }] }
+            ],
+            sync: function(type, data, success) {
+                data.id = id++;
+                success(data);
+
+                var _types = [];
+                $.each(table3.data, function() {
+                    _types.push(this.mantype);
+                })
+                localStorage['types'] = JSON.stringify(_types);
+            },
+            data: function(success) {
+                var data = [];
+                $.each(_types, function() {
+                    data.push({ mantype: this });
+                })
+                success(data);
+            }
+        }).data('table');
+
+
+        $(document).on('keypress', 'input[name=mantype]', function(e) {
+            if (e.which == 13) {
+                $(this).closest('tr').find('[data-action=save]').click();
+                setTimeout(function() {
+                    $('input[name=mantype]').focus();
+                }, 0);
+            }
+        });
+    });
+
+    $('#back').click(function() {
+        location.reload();
+    })
+    </script>
+</body>
+
+</html>
