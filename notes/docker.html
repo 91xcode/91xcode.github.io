@@ -85,6 +85,19 @@
                         docker push staffgo/mysql-5.7:v1
 
 
+
+
+                        docker 容器互相访问问题
+                        
+                        docker network create brg-net
+                        docker run -it --name <容器名> —network brg-net --network-alias home_1 <镜像名>
+                        docker run -it --name <容器名> —network brg-net --network-alias school_1 <镜像名>
+
+                        如此这般，在 home_1 的环境中可以使用 school_1 的名字访问 school_1 的服务
+
+                        还有很多方法
+
+
                 </pre>
                     </div>
                 </div>
