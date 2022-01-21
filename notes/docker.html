@@ -86,9 +86,12 @@
 
 
 
+                        停止所有的容器
+                         docker stop $(docker ps -aq)
+
 
                         docker 容器互相访问问题
-                        
+
                         docker network create brg-net
                         docker run -it --name <容器名> —network brg-net --network-alias home_1 <镜像名>
                         docker run -it --name <容器名> —network brg-net --network-alias school_1 <镜像名>
