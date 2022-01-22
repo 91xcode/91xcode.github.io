@@ -346,6 +346,11 @@
                 setTimeout(function() {
                     $(layero).removeClass('layer-anim');
                 }, 0);
+            },
+
+            cancel: function(){
+                console.log(dp.plugins.hls); 
+                dp.destroy()
             }
         });
 

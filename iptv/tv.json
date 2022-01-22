@@ -1,0 +1,713 @@
+{
+    "cctv": [
+        {
+            "title": "CCTV-1",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225618/index.m3u8"
+        },
+        {
+            "title": "CCTV-2",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225619/index.m3u8"
+        },
+        {
+            "title": "CCTV-3",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225647/index.m3u8"
+        },
+        {
+            "title": "CCTV-4",
+            "url": "http://117.148.179.182/PLTV/88888888/224/3221231726/index.m3u8"
+        },
+        {
+            "title": "CCTV-5",
+            "url": "http://117.148.179.165/PLTV/88888888/224/3221231702/index.m3u8"
+        },
+        {
+            "title": "CCTV-6",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/624878396"
+        },
+        {
+            "title": "CCTV-7",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225624/index.m3u8"
+        },
+        {
+            "title": "CCTV-9",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225626/index.m3u8"
+        },
+        {
+            "title": "CCTV-10",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225627/index.m3u8"
+        },
+        {
+            "title": "CCTV-11",
+            "url": "http://117.148.179.164/PLTV/88888888/224/3221231711/index.m3u8"
+        },
+        {
+            "title": "CCTV-12",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225629/index.m3u8"
+        },
+        {
+            "title": "CCTV-14",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225639/index.m3u8"
+        },
+        {
+            "title": "CCTV-15",
+            "url": "http://117.148.179.169/PLTV/88888888/224/3221231693/index.m3u8"
+        },
+        {
+            "title": "CCTV-17",
+            "url": "http://39.134.19.57/PLTV/88888888/224/3221225859/index.m3u8"
+        },
+        {
+            "title": "CCTV-5+",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225649/index.m3u8"
+        }
+    ],
+    "local": [
+        {
+            "title": "上海纪实",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225654/index.m3u8"
+        },
+        {
+            "title": "云南卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225664/index.m3u8"
+        },
+        {
+            "title": "北京纪实",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225676/index.m3u8"
+        },
+        {
+            "title": "吉林卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225680/index.m3u8"
+        },
+        {
+            "title": "四川卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225733/index.m3u8"
+        },
+        {
+            "title": "天津卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225698/index.m3u8"
+        },
+        {
+            "title": "宁夏卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225726/index.m3u8"
+        },
+        {
+            "title": "安徽卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225737/index.m3u8"
+        },
+        {
+            "title": "山东卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225738/index.m3u8"
+        },
+        {
+            "title": "山西卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225730/index.m3u8"
+        },
+        {
+            "title": "广东卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225742/index.m3u8"
+        },
+        {
+            "title": "广西卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225731/index.m3u8"
+        },
+        {
+            "title": "新疆卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225725/index.m3u8"
+        },
+        {
+            "title": "江苏卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225702/index.m3u8"
+        },
+        {
+            "title": "江西卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225705/index.m3u8"
+        },
+        {
+            "title": "河北卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225732/index.m3u8"
+        },
+        {
+            "title": "浙江卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225744/index.m3u8"
+        },
+        {
+            "title": "海南卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225722/index.m3u8"
+        },
+        {
+            "title": "湖北卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225740/index.m3u8"
+        },
+        {
+            "title": "湖南卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225745/index.m3u8"
+        },
+        {
+            "title": "澳视澳门",
+            "url": "http://61.244.22.4/ch1/ch1.live/index.m3u8"
+        },
+        {
+            "title": "甘肃卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225724/index.m3u8"
+        },
+        {
+            "title": "西藏卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225723/index.m3u8"
+        },
+        {
+            "title": "贵州卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225728/index.m3u8"
+        },
+        {
+            "title": "辽宁卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225735/index.m3u8"
+        },
+        {
+            "title": "重庆卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225692/index.m3u8"
+        },
+        {
+            "title": "陕西卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225729/index.m3u8"
+        },
+        {
+            "title": "青海卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225727/index.m3u8"
+        },
+        {
+            "title": "内蒙古卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225667/index.m3u8"
+        },
+        {
+            "title": "黑龙江卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225736/index.m3u8"
+        },
+        {
+            "title": "广东珠江4K",
+            "url": "http://116.199.5.52:8114/00000000/index.m3u8?&Fsv_ctype=LIVES&Fsv_otype=1&FvSeid=5abd1660af1babb4&Fsv_filetype=1&Fsv_ctype=LIVES&Fsv_cid=0&Fsv_chan_hls_se_idx=79&Fsv_rate_id=0&Fsv_SV_PARAM1=0&Fsv_ShiftEnable=0&Fsv_ShiftTsp=0&Provider_id=&Pcontent_id=&Fsv_CMSID=&Fsv_otype=1"
+        },
+        {
+            "title": "东方卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225658/index.m3u8"
+        },
+        {
+            "title": "破旧的音悦台（点歌姬已开放）",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=215057"
+        }
+    ],
+    "other": [
+        {
+            "title": "道",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625774640"
+        },
+        {
+            "title": "捉鬼",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=22033743"
+        },
+        {
+            "title": "西片",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=21377115"
+        },
+        {
+            "title": "一起看",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=21680912"
+        },
+        {
+            "title": "红楼梦",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=5568482"
+        },
+        {
+            "title": "鱼肉烧",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=2010774"
+        },
+        {
+            "title": "C+频道",
+            "url": "http://gslbmeiah.cdn.hk.chinamobile.com/livehls/MOB-U1-NO/index.m3u8"
+        },
+        {
+            "title": "东南卫视",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225657/index.m3u8"
+        },
+        {
+            "title": "僵尸剧场",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/627033504"
+        },
+        {
+            "title": "兵团卫视",
+            "url": "http://test5.btzx.com.cn/live/btxjbtws.stream/playlist.m3u8"
+        },
+        {
+            "title": "军旅剧场",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625643517"
+        },
+        {
+            "title": "喜剧联盟",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/637444830"
+        },
+        {
+            "title": "四海钓鱼",
+            "url": "http://117.148.179.159/PLTV/88888888/224/3221231718/index.m3u8"
+        },
+        {
+            "title": "少林剧场",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625526423"
+        },
+        {
+            "title": "怀旧老片",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/621640582"
+        },
+        {
+            "title": "杨幂影院",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625542372"
+        },
+        {
+            "title": "欢笑剧场",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/623674859"
+        },
+        {
+            "title": "澳视卫星",
+            "url": "http://61.244.22.4/ch3/ch3.live/index.m3u8"
+        },
+        {
+            "title": "澳門2台",
+            "url": "http://61.244.22.4/ch2/ch2.live/playelist.m3u8"
+        },
+        {
+            "title": "澳門3台",
+            "url": "http://61.244.22.4/ch3/ch3.live/playelist.m3u8"
+        },
+        {
+            "title": "热剧联播",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/629943613"
+        },
+        {
+            "title": "纯享4K",
+            "url": "http://39.134.115.163:8080/PLTV/88888910/224/3221225786/index.m3u8"
+        },
+        {
+            "title": "试胆大会",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/637483721"
+        },
+        {
+            "title": "追剧少女",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/617432318"
+        },
+        {
+            "title": "随便看看",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=23020622"
+        },
+        {
+            "title": "高分影院",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/627198191"
+        },
+        {
+            "title": "高清大片",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/629943678"
+        },
+        {
+            "title": "黄金剧场",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625155140"
+        },
+        {
+            "title": "黑莓電影",
+            "url": "http://183.207.249.14/PLTV/3/224/3221225567/index.m3u8"
+        },
+        {
+            "title": "TVB星河",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=23285297"
+        },
+        {
+            "title": "【伪装者】",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=14386552"
+        },
+        {
+            "title": "东北一家人",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=22912887"
+        },
+        {
+            "title": "刘德华影院",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/659315648"
+        },
+        {
+            "title": "古天乐影院",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/627198610"
+        },
+        {
+            "title": "古龙作品集",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/639528313"
+        },
+        {
+            "title": "吴京作品集",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625681368"
+        },
+        {
+            "title": "周星驰影院",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/623338112"
+        },
+        {
+            "title": "周润发影院",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/639526984"
+        },
+        {
+            "title": "套武侠剧场",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/627198822"
+        },
+        {
+            "title": "张国荣影院",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/707689526"
+        },
+        {
+            "title": "成龙作品集",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/707671890"
+        },
+        {
+            "title": "新片放映厅",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/619495952"
+        },
+        {
+            "title": "澳門微电影",
+            "url": "http://61.244.22.4/ch3/ch3.live/chunklist_w1228316132.m3u8"
+        },
+        {
+            "title": "盗墓方法论",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625525181"
+        },
+        {
+            "title": "神探狄仁杰",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625574493"
+        },
+        {
+            "title": "经典功夫台",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=21715386"
+        },
+        {
+            "title": "经典影视台",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=23169468"
+        },
+        {
+            "title": "经典贺岁片",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625774662"
+        },
+        {
+            "title": "郭富城影院",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/639528330"
+        },
+        {
+            "title": "七十二家房客",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=23436741"
+        },
+        {
+            "title": "咪咕暑期剧场",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/627198692"
+        },
+        {
+            "title": "斗鱼_电影5",
+            "url": "http://dyscdnali1.douyucdn.cn/live/3637778raLSXdOdu.flv?uuid="
+        },
+        {
+            "title": "斗鱼_电影6",
+            "url": "http://dyscdnali1.douyucdn.cn/live/122402rK7MO9bXSq.flv?uuid="
+        },
+        {
+            "title": "斗鱼_电影8",
+            "url": "http://dyscdnali1.douyucdn.cn/live/85894rmovieChow.flv?uuid="
+        },
+        {
+            "title": "橙子影视3台",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=23318768"
+        },
+        {
+            "title": "橙子影视4台",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=23320714"
+        },
+        {
+            "title": "欢笑剧场4K",
+            "url": "http://223.110.243.153/ott.js.chinamobile.com/PLTV/3/224/3221227715/index.m3u8"
+        },
+        {
+            "title": "每日科幻电影",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625204865"
+        },
+        {
+            "title": "深夜失眠剧场",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625759558"
+        },
+        {
+            "title": "红色谍战剧场",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/634274665"
+        },
+        {
+            "title": "经典影视速看",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/627198751"
+        },
+        {
+            "title": "高能烧脑时刻",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625542365"
+        },
+        {
+            "title": "1905电影网",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=22728767"
+        },
+        {
+            "title": "☆请留意公众号",
+            "url": "https://vdse.bdstatic.com//53054efe7da3a1c990cc070760d45327.mp4"
+        },
+        {
+            "title": "☆软件免费使用",
+            "url": "http://117.148.179.159/PLTV/88888888/224/3221231679/index.m3u8"
+        },
+        {
+            "title": "☆频道密码获取",
+            "url": "http://117.148.179.160/PLTV/88888888/224/3221231763/index.m3u8"
+        },
+        {
+            "title": "关注微信公众号",
+            "url": "http://hpull.kktv8.com/livekktv/99592190/playlist.m3u8"
+        },
+        {
+            "title": "刘亦菲影视展播",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/639528386"
+        },
+        {
+            "title": "咪咕云上电影院",
+            "url": "http://112.74.200.9:88/tv000000/m3u8.php?/migu/625703337"
+        },
+        {
+            "title": "密码不定期更新",
+            "url": "http://hpull.kktv8.com/livekktv/143960119/playlist.m3u8"
+        },
+        {
+            "title": "斗鱼_电影16",
+            "url": "http://dyscdnali1.douyucdn.cn/live/3637726rQLDdfto7.flv?uuid="
+        },
+        {
+            "title": "斗鱼_电影18",
+            "url": "http://dyscdnali1.douyucdn.cn/live/3928r9p0BHMDG.flv?uuid="
+        },
+        {
+            "title": "斗鱼_电影21",
+            "url": "http://dyscdnali1.douyucdn.cn/live/20415rnWbjg6Ex1K.flv?uuid="
+        },
+        {
+            "title": "橙子台影视2台",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=21571201"
+        },
+        {
+            "title": "邵氏影院老电影",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=21759196"
+        },
+        {
+            "title": "K K_女神影院",
+            "url": "http://hpull.kktv8.com/livekktv/99350550/playlist.m3u8"
+        },
+        {
+            "title": "MIGU4K剧场",
+            "url": "http://117.148.179.161/PLTV/88888888/224/3221231624/index.m3u8"
+        },
+        {
+            "title": "MIGU僵尸剧场",
+            "url": "http://117.148.179.165/PLTV/88888888/224/3221231742/index.m3u8"
+        },
+        {
+            "title": "MIGU军旅剧场",
+            "url": "http://117.148.179.145/PLTV/88888888/224/3221231585/index.m3u8"
+        },
+        {
+            "title": "MIGU喜剧联盟",
+            "url": "http://117.148.179.154/PLTV/88888888/224/3221231621/index.m3u8"
+        },
+        {
+            "title": "MIGU少林剧场",
+            "url": "http://117.148.179.160/PLTV/88888888/224/3221231628/index.m3u8"
+        },
+        {
+            "title": "MIGU怀旧老片",
+            "url": "http://117.148.179.146/PLTV/88888888/224/3221231513/index.m3u8"
+        },
+        {
+            "title": "MIGU爱情公寓",
+            "url": "http://117.148.179.160/PLTV/88888888/224/3221231583/index.m3u8"
+        },
+        {
+            "title": "MIGU试胆大会",
+            "url": "http://117.148.179.166/PLTV/88888888/224/3221231672/index.m3u8"
+        },
+        {
+            "title": "MIGU追剧少女",
+            "url": "http://117.148.179.179/PLTV/88888888/224/3221231643/index.m3u8"
+        },
+        {
+            "title": "MIGU金庸频道",
+            "url": "http://117.148.179.132/PLTV/88888888/224/3221231477/index.m3u8"
+        },
+        {
+            "title": "MIGU高分影院",
+            "url": "http://117.148.179.182/PLTV/88888888/224/3221231699/index.m3u8"
+        },
+        {
+            "title": "MIGU黄金剧场",
+            "url": "http://117.148.179.183/PLTV/88888888/224/3221231637/index.m3u8"
+        },
+        {
+            "title": "铁齿铜牙纪晓岚o",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=6694373"
+        },
+        {
+            "title": "MIGUTVB剧场",
+            "url": "http://117.148.179.157/PLTV/88888888/224/3221231733/index.m3u8"
+        },
+        {
+            "title": "MIGU云上电影院",
+            "url": "http://117.148.179.176/PLTV/88888888/224/3221231565/index.m3u8"
+        },
+        {
+            "title": "MIGU刘德华影院",
+            "url": "http://117.148.179.154/PLTV/88888888/224/3221231757/index.m3u8"
+        },
+        {
+            "title": "MIGU古天乐影院",
+            "url": "http://117.148.179.176/PLTV/88888888/224/3221231645/index.m3u8"
+        },
+        {
+            "title": "MIGU古龙作品集",
+            "url": "http://117.148.179.160/PLTV/88888888/224/3221231657/index.m3u8"
+        },
+        {
+            "title": "MIGU吴京作品集",
+            "url": "http://117.148.179.183/PLTV/88888888/224/3221231564/index.m3u8"
+        },
+        {
+            "title": "MIGU周星驰影院",
+            "url": "http://117.148.179.153/PLTV/88888888/224/3221231562/index.m3u8"
+        },
+        {
+            "title": "MIGU周润发影院",
+            "url": "http://117.148.179.177/PLTV/88888888/224/3221231709/index.m3u8"
+        },
+        {
+            "title": "MIGU张国荣影院",
+            "url": "http://117.148.179.177/PLTV/88888888/224/3221231790/index.m3u8"
+        },
+        {
+            "title": "MIGU成龙作品集",
+            "url": "http://117.148.179.163/PLTV/88888888/224/3221231687/index.m3u8"
+        },
+        {
+            "title": "MIGU新片放映厅",
+            "url": "http://117.148.179.160/PLTV/88888888/224/3221231640/index.m3u8"
+        },
+        {
+            "title": "MIGU杨幂作品集",
+            "url": "http://117.148.179.183/PLTV/88888888/224/3221231556/index.m3u8"
+        },
+        {
+            "title": "MIGU盗墓方法论",
+            "url": "http://117.148.179.164/PLTV/88888888/224/3221231652/index.m3u8"
+        },
+        {
+            "title": "MIGU神探狄仁杰",
+            "url": "http://117.148.179.139/PLTV/88888888/224/3221231634/index.m3u8"
+        },
+        {
+            "title": "MIGU葛优作品集",
+            "url": "http://117.148.179.139/PLTV/88888888/224/3221231754/index.m3u8"
+        },
+        {
+            "title": "MIGU郭富城影院",
+            "url": "http://117.148.179.152/PLTV/88888888/224/3221231688/index.m3u8"
+        },
+        {
+            "title": "曲线救国贾队长晴天",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=21070039"
+        },
+        {
+            "title": "樱桃小丸子画画少儿",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=11392177"
+        },
+        {
+            "title": "MIGU午夜失眠剧场",
+            "url": "http://117.148.179.141/PLTV/88888888/224/3221231516/index.m3u8"
+        },
+        {
+            "title": "MIGU每日科幻电影",
+            "url": "http://117.148.179.160/PLTV/88888888/224/3221231568/index.m3u8"
+        },
+        {
+            "title": "MIGU红色谍战剧场",
+            "url": "http://117.148.179.169/PLTV/88888888/224/3221231627/index.m3u8"
+        },
+        {
+            "title": "MIGU高能烧脑时刻",
+            "url": "http://117.148.179.169/PLTV/88888888/224/3221231504/index.m3u8"
+        },
+        {
+            "title": "\\\"公众软件大全\\\"",
+            "url": "http://hpull.kktv8.com/livekktv/128600025/playlist.m3u8"
+        },
+        {
+            "title": "【大秦帝国】：秦武安",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=11259274"
+        },
+        {
+            "title": "松鼠电影屋动作片专场",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=6827037"
+        },
+        {
+            "title": "涂糊涂的蜡笔小新少儿",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=49132"
+        },
+        {
+            "title": "161全集猫和老鼠少儿",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=2171135"
+        },
+        {
+            "title": "MIGU刘亦菲影视展播",
+            "url": "http://117.148.179.165/PLTV/88888888/224/3221231787/index.m3u8"
+        },
+        {
+            "title": "四驱兄弟/爆走兄弟少儿",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=10544270"
+        },
+        {
+            "title": "蜡笔小新24h睡觉少儿",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=11579951"
+        },
+        {
+            "title": "【哆啦A梦】少儿旧版全集",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=1717236"
+        },
+        {
+            "title": "中华小当家/中华一番少儿",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=655291"
+        },
+        {
+            "title": "MIGUSNH48剧场公演",
+            "url": "http://117.148.179.139/PLTV/88888888/224/3221231622/index.m3u8"
+        },
+        {
+            "title": "【周星驰】喜剧 动作 僵尸",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=47917"
+        },
+        {
+            "title": "放羊的星星/命中注定我爱你",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=9742831"
+        },
+        {
+            "title": "中华小子7×24小时连播少儿",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=22194340"
+        },
+        {
+            "title": "怀旧经典剧 武侠 神话 神断案",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=21763462"
+        },
+        {
+            "title": "林正英 鬼片 僵尸 经典 护体",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=70155"
+        },
+        {
+            "title": "林正英 鬼片 僵尸 女鬼 经典 高能",
+            "url": "http://103.140.229.13/BOBO/bibi.php?id=5226265"
+        }
+    ],
+    "radio": []
+}

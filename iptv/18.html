@@ -176,6 +176,15 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
     <script>
     function play(n) {
+
+        var browser = DetectBrowser();
+        if (browser != "Safari") {
+            layer.alert("只支持Safari浏览器!");
+            return false;
+        }
+
+
+
         layer.open({
             type: 1, //Layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）,
             //title: "播放窗口",
@@ -194,6 +203,11 @@
                 setTimeout(function() {
                     $(layero).removeClass('layer-anim');
                 }, 0);
+            },
+
+            cancel: function(){
+                console.log(dp.plugins.hls); 
+                dp.destroy()
             }
         });
 

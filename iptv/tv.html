@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DPlayer_Demo</title>
+    <!-- mdui -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+        integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+        integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+        crossorigin="anonymous"></script>
+    <!-- mdui -->
+    <!-- dp - css - hls -->
+    <!-- dp css -->
+    <link class="dplayer-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
+    <!-- hls -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/hls.js/1.0.8-0.canary.7807/hls.light.min.js"></script>
+    <!-- flv -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/flv.js/1.6.1/flv.min.js"></script>
+    <!-- dash -->
+	<script src="https://cdn.bootcdn.net/ajax/libs/dashjs/4.0.1/dash.all.min.js"></script>
+    <!-- dpjs -->
+    <script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+    <!-- dp - hls -->
+</head>
+<style>
+    .nice-xl {
+        border-radius: 8px;
+    }
+
+    .mdui-img-fluid,
+    .mdui-video-fluid {
+        display: block;
+        /* max-width: 100%; */
+        height: auto;
+        width: 100%;
+    }
+</style>
+
+<body class="mdui-theme-layout-dark">
+    <!-- nav -->
+    <div class="mdui-toolbar mdui-color-theme mdui-shadow-7">
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">ondemand_video</i></a>
+        <span class="mdui-typo-title">DPlayer_Demo</span>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="./" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">refresh</i></a>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">more_vert</i></a>
+    </div>
+    <!-- nav -->
+    <!-- middle -->
+
+    <div class="mdui-container">
+        <!-- DPlayer -->
+        <div class="mdui-shadow-4 nice-xl mdui-m-t-4 mdui-m-b-4" id="dplayer">
+        </div>
+        <!-- DPlayer -->
+        <div class="mdui-panel-item mdui-panel-item-open">
+            <div class="mdui-panel-item-header">解析M3U8</div>
+            <div class="mdui-panel-item-body ">
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <label class="mdui-textfield-label">Url</label>
+                    <input id="urls" class="mdui-textfield-input" type="text"
+                        value="http://112.74.200.9:88/tv000000/m3u8.php?/migu/623338112" />
+                </div>
+                <button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink mdui-m-t-2 mdui-p-x-3">解析</button>
+                <div class="mdui-typo mdui-p-b-3">
+                    <br>
+                    <span>支持解析格式:Flv m3u8 MPEG mp4</span> <br>
+                    <span>本工具仅供学习探讨使用,禁止任何商业用途,请在下载后的24小时内从您的电脑或者服务器删除。 </span><br>
+                    <p>Links: <a href="https://www.4z1.cn" target="_blank" rel="noopener noreferrer">Nice's blog
+                        </a> | 鸣谢：<a href="http://dplayer.js.org/zh/" target="_blank"
+                            rel="noopener noreferrer">DPlayer</a> | Ui：<a href="https://www.mdui.org/" target="_blank"
+                            rel="noopener noreferrer">MDui</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- middle -->
+
+    <!-- javascript -->
+    <script>
+        var button = document.querySelector('button');
+        var urls = document.getElementById('urls');
+        const dp = new DPlayer({
+            container: document.getElementById('dplayer'),
+            autoplay: true,
+            lang: 'zh-cn',
+            video: {
+                url: urls.value,
+                type: 'auto',
+            },
+        });
+        button.addEventListener('click', function () {
+            // const dp = new DPlayer({
+            //     container: document.getElementById('dplayer'),
+            //     autoplay: true,
+            //     lang: 'zh-cn',
+            //     video: {
+            //         url: urls.value,
+            //         type: 'auto',
+            //     },
+            // });
+
+
+
+            var type = 'normal';
+            if(Hls.isSupported() && Hls.WEBRTC_SUPPORT) {
+                type = 'customHls';
+            }
+            const dp = new DPlayer({
+                container: document.getElementById('dplayer'),
+                autoplay: true,
+                video: {
+                    url: urls.value,
+                    type: type,
+                    customType: {
+                        'customHls': function (video, player) {
+                            const hls = new Hls({
+                                debug: false,
+                                // Other hlsjsConfig options provided by hls.js
+                                p2pConfig: {
+                                    live: false,        // 如果是直播设为true
+                                    // Other p2pConfig options provided by CDNBye http://www.cdnbye.com/cn/
+                                }
+                            });
+                            hls.loadSource(video.src);
+                            hls.attachMedia(video);
+                        }
+                    }
+                },
+            });
+
+        })
+
+
+    </script>
+    <!-- javascript -->
+
+</body>
+
+</html>
