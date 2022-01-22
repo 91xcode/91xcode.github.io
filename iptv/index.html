@@ -319,13 +319,12 @@
     <script>
     $.ajax({
         // 远程地址
-        // url: "https://cdn.jsdelivr.net/gh/91xcode/static@master/online_iptv/m3u8/tv_2022.json",
+        url: "https://cdn.jsdelivr.net/gh/91xcode/static@master/online_iptv/m3u8/tv_2022.json",
         // 本地地址
-        url: "http://test.com/tv.json",
+        // url: "http://test.com/tv.json",
         type: "get",
         dataType: "text",
         success: function(data, textStatus, jqxhr) {
-            console.log(data)
             data_json = $.parseJSON(data);
             makeTbale(data_json)
         }
@@ -366,11 +365,11 @@
 
         var $this = $(this);
         n = $this.attr('url');
-        var browser = DetectBrowser();
-        if (browser != "Safari") {
-            layer.alert("只支持Safari浏览器!");
-            return false;
-        }
+        // var browser = DetectBrowser();
+        // if (browser != "Safari") {
+        //     layer.alert("只支持Safari浏览器!");
+        //     return false;
+        // }
 
         layer.open({
             type: 1, //Layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）,
@@ -392,7 +391,6 @@
             },
 
             cancel: function() {
-                console.log(dp.plugins.hls);
                 dp.destroy()
             }
         });
