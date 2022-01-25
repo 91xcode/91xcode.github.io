@@ -82,6 +82,19 @@
                          docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7                                                                                     
                          docker exec -it mysql /bash/shell 
 
+                         docker安装mysql 并设置远程访问
+
+                        mysql -h localhost -u root -p123456
+
+                        # 配置密码
+                        ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
+                        换成自己的设置密码
+
+                        CREATE USER 'docker_mysql'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+                        GRANT ALL PRIVILEGES ON *.* TO 'docker_mysql'@'%';
+
+
+
 
 
 
@@ -103,6 +116,10 @@
 
                         停止所有的容器
                          docker stop $(docker ps -aq)
+
+
+                         使用 docker start 启动一个已停止的容器：
+                         docker start b750bbbcfd88 
 
 
                         docker 容器互相访问问题
