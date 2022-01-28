@@ -131,6 +131,44 @@
 
                             使用时，调用上面定义的函数即可，如下：
                             print json.dumps(self_data, cls=DateEncoder)  
+
+
+                        6.python处理问价
+                            读取txt文件
+                            data = []
+                            with open("file.txt", "rb") as reader_d:
+                                for line in reader_d:
+                                    data.append(line)
+                            print(len(data))
+
+
+                            # 确定文件名
+                            file_name = 'hello'
+                            try:
+                                # 打开文件
+                                with open(file_name) as file_obj :
+                                    # 对文件进行处理
+                                    print(file_obj.read())
+                            except FileNotFoundError:
+                                # 文件不存在进行异常处理
+                                print(f'{file_name} 文件不存在~~')
+
+                            读json文件
+                            # 解码
+                            import json
+                            with open('build_info.json','r') as f:
+                                array = json.load(f)
+                            print(array)
+
+                            写json文件
+
+                            # 编码
+                            import json
+                            a = {"name":"michael"}
+                            with open("demo.json","w") as f:
+                                json.dump(a, f, indent=4)
+
+
                         
 
 
