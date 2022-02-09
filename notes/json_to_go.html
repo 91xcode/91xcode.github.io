@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+ <head>
+  <meta charset="utf-8" /> 
+  <title>
+        JSON转Golang Struct
+    </title> 
+  <meta name="keywords" content="JSON转Golang Struct" /> 
+  <meta name="description" content="在线JSON转Golang Struct工具,JSON转Golang 结构体,JSON转Struct,JSON转Go" /> 
+  <link rel="shortcut icon" href="/favicon.ico" /> 
+  <style>
+        *{padding:0;margin:0;box-sizing:border-box;--color-primary: #6c928c;--color-accent: #96B499;--color-text: #34495e}html,body{font-family:Source Sans Pro,Helvetica Neue,Arial,sans-serif;height:100%;color:var(--color-text);font-size:16px;line-height:24px;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}body{display:flex}a{color:#3498db;cursor:pointer;text-decoration:none}a:hover{text-decoration:underline}img{height:auto;max-width:100%}strong{font-weight:700}ul{display:block;padding:0 16px}input[type=number]{-moz-appearance:textfield}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}input[type=color]{padding:0;border:none;outline:none;cursor:pointer}input ::-webkit-color-swatch-wrapper{background:#fff}input ::-webkit-color-swatch{position:relative}input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none}::-webkit-input-placeholder{color:#999}::-moz-placeholder{color:#999}:-moz-placeholder{color:#999}:-ms-input-placeholder{color:#999}h1,h2,h3{font-weight:600;line-height:24px}h1{font-size:20px}h2{font-size:18px}h3{font-size:16px}.mt1{margin-top:12px}.mt-2{margin-top:16px}aside{overflow-y:auto;width:280px;border-right:1px solid #ddd}aside::-webkit-scrollbar{width:3px}aside::-webkit-scrollbar-thumb{background:#ccc}main{flex:1;overflow:auto}.container{margin:0 auto;min-width:960px;max-width:1440px;padding:20px}.side-nav{border-top:1px solid #ddd;line-height:2em;padding:10px 0 20px 30px}.side-nav p{margin-top:10px;font-weight:700}.side-nav ul{padding:0;margin-left:30px}.side-nav li.active{color:var(--color-primary);border-right:2px solid var(--color-primary)}.side-nav a{color:inherit}.logo a{color:var(--color-primary)}aside .logo{cursor:pointer;font-weight:700;font-size:24px;text-align:center;padding:20px 0}header,header .container{background:#565656}header .container{display:flex;height:30px;color:#fff;padding:0 20px;flex-wrap:wrap;align-items:center;justify-content:space-between}header .logo{font-size:24px;color:#fff}.nav-item{color:#fff;cursor:pointer;margin-left:16px}.nav{justify-content:space-between}.nav .item:hover{color:#f1f1f1}footer{margin:32px;text-align:center}.tile{padding:10px 16px;background:#f5f5f5;font-size:14px;line-height:32px;border-radius:3px}.text-info{color:#0f81cc!important}.text-success{color:#23d160!important}.text-error{color:#ff3860!important}.input,.textarea,input[type=checkbox]{appearance:none;-moz-appearance:none;-webkit-appearance:none}.input,.textarea,.button,input[type=checkbox],.static,.select{border-radius:3px;border:1px solid #dbdbdb;align-items:center;color:var(--color-text);display:inline-flex;position:relative}.input,.textarea,.button,.file-cta,.file-name,.static,.select{outline:none;font-size:14px;line-height:18px;min-height:34px}.input,.textarea{max-width:100%;width:100%}.input.error,.textarea.error{border:1px solid #ff3860}.input,.textarea,.file-cta,.file-name{padding:8px 12px}.button,.file-cta,.file-name,.static{padding:8px 16px}.input:hover,.textarea:hover,input[type=checkbox]:hover,.select:hover,.input:focus,.textarea:focus{border-color:var(--color-primary)}.input[disabled],.textarea[disabled]{background:#f5f5f5;border-color:#dbdbdb}.select{padding:0 12px;flex-shrink:0}.static{flex-shrink:0;background:#f5f5f5}.static:hover{border-color:#dbdbdb!important}.textarea{display:block;max-width:100%;min-width:100%;resize:vertical;line-height:22px}.textarea.fixed-size{resize:none}.help{font-size:14px;line-height:40px}.button{cursor:pointer;background:#fff;justify-content:center;text-align:center;white-space:nowrap}.button:hover{border-color:#b5b5b5}.button:active{background:#f9f9f9}.button.primary{color:#fff;z-index:3;border-color:var(--color-primary);background:var(--color-primary)}.button.primary:hover{background:var(--color-accent);border-color:var(--color-accent)}.fa{padding:0!important}.button span:first-child{margin-right:1em}.button span:last-child{margin-left:1em}.content-center{display:flex;justify-content:center}.content-center *:not(:first-child){margin-left:1em}.select{cursor:pointer}.select option{font-size:18px}.checkbox input{width:21px;height:21px;color:#fff;outline:none;cursor:pointer;justify-content:center;font-size:14px}.checkbox input:after{content:'✓'}.checkbox input:checked{background:var(--color-primary);border-color:var(--color-primary)}.checkbox span{margin-left:6px}.flex .checkbox:not(:first-child){display:flex;margin-left:16px;align-items:center;word-break:keep-all}.file,.file-zone{display:flex;cursor:pointer;overflow:hidden;position:relative}.fullwidth .file-name{flex-grow:1;max-width:none}.file-zone{flex-direction:column;border-radius:3px}.file-input{width:100%;height:100%;left:0;top:0;opacity:0;position:absolute;outline:none;cursor:pointer}.file-button{margin-left:8px}.file-cta,.file-name{display:flex;align-items:center;outline:none}.file .file-cta{border-radius:3px 0 0 3px;background:var(--color-primary);color:#fff}.file-zone .file-cta{flex-direction:column;height:auto;display:inline-flex;font-size:20px;align-items:center;padding:24px 48px;border-radius:0;background:var(--color-primary);color:#fff}.file-cta:hover{background:var(--color-accent)}.file .file-name{border:1px solid #dbdbdb;border-left:none;border-radius:0 3px 3px 0}.file-zone .file-name{display:inline-flex;justify-content:center;border-radius:0 0 3px 3px;border:solid #dbdbdb;border-width:0 1px 1px;padding:12px 0}.file-zone .file-icon{margin-bottom:16px;height:24px;width:24px}table td,table th{vertical-align:top}table td:not([align]),table th:not([align]){text-align:left}.table{border-collapse:collapse;border-spacing:0;word-break:break-all;font-size:14px}.table td,.table th{border:1px solid #dbdbdb;padding:5px 12px}.table.fullwidth{display:table}.table.divide{table-layout:fixed}.table.striped thead tr,.table.striped tbody tr:nth-child(even){background:#f5f5f5}.table code{background:0 0}.progress{-moz-appearance:none;-webkit-appearance:none;border:none;border-radius:290486px;display:block;height:1rem;overflow:hidden;padding:0;width:100%}.progress::-webkit-progress-bar{background:#dbdbdb}.progress::-webkit-progress-value{background:var(--color-accent)}.progress::-moz-progress-bar{background:var(--color-accent)}.progress::-ms-fill{background:#96b499;border:none}.tag{background:#f5f5f5;border-radius:3px;color:#4a4a4a;display:inline-block;font-size:12px;height:32px;line-height:32px;padding:0 12px;white-space:nowrap}.tag{margin-right:16px}.content h1,.content h2,.content h3,.content h4{margin-bottom:8px}.content li+li{margin-top:4px}.content p:not(:last-child),.content ol:not(:last-child),.content ul:not(:last-child),.content pre:not(:last-child),.content table:not(:last-child){margin-bottom:16px}.flex{display:flex}.inline{width:auto;display:inline}.bordered{border-radius:2px;border:1px solid #dbdbdb}.fullwidth{width:100%}.fullHeight{height:100%}.group{display:inline-flex}.group *{border-radius:0}.group *:not(:first-child){margin-left:-1px}.group *:first-child{border-radius:3px 0 0 3px}.group *:last-child{border-radius:0 3px 3px 0}.group *:not(.primary):hover{z-index:3;border-color:#b5b5b5}.group *:focus{z-index:4}.mid-menus{align-items:center;justify-content:center;width:130px;display:flex;padding:0 16px}.mid-menus *{width:100%}.mid-menus .button{margin:0}.mid-menus .button:not(:first-child){margin-top:16px}.tools{margin-bottom:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}@media screen and (max-width:1200px){aside{display:none}.tools{grid-template-columns:repeat(3,1fr)}}.tool{cursor:pointer;padding:16px;background:#fff;border-radius:5px}.tool:hover{text-decoration:none;background:#f5f7f9;box-shadow:1px 1px 1px #dbdbdb}.tool :first-child{color:var(--color-text);font-weight:600;margin-bottom:12px}.tool :last-child:hover{text-decoration:underline}.editarea{width:1px;height:90vh;flex-grow:1}
+    </style> 
+  <link rel="stylesheet" href="/static/css/style.css" /> 
+  <link href="https://cdn.bootcss.com/highlight.js/9.15.9/styles/idea.min.css" rel="stylesheet" /> 
+  <style>
+        .container{max-width:100%}pre{overflow:auto}
+    </style> 
+ </head>
+ <body>
+  <aside> 
+   <h1 class="logo"> <a href="/"> OKTools </a> </h1> 
+   <nav class="side-nav"> 
+    <p> JSON </p>
+    <ul> 
+     <li> <a href="/json"> JSON格式化 </a> </li>
+     <li> <a href="/json2xml"> JSON/XML转换 </a> </li>
+     <li> <a href="/json2yaml"> JSON/YAML转换 </a> </li>
+     <li> <a href="/json2go"> JSON转Go Struct </a> </li>
+    </ul> 
+    <p> Base64 </p>
+    <ul> 
+     <li> <a href="/base64"> Base64编码解码 </a> </li>
+     <li> <a href="/image2base64"> 图片Base64编码 </a> </li>
+    </ul> 
+    <p> 转换 </p>
+    <ul> 
+     <li> <a href="/timestamp"> Unix时间戳 </a> </li>
+     <li> <a href="/morse"> 摩斯电码 </a> </li>
+     <li> <a href="/color"> 颜色值转换 </a> </li>
+     <li> <a href="/number"> 进制转换 </a> </li>
+     <li> <a href="/url"> URL编码解码 </a> </li>
+     <li> <a href="/unicode"> Unicode编码转换 </a> </li>
+     <li> <a href="/pdf2img"> PDF转图片 </a> </li>
+    </ul> 
+    <p> Hash </p>
+    <ul> 
+     <li> <a href="/hash"> Hash计算 </a> </li>
+     <li> <a href="/file-hash"> 文件Hash计算 </a> </li>
+    </ul> 
+    <p> 加密 </p>
+    <ul> 
+     <li> <a href="/aes"> AES加密解密 </a> </li>
+     <li> <a href="/des"> DES加密解密 </a> </li>
+     <li> <a href="/rsa"> RSA加密解密 </a> </li>
+    </ul> 
+    <p> 其他 </p>
+    <ul> 
+     <li> <a href="/ip"> IP地址信息 </a> </li>
+     <li> <a href="/tinyimg"> 图片压缩 </a> </li>
+     <li> <a href="/qrcode"> 二维码制作 </a> </li>
+     <li> <a href="http://oktools.net/websocket"> WebSocket测试 </a> </li>
+     <li> <a href="/regex"> 正则表达式测试 </a> </li>
+     <li> <a href="/placeholder"> SVG占位图 </a> </li>
+    </ul> 
+   </nav> 
+  </aside> 
+  <main> 
+   <div class="container"> 
+    <h1> JSON转Golang Struct </h1> 
+    <div class="flex mt1"> 
+     <div class="editarea" onpaste="setTimeout(convert,1)"> 
+      <label> JSON </label> 
+      <pre id="input" class="textarea fullHeight fixed-size" contenteditable="true"></pre> 
+     </div> 
+     <div class="mid-menus"> 
+      <div> 
+       <button class="button primary" onclick="convert()"> 转换-展开 </button> 
+       <button class="button primary" onclick="convert(false)"> 转换-嵌套 </button> 
+       <button class="button" data-clipboard-action="copy" data-clipboard-target="#output"> 复制 </button> 
+       <button class="button" onclick="cleanup()"> 清空 </button> 
+      </div> 
+     </div> 
+     <div class="editarea"> 
+      <label> GO </label> 
+      <pre class="textarea fullHeight fixed-size"><code id="output"></code></pre> 
+     </div> 
+    </div> 
+   </div> 
+  </main> 
+  <script src="https://cdn.bootcss.com/highlight.js/9.15.9/highlight.min.js">
+    </script> 
+  <script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/json.min.js">
+    </script> 
+  <script src="https://cdn.bootcss.com/highlight.js/9.15.9/languages/go.min.js">
+    </script> 
+  <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js">
+    </script> 
+<script>
+function json2go(json, typename, flatten = true) {
+    let data;
+    let scope;
+    let go = "";
+    let tabs = 0;
+    const seen = {};
+    const stack = [];
+    let accumulator = "";
+    let innerTabs = 0;
+    let parent = "";
+    try { data = JSON.parse(json.replace(/\.0/g, ".1"));
+        scope = data; } catch (e) { return { go: "", error: e.message }; }
+    typename = format(typename || "AutoGenerated");
+    append(`type ${typename} `);
+    parseScope(scope);
+    return { go: flatten ? go += accumulator : go };
+
+    function parseScope(scope, depth = 0) {
+        if (typeof scope === "object" && scope !== null) {
+            if (Array.isArray(scope)) {
+                let sliceType;
+                const scopeLength = scope.length;
+                for (let i = 0; i < scopeLength; i++) {
+                    const thisType = goType(scope[i]);
+                    if (!sliceType)
+                        sliceType = thisType;
+                    else if (sliceType !== thisType) {
+                        sliceType = mostSpecificPossibleGoType(thisType, sliceType);
+                        if (sliceType === "interface{}")
+                            break;
+                    }
+                }
+                const slice = flatten && ["struct", "slice"].includes(sliceType) ? `[]${parent}` : `[]`;
+                if (flatten && depth >= 2)
+                    appender(slice);
+                else
+                    append(slice);
+                if (sliceType === "struct") {
+                    const allFields = {};
+                    for (let i = 0; i < scopeLength; i++) {
+                        const keys = Object.keys(scope[i]);
+                        for (let k in keys) {
+                            let keyname = keys[k];
+                            if (!(keyname in allFields)) { allFields[keyname] = { value: scope[i][keyname], count: 0 } } else { const existingValue = allFields[keyname].value; const currentValue = scope[i][keyname]; if (compareObjects(existingValue, currentValue)) { const comparisonResult = compareObjectKeys(Object.keys(currentValue), Object.keys(existingValue)); if (!comparisonResult) { keyname = `${keyname}_${uuidv4()}`;
+                                        allFields[keyname] = { value: currentValue, count: 0 }; } } }
+                            allFields[keyname].count++;
+                        }
+                    }
+                    const keys = Object.keys(allFields),
+                        struct = {},
+                        omitempty = {};
+                    for (let k in keys) { const keyname = keys[k],
+                            elem = allFields[keyname];
+                        struct[keyname] = elem.value;
+                        omitempty[keyname] = elem.count !== scopeLength; }
+                    parseStruct(depth + 1, innerTabs, struct, omitempty);
+                } else if (sliceType === "slice") { parseScope(scope[0], depth) } else { if (flatten && depth >= 2) { appender(sliceType || "interface{}"); } else { append(sliceType || "interface{}"); } }
+            } else {
+                if (flatten) { if (depth >= 2) { appender(parent) } else { append(parent) } }
+                parseStruct(depth + 1, innerTabs, scope);
+            }
+        } else { if (flatten && depth >= 2) { appender(goType(scope)); } else { append(goType(scope)); } }
+    }
+
+    function parseStruct(depth, innerTabs, scope, omitempty) {
+        if (flatten) { stack.push(depth >= 2 ? "\n" : "") }
+        if (flatten && depth >= 2) {
+            const parentType = `type ${parent}`;
+            const scopeKeys = formatScopeKeys(Object.keys(scope));
+            if (parent in seen && compareObjectKeys(scopeKeys, seen[parent])) { stack.pop(); return }
+            seen[parent] = scopeKeys;
+            appender(`${parentType} struct {\n`);
+            ++innerTabs;
+            const keys = Object.keys(scope);
+            for (let i in keys) {
+                const keyname = getOriginalName(keys[i]);
+                indenter(innerTabs);
+                const typename = format(keyname);
+                appender(typename + " ");
+                parent = typename;
+                parseScope(scope[keys[i]], depth);
+                appender(' `json:"' + keyname);
+                if (omitempty && omitempty[keys[i]] === true) { appender(',omitempty'); }
+                appender('"`\n');
+            }
+            indenter(--innerTabs);
+            appender("}");
+        } else {
+            append("struct {\n");
+            ++tabs;
+            const keys = Object.keys(scope);
+            for (let i in keys) {
+                const keyname = getOriginalName(keys[i]);
+                indent(tabs);
+                const typename = format(keyname);
+                append(typename + " ");
+                parent = typename;
+                parseScope(scope[keys[i]], depth);
+                append(' `json:"' + keyname);
+                if (omitempty && omitempty[keys[i]] === true) { append(',omitempty'); }
+                append('"`\n');
+            }
+            indent(--tabs);
+            append("}");
+        }
+        if (flatten)
+            accumulator += stack.pop();
+    }
+
+    function indent(tabs) {
+        for (let i = 0; i < tabs; i++)
+            go += '\t';
+    }
+
+    function append(str) { go += str; }
+
+    function indenter(tabs) {
+        for (let i = 0; i < tabs; i++)
+            stack[stack.length - 1] += '\t';
+    }
+
+    function appender(str) { stack[stack.length - 1] += str; }
+
+    function format(str) {
+        if (!str)
+            return "";
+        else if (str.match(/^\d+$/))
+            str = "Num" + str;
+        else if (str.charAt(0).match(/\d/)) { const numbers = { '0': "Zero_", '1': "One_", '2': "Two_", '3': "Three_", '4': "Four_", '5': "Five_", '6': "Six_", '7': "Seven_", '8': "Eight_", '9': "Nine_" };
+            str = numbers[str.charAt(0)] + str.substr(1); }
+        return toProperCase(str).replace(/[^a-z0-9]/ig, "") || "NAMING_FAILED";
+    }
+
+    function goType(val) {
+        if (val === null)
+            return "interface{}";
+        switch (typeof val) {
+            case "string":
+                if (/\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(\+\d\d:\d\d|Z)/.test(val))
+                    return "time.Time";
+                else
+                    return "string";
+            case "number":
+                if (val % 1 === 0) {
+                    if (val > -2147483648 && val < 2147483647)
+                        return "int";
+                    else
+                        return "int64";
+                } else
+                    return "float64";
+            case "boolean":
+                return "bool";
+            case "object":
+                if (Array.isArray(val))
+                    return "slice";
+                return "struct";
+            default:
+                return "interface{}";
+        }
+    }
+
+    function mostSpecificPossibleGoType(typ1, typ2) {
+        if (typ1.substr(0, 5) === "float" && typ2.substr(0, 3) === "int")
+            return typ1;
+        else if (typ1.substr(0, 3) === "int" && typ2.substr(0, 5) === "float")
+            return typ2;
+        else
+            return "interface{}";
+    }
+
+    function toProperCase(str) {
+        const commonInitialisms = ["ACL", "API", "ASCII", "CPU", "CSS", "DNS", "EOF", "GUID", "HTML", "HTTP", "HTTPS", "ID", "IP", "JSON", "LHS", "QPS", "RAM", "RHS", "RPC", "SLA", "SMTP", "SQL", "SSH", "TCP", "TLS", "TTL", "UDP", "UI", "UID", "UUID", "URI", "URL", "UTF8", "VM", "XML", "XMPP", "XSRF", "XSS"];
+        return str.replace(/(^|[^a-zA-Z])([a-z]+)/g, function(unused, sep, frag) {
+            if (commonInitialisms.indexOf(frag.toUpperCase()) >= 0)
+                return sep + frag.toUpperCase();
+            else
+                return sep + frag[0].toUpperCase() + frag.substr(1).toLowerCase();
+        }).replace(/([A-Z])([a-z]+)/g, function(unused, sep, frag) {
+            if (commonInitialisms.indexOf(sep + frag.toUpperCase()) >= 0)
+                return (sep + frag).toUpperCase();
+            else
+                return sep + frag;
+        });
+    }
+
+    function uuidv4() { return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) { var r = Math.random() * 16 | 0,
+                v = c === 'x' ? r : (r & 0x3 | 0x8); return v.toString(16); }); }
+
+    function getOriginalName(unique) {
+        const reLiteralUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+        const uuidLength = 36;
+        if (unique.length >= uuidLength) { const tail = unique.substr(-uuidLength); if (reLiteralUUID.test(tail)) { return unique.slice(0, -1 * (uuidLength + 1)) } }
+        return unique
+    }
+
+    function compareObjects(objectA, objectB) { const object = "[object Object]"; return Object.prototype.toString.call(objectA) === object && Object.prototype.toString.call(objectB) === object; }
+
+    function compareObjectKeys(itemAKeys, itemBKeys) {
+        const lengthA = itemAKeys.length;
+        const lengthB = itemBKeys.length;
+        if (lengthA === 0 && lengthB === 0)
+            return true;
+        if (lengthA !== lengthB)
+            return false;
+        for (let item of itemAKeys) {
+            if (!itemBKeys.includes(item))
+                return false;
+        }
+        return true;
+    }
+
+    function formatScopeKeys(keys) {
+        for (let i in keys) { keys[i] = format(keys[i]); }
+        return keys
+    }
+}
+let input = document.getElementById('input');
+let output = document.getElementById('output');
+
+function convert(flat) {
+    let json = input.innerText;
+    if (json) {
+        let res = json2go(json, null, flat);
+        if (res.error) { alert(res.error) } else { output.innerHTML = hljs.highlight("go", res.go).value; }
+        input.innerHTML = hljs.highlight("json", json).value;
+    }
+}
+
+function cleanup() { input.value = '';
+    output.value = ''; }
+new ClipboardJS('.button').on('success', function() { alert('复制成功') }).on('error', function() { alert('复制失败,请手动复制') });
+</script>
+ </body>
+</html>
