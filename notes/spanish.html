@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西班牙语分音节助手</title>
+</head>
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #app {
+            font-size: 0;
+        }
+        textarea {
+            display: inline-block;
+            width: 50%;
+            border: none;
+            outline: none;
+            padding: 0;
+            border-right: 1px solid #c1c1c1;
+            height: 100vh;
+            font-size:16px;
+            padding: 15px;
+            table-layout: fixed;
+            word-wrap: break-word;
+            text-break: normal;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            background-color: rgba(0, 0, 0, .04);
+        }
+        #preview {
+            line-height: 2.2;
+            display: inline-block;
+            width: 50%;
+            height: 100vh;
+            overflow-y: auto;
+            font-size:16px;
+            padding: 15px;
+            table-layout: fixed;
+            word-wrap: break-word;
+            text-break: normal;
+            text-align: justify;
+            text-justify: inter-ideograph;
+            vertical-align: top;
+        }
+        @media (max-width: 768px) {
+            textarea {
+                border-bottom: 1px solid #c1c1c1;
+            }
+            textarea, #preview {
+                width: 100%;
+                height: 50vh;
+            }
+        }
+        p {
+            font-size: 14px;
+            line-height: 2
+        }
+        ruby {
+            font-size:16px;
+            cursor: pointer;
+        }
+        ruby:hover {
+            background-color: rgba(255, 0, 0, .2);
+        }
+        rt {
+            color: #919191;
+            font-size:12px;
+            margin-bottom: 3px;
+        }
+        rt span {
+            font-size:12px;
+        }
+    </style>
+    <div id="app">
+        <textarea placeholder="请输入西语内容 / Please enter the word or article in Spanish" cols="80" rows="30"></textarea>
+        <div id="preview">
+            <p>✔ 该网站用于帮助初学西语的人更快的练习正确的发音</p>
+            <p>✔ 请在另一侧输入西语单词或短文，将在这一侧显示每个单词的分音节和音节的重读</p>
+            <p>✔ 点击单词可以发音，如果无法使用，请更换 PC 的 Chrome 浏览器</p>
+            <hr style="margin: 10px 0;">
+            <p>✔ This website is used to help people who are just starting to learn Spanish to practice the correct pronunciation more easily</p>
+            <p>✔ Please enter a Spanish word or article on the other side</p>
+            <p>✔ Click on the word to listen to the pronunciation</p>
+            <p>✔ If this is not working, please change your browser to Chrome</p>
+            <p>✔ <a href="https://github.com/Ice-Hazymoon/spanish" target="_blank" >https://github.com/Ice-Hazymoon/spanish</a></p>
+        </div>
+    </div>
+    <script>
+        !function() {
+    var a = {}
+      , e = {
+        getSilabas: function(a) {
+            return t(a),
+            u(),
+            n(),
+            o(),
+            JSON.parse(JSON.stringify(i))
+        }
+    }
+      , i = {
+        palabra: void 0,
+        longitudPalabra: void 0,
+        numeroSilaba: void 0,
+        silabas: void 0,
+        tonica: void 0,
+        letraTildada: void 0,
+        acentuacion: void 0,
+        hiato: void 0,
+        diptongo: void 0,
+        triptongo: void 0
+    }
+      , s = void 0;
+    function t(a) {
+        var e;
+        i.palabra = a.toLowerCase().trim(),
+        i.silabas = [],
+        i.longitudPalabra = i.palabra.length,
+        s = !1,
+        i.tonica = 0,
+        i.numeroSilaba = 0,
+        i.letraTildada = -1;
+        for (var t = 0; t < i.longitudPalabra; )
+            i.numeroSilaba++,
+            (e = {}).inicioPosicion = t,
+            t = r(i.palabra, t),
+            t = c(i.palabra, t),
+            t = l(i.palabra, t),
+            e.silaba = i.palabra.substring(e.inicioPosicion, t),
+            i.silabas.push(e),
+            s && 0 == i.tonica && (i.tonica = i.numeroSilaba);
+        if (!s)
+            if (i.numeroSilaba < 2)
+                i.tonica = i.numeroSilaba;
+            else {
+                var n = i.palabra[i.longitudPalabra - 1]
+                  , o = i.palabra[i.longitudPalabra - 2];
+                !p(n) || "y" == n || "n" == n || "s" == n && !p(o) ? i.tonica = i.numeroSilaba - 1 : i.tonica = i.numeroSilaba
+            }
+    }
+    function r(a, e) {
+        for (var s = "a"; e < i.longitudPalabra && p(a[e]) && "y" != a[e]; )
+            s = a[e],
+            e++;
+        if (e < i.longitudPalabra - 1)
+            if ("u" == a[e]) {
+                if ("q" == s)
+                    e++;
+                else if ("g" == s) {
+                    var t = a[e + 1];
+                    "e" != t && "é" != t && "i" != t && "í" != t || e++
+                }
+            } else
+                "ü" !== a[e] && "Ü" != a[e] || "g" == s && e++;
+        return e
+    }
+    function c(a, e) {
+        var t, r = 0;
+        if (e >= i.longitudPalabra)
+            return e;
+        if ("y" == a[e] && e++,
+        e < i.longitudPalabra)
+            switch (t = a[e]) {
+            case "á":
+            case "Á":
+            case "à":
+            case "À":
+            case "é":
+            case "É":
+            case "è":
+            case "È":
+            case "ó":
+            case "Ó":
+            case "ò":
+            case "Ò":
+                i.letraTildada = e,
+                s = !0,
+                r = 0,
+                e++;
+                break;
+            case "a":
+            case "A":
+            case "e":
+            case "E":
+            case "o":
+            case "O":
+                r = 0,
+                e++;
+                break;
+            case "í":
+            case "Í":
+            case "ì":
+            case "Ì":
+            case "ú":
+            case "Ú":
+            case "ù":
+            case "Ù":
+            case "ü":
+            case "Ü":
+                return i.letraTildada = e,
+                r = 1,
+                e++,
+                s = !0,
+                e;
+            case "i":
+            case "I":
+            case "u":
+            case "U":
+                r = 2,
+                e++
+            }
+        var c = !1;
+        if (e < i.longitudPalabra && "h" == a[e] && (e++,
+        c = !0),
+        e < i.longitudPalabra)
+            switch (t = a[e]) {
+            case "á":
+            case "Á":
+            case "à":
+            case "À":
+            case "é":
+            case "É":
+            case "è":
+            case "È":
+            case "ó":
+            case "Ó":
+            case "ò":
+            case "Ò":
+                if (i.letraTildada = e,
+                0 != r && (s = !0),
+                0 == r)
+                    return c && e--,
+                    e;
+                e++;
+                break;
+            case "a":
+            case "A":
+            case "e":
+            case "E":
+            case "o":
+            case "O":
+                if (0 == r)
+                    return c && e--,
+                    e;
+                e++;
+                break;
+            case "í":
+            case "Í":
+            case "ì":
+            case "Ì":
+            case "ú":
+            case "Ú":
+            case "ù":
+            case "Ù":
+                return i.letraTildada = e,
+                0 != r ? (s = !0,
+                e++) : c && e--,
+                e;
+            case "i":
+            case "I":
+            case "u":
+            case "U":
+            case "ü":
+            case "Ü":
+                if (e < i.longitudPalabra - 1)
+                    if (!p(a[e + 1]))
+                        return "h" == a[e - 1] && e--,
+                        e;
+                return a[e] != a[e - 1] && e++,
+                e
+            }
+        return e < i.longitudPalabra && ("i" == (t = a[e]) || "u" == t) ? ++e : e
+    }
+    function l(a, e) {
+        if (e >= i.longitudPalabra || !p(a[e]))
+            return e;
+        if (e == i.longitudPalabra - 1)
+            return ++e;
+        if (!p(a[e + 1]))
+            return e;
+        var s = a[e]
+          , t = a[e + 1];
+        if (e < i.longitudPalabra - 2) {
+            var r = a[e + 2];
+            if (!p(r))
+                return "l" == s && "l" == t || "c" == s && "h" == t || "r" == s && "r" == t || "s" != s && "r" != s && "h" == t ? e : "y" == t ? "s" == s || "l" == s || "r" == s || "n" == s || "c" == s ? e : ++e : ("b" != s && "v" != s && "c" != s && "k" != s && "f" != s && "g" != s && "p" != s && "t" != s || "l" != t) && ("b" != s && "v" != s && "c" != s && "d" != s && "k" != s && "f" != s && "g" != s && "p" != s && "t" != s || "r" != t) ? ++e : e;
+            if (e + 3 == i.longitudPalabra)
+                return "y" != t || "s" != s && "l" != s && "r" != s && "n" != s && "c" != s ? ("y" == r ? e++ : e += 3,
+                e) : e;
+            if ("y" == t)
+                return "s" == s || "l" == s || "r" == s || "n" == s || "c" == s ? e : ++e;
+            if ("p" == t && "t" == r || "c" == t && "t" == r || "c" == t && "n" == r || "p" == t && "s" == r || "m" == t && "n" == r || "g" == t && "n" == r || "f" == t && "t" == r || "p" == t && "n" == r || "c" == t && "z" == r || "t" == t && "s" == r || "t" == t && "s" == r)
+                return ++e;
+            "l" == r || "r" == r || "c" == t && "h" == r || "y" == r ? e++ : e += 2
+        } else {
+            if ("y" == t)
+                return e;
+            e += 2
+        }
+        return e
+    }
+    function n() {
+        var a = !1;
+        i.hiato = [],
+        i.letraTildada > 1 && "u" == i.palabra[i.letraTildada - 1] && "q" == i.palabra[i.letraTildada - 2] && i.hiato.push({
+            tipoHiato: "Hiato simple",
+            silabaHiato: i.palabra[i.letraTildada] + "-" + i.palabra[i.letraTildada + 1]
+        });
+        for (var e = 0; e < i.palabra.length; e++) {
+            if ("íìúù".indexOf(i.palabra[e]) > -1) {
+                if (e > 0 && b(i.palabra[e - 1])) {
+                    i.hiato.push({
+                        tipoHiato: "Hiato acentual",
+                        silabaHiato: i.palabra[e - 1] + "-" + i.palabra[e]
+                    }),
+                    a = !1;
+                    continue
+                }
+                if (e < i.longitudPalabra - 1 && b(i.palabra[e + 1])) {
+                    i.hiato.push({
+                        tipoHiato: "Hiato acentual",
+                        silabaHiato: i.palabra[e] + "-" + i.palabra[e + 1]
+                    }),
+                    a = !1;
+                    continue
+                }
+            }
+            a && b(i.palabra[e]) && i.hiato.push({
+                tipoHiato: "Hiato simple",
+                silabaHiato: i.palabra[e - 1] + "-" + i.palabra[e]
+            }),
+            a && "h" === i.palabra[e] && b(i.palabra[e + 1]) && i.hiato.push({
+                tipoHiato: "Hiato simple",
+                silabaHiato: i.palabra[e - 1] + "-h" + i.palabra[e + 1]
+            }),
+            a = b(i.palabra[e])
+        }
+    }
+    function o() {
+        var a;
+        i.diptongo = [],
+        i.triptongo = [];
+        for (var e = 0; e < i.silabas.length; e++)
+            a = /((i|u)(a|e|o)(i|u))/g,
+            i.silabas[e].silaba.match(a) ? i.triptongo.push({
+                tipo: "Triptongo",
+                silaba: i.silabas[e].silaba.match(a)[0]
+            }) : (a = /((i|u)(a|e|o))/g,
+            i.silabas[e].silaba.match(a) ? i.diptongo.push({
+                tipo: "Diptongo Creciente",
+                silaba: i.silabas[e].silaba.match(a)[0]
+            }) : (a = /((a|e|o)(i|u))/g,
+            i.silabas[e].silaba.match(a) ? i.diptongo.push({
+                tipo: "Diptongo Drececiente",
+                silaba: i.silabas[e].silaba.match(a)[0]
+            }) : (a = /((a|e|o)(i|u))/g,
+            i.silabas[e].silaba.match(a) && i.diptongo.push({
+                tipo: "Diptongo Homogéneos",
+                silaba: i.silabas[e].silaba.match(a)[0]
+            }))))
+    }
+    function u() {
+        switch (i.numeroSilaba - i.tonica) {
+        case 0:
+            i.acentuacion = "Aguda";
+            break;
+        case 1:
+            i.acentuacion = "Grave (Llana)";
+            break;
+        case 2:
+            i.acentuacion = "Esdrújula";
+            break;
+        default:
+            i.acentuacion = "Sobresdrújula"
+        }
+    }
+    function b(a) {
+        switch (a) {
+        case "a":
+        case "á":
+        case "A":
+        case "Á":
+        case "à":
+        case "À":
+        case "e":
+        case "é":
+        case "E":
+        case "É":
+        case "è":
+        case "È":
+        case "í":
+        case "Í":
+        case "ì":
+        case "Ì":
+        case "o":
+        case "ó":
+        case "O":
+        case "Ó":
+        case "ò":
+        case "Ò":
+        case "ú":
+        case "Ú":
+        case "ù":
+        case "Ù":
+            return !0
+        }
+        return !1
+    }
+    function p(a) {
+        if (!b(a)) {
+            switch (a) {
+            case "i":
+            case "I":
+            case "u":
+            case "U":
+            case "ü":
+            case "Ü":
+                return !1
+            }
+            return !0
+        }
+        return !1
+    }
+    a = e,
+    document.querySelector("textarea").addEventListener("input", (e=>{
+        console.log(e.target);
+        const i = e.target.value.replace(/(-?\d+((,|\.)\d{3})*%?)|([\w\'áéíóúÁÉÍÓÚñÑçÇüÜ]+|[0-9]+)/g, (e=>{
+            const i = a.getSilabas(e)
+              , s = i.silabas.map((a=>a.silaba));
+            return s.length > 1 ? `<ruby title="点击发音">${e}<rt>${s.map(((a,e)=>e + 1 === i.tonica ? `<span style="color: red;">${a}</span>` : a)).join("-")}</rt></ruby>` : `<ruby title="点击发音">${e}</ruby>`
+        }
+        )).replace(/\n/g, "<br/>");
+        document.getElementById("preview").innerHTML = i,
+        document.getElementById("preview").style.whiteSpace = "pre-wrap",
+        Array.from(document.querySelectorAll("ruby")).forEach((a=>{
+            a.addEventListener("click", (()=>{
+                window.speechSynthesis.cancel();
+                const e = new window.SpeechSynthesisUtterance;
+                e.text = a.childNodes[0].nodeValue,
+                //西班牙语
+                // e.lang = "es-ES",
+                //英语
+                e.lang = "en-US",
+                e.volume = 1,
+                //西班牙语
+                // e.voice = speechSynthesis.getVoices().filter((a=>"es-ES" === a.lang))[0],
+                //英语
+                e.voice = speechSynthesis.getVoices().filter((a=>"en-US" === a.lang))[0],
+                window.speechSynthesis.speak(e)
+            }
+            ))
+        }
+        ))
+    }
+    ))
+}();
+
+    </script>
+</body>
+</html>
