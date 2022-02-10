@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        JSON转Golang Struct
+    </title>
+    <meta name="keywords" content="JSON转Golang Struct" />
+    <meta name="description" content="在线JSON转Golang Struct工具,JSON转Golang 结构体,JSON转Struct,JSON转Go" />
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.9/styles/idea.min.css" rel="stylesheet" />
+
+    <style>
+    .container {
+        max-width: 100%
+    }
+
+    pre {
+        overflow: auto
+    }
+    </style>
+</head>
+
+<body>
+
+    <aside>
+        <h1 class="logo"> <a href="/"> Tools </a> </h1>
+        <nav class="side-nav">
+            <p>JSON</p>
+            <ul>
+                <li> <a href="json_to_go.html" target="_blank"> JSON转Go Struct </a> </li>
+            </ul>
+            <p>转换</p>
+            <ul>
+               <li> <a href="timestamp.html" target="_blank"> Unix时间戳 </a> </li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        <div class="container">
+            <h1> JSON转Golang Struct </h1>
+            <div class="flex mt1">
+                <div class="editarea" onpaste="setTimeout(convert,1)">
+                    <label> JSON </label>
+                    <pre id="input" class="textarea fullHeight fixed-size" contenteditable="true"></pre>
+                </div>
+                <div class="mid-menus">
+                    <div>
+                        <button class="button primary" onclick="convert()"> 转换-展开 </button>
+                        <button class="button primary" onclick="convert(false)"> 转换-嵌套 </button>
+                        <button class="button" data-clipboard-action="copy" data-clipboard-target="#output"> 复制 </button>
+                        <button class="button" onclick="cleanup()"> 清空 </button>
+                    </div>
+                </div>
+                <div class="editarea">
+                    <label> GO </label>
+                    <pre class="textarea fullHeight fixed-size"><code id="output"></code></pre>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/languages/json.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/languages/go.min.js"> </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+
+    <script src="js/json_to_go.js"></script>
+
+</body>
+
+</html>
