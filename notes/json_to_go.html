@@ -8,13 +8,13 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>时间戳转换工具</title>
+    <title>JSON转Golang Struct</title>
     <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/timestamp/index.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/timestamp/vue.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/timestamp/require.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/91xcode/static@master/timestamp/vue.js"></script> -->
+
     <style>
         table tr td a {
             color: #6F5499;
@@ -796,102 +796,26 @@
         <div class="row row-offcanvas row-offcanvas-right">
             <div class="col-xs-12 col-sm-12">
                
-            <!-- <div class="container"> -->
-            <h1>Unix时间戳</h1>
-            <div class="flex mt-2">
-                <div class="group" style="margin-right:1em;flex-shrink:2">
-                    <span class="static">当前时间</span>
-                    <input id="time_now" class="input text-info" />
-                    <select id="select_now_unit" class="select" onchange="updateTime()">
-                        <option value="s">秒 </option>
-                        <option value="ms">毫秒</option>
-                    </select>
+            <h1> JSON转Golang Struct </h1>
+            <div class="flex mt1">
+                <div class="editarea" onpaste="setTimeout(convert,1)">
+                    <label> JSON </label>
+                    <pre id="input" class="textarea fullHeight fixed-size" contenteditable="true"></pre>
                 </div>
-                <div class="group">
-                    <button class="button primary" onclick="startUpdate(this)">开始</button>
-                    <button class="button" onclick="stopUpdate(this)">停止</button>
-                    <button class="button" onclick="updateTime()">刷新</button>
+                <div class="mid-menus">
+                    <div>
+                        <button class="button" onclick="example()"> 示例 </button>
+                        <button class="button primary " onclick="convert()"> 转换-展开 </button>
+                        <button class="button primary " onclick="convert(false)"> 转换-嵌套 </button>
+                        <button class="button sk" data-clipboard-action="copy" data-clipboard-target="#output"> 复制 </button>
+                        <button class="button" onclick="cleanup()"> 清空 </button>
+                    </div>
+                </div>
+                <div class="editarea">
+                    <label> GO </label>
+                    <pre class="textarea fullHeight fixed-size"><code id="output"></code></pre>
                 </div>
             </div>
-            <div class="group mt-2">
-                <span class="static">Unix时间戳</span>
-                <input id="input_time" class="input inline" onpaste="setTimeout(timeToDate,1)" />
-                <select id="select_input_unit" class="select" onchange="timeToDate()">
-                    <option value="s">秒 </option>
-                    <option value="ms">毫秒</option>
-                </select>
-                <button class="button primary" onclick="timeToDate()">转换</button>
-                <input id="output_date" class="input inline" />
-            </div>
-            <br />
-            <div class="group mt-2">
-                <span class="static">北京时间</span>
-                <input id="input_date" class="input inline" onpaste="setTimeout(dateToTime,1)" />
-                <button class="button primary" onclick="dateToTime()">转换</button>
-                <input id="output_time" class="input inline" />
-                <select id="select_output_unit" class="select" onchange="dateToTime()">
-                    <option value="s">秒 </option>
-                    <option value="ms">毫秒</option>
-                </select>
-            </div>
-            <h3 class="mt-2">在编程语言中获取Unix时间戳：</h3>
-            <table class="table striped fullwidth mt-2">
-                <thead>
-                    <tr>
-                        <th>语言</th>
-                        <th>秒</th>
-                        <th>毫秒</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>JavaScript</td>
-                        <td>Math.round(new Date() / 1000)</td>
-                        <td>new Date().getTime()</td>
-                    </tr>
-                    <tr>
-                        <td>Java</td>
-                        <td>System.currentTimeMillis() / 1000</td>
-                        <td>System.currentTimeMillis()</td>
-                    </tr>
-                    <tr>
-                        <td>Python</td>
-                        <td>int(time.time())</td>
-                        <td>int(time.time() * 1000)</td>
-                    </tr>
-                    <tr>
-                        <td>Go</td>
-                        <td>time.Now().Unix()</td>
-                        <td>time.Now().UnixNano() / 1e6</td>
-                    </tr>
-                    <tr>
-                        <td>PHP</td>
-                        <td>time()</td>
-                        <td>(int)(microtime(true) * 1000)</td>
-                    </tr>
-                    <tr>
-                        <td>Ruby</td>
-                        <td>Time.now.to_i</td>
-                        <td>(Time.now.to_f * 1000).to_i</td>
-                    </tr>
-                    <tr>
-                        <td>C#</td>
-                        <td>DateTimeOffset.UtcNow.ToUnixTimeSeconds()</td>
-                        <td>DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()</td>
-                    </tr>
-                    <tr>
-                        <td>Swift</td>
-                        <td>NSDate().timeIntervalSince1970</td>
-                        <td>NSDate().timeIntervalSince1970 * 1000</td>
-                    </tr>
-                    <tr>
-                        <td>Objective-C</td>
-                        <td>[[NSDate date] timeIntervalSince1970]</td>
-                        <td>[[NSDate date] timeIntervalSince1970] * 1000</td>
-                    </tr>
-                </tbody>
-            </table>
-        <!-- </div> -->
             </div>
         </div>
         <!--/row-->
@@ -900,33 +824,273 @@
             <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>
         </footer>
     </div>
+
+
+        <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/languages/json.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.4.0/languages/go.min.js"> </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
     <script type="text/javascript">
-            const dateFormat = 'yyyy-MM-dd hh:mm:ss';
-    Date.prototype.format = function(fmt) {
-        let o = { "M+": this.getMonth() + 1, "d+": this.getDate(), "h+": this.getHours(), "m+": this.getMinutes(), "s+": this.getSeconds(), "q+": Math.floor((this.getMonth() + 3) / 3), "s": this.getMilliseconds() };
-        if (/(y+)/.test(fmt)) { fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length)); }
-        for (let k in o) { if (new RegExp("(" + k + ")").test(fmt)) { fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length))); } }
-        return fmt;
-    };
-    let date = new Date();
-    let time_now = document.getElementById('time_now');
-    time_now.value = Math.round(date / 1000).toString();
-    document.getElementById('input_time').value = Math.round(date / 1000);
-    document.getElementById('input_date').value = date.format(dateFormat);
+    function json2go(json, typename, flatten = true) {
+        let data;
+        let scope;
+        let go = "";
+        let tabs = 0;
+        const seen = {};
+        const stack = [];
+        let accumulator = "";
+        let innerTabs = 0;
+        let parent = "";
+        try {
+            data = JSON.parse(json.replace(/\.0/g, ".1"));
+            scope = data;
+        } catch (e) { return { go: "", error: e.message }; }
+        typename = format(typename || "AutoGenerated");
+        append(`type ${typename} `);
+        parseScope(scope);
+        return { go: flatten ? go += accumulator : go };
 
-    function updateTime() { let unit = document.getElementById('select_now_unit').value; if (unit === 's') { time_now.value = Math.round(new Date() / 1000).toString(); } else if (unit === 'ms') { time_now.value = new Date().getTime().toString(); } }
-    let handle = setInterval(updateTime, 1000);
+        function parseScope(scope, depth = 0) {
+            if (typeof scope === "object" && scope !== null) {
+                if (Array.isArray(scope)) {
+                    let sliceType;
+                    const scopeLength = scope.length;
+                    for (let i = 0; i < scopeLength; i++) {
+                        const thisType = goType(scope[i]);
+                        if (!sliceType)
+                            sliceType = thisType;
+                        else if (sliceType !== thisType) {
+                            sliceType = mostSpecificPossibleGoType(thisType, sliceType);
+                            if (sliceType === "interface{}")
+                                break;
+                        }
+                    }
+                    const slice = flatten && ["struct", "slice"].includes(sliceType) ? `[]${parent}` : `[]`;
+                    if (flatten && depth >= 2)
+                        appender(slice);
+                    else
+                        append(slice);
+                    if (sliceType === "struct") {
+                        const allFields = {};
+                        for (let i = 0; i < scopeLength; i++) {
+                            const keys = Object.keys(scope[i]);
+                            for (let k in keys) {
+                                let keyname = keys[k];
+                                if (!(keyname in allFields)) { allFields[keyname] = { value: scope[i][keyname], count: 0 } } else {
+                                    const existingValue = allFields[keyname].value;
+                                    const currentValue = scope[i][keyname];
+                                    if (compareObjects(existingValue, currentValue)) {
+                                        const comparisonResult = compareObjectKeys(Object.keys(currentValue), Object.keys(existingValue));
+                                        if (!comparisonResult) {
+                                            keyname = `${keyname}_${uuidv4()}`;
+                                            allFields[keyname] = { value: currentValue, count: 0 };
+                                        }
+                                    }
+                                }
+                                allFields[keyname].count++;
+                            }
+                        }
+                        const keys = Object.keys(allFields),
+                            struct = {},
+                            omitempty = {};
+                        for (let k in keys) {
+                            const keyname = keys[k],
+                                elem = allFields[keyname];
+                            struct[keyname] = elem.value;
+                            omitempty[keyname] = elem.count !== scopeLength;
+                        }
+                        parseStruct(depth + 1, innerTabs, struct, omitempty);
+                    } else if (sliceType === "slice") { parseScope(scope[0], depth) } else { if (flatten && depth >= 2) { appender(sliceType || "interface{}"); } else { append(sliceType || "interface{}"); } }
+                } else {
+                    if (flatten) { if (depth >= 2) { appender(parent) } else { append(parent) } }
+                    parseStruct(depth + 1, innerTabs, scope);
+                }
+            } else { if (flatten && depth >= 2) { appender(goType(scope)); } else { append(goType(scope)); } }
+        }
 
-    function startUpdate(e) { window.clearInterval(handle);
-        handle = setInterval(updateTime, 1000);
-        e.classList.add('primary') }
+        function parseStruct(depth, innerTabs, scope, omitempty) {
+            if (flatten) { stack.push(depth >= 2 ? "\n" : "") }
+            if (flatten && depth >= 2) {
+                const parentType = `type ${parent}`;
+                const scopeKeys = formatScopeKeys(Object.keys(scope));
+                if (parent in seen && compareObjectKeys(scopeKeys, seen[parent])) { stack.pop(); return }
+                seen[parent] = scopeKeys;
+                appender(`${parentType} struct {\n`);
+                ++innerTabs;
+                const keys = Object.keys(scope);
+                for (let i in keys) {
+                    const keyname = getOriginalName(keys[i]);
+                    indenter(innerTabs);
+                    const typename = format(keyname);
+                    appender(typename + " ");
+                    parent = typename;
+                    parseScope(scope[keys[i]], depth);
+                    appender(' `json:"' + keyname);
+                    if (omitempty && omitempty[keys[i]] === true) { appender(',omitempty'); }
+                    appender('"`\n');
+                }
+                indenter(--innerTabs);
+                appender("}");
+            } else {
+                append("struct {\n");
+                ++tabs;
+                const keys = Object.keys(scope);
+                for (let i in keys) {
+                    const keyname = getOriginalName(keys[i]);
+                    indent(tabs);
+                    const typename = format(keyname);
+                    append(typename + " ");
+                    parent = typename;
+                    parseScope(scope[keys[i]], depth);
+                    append(' `json:"' + keyname);
+                    if (omitempty && omitempty[keys[i]] === true) { append(',omitempty'); }
+                    append('"`\n');
+                }
+                indent(--tabs);
+                append("}");
+            }
+            if (flatten)
+                accumulator += stack.pop();
+        }
 
-    function stopUpdate(e) { window.clearInterval(handle);
-        e.parentElement.firstElementChild.classList.remove('primary') }
+        function indent(tabs) {
+            for (let i = 0; i < tabs; i++)
+                go += '\t';
+        }
 
-    function timeToDate() { let input = document.getElementById('input_time').value; let unit = document.getElementById('select_input_unit').value; let output_date = document.getElementById('output_date'); if (unit === 's') { output_date.value = new Date(input * 1000).format(dateFormat); } else if (unit === 'ms') { output_date.value = new Date(parseInt(input)).format(dateFormat); } }
+        function append(str) { go += str; }
 
-    function dateToTime() { let input = document.getElementById('input_date').value.replace(/-/g, "/"); let unit = document.getElementById('select_output_unit').value; let output_time = document.getElementById('output_time'); if (unit === 's') { output_time.value = new Date(input).getTime() / 1000; } else if (unit === 'ms') { output_time.value = new Date(input).getTime(); } }
+        function indenter(tabs) {
+            for (let i = 0; i < tabs; i++)
+                stack[stack.length - 1] += '\t';
+        }
+
+        function appender(str) { stack[stack.length - 1] += str; }
+
+        function format(str) {
+            if (!str)
+                return "";
+            else if (str.match(/^\d+$/))
+                str = "Num" + str;
+            else if (str.charAt(0).match(/\d/)) {
+                const numbers = { '0': "Zero_", '1': "One_", '2': "Two_", '3': "Three_", '4': "Four_", '5': "Five_", '6': "Six_", '7': "Seven_", '8': "Eight_", '9': "Nine_" };
+                str = numbers[str.charAt(0)] + str.substr(1);
+            }
+            return toProperCase(str).replace(/[^a-z0-9]/ig, "") || "NAMING_FAILED";
+        }
+
+        function goType(val) {
+            if (val === null)
+                return "interface{}";
+            switch (typeof val) {
+                case "string":
+                    if (/\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(\.\d+)?(\+\d\d:\d\d|Z)/.test(val))
+                        return "time.Time";
+                    else
+                        return "string";
+                case "number":
+                    if (val % 1 === 0) {
+                        if (val > -2147483648 && val < 2147483647)
+                            return "int";
+                        else
+                            return "int64";
+                    } else
+                        return "float64";
+                case "boolean":
+                    return "bool";
+                case "object":
+                    if (Array.isArray(val))
+                        return "slice";
+                    return "struct";
+                default:
+                    return "interface{}";
+            }
+        }
+
+        function mostSpecificPossibleGoType(typ1, typ2) {
+            if (typ1.substr(0, 5) === "float" && typ2.substr(0, 3) === "int")
+                return typ1;
+            else if (typ1.substr(0, 3) === "int" && typ2.substr(0, 5) === "float")
+                return typ2;
+            else
+                return "interface{}";
+        }
+
+        function toProperCase(str) {
+            const commonInitialisms = ["ACL", "API", "ASCII", "CPU", "CSS", "DNS", "EOF", "GUID", "HTML", "HTTP", "HTTPS", "ID", "IP", "JSON", "LHS", "QPS", "RAM", "RHS", "RPC", "SLA", "SMTP", "SQL", "SSH", "TCP", "TLS", "TTL", "UDP", "UI", "UID", "UUID", "URI", "URL", "UTF8", "VM", "XML", "XMPP", "XSRF", "XSS"];
+            return str.replace(/(^|[^a-zA-Z])([a-z]+)/g, function(unused, sep, frag) {
+                if (commonInitialisms.indexOf(frag.toUpperCase()) >= 0)
+                    return sep + frag.toUpperCase();
+                else
+                    return sep + frag[0].toUpperCase() + frag.substr(1).toLowerCase();
+            }).replace(/([A-Z])([a-z]+)/g, function(unused, sep, frag) {
+                if (commonInitialisms.indexOf(sep + frag.toUpperCase()) >= 0)
+                    return (sep + frag).toUpperCase();
+                else
+                    return sep + frag;
+            });
+        }
+
+        function uuidv4() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0,
+                    v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        function getOriginalName(unique) {
+            const reLiteralUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+            const uuidLength = 36;
+            if (unique.length >= uuidLength) { const tail = unique.substr(-uuidLength); if (reLiteralUUID.test(tail)) { return unique.slice(0, -1 * (uuidLength + 1)) } }
+            return unique
+        }
+
+        function compareObjects(objectA, objectB) { const object = "[object Object]"; return Object.prototype.toString.call(objectA) === object && Object.prototype.toString.call(objectB) === object; }
+
+        function compareObjectKeys(itemAKeys, itemBKeys) {
+            const lengthA = itemAKeys.length;
+            const lengthB = itemBKeys.length;
+            if (lengthA === 0 && lengthB === 0)
+                return true;
+            if (lengthA !== lengthB)
+                return false;
+            for (let item of itemAKeys) {
+                if (!itemBKeys.includes(item))
+                    return false;
+            }
+            return true;
+        }
+
+        function formatScopeKeys(keys) {
+            for (let i in keys) { keys[i] = format(keys[i]); }
+            return keys
+        }
+    }
+    let input = document.getElementById('input');
+    let output = document.getElementById('output');
+
+    function convert(flat) {
+        let json = input.innerText;
+        if (json) {
+            let res = json2go(json, null, flat);
+            if (res.error) { alert(res.error) } else { output.innerHTML = hljs.highlight("go", res.go).value; }
+            input.innerHTML = hljs.highlight("json", json).value;
+        }
+    }
+
+    function cleanup() {
+        // console.log(input.innerHTML)
+        input.innerHTML = "";
+        output.innerHTML = "";
+    }
+
+    function example(){
+        json ='{"BigIntSupported":995815895020119788889,"date":"20180322","message":"Success !","status":200,"city":"北京","count":632,"data":{"shidu":"34%","pm25":73,"pm10":91,"quality":"良","wendu":"5","ganmao":"极少数敏感人群应减少户外活动","yesterday":{"date":"21日星期三","sunrise":"06:19","high":"高温 11.0℃","low":"低温 1.0℃","sunset":"18:26","aqi":85,"fx":"南风","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},"forecast":[{"date":"22日星期四","sunrise":"06:17","high":"高温 17.0℃","low":"低温 1.0℃","sunset":"18:27","aqi":98,"fx":"西南风","fl":"<3级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"23日星期五","sunrise":"06:16","high":"高温 18.0℃","low":"低温 5.0℃","sunset":"18:28","aqi":118,"fx":"无持续风向","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"},{"date":"24日星期六","sunrise":"06:14","high":"高温 21.0℃","low":"低温 7.0℃","sunset":"18:29","aqi":52,"fx":"西南风","fl":"<3级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"25日星期日","sunrise":"06:13","high":"高温 22.0℃","low":"低温 7.0℃","sunset":"18:30","aqi":71,"fx":"西南风","fl":"<3级","type":"晴","notice":"愿你拥有比阳光明媚的心情"},{"date":"26日星期一","sunrise":"06:11","high":"高温 21.0℃","low":"低温 8.0℃","sunset":"18:31","aqi":97,"fx":"西南风","fl":"<3级","type":"多云","notice":"阴晴之间，谨防紫外线侵扰"}]}}'
+        input.innerHTML = json;
+
+    }
+    new ClipboardJS('.sk').on('success', function() { alert('复制成功') }).on('error', function() { alert('复制失败,请手动复制') });
     </script>
 
 </body>
