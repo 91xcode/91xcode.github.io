@@ -796,7 +796,7 @@
             <div class="col-xs-12 col-sm-12">
                
             <h1> JSON转Golang Struct </h1>
-            <div class="flex mt1">
+      <!--       <div class="flex mt1">
                 <div class="editarea" onpaste="setTimeout(convert,1)">
                     <label> JSON </label>
                     <pre id="input" class="textarea fullHeight fixed-size" contenteditable="true"></pre>
@@ -814,7 +814,20 @@
                     <label> GO </label>
                     <pre class="textarea fullHeight fixed-size"><code id="output"></code></pre>
                 </div>
-            </div>
+            </div> -->
+                        <div  onpaste="setTimeout(convert,1)">
+
+                        <label> JSON </label>
+                                 <pre id="input" class="textarea fullHeight fixed-size " style="height:300px;" contenteditable="true"></pre>
+                        </div>
+                        <div>
+                        <button class="button" onclick="example()"> 示例 </button>
+                        <button class="button primary " onclick="convert()"> 转换-展开 </button>
+                        <button class="button primary " onclick="convert(false)"> 转换-嵌套 </button>
+                        <button class="button sk" data-clipboard-action="copy" data-clipboard-target="#output"> 复制 </button>
+                        <button class="button" onclick="cleanup()"> 清空 </button>
+                    </div>
+                    <pre class="textarea fullHeight fixed-size" style="height:300px;"><code id="output"></code></pre>
             </div>
         </div>
         <!--/row-->
@@ -1070,7 +1083,9 @@
     let output = document.getElementById('output');
 
     function convert(flat) {
-        let json = input.innerText;
+        // debugger;
+        // let json = input.innerText;
+        let json = input.innerHTML;
         if (json) {
             let res = json2go(json, null, flat);
             if (res.error) { alert(res.error) } else { output.innerHTML = hljs.highlight("go", res.go).value; }
