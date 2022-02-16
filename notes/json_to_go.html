@@ -1084,8 +1084,8 @@
 
     function convert(flat) {
         // debugger;
-        // let json = input.innerText;
-        let json = input.innerHTML;
+        let json = input.innerText;
+        // let json = input.innerHTML;
         if (json) {
             let res = json2go(json, null, flat);
             if (res.error) { alert(res.error) } else { output.innerHTML = hljs.highlight("go", res.go).value; }
