@@ -181,6 +181,25 @@
 
 
 
+                        7.Mac pip2 与 pip3 共存
+
+                            这里不想启用pyenv
+                            下载 get-pip.py
+                            curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
+                            首先安装pip （pip2）
+
+                            sudo python2 get-pip.py
+
+                            再安装 pip3
+
+                            sudo python3 get-pip.py
+
+                            ➜  ~ pip -V
+                            pip 20.3.4 from /usr/local/lib/python3.8/site-packages/pip (python 3.8)
+                            ➜  ~ pip2 -V
+                            pip 20.3.4 from /Library/Python/2.7/site-packages/pip (python 2.7)
+                            ➜  ~ pip3 -V
+                            pip 20.3.4 from /usr/local/lib/python3.8/site-packages/pip (python 3.8)
                         </pre>
                     </div>
                 </div>
