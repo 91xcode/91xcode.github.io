@@ -200,6 +200,109 @@
                             pip 20.3.4 from /Library/Python/2.7/site-packages/pip (python 2.7)
                             ➜  ~ pip3 -V
                             pip 20.3.4 from /usr/local/lib/python3.8/site-packages/pip (python 3.8)
+
+
+
+                        1.python读数据库
+
+                        （1）mogondb
+
+                        引入包：from pymongo import MongoClient
+
+                        创建对象：conn = MongoClient("192.168.2.77", 27017);
+
+                        注：ip需要和mongod.cfg文件的对应
+
+
+
+                        from pymongo import MongoClient
+                        conn = MongoClient("127.0.0.1", 27017);
+                        db = conn.test
+                        dev = db.mydb;
+                        for x in dev.find():
+                            print(x)
+
+                        如果数据库test是变量，则应该这样写：db = conn[db_name]
+
+                        （2）sqlserver
+
+                        引入包：import pymssql
+
+                        import pymssql
+                        conn = pymssql.connect("127.0.0.1", "sa", "123456", "mydb");
+                        cursor = conn.cursor()
+                        creatTime = datetime.datetime.now()
+                        time_str = creatTime.strftime('%Y-%m-%d %H:%M:%S')
+                        sql = "INSERT INTO table XXXXXXX"
+                        cursor.execute(sql)  # 执行sql语句  
+                        conn.commit()
+                        # 关闭连接
+                        conn.close()
+                        2.读ini文件
+
+                        引入包：import configparser
+                        读取int值用getint
+
+                        import configparser
+                        cf = configparser.ConfigParser()
+                        cf.read("config.ini")
+                        db_name = cf.get("mongodb", "db_name")
+                        db_host = cf.get("mongodb", "db_ip")
+                        db_port = cf.getint("mongodb", "db_port")
+                        sqldb_name = cf.get("sqlserver", "db_name")
+                        sqldb_ip = cf.get("sqlserver", "db_ip")
+                        sqldb_port = cf.getint("sqlserver", "db_port")
+                        sqldb_usr = cf.get("sqlserver", "db_usr")
+                        sqldb_pssawd = cf.get("sqlserver", "db_pssawd")
+                        config.ini文件
+
+                        [mongodb]
+                        db_name = test
+                        db_ip = 127.0.0.1
+                        db_port = 27017
+                        [sqlserver]
+                        db_name = mydb
+                        db_ip = 127.0.0.1
+                        db_port = 1433
+                        db_usr = sa
+                        db_pssawd = 123456
+                        3.解析xml文件
+
+                        引入包：
+
+                        from xml.dom.minidom import parse
+                        import xml.dom.minidom
+                        from xml.dom.minidom import parse
+                        import xml.dom.minidom
+                        DOMTree = xml.dom.minidom.parse("test.xml")
+                        collection = DOMTree.documentElement
+                        #if collection.hasAttribute("shelf"):
+                        nodes= collection.getElementsByTagName("node")
+                        # 打印每台设备的详细信息
+                        for d in nodes:
+                            # print ("*****node*****")
+                            if d.hasAttribute("id"):
+                            print ("ID: %s" % d.getAttribute("id"))
+                            name = d.getElementsByTagName('name')[0]
+                            print ("Name: %s" % name.childNodes[0].data)
+                            ip = d.getElementsByTagName('ip')[0]
+                            print ("IP: %s" % ip.childNodes[0].data)
+                        4.写日志
+
+                        引入包：
+                        import logging
+                        # 日志
+                        LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
+                        logging.basicConfig(filename='my.log', level=logging.DEBUG, format=LOG_FORMAT)
+                        '''
+                        logging.debug("This is a debug log.")
+                        logging.info("This is a info log.")
+                        logging.warning("This is a warning log.")
+                        logging.error("This is a error log.")
+                        logging.critical("This is a critical log.")
+                        '''
+
+                        
                         </pre>
                     </div>
                 </div>
