@@ -99,6 +99,35 @@
 
         rg --type-list
 
+    11.搜索文件
+    列出当前文件夹会进行查询的所有文件, 该选项其实可相当于：find . -type f，查找当前目录所有文件
+
+    rg --files . 
+    alias rgf='rg --files | rg' # 可来个别名
+    搜索以 md 为后缀的文件
+
+    rg --files . | rg -e ".md$" # 正则匹配
+
+
+    12.高级搜索
+    使用 -e REGEX 来指定正则表达式
+    rg -e "*sql" -C2
+    默认 rg 会忽略 .gitignore 和隐藏文件，可以使用 -uu 来查询所有内容
+    rg -uu "word" .
+    可以使用 -t type 来指定文件类型：
+    rg -t markdown "mysql" .  # 在 md 文件中查找 “mysql” 关键字
+    支持的文件类型可以通过 rg --type-list 查看
+
+    13.-C 输出匹配上下几行的内容
+    rg -C 2 'c'  a.txt
+
+    2-a
+    3-b
+    4:c
+    5-d
+    6-e
+
+
 
 </pre>
 
