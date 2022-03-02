@@ -295,6 +295,63 @@
 
 
 
+
+
+
+
+
+
+                             Mac升级Node.js和npm到最新版本指令
+
+                            一.查看本机当前Node.js和npm版本
+                                
+                            node -v
+                                
+                            npm -v
+
+                            二.清除node.js的cache
+
+                                
+                            sudo npm cache clean -f
+
+                            三.安装"n"版本管理工具，管理node.js
+
+                                
+                            sudo npm install -g n
+
+                            四.更新node.js版本
+
+                                
+                            sudo n stable
+
+                            五.更新npm版本
+                                
+                            sudo npm install npm@latest -g
+
+
+
+
+
+                            npm怎么降级
+                            npm install npm@6.9 -g
+
+                            Node快速切换版本、版本回退(降级)、版本更新(升级)
+                            安装node版本管理模块n
+                            sudo npm install n -g
+
+                            版本降级/升级
+                            sudo n 版本号
+
+                            检测目前安装了哪些版本的node
+                            sudo n
+
+                            切换版本（不会删除已经安装的其他版本）
+                            n 版本号
+
+                            删除版本
+                            sudo n rm 版本号
+                            比如删除本人电脑存在的6.9.1版可使用sudo n rm 6.9.1
+
                         ##############################################################################
                         # Chrome插件推荐
                         ##############################################################################
