@@ -84,43 +84,6 @@
                             git checkout origin/master -- filename.txt
 
 
-                        ##############################################################################
-                        # 查看日志 需要配置 git lss
-                        ##############################################################################
-
-
-
-
-                        git config --global alias.ls "log --no-merges --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-                        git config --global alias.lss "log --no-merges --color --stat --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-                        查看指定成员 以及commit 含有的字符串
-                        git lss --author liubing1 --grep '销售' -p
-
-                        git lss --author liubing1
-
-
-
-
-                        ##############################################################################
-                        # git delete branch
-                        ##############################################################################
-
-
-
-                        1、查看项目的分支们(包括本地和远程)
-                             命令行 : $ git branch -a
-
-                        2、删除本地分支
-
-                           git branch -d branch-name
-
-                        3、删除远程分支
-                            git push origin :branch-name
-
-                        4、查看删除后分支们
-                             命令行 : $ git branch -a
 
                         ##############################################################################
                         # 使用git拉代码时可以使用 -b 指定分支
@@ -165,6 +128,47 @@
                         3) 比较2个分支的指定文件
 
                         git diff branch_name1 branch_name2 具体文件路径
+
+                        4)错误提示fatal: Paths with -a does not make sense.
+                        git commit -am "注释（提交）说明""
+
+
+
+                        ##############################################################################
+                        # 查看日志 需要配置 git lss
+                        ##############################################################################
+
+
+
+
+                        git config --global alias.ls "log --no-merges --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+                        git config --global alias.lss "log --no-merges --color --stat --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+                        查看指定成员 以及commit 含有的字符串
+                        git lss --author liubing1 --grep '销售' -p
+
+                        git lss --author liubing1
+
+
+                        ##############################################################################
+                        # git delete branch
+                        ##############################################################################
+
+
+
+                        1、查看项目的分支们(包括本地和远程)
+                             命令行 : $ git branch -a
+
+                        2、删除本地分支
+
+                           git branch -d branch-name
+
+                        3、删除远程分支
+                            git push origin :branch-name
+
+                        4、查看删除后分支们
+                             命令行 : $ git branch -a
 
 
      
