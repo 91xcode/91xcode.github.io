@@ -311,6 +311,25 @@
                     20.mac 安装指定版本macos
                     https://support.apple.com/zh-cn/HT211683
 
+                    21.Mac OS Big Sur 挂载ntfs格式的移动硬盘
+                        由于目前的ntfs tools还不支持Big Sur，本人也实验了很多方法，总结如下：
+
+                    首先卸载ntfs tools。
+
+                    然后插入ntfs格式的移动硬盘。
+
+                    再新建ssd文件夹，然后使用命令行挂载ntfs格式的移动硬盘。具体命令如下：
+
+                        使用diskutil list找到需要挂载的磁盘名，比如我的移动硬盘被mac识别为/dev/disk3s1，然后：
+
+                    mkdir ssd
+                    sudo mount -t ntfs -o rw,auto,nobrowse /dev/disk2s1 ssd/
+
+                    最后，使用完卸载硬盘：
+
+                    sudo umount /dev/disk3s1
+
+
 
 
                     </pre>
