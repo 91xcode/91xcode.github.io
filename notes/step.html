@@ -330,7 +330,60 @@
                     sudo umount /dev/disk2s1
 
 
+                    22.PHP 开启一个服务
 
+                    ➜  api ll
+                    total 12K
+                    -rw-r--r-- 1 liubing staff  48 2022-03-02 17:02:43 index.php
+                    -rw-r--r-- 1 liubing staff 555 2022-03-02 17:09:02 pic.php
+                    -rw-r--r-- 1 liubing staff 130 2022-03-02 17:02:55 route2.php
+                    ➜  api php -c php.ini -S 127.0.0.1:8000 -t /Users/liubing/sai/api
+                    PHP 7.1.33 Development Server started at Wed Mar  2 17:12:38 2022
+                    Listening on http://127.0.0.1:8000
+                    Document root is /Users/liubing/sai/api
+                    Press Ctrl-C to quit.
+
+
+                    23.用 Python 和 Bash 自动上传图片到 GitHub 并生成对应的网址
+                    #!/usr/bin/env python3
+                    import pyperclip
+                    import subprocess
+
+
+                    # 安装
+                    # brew install fzf
+                    # pip3 install pyperclip
+
+
+                    # 请按照实际情况填写
+                    username = "91xcode"
+                    repo_name = "static"
+                    branch_name = "master"
+
+
+
+                    # https://raw.githubusercontent.com/91xcode/static/master/pic/1.png
+                    # https://cdn.jsdelivr.net/gh/91xcode/static@master/pic/1.png
+
+
+                    github = f"https://raw.githubusercontent.com/{username}/{repo_name}/{branch_name}/pic/"
+                    jsdeliver = f"https://cdn.jsdelivr.net/gh/{username}/{repo_name}@{branch_name}/pic/"
+
+                    copy_path = "fzf | tr -d '\n' | pbcopy"
+
+
+                    def get_url():
+                        subprocess.call(copy_path, shell=True)
+                        path = pyperclip.paste()
+                        print(f"\n![]({github+path})\n")
+                        print(f"![]({jsdeliver+path})\n")
+                        pyperclip.copy(f"![]({jsdeliver+path})")
+
+                    while True:
+                        if input("Press Enter to continue. Type something else to quit: ") == "":
+                            get_url()
+                        else:
+                            break
 
                     </pre>
 
