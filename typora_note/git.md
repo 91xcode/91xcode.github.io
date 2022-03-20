@@ -6,14 +6,23 @@
 
 ## 步骤
 
+### Git生成ssh-key
+
+    ssh-key
+    
+    ssh-keygen -t rsa -C "$your_email"          # 获取 sshkey
+    cat ~/.ssh/id_rsa.pub                      # 查看 sshkey
+
 ### 协作与分支推送
 
 
+
+```
 1.正常情况下，我们在github上看到一个clone地址，git clone xxxxxxx.git后，默认clone进入的是master分支，如果想切换到某一个子分支，可以使用
 
-    git branch -a
-    
-    git checkout -b feature/account_list_20210810 remotes/origin/feature/account_list_20210810
+git branch -a
+
+git checkout -b feature/account_list_20210810 remotes/origin/feature/account_list_20210810
 
 2.在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
 
@@ -23,66 +32,76 @@ git提示--set-upstream过时了。
 
 4.git 怎么拉去指定分支的代码
 
-    git clone -b 分支名 仓库地址
+git clone -b 分支名 仓库地址
 
 5.比较2个分支指定某个文件的区别
 
-    git diff master liubing1_dev_v3 -p  app/Services/CustomerPayService.php
+git diff master liubing1_dev_v3 -p  app/Services/CustomerPayService.php
 
 6.文件撤销修改恢复到远端master
 
-    git checkout origin/master -- filename.txt
+git checkout origin/master -- filename.txt
+```
 
 
 
 ### 使用git拉代码时可以使用 -b 指定分支
+
+```
 1.指定拉 master 分支代码
 
-    git clone -b master http://gitslab.yiqing.com/declare/about.git
+git clone -b master http://gitslab.yiqing.com/declare/about.git
 
 2.指定拉 develop 分支代码
 
-    git clone -b develop http://gitslab.yiqing.com/declare/about.git
+git clone -b develop http://gitslab.yiqing.com/declare/about.git
+
+
 
 git branch -a 这条命令并没有每一次都从远程更新仓库信息，我们可以手动更新一下
 
-    git fetch origin 
-    git branch -a
-    
-    当我们删除远程分支后执行git branch -a本地却依然能看到远程分支
-    
-    这个时候我们只需要执行git remote prune origin清理一下就可以了
-    
-    然后再次执行git branch -a就看不到啦
+git fetch origin 
+git branch -a
+
+当我们删除远程分支后执行git branch -a本地却依然能看到远程分支
+
+这个时候我们只需要执行git remote prune origin清理一下就可以了
+
+然后再次执行git branch -a就看不到啦
+```
+
+
+
 
 ### git-代码冲突常见解决方法
 
-
-
+```
 1) 在合并过程中不能做部分提交
 
 git commit -im "commit message" xx
 
-2) 某个文件恢复到指定分支的版本
+2)错误提示fatal: Paths with -a does not make sense.
+git commit -am "注释（提交）说明""
+
+3) 某个文件恢复到指定分支的版本
 
 git checkout branch_name -- filename
 
-3) 比较2个分支的指定文件
+4) 比较2个分支的指定文件
 
 git diff branch_name1 branch_name2 具体文件路径
-
-4)错误提示fatal: Paths with -a does not make sense.
-git commit -am "注释（提交）说明""
+```
 
 
 
-##############################################################################
+
+
 ### 查看日志 需要配置 git lss
-##############################################################################
 
 
 
 
+```
 git config --global alias.ls "log --no-merges --color --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 git config --global alias.lss "log --no-merges --color --stat --graph --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cblue %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -92,12 +111,12 @@ git lss --author liubing1 --grep '销售' -p
 
 git lss --author liubing1
 
+```
 
-##############################################################################
 ### git delete branch
-##############################################################################
 
 
+```
 
 1、查看项目的分支们(包括本地和远程)
      命令行 : $ git branch -a
@@ -112,19 +131,19 @@ git lss --author liubing1
 4、查看删除后分支们
      命令行 : $ git branch -a
 
+```
 
 
-##############################################################################
 ### git 文件太大 克隆失败的解决方法
-##############################################################################
 
 
+```
 当使用git clone 产生这个问题的时候，在第一次克隆的时候，把克隆深度设置为1，然后再fetch
 
 git clone  https://example.com/example/example.git --depth  1
 cd example
 git fetch --unshallow
-
+```
 ### git diff结果解读
 ```
 diff –git a/f1 b/f1 //a版本的f1（变动前） 与 b版本的f1（变动后） 比较
@@ -154,14 +173,8 @@ head 到 =======里面的b789是您的commit的内容
 =========到 >>>>68的是您下拉的内容
 ```
 
-
-
-
-
-##############################################################################
-
 ### Git修改远程仓库地址
-##############################################################################
+```
 
 
 背景：Github 将https方式改为ssh方式，进行push与clone
@@ -170,57 +183,33 @@ head 到 =======里面的b789是您的commit的内容
 
 步骤
 
-    1.打开Github的仓库，点击code，进入显示ssh的页面
-    
-    2.到本地项目文件夹子，打开git bash。查看clone 地址：git remote -v
-    
-    3.移除https的方式 git remote rm origin
-    
-    4.添加新的git方式：ssh方式，ssh方式地址的话，在github上，切换到ssh方式，然后复制地址。
-    
-    5.git remote add origin 刚刚复制的git地址
-    
-    6.git remote -v
-    
-        看到地址是以git@github.com:开头，说明ssh方式添加成功
-    
-    7.重新push（提交一下）
-    
-        git push origin maste
-    
-    8.完成以上步骤，便由https方式改为了ssh方式。
+1.打开Github的仓库，点击code，进入显示ssh的页面
+
+2.到本地项目文件夹子，打开git bash。查看clone 地址：git remote -v
+
+3.移除https的方式 git remote rm origin
+
+4.添加新的git方式：ssh方式，ssh方式地址的话，在github上，切换到ssh方式，然后复制地址。
+
+5.git remote add origin 刚刚复制的git地址
+
+6.git remote -v
+
+看到地址是以git@github.com:开头，说明ssh方式添加成功
+
+7.重新push（提交一下）
+
+git push origin maste
+
+8.完成以上步骤，便由https方式改为了ssh方式。
+
+```
 
 
-
-    或者
-    
-    git修改远程仓库地址
-    方法有三种：
-    
-    1.修改命令
-    
-    git remote origin set-url [url]
-    
-    先删后加
-    
-    git remote rm origin
-    
-    git remote add origin [url]
-    
-    直接修改config文件
-    
-    git文件夹，找到config，编辑，把就的项目地址替换成新的。
-    
-    顺手安利下 《git宝典—应付日常工作使用足够的指北手册》
-    
-    关于github 建议让换 Token的形势，操作如下
-
-
-##############################################################################
 ### Git more ssh-key
-##############################################################################
 
 
+```
 
 背景：当有多个git账号时，比如：
 
@@ -264,7 +253,7 @@ b. 一个github，用于自己进行一些开发活动；
     4.用ssh命令分别测试
         $ ssh -T git@github.com
 
-
+```
     (4) Git操作
     
     ssh-key
@@ -275,16 +264,17 @@ b. 一个github，用于自己进行一些开发活动；
 
 
 
-##############################################################################
+
 ### 子模块
-##############################################################################
+```
 git submodule foreach git pull    子模块更新
+```
 
 
-##############################################################################
 ### 首次使用 git
-##############################################################################
 
+
+```
 客户端首次使用 git 提交时需要将 id_rsa.pub 内容提交到 github 上不然每次都会提示输入用户名密码
 
 然后输入必要的配置
@@ -449,10 +439,10 @@ git diff origin/master..master --stat    # 只显示差异的文件，不显示�
 
     # 在当前目录新建一个Git代码库
     $ git init
-    
+
     # 新建一个目录，将其初始化为Git代码库
     $ git init [project-name]
-    
+
     # 下载一个项目和它的整个代码历史
     $ git clone [url]
 
@@ -461,7 +451,7 @@ git diff origin/master..master --stat    # 只显示差异的文件，不显示�
     --global 代表全局变量
     # 显示当前的Git配置
     $ git config --list
-    
+
     # 设置提交代码时的用户信息
     $ git config [--global] user.name "[name]"
     $ git config [--global] user.email "[email address]"
@@ -472,10 +462,10 @@ git add 添加
 
     # 添加指定目录到暂存区，包括子目录
     $ git add [dir]
-    
+
     # 添加当前目录的所有文件到暂存区
     $ git add .
-    
+
     # 添加每个变化前，可以查看确认变化
     # 对于同一个文件的多处变化，可以实现分次提交
     $ git add -p
@@ -492,17 +482,17 @@ git commit 提交
 
     # 提交暂存区到仓库区
     $ git commit -m [message]
-    
+
     # 提交暂存区的指定文件到仓库区
     $ git commit [file1] [file2] ... -m [message]
-    
+
     # 提交时显示所有diff信息
     $ git commit -v
-    
+
     # 使用一次新的commit，替代上一次提交
     # 如果代码没有任何新变化，则用来改写上一次commit的提交信息
     $ git commit --amend -m [message]
-    
+
     # 重做上一次commit，并包括指定文件的新变化
     $ git commit --amend [file1] [file2] ...
 
@@ -510,19 +500,19 @@ git branch 分支
 
     # 列出所有本地分支
     $ git branch
-    
+
     # 列出所有远程分支
     $ git branch -r
-    
+
     # 列出所有本地分支和远程分支
     $ git branch -a
-    
+
     # 列出本地分支追踪的远程分支
     $ git branch -vv
-    
+
     # 切换到指定分支，并更新工作区
     $ git checkout [branch-name]
-    
+
     # 切换到上一个分支
     $ git checkout -
 
@@ -531,7 +521,7 @@ git branch 分支
     $ git branch --set-upstream [branch] [remote-branch]
     # 本地分支追踪远端dev分支
     $ git branch --set-upstream-to=origin/dev
-    
+
     # 新建一个分支，与指定的远程分支建立追踪关系
     $ git branch --track [branch] [remote/branch]
 
@@ -540,10 +530,10 @@ git branch 分支
 
     # 新建一个分支，但依然停留在当前分支
     $ git branch [branch-name]
-    
+
     # 新建一个分支，并切换到该分支
     $ git checkout -b [branch]
-    
+
     # 新建一个分支，指向指定commit
     $ git branch [branch] [commit]
 
@@ -551,7 +541,7 @@ merge cherry-pick 合并
 
     # 合并指定分支到当前分支
     $ git merge [branch]
-    
+
     # 选择一个commit，合并进当前分支
     $ git cherry-pick [commit]
 
@@ -559,7 +549,7 @@ merge cherry-pick 合并
 
     # 删除分支
     $ git branch -d [branch-name]
-    
+
     # 删除远程分支
     $ git push origin :branch-name
 
@@ -576,31 +566,31 @@ git tag
 
     # 列出所有tag
     $ git tag
-    
+
     # 新建一个tag在当前commit
     $ git tag [tag]
-    
+
     # 新建一个tag在指定commit
     $ git tag [tag] [commit]
-    
+
     # 删除本地tag
     $ git tag -d [tag]
-    
+
     # 删除远程tag
     $ git push origin :refs/tags/[tagName]
-    
+
     # 查看tag信息
     $ git show [tag]
-    
+
     # 提交指定tag
     $ git push [remote] [tag]
-    
+
     # 提交所有tag
     $ git push [remote] --tags
-    
+
     # 新建一个分支，指向某个tag
     $ git checkout -b [branch] [tag]
-    
+
     #删除所有本地tag
     git tag -l | xargs git tag -d 
 
@@ -608,59 +598,59 @@ git tag
 
     # 显示有变更的文件
     $ git status
-    
+
     # 显示当前分支的版本历史
     $ git log
-    
+
     # 显示commit历史，以及每次commit发生变更的文件
     $ git log --stat
-    
+
     # 显示某个commit之后的所有变动，每个commit占据一行
     $ git log [tag] HEAD --pretty=format:%s
-    
+
     # 显示某个commit之后的所有变动，其"提交说明"必须符合搜索条件
     $ git log [tag] HEAD --grep feature
-    
+
     # 显示某个文件的版本历史，包括文件改名
     $ git log --follow [file]
     $ git whatchanged [file]
-    
+
     # 显示指定文件相关的每一次diff
     $ git log -p [file]
-    
+
     # 显示过去5次提交
     $ git log -5 --pretty --oneline
-    
+
     # 显示所有提交过的用户，按提交次数排序
     $ git shortlog -sn
-    
+
     # 显示指定文件是什么人在什么时间修改过
     $ git blame [file]
-    
+
     # 显示暂存区和工作区的差异
     $ git diff
-    
+
     # 显示暂存区和上一个commit的差异
     $ git diff --cached [file]
-    
+
     # 显示工作区与当前分支最新commit之间的差异
     $ git diff HEAD
-    
+
     # 显示两次提交之间的差异
     $ git diff [first-branch]...[second-branch]
-    
+
     # 显示今天你写了多少行代码
     $ git diff --shortstat "@{0 day ago}"
-    
+
     # 显示某次提交的元数据和内容变化
     $ git show [commit]
-    
+
     # 显示某次提交发生变化的文件
     $ git show --name-only [commit]
-    
+
     # 显示某次提交时，某个文件的内容
     $ git show [commit]:[filename]
-    
+
     # 显示当前分支的最近几次提交
     $ git reflog
 
@@ -668,28 +658,28 @@ git tag
 
     # 下载远程仓库的所有变动
     $ git fetch [remote]
-    
+
     #从远程拉取所有信息
     git fetch origin --prune
-    
+
     # 显示所有远程仓库
     $ git remote -v
-    
+
     # 显示某个远程仓库的信息
     $ git remote show [remote]
-    
+
     # 增加一个新的远程仓库，并命名
     $ git remote add [shortname] [url]
-    
+
     # 取回远程仓库的变化，并与本地分支合并
     $ git pull [remote] [branch]
-    
+
     # 上传本地指定分支到远程仓库
     $ git push [remote] [branch]
-    
+
     # 强行推送当前分支到远程仓库，即使有冲突
     $ git push [remote] --force
-    
+
     # 推送所有分支到远程仓库
     $ git push [remote] --all
 
@@ -697,13 +687,13 @@ git checkout 撤销
 
     # 恢复暂存区的指定文件到工作区
     $ git checkout [file]
-    
+
     # 恢复某个commit的指定文件到暂存区,git log 不变
     $ git checkout [commit号] [file]
-    
+
     # 撤销所有修改（未add）
     $ git checkout .
-    
+
     # 撤销指定文件修改（未add）
     $ git checkout -- [file]
 
@@ -711,19 +701,19 @@ git reset 重置
 
     # 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变
     $ git reset [file]
-    
+
     # 重置暂存区与工作区，与上一次commit保持一致
     $ git reset --hard
-    
+
     # 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
     $ git reset [commit]
-    
+
     # 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致
     $ git reset --hard [commit]
-    
+
     # 重置当前HEAD为指定commit，但保持暂存区和工作区不变
     $ git reset --keep [commit]
-    
+
     # 新建一个commit，用来撤销指定commit
     # 后者的所有变化都将被前者抵消，并且应用到当前分支
     $ git revert [commit]
@@ -732,17 +722,19 @@ git stash 缓存
 
     # 将修改的内容放入缓存区，可以切分支
     $ git stash
-    
+
     # 取出缓存区中stash{0}的内容，并删除缓存区的文件
     $ git stash pop stash@{0}
-    
+
     # 恢复到以前的工作状态
     $ git stash apply
-    
+
     # 查看当前stash情况
     $ git stash list
-    
+
     $ git stash apply stash@{1} 命令来使用在队列中的任意一个'储藏'(stashes).
-    
+
     # 清空这个队列
     $ git stash clear
+
+```
