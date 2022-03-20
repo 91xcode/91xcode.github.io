@@ -305,6 +305,13 @@
                                 HostName github.com
                                 PreferredAuthentications publickey
                                 IdentityFile ~/.ssh/github_id_rsa
+
+                                Host github.com
+                                User git
+                                Hostname ssh.github.com
+                                PreferredAuthentications publickey
+                                IdentityFile ~/.ssh/id_rsa
+                                Port 443
                             4.用ssh命令分别测试
 
                                 $ ssh -T git@gitee.com
@@ -335,8 +342,21 @@
                             cat ~/.ssh/id_rsa.pub                      # 查看 sshkey
 
 
+                            5.ssh: connect to host github.com port 22: Connection timed out
+
+                                在 ~/.ssh 目录下新建一个config文件，添加如下内容
 
 
+                                Host github.com
+                                User git
+                                Hostname ssh.github.com
+                                PreferredAuthentications publickey
+                                IdentityFile ~/.ssh/id_rsa
+                                Port 443
+
+                                ssh -T git@github.com
+
+                                
                         ##############################################################################
                         # 子模块
                         ##############################################################################
