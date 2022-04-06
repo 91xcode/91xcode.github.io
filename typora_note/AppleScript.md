@@ -9,7 +9,8 @@
 
 ### 1. typora批量导出为html.scpt
 
-```applescript
+```javascript
+
 set folderToProcess to (choose folder with prompt "Choose Folder::")
 
 tell application "Finder"
@@ -56,8 +57,9 @@ tell application "Finder"
 end tell
 ```
 
-### 1. 将粘贴板内容自动写到备忘录中.scpt
-```applescript
+### 2. 将粘贴板内容自动写到备忘录中.scpt
+```javascript
+
 set noteHTMLText to "<pre style=\"font-family:Helvetica,sans-serif;\">" & ¬
 	(the clipboard as Unicode text) & "</pre>"
 tell application "Notes"
