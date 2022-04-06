@@ -406,6 +406,16 @@
                             0（数字） 移至当行行首，
                             b移动到单词第一个字母 w移动到单词最后一个字母
 
+
+                            常用查询
+
+                            只在当前目录下(不包含当前目录下的 子目录)查找以.html 为后缀的所有文件 然后删除
+                            1.find . -type f  -maxdepth 1  -name "*html" | egrep -v "typora_note|test|notes|github-directory-downloader"  | xargs rm
+
+                            2.删除当前目录 排除Other目录的其他文件和目录
+
+                            find . | grep -v Other | xargs rm
+
                     </pre>
                     </div>
                 </div>
