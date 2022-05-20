@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>base-source</title>
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="https://test1.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
     <style>
         * {
     margin: 0;
@@ -158,8 +158,8 @@
         <section class="p-picture g-box">
             <h1>常用图片</h1>
             <ul class="picture">
-                <li @click="copyToClipboard('https://cdn.jsdelivr.net/gh/91xcode/static@master/base-source/png-background.png')">
-                    <img src="https://cdn.jsdelivr.net/gh/91xcode/static@master/base-source/png-background.png" class="case" />
+                <li @click="copyToClipboard('https://test1.jsdelivr.net/gh/91xcode/static@master/base-source/png-background.png')">
+                    <img src="https://test1.jsdelivr.net/gh/91xcode/static@master/base-source/png-background.png" class="case" />
                 </li>
                 <li v-for="item in pictureList" @click="copyToClipboard(item)">
                     <img :src="item" class="case" />
@@ -229,9 +229,9 @@ new Vue({
 
                 { name: 'bootcss-offcanvas', onlineURL: 'https://v3.bootcss.com/examples/offcanvas/' },
 
-                { name: 'back2top', onlineURL: 'https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.css;https://cdn.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.js;Back2top.init();' },
-                { name: 'shortcut icon', onlineURL: 'https://cdn.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico' },
-                { name: 'jquery', onlineURL: 'https://cdn.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js' },
+                { name: 'back2top', onlineURL: 'https://test1.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.css;https://test1.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.js;Back2top.init();' },
+                { name: 'shortcut icon', onlineURL: 'https://test1.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico' },
+                { name: 'jquery', onlineURL: 'https://test1.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js' },
                 { name: '刷新jsdelivr，cdn替换成purge', onlineURL: 'https://purge.jsdelivr.net/gh/91xcode/static@master/base-source/picture-avatar-04.png' },
                 { name: 'm3u8测试地址', onlineURL: 'http://1252093142.vod2.myqcloud.com/4704461fvodcq1252093142/48c8a9475285890781000441992/playlist.m3u8' },
 
@@ -258,7 +258,7 @@ new Vue({
         ['pictureList', 'audioList', 'videoList'].forEach((subject) => {
             let tempList = []
             this[subject].forEach((item) => {
-                tempList.push('https://cdn.jsdelivr.net/gh/91xcode/static@master/base-source/' + item);
+                tempList.push('https://test1.jsdelivr.net/gh/91xcode/static@master/base-source/' + item);
             })
             this[subject] = tempList;
         })
