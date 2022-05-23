@@ -434,6 +434,22 @@
                             6.crazymailing 邮箱有效30分钟 https://www.crazymailing.com/
 
 
+
+
+
+                            Macos brew install mongo
+                            提示说没有可用的名叫 monggodb 的模块，真是见鬼了，通过一番了解，才知道，MongoDB 已经宣布不再开源，从2019年9月2日开始 ，HomeBrew 也从核心仓库 (#43770) 当中移除了mongodb 模块
+
+                            brew tap mongodb/brew
+                            brew install mongodb/brew/mongodb-community@3.6
+
+                            brew services start mongodb-community@3.6
+
+
+                            /usr/local/Cellar/mongodb-community@3.6/3.6.14/bin/mongo 
+
+
+
                     </pre>
                     </div>
                 </div>
