@@ -11,7 +11,11 @@
     <meta name="author" content="">
     <title>M3U8在线播放器</title>
     <link rel="shortcut icon" href="https://test1.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
-        <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.flat.min.css">
+        <!-- <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.flat.min.css"> -->
+
+
+ <link rel="stylesheet" type="text/css" href=" http://cdn.clouddeep.cn/amazeui/1.0.1/css/amazeui.min.css">
+       
     <style type="text/css">
     .input-div {
         width: 100%;
@@ -69,7 +73,8 @@
                 </span>
             </form>
         </div>
-        <video id="player" controls=""></video>
+        <!-- <video id="player" controls=""></video> -->
+         <div id="player"></div>
         <div class="am-text-right">
             <!-- <a class="am-btn am-btn-primary am-round" data-am-modal="{target: '#fenxiang'}"><i class="am-icon-share-alt"></i> 分享</a> -->
         </div>
@@ -86,22 +91,65 @@
                 © 2015 - 2021</p>
         </div>
     </footer>
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
-    <script type="text/javascript" src="https://cdn.bootcss.com/hls.js/0.14.17/hls.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script> -->
+
+    <script type="text/javascript" src="https://test1.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+    <!-- <script type="text/javascript" src="http://cdn.clouddeep.cn/amazeui/1.0.1/js/amazeui.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.bootcss.com/hls.js/0.14.17/hls.min.js"></script> -->
+   
+
+
+        <link class="dplayer-css" rel="stylesheet" href="https://test1.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
+
+<!-- <script src="https://test1.jsdelivr.net/npm/hls.js@latest"></script> -->
+ <script src="https://test1.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
+<script src="https://test1.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
     <script>
     function playM3u8(url) {
-        if (Hls.isSupported()) {
-            var video = document.getElementById('player');
-            video.volume = 1.0;
-            var hls = new Hls();
-            var m3u8Url = decodeURIComponent(url)
-            hls.loadSource(m3u8Url);
-            hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                video.play();
-            });
+        // if (Hls.isSupported()) {
+        //     var video = document.getElementById('player');
+        //     video.volume = 1.0;
+        //     var hls = new Hls();
+        //     var m3u8Url = decodeURIComponent(url)
+        //     hls.loadSource(m3u8Url);
+        //     hls.attachMedia(video);
+        //     hls.on(Hls.Events.MANIFEST_PARSED, function() {
+        //         video.play();
+        //     });
+        // }
+
+        url = "https://301.takyuhong.com/videos/202110/hls/db795475-d17c-40cb-a2ac-53882f7230c2/index.m3u8?id=24592&sign=dfd6eac858ed84b0f1623d81c8a0b7da&t=1653481200"
+
+
+
+var type = 'normal';
+if (Hls.isSupported() && Hls.WEBRTC_SUPPORT) {
+    type = 'customHls';
+}
+const dp = new DPlayer({
+    container: document.getElementById('player'),
+    autoplay: true,
+    video: {
+        // url: urls.value,
+        url: url,
+        type: type,
+        customType: {
+            'customHls': function(video, player) {
+                const hls = new Hls({
+                    debug: false,
+                    // Other hlsjsConfig options provided by hls.js
+                    p2pConfig: {
+                        live: false, // 如果是直播设为true
+                        // Other p2pConfig options provided by CDNBye http://www.cdnbye.com/cn/
+                    }
+                });
+                hls.loadSource(video.src);
+                hls.attachMedia(video);
+            }
         }
+    },
+});
     }
     var uri = window.location.href.split("#")[1];
     if (uri != null) {
@@ -139,3 +187,13 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+<script>
+
+</script>
