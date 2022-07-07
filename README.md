@@ -7,13 +7,13 @@
 
 	地址:https://www.jsdelivr.com/github
 
-	https://test1.jsdelivr.net/gh/你的用户名/你的仓库名@发布的版本号/文件路径
+	https://testingcf.jsdelivr.net/gh/你的用户名/你的仓库名@发布的版本号/文件路径
 
-	https://test1.jsdelivr.net/gh/91xcode/static@1.0/m3u8-downloader/vue.js 
+	https://testingcf.jsdelivr.net/gh/91xcode/static@1.0/m3u8-downloader/vue.js 
 
 	或者 
 
-	https://test1.jsdelivr.net/gh/91xcode/static@master/m3u8-downloader/vue.js
+	https://testingcf.jsdelivr.net/gh/91xcode/static@master/m3u8-downloader/vue.js
 
 	刷新
 

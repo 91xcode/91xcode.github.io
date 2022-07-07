@@ -346,11 +346,11 @@ repo_name = "static"
 branch_name = "master"
 
 # https://raw.githubusercontent.com/91xcode/static/master/pic/1.png
-# https://test1.jsdelivr.net/gh/91xcode/static@master/pic/1.png
+# https://testingcf.jsdelivr.net/gh/91xcode/static@master/pic/1.png
 
 
 github = f"https://raw.githubusercontent.com/{username}/{repo_name}/{branch_name}/pic/"
-jsdeliver = f"https://test1.jsdelivr.net/gh/{username}/{repo_name}@{branch_name}/pic/"
+jsdeliver = f"https://testingcf.jsdelivr.net/gh/{username}/{repo_name}@{branch_name}/pic/"
 
 copy_path = "fzf | tr -d '\n' | pbcopy"
 
