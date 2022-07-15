@@ -4,6 +4,22 @@
 
 >   git日常使用备注
 
+
+
+![img](https://yanhaijing.com/blog/146.png)
+
+
+
+参考：
+
+https://yanhaijing.com/git/2014/11/01/my-git-note/
+
+https://yanhaijing.com/git/2020/09/17/git-switch-and-restore/
+
+https://yanhaijing.com/git/2017/02/09/deep-git-5/
+
+
+
 ## 步骤
 
 ### Git生成ssh-key
@@ -18,11 +34,11 @@
 
 
 ```
-1.正常情况下，我们在github上看到一个clone地址，git clone xxxxxxx.git后，默认clone进入的是master分支，如果想切换到某一个子分支，可以使用
+1.正常情况下，我们在github上看到一个clone地址，git clone xxxxxxx.git后，默认clone进入的是master分支，如果想切换到某一个子分支，可以使用 ---基于远端dev分支，新建本地test分支[同时设置跟踪]
 
 git branch -a
 
-git checkout -b feature/account_list_20210810 remotes/origin/feature/account_list_20210810
+git checkout -b test origin/dev
 
 2.在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
 
@@ -36,7 +52,7 @@ git clone -b 分支名 仓库地址
 
 5.比较2个分支指定某个文件的区别
 
-git diff master liubing1_dev_v3 -p  app/Services/CustomerPayService.php
+git diff master dev_v3 -p  app/Services/Service.php
 
 6.文件撤销修改恢复到远端master
 
@@ -126,6 +142,8 @@ git lss --author liubing1
    git branch -d branch-name
 
 3、删除远程分支
+    git push origin --delete <branchName>
+    或者
     git push origin :branch-name
 
 4、查看删除后分支们
@@ -265,9 +283,26 @@ b. 一个github，用于自己进行一些开发活动；
 
 
 
-### 子模块
+### 子模块(submodule)
 ```
 git submodule foreach git pull    子模块更新
+
+
+
+git子分支：
+git submodule init
+git submodule update
+
+获取子分支的commit id
+git submodule
+
+添加子模块
+
+git submodule add [repository-url] [local-path]
+
+进入子模块目录，将子模块回滚到指定commit版本
+
+git reset --hard [commit-number]
 ```
 
 
