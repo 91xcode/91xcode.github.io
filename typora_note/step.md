@@ -72,6 +72,8 @@ brew install nginx
 brew install archey
 brew install htop
 brew install redis
+brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
+brew install ripgrep-bin
 
 brew cleanup
 ```
@@ -148,7 +150,7 @@ sudo spctl --master-disable
 颜色选择：kevin.itermcolors
 ```
 
-### 9.谷歌插件
+### 9.Chrome插件推荐
 
 ```
 谷歌插件
