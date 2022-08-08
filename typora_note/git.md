@@ -306,6 +306,37 @@ git reset --hard [commit-number]
 ```
 
 
+
+### 远程分支被别人删除了，本地还有显示
+
+
+
+```text
+
+要删除本地，可使用如下命令：
+git remote prune origin
+git fetch --prune
+
+```
+
+### [#](http://www.xiaoxiaoguo.cn/tools/git-01.html#恢复被删除的文件)恢复被删除的文件
+
+
+
+```text
+
+如果清楚知道commit_id ，使用如下命令
+
+git checkout commit_id -- file_name
+
+不加commit_id时，则会将该文件恢复到最新提交的那次
+
+```
+
+
+
+
+
 ### 首次使用 git
 
 
