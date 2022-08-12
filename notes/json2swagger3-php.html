@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="Chrome=1,IE=edge">
+    <meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="ninja911">
+    <meta name="copyright" content="ninja911@qq.com">
+    <meta name="description" content="Json转Swagger-PHP(OpenApi3)注解">
+    <meta name="keywords" content="swagger,openapi3,php,json,annotation,github">
+	<title>Json转Swagger-PHP(OpenApi3)注解</title>
+	<link href="https://testingcf.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+	<script type="text/javascript" src="https://testingcf.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+    <!-- <script src="convert_swagger.js"></script> -->
+
+    <style type="text/css">
+    	.g-github-ribbons {position: fixed; z-index: 999; width: 100%;}
+    	.g-github-ribbons .btn-ribbons {float: right;}
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+	<div class="row">
+		<div class="page-header">
+			<h2>Json转Swagger-PHP(OpenApi3)注解工具</h2>
+			<span>主要把Postman的Request和Response结构转Swagger3-PHP(OpenAPI3)</span>
+			<span>方便公司同事把Postman里的请求和返回Json代码快捷的写入PHP代码里，通过swagger-ui展现所有接口，所以此工具诞生了.
+
+本工具基于SwagDefGen, 应该数中国升级版吧，支持SwaggerPHP-UI,OpenApi3.x</span>
+		</div>
+	</div>
+	<form action="javascript:;" method="post">
+		<div class="row">
+		    <div class="col-lg-3">
+		    	<div class="col-md-12">
+		    		<div class="panel panel-success">
+		    			<div class="panel-heading">入参Body(不支持多维)</div>
+						<div class="panel-body">
+						<textarea class="form-control" rows="6" id="source_request"></textarea>
+						</div>
+		    		</div>
+		    	</div>
+		    	<div class="col-md-12">
+		    		<div class="panel panel-success">
+		    			<div class="panel-heading">返回Body</div>
+						<div class="panel-body">
+						<textarea class="form-control" rows="12" id="source_response"></textarea>
+						</div>
+		    		</div>
+		    	</div>
+
+		    </div>
+		    <div class="col-lg-1">
+		    	<div class="text-center" style="padding-top: 16rem;">
+		    		<button type="button" class="btn btn-success btn-md" onClick="example();">
+		    			<span class="text-primary">示例</span>
+
+		    		</button>
+		    		<button type="button" class="btn btn-success btn-md" onClick="convert();">
+		    			<span class="text-primary">转换</span>
+		    		</button>
+		    	</div>
+		    </div>
+		    <div class="col-lg-8">
+		    	<div class="col-md-12">
+		    		<div class="panel panel-success">
+		    			<div class="panel-heading">转换结果</div>
+						<div class="panel-body">
+						<textarea class="form-control" rows="23" id="target_result"></textarea>
+						</div>
+		    		</div>
+		    	</div>
+		    </div>
+		</div>
+	</form>
+	<div class="g-footer row">
+		<p class="text-center"><a href="https://www.baidu.com" target="_blank">Baidu</p>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	
+	function example(){
+		var source_request = '{"id": 1,"appid": "MTU5NzczNDkxMyxnaXTlj5Hlu"}'
+		$('#source_request').html(source_request)
+
+		var source_response = '{"code":0,"data":[{"answer_count":14,"created_at":"2019-09-06 16:35:06","id":1,"level":1,"name":"初级题库","questions_count":171},{"answer_count":9,"created_at":"2019-09-06 16:35:20","id":2,"level":2,"name":"中级题库","questions_count":15},{"answer_count":0,"created_at":"2019-09-06 16:35:30","id":3,"level":3,"name":"高级题库","questions_count":0}],"message":"操作成功"}'
+		$('#source_response').html(source_response)
+	}
+</script>
+
+
+<script type="text/javascript">
+	
+function getVersion() {
+	var version = '1.0.3';
+	var build = '20190330';
+
+	return {'version':version, 'build':build};
+}
+
+function showVersion(argument) {
+	var info = getVersion();
+
+	document.write('Ver:'+ info['version'] +' B'+ info['build']);
+}
+function convert() {
+	// ---- Global variables ----
+	var source_request, source_response, inJSON, outSwagger, tabCount, indentator, prefixStar;
+	outSwagger = '';
+	prefixStar = '     *    ';
+
+	var OA_FLAG = '@OA\\';
+	var STR_TAB = '    ';
+
+
+	const DESC_MAP ={
+	    "id" : "ID流水号" ,
+	    "created_at":"创建时间",
+	    "updated_at" : "更新时间",
+	    "deleted_at" : "删除时间",
+	    "sort_order" : "显示顺序",
+	    "order_num" : "显示顺序",
+	    "email" : "邮件地址",
+	    "phone" :"手机号",
+	    "cellphone":"手机号",
+	    "status" : "状态",
+	    "amount":"数量",
+	    "name":"姓名",
+	    "title":"标题",
+	    "description":"描述",
+	    "memo":"备注",
+    	"remark":"备注",
+    	"current_page":"当前页码",
+    	"total":"总量",
+    	"per_page":"分页尺码"
+	}
+
+	function mapDesc(k)
+	{
+		if (DESC_MAP.hasOwnProperty(k)) {
+			return DESC_MAP[k];
+		} else {
+			return '';
+		}
+	}
+
+	// ---- Functions definitions ----
+	function changeIndentation(count) {
+		/* 
+  Assign 'indentator' a string beginning with newline and followed by 'count' tabs
+  Updates variable 'tabCount' with the number of tabs used
+  Global variables updated: 
+  -identator 
+  -tabcount
+  */
+
+		let i;
+		if (count >= tabCount) {
+			i = tabCount
+		} else {
+			i = 0;
+			indentator = '\n' + prefixStar;
+		}
+		for (; i < count; i++) {
+			indentator += STR_TAB;
+		}
+		//Update tabCount
+		tabCount = count;
+	};
+
+	function conversorSelection(obj, prop) {
+		/* 
+    Selects which conversion method to call based on given obj
+  Global variables updated: 
+    -outSwagger
+    */
+
+		changeIndentation(tabCount + 1);
+		if (typeof obj === "number") { //attribute is a number
+			convertNumber(obj, prop);
+		} else if (Object.prototype.toString.call(obj) === '[object Array]') { //attribute is an array
+			convertArray(obj[0]);
+		} else if (typeof obj === "object") { //attribute is an object
+			convertObject(obj);
+		} else if (typeof obj === "string") { //attribute is a string
+			convertString(obj, prop);
+		} else if (typeof obj === "boolean") { // attribute is a boolean
+			outSwagger += indentator + 'type="boolean"';
+		} else { // not a valid Swagger type
+			alert('Property type "' + typeof obj + '" not valid for Swagger definitions');
+		}
+		changeIndentation(tabCount - 1);
+	};
+
+	function convertNumber(num, prop) {
+		/* 
+    Append to 'outSwagger' string with Swagger schema attributes relative to given number
+    Global variables updated: 
+    -outSwagger
+    */
+		let str_star = '';
+		if (num % 1 === 0) {
+			outSwagger += indentator + str_star + 'type="integer",';
+			if (num < 2147483647 && num > -2147483647) {
+				outSwagger += indentator + str_star + 'format="int32"';
+			} else if (Number.isSafeInteger(num)) {
+				outSwagger += indentator + str_star + 'format="int64"';
+			} else {
+				outSwagger += indentator + str_star + 'format="unsafe"';
+			}
+		} else {
+			outSwagger += indentator + str_star + 'type="number"';
+		}
+		outSwagger += "," + indentator + str_star + 'example="'+ num +'"';
+		outSwagger += "," + indentator + str_star + 'description="'+ mapDesc(prop) +'"';
+
+	};
+
+	//date is ISO8601 format - https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14
+	function convertString(str, prop) {
+		/* 
+    Append to 'outSwagger' string with Swagger schema attributes relative to given string
+    Global variables updated: 
+    -outSwagger
+    */
+
+		let regxDate = /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
+		regxDateTime = /^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01]).([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]{1,2})?(Z|(\+|\-)([0-1][0-9]|2[0-3]):[0-5][0-9])$/;
+
+		outSwagger += indentator + 'type="string"';
+		if (regxDateTime.test(str)) {
+			outSwagger += ',';
+			outSwagger += indentator + 'format="date-time"';
+		} else if (regxDate.test(str)) {
+			outSwagger += ',';
+			outSwagger += indentator + 'format="date"';
+		}
+		outSwagger += "," + indentator + 'example="'+ str +'"';
+		outSwagger += "," + indentator + 'description="'+ mapDesc(prop) +'"';
+	};
+
+	function convertArray(obj) {
+		/* 
+    Append to 'outSwagger' string with Swagger schema attributes relative to given array
+    Global variables updated: 
+    -outSwagger
+    */
+    //debugger;
+
+		outSwagger += indentator + 'type="array",description="",';
+		// ---- Begin items scope ----
+		outSwagger += indentator + OA_FLAG + 'Items(';
+		if (obj) {
+			//outSwagger += indentator + 'items: {';
+			conversorSelection(obj);
+		}
+		outSwagger += indentator + '),';
+		// ---- End items scope ----
+	};
+
+	function convertObject(obj) {
+		/* 
+    Append to 'outSwagger' string with Swagger schema attributes relative to given object
+    Global variables updated: 
+    -outSwagger
+    */
+
+		//Convert null attributes to given type
+		if (obj === null) {
+			outSwagger += indentator + 'type="string",description="",';
+			outSwagger += indentator + 'format="nullable"';
+			return;
+		}
+		// ---- Begin properties scope ----
+		outSwagger += indentator + 'type="object",description="",';
+		changeIndentation(tabCount + 1);
+		//For each attribute inside that object
+		for (var prop in obj) {
+			// ---- Begin property type scope ----
+			outSwagger += indentator + OA_FLAG + 'Property(property="' + prop + '",';
+			conversorSelection(obj[prop], prop);
+			outSwagger += indentator + '),'
+			// ---- End property type scope ----
+		}
+
+		changeIndentation(tabCount - 1);
+		if (Object.keys(obj).length > 0) { //At least 1 property inserted
+			outSwagger = outSwagger.substring(0, outSwagger.length - 1); //Remove last comma
+		} else { // No property inserted
+			outSwagger += ' }';
+		}
+	};
+
+	function format(value, yaml) {
+		/*
+  Convert JSON to YAML if yaml checkbox is checked
+  Global variables updated:
+  NONE
+  */
+		if (yaml) {
+			return value.replace(/[{},"]+/g, '').replace(/\t/g, '  ').replace(/(^ *\n)/gm, '');
+		} else {
+			return value
+		}
+	}
+
+	// ---- Execution begins here ----
+	source_request = document.querySelector("#source_request").value;
+	source_response = document.querySelector("#source_response").value;
+
+	if (source_request.length > 0) {
+		try {
+			source_request = JSON.parse(source_request);
+		} catch(e) {
+			alert("请求json格式无效!\n(" + e + ")");
+			return;
+		}
+	}
+
+	if (source_response.length > 0) {
+		try {
+			source_response = JSON.parse(source_response);
+		} catch(e) {
+			alert("响应json格式无效!\n(" + e + ")");
+			return;
+		}
+
+	}
+	// 开始转request
+	tabCount = 0;
+	indentator = "\n" + prefixStar;
+
+	outSwagger += prefixStar + OA_FLAG + 'Get(';
+	changeIndentation(1);
+	outSwagger += indentator + 'path="/just/one/demo/{flag}",';
+	outSwagger += indentator + 'summary="接口概要",';
+	outSwagger += indentator + 'description="接口详细描述",';
+	outSwagger += indentator + 'tags={"接口分类"},';
+	//For each object inside the JSON
+	if (source_request) {
+		outSwagger += indentator + OA_FLAG + 'Parameter(';
+		outSwagger += indentator + STR_TAB + 'name="page",';
+		outSwagger += indentator + STR_TAB + 'in="query",';
+		outSwagger += indentator + STR_TAB + 'required=true,';
+		outSwagger += indentator + STR_TAB + 'description="当前页",';
+		outSwagger += indentator + STR_TAB + OA_FLAG + 'Schema(';
+		outSwagger += indentator + STR_TAB + STR_TAB + 'type="integer",';
+		outSwagger += indentator + STR_TAB + STR_TAB + 'default="1",';
+		outSwagger += indentator + STR_TAB + STR_TAB + 'description="当前多少页码",';
+		outSwagger += indentator + STR_TAB + '),';
+		outSwagger += indentator + '),';
+		outSwagger += indentator + OA_FLAG + 'Parameter(';
+		outSwagger += indentator + STR_TAB + 'name="flag",';
+		outSwagger += indentator + STR_TAB + 'in="path",';
+		outSwagger += indentator + STR_TAB + 'required=true,';
+		outSwagger += indentator + STR_TAB + 'description="标识",';
+		outSwagger += indentator + STR_TAB + OA_FLAG + 'Schema(';
+		outSwagger += indentator + STR_TAB + STR_TAB + 'type="string",';
+		outSwagger += indentator + STR_TAB + STR_TAB + 'default="zhangmazi",';
+		outSwagger += indentator + STR_TAB + STR_TAB + 'description="用户ID描述",';
+		outSwagger += indentator + STR_TAB + '),';
+		outSwagger += indentator + '),';
+		outSwagger += indentator + OA_FLAG + 'RequestBody(';
+		outSwagger += indentator + STR_TAB + OA_FLAG + 'MediaType(';
+		outSwagger += indentator + STR_TAB + STR_TAB + 'mediaType="application/json",';
+		changeIndentation(2);
+		outSwagger += indentator + STR_TAB +  OA_FLAG + 'Schema(';
+		changeIndentation(4);
+		for (var obj in source_request) {
+			// ---- Begin schema scope ----
+			outSwagger += indentator + ' ' + OA_FLAG + 'Property(property="' + obj + '",';
+			conversorSelection(source_request[obj]);
+			outSwagger += indentator + '),';
+			// ---- End schema scope ----
+		}
+		changeIndentation(tabCount - 1);
+		outSwagger += indentator + '),';
+		changeIndentation(tabCount - 1);
+		outSwagger += indentator + '),';
+	changeIndentation(1);
+	outSwagger += indentator + '),';
+		//Remove last comma
+		// ---- End definitions ----
+
+	}
+	// 结束转request
+
+	// 开始转response
+	//For recursive functions to keep track of the tab spacing
+	tabCount = 0;
+	indentator = "\n" + prefixStar;
+
+	// ---- Begin definitions ----
+	changeIndentation(1);
+	outSwagger += indentator + OA_FLAG + 'Response(';
+	outSwagger += indentator + STR_TAB + 'response=200,';
+	outSwagger += indentator + STR_TAB + 'description="返回正确",';
+	//For each object inside the JSON
+	if (source_response) {
+		outSwagger += indentator + STR_TAB + OA_FLAG + 'MediaType(';
+		outSwagger += indentator + STR_TAB + STR_TAB + 'mediaType="application/json",';
+		changeIndentation(2);
+		outSwagger += indentator +  OA_FLAG + 'Schema(';
+		changeIndentation(3);
+		for (var obj in source_response) {
+			// ---- Begin schema scope ----
+			outSwagger += indentator + ' '+ OA_FLAG +'Property(property="' + obj + '",';
+			conversorSelection(source_response[obj]);
+			outSwagger += indentator + '),';
+			// ---- End schema scope ----
+		}
+		changeIndentation(tabCount - 1);
+		outSwagger += indentator + '),';
+		outSwagger += indentator + '),';
+		//Remove last comma
+		outSwagger = outSwagger.substring(0, outSwagger.length - 1);
+		// ---- End definitions ----
+
+	}
+	changeIndentation(1);
+	outSwagger += indentator + '),';
+	outSwagger += "\n" + prefixStar + '),';
+	
+	outSwagger = outSwagger.substring(0, outSwagger.length - 1);
+
+
+	// 结束转response
+
+
+	document.querySelector("#target_result").value = format(outSwagger, false);
+}
+
+
+
+
+
+	
+</script>
+</body>
+</html>
