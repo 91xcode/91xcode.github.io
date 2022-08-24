@@ -659,21 +659,7 @@ $hashids->encode(1);
 https://support.apple.com/zh-cn/HT211683
 ```
 
-### 28.Mac OS Big Sur 挂载ntfs格式的移动硬盘
 
-​	由于目前的ntfs tools还不支持Big Sur，本人也实验了很多方法，总结如下：
-​	首先卸载ntfs tools。
-​	然后插入ntfs格式的移动硬盘。
-​	再新建ssd文件夹，然后使用命令行挂载ntfs格式的移动硬盘。具体命令如下：
-
-```
-使用diskutil list找到需要挂载的磁盘名，比如我的移动硬盘被mac识别为/dev/disk3s1，然后：
-mkdir ~/ssd
-sudo mount -t ntfs -o rw,auto,nobrowse /dev/disk2s1 ~/ssd/
-
-最后，使用完卸载硬盘：
-sudo umount /dev/disk2s1
-```
 
 ### 29.PHP 开启一个服务
 
@@ -779,3 +765,49 @@ pecl install https://pecl.php.net/get/mongodb-1.11.1.tgz
 
 ```
 
+### 35.Mac升级10.15 Catalina，根目录无权限 完美解决办法
+
+```
+重启电脑，按住 cmd+R 进入恢复模式 点击实用工具===>选择终端
+关闭SIP： csrutil disable，然后重启
+重新挂载根目录：sudo mount -uw /，接下来划重点：现在已经可以在根目录创建文件夹，但是，你在根目录创建之后，一旦重启电脑，你创建的目录又是只读权限了。所以，正确的做法是把你需要的目录软链接到根目录, 例如： sudo ln -s /usr/local/Cellar/nginx/1.21.6_1/html/data /data
+重新进入恢复模式，重新打开SIP： csrutil enable
+```
+
+### 36.Big Sur根目录无权限 完美解决办法
+
+
+```
+## 1.vim 修改synthetic.conf（没有会创建）
+
+sudo vim /etc/synthetic.conf
+## 2.添加一行记录(使用 tab 进行分割，空格 换行，使用空格分割会发现重启无效)
+
+## 以此处举例
+
+data    /usr/local/Cellar/nginx/1.21.6_1/html/data
+
+## 重启后，就已经生成好了
+
+在根目录下已经创建好 data 软连接到 /usr/local/Cellar/nginx/1.21.6_1/html/data
+ls -al
+......
+lrwxr-xr-x   1 root  wheel    17  7 21 14:45 data -> /usr/local/Cellar/nginx/1.21.6_1/html/data
+......
+```
+
+### 37.Mac OS Big Sur 挂载ntfs格式的移动硬盘
+
+	由于目前的ntfs tools还不支持Big Sur，本人也实验了很多方法，总结如下：
+	首先卸载ntfs tools。
+	然后插入ntfs格式的移动硬盘。
+	再新建ssd文件夹，然后使用命令行挂载ntfs格式的移动硬盘。具体命令如下：
+
+```
+使用diskutil list找到需要挂载的磁盘名，比如我的移动硬盘被mac识别为/dev/disk3s1，然后：
+mkdir ~/ssd
+sudo mount -t ntfs -o rw,auto,nobrowse /dev/disk2s1 ~/ssd/
+
+最后，使用完卸载硬盘：
+sudo umount /dev/disk2s1
+```

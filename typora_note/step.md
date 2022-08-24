@@ -255,10 +255,12 @@ sudo vim /etc/synthetic.conf
 
 data    /usr/local/Cellar/nginx/1.21.6_1/html/data
 
-## 重启后，在根目录下已经创建好 data 软连接到 /Users/admin/data
+## 重启后，就已经生成好了
+
+在根目录下已经创建好 data 软连接到 /usr/local/Cellar/nginx/1.21.6_1/html/data
 ls -al
 ......
-lrwxr-xr-x   1 root  wheel    17  7 21 14:45 data -> /Users/admin/data
+lrwxr-xr-x   1 root  wheel    17  7 21 14:45 data -> /usr/local/Cellar/nginx/1.21.6_1/html/data
 ......
 ```
 
