@@ -24,7 +24,6 @@
 ```
 
 ​		然后vim ~/brew.sh
-
 ```
 #!/bin/bash
 
