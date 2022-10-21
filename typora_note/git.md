@@ -108,6 +108,12 @@ git checkout branch_name -- filename
 git diff branch_name1 branch_name2 具体文件路径
 ```
 
+### git-变更文件名称大小写
+
+```
+git mv hello.txt Hello.txt
+```
+
 
 
 
