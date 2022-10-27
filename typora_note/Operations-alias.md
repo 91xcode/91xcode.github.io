@@ -23,8 +23,8 @@ alias toup='test() { echo $1 | tr "a-z" "A-Z" };test'
 alias tolow='test() { echo $1 | tr 'A-Z' 'a-z' };test'
 
 #66测试环境
-alias login66mysql='mysql -h 10.60.81.66 -uroot -p123456 -A'    #mysql
-alias login66redis="redis-cli -h 10.60.81.66 -p 6379 -a '123456'"
+alias login66mysql='mysql -h host -uroot -p123456 -A'    #mysql
+alias login66redis="redis-cli -h host -p 6379 -a '123456'"
 
 
 alias rgf='rg --files | rg'
