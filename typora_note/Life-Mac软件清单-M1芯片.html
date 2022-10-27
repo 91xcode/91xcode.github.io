@@ -1,0 +1,846 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ''; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ''; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ''; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: '−'; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+
+@include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
+
+/* =========== */
+
+/* pt-serif-regular - latin */
+/* pt-serif-italic - latin */
+/* pt-serif-700 - latin */
+/* pt-serif-700italic - latin */
+:root {
+	--active-file-bg-color: #dadada;
+	--active-file-bg-color: rgba(32, 43, 51, 0.63);
+	--active-file-text-color: white;
+	--bg-color: #f3f2ee;
+	--text-color: #1f0909;
+	--control-text-color: #444;
+	--rawblock-edit-panel-bd: #e5e5e5;
+
+	--select-text-bg-color: rgba(32, 43, 51, 0.63);
+  --select-text-font-color: white;
+}
+
+pre {
+	--select-text-bg-color: #36284e;
+	--select-text-font-color: #fff;
+}
+
+html {
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+	background-color: #f3f2ee;
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+	color: #1f0909;
+	line-height: 1.5em;
+}
+
+/*#write {
+	overflow-x: auto;
+    max-width: initial;
+	padding-left: calc(50% - 17em);
+    padding-right: calc(50% - 17em);
+}
+
+@media (max-width: 36em) {
+ 	#write {
+ 		padding-left: 1em;
+    	padding-right: 1em;
+ 	}
+}*/
+
+#write {
+	max-width: 40em;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+			max-width: 914px;
+	}
+}
+
+ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+ul li {
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* styles */
+
+/* ====== */
+
+/* headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+}
+h1 {
+	font-size: 1.875em;
+	/*30 / 16*/
+	line-height: 1.6em;
+	/* 48 / 30*/
+	margin-top: 2em;
+}
+h2,
+h3 {
+	font-size: 1.3125em;
+	/*21 / 16*/
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-size: 1.125em;
+	/*18 / 16*/
+	margin-top: 2.67em;
+	/*48 / 18*/
+}
+h5,
+h6 {
+	font-size: 1em;
+	/*16*/
+}
+h1 {
+	border-bottom: 1px solid;
+	margin-bottom: 1.875em;
+	padding-bottom: 0.8125em;
+}
+/* links */
+
+a {
+	text-decoration: none;
+	color: #065588;
+}
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+/* block spacing */
+
+p,
+blockquote,
+.md-fences {
+	margin-bottom: 1.5em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 1.5em;
+}
+/* blockquote */
+
+blockquote {
+	font-style: italic;
+	border-left: 5px solid;
+	margin-left: 2em;
+	padding-left: 1em;
+}
+/* lists */
+
+ul,
+ol {
+	margin: 0 0 1.5em 1.5em;
+}
+/* tables */
+.md-meta,.md-before, .md-after {
+	color:#999;
+}
+
+table {
+	margin-bottom: 1.5em;
+	/*24 / 16*/
+	font-size: 1em;
+	/* width: 100%; */
+}
+thead th,
+tfoot th {
+	padding: .25em .25em .25em .4em;
+	text-transform: uppercase;
+}
+th {
+	text-align: left;
+}
+td {
+	vertical-align: top;
+	padding: .25em .25em .25em .4em;
+}
+
+code,
+.md-fences {
+	background-color: #dadada;
+}
+
+code {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.md-fences {
+	margin-left: 2em;
+	margin-bottom: 3em;
+	padding-left: 1ch;
+	padding-right: 1ch;
+}
+
+pre,
+code,
+tt {
+	font-size: .875em;
+	line-height: 1.714285em;
+}
+/* some fixes */
+
+h1 {
+	line-height: 1.3em;
+	font-weight: normal;
+	margin-bottom: 0.5em;
+}
+
+p + ul,
+p + ol{
+	margin-top: .5em;
+}
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol {
+	margin-top: .5em;
+}
+
+li > ul,
+li > ol {
+	margin-top: inherit;
+	margin-bottom: 0;
+}
+
+li ol>li {
+	list-style-type: lower-alpha;
+}
+
+li li ol>li{
+	list-style-type: lower-roman;
+}
+
+h2,
+h3 {
+	margin-bottom: .75em;
+}
+hr {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+}
+h1 {
+	border-color: #c5c5c5;
+}
+blockquote {
+	border-color: #bababa;
+	color: #656565;
+}
+
+blockquote ul,
+blockquote ol {
+	margin-left:0;
+}
+
+.ty-table-edit {
+	background-color: transparent;
+}
+thead {
+	background-color: #dadada;
+}
+tr:nth-child(even) {
+	background: #e8e7e7;
+}
+hr {
+	border-color: #c5c5c5;
+}
+.task-list{
+	padding-left: 1rem;
+}
+
+.md-task-list-item {
+	padding-left: 1.5rem;
+	list-style-type: none;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.25rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #F3F2EE;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
+}
+
+#write pre.md-meta-block {
+	min-height: 1.875rem;
+	color: #555;
+	border: 0px;
+	background: transparent;
+	margin-top: -4px;
+	margin-left: 1em;
+	margin-top: 1em;
+}
+
+.md-image>.md-meta {
+	color: #9B5146;
+}
+
+.md-image>.md-meta{
+	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+}
+
+
+#write>h3.md-focus:before{
+	left: -1.5rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h4.md-focus:before{
+	left: -1.5rem;
+	top: .25rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h5.md-focus:before{
+	left: -1.5rem;
+	top: .0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h6.md-focus:before{
+	left: -1.5rem;
+	top: 0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+.md-toc-content:empty:before{
+	color: #065588;
+}
+.md-toc-item {
+	color: #065588;
+}
+#write div.md-toc-tooltip {
+	background-color: #f3f2ee;
+}
+
+#typora-sidebar {
+	background-color: #f3f2ee;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+}
+
+.pin-outline #typora-sidebar {
+	background: inherit;
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+.pin-outline #typora-sidebar:hover .outline-title-wrapper {
+	border-left:1px dashed;
+}
+
+.outline-item:hover {
+  background-color: #dadada;
+  border-left: 28px solid #dadada;
+  border-right: 18px solid #dadada;
+}
+
+.typora-node .outline-item:hover {
+  	border-right: 28px solid #dadada;
+}
+
+.outline-expander:before {
+  content: "\f0da";
+  font-family: FontAwesome;
+  font-size:14px;
+  top: 1px;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  content: "\f0d7";
+}
+
+.modal-content {
+	background-color: #f3f2ee;
+}
+
+.auto-suggest-container ul li {
+	list-style-type: none;
+}
+
+/** UI for electron */
+
+.megamenu-menu,
+#top-titlebar, #top-titlebar *,
+.megamenu-content {
+	background: #f3f2ee;
+	color: #1f0909;
+}
+
+.megamenu-menu-header {
+	border-bottom: 1px dashed #202B33;
+}
+
+.megamenu-menu {
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+header, .context-menu, .megamenu-content, footer {
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+    color: #1f0909;
+}
+
+#megamenu-back-btn {
+	color: #1f0909;
+	border-color: #1f0909;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color: #1f0909;
+}
+
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+	color: inherit;
+	background-color: #e8e7df;
+}
+
+.long-btn:hover {
+	background-color: #e8e7df;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: inherit;
+}
+
+.megamenu-menu-panel .btn {
+	background-color: #D2D1D1;
+}
+
+.btn-default {
+	background-color: transparent;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn,
+.ty-show-word-count #footer-word-count {
+	background: #c7c5c5;
+}
+
+#typora-quick-open {
+    background-color: inherit;
+}
+
+.md-diagram-panel {
+	margin-top: 8px;
+}
+
+.file-list-item-file-name {
+	font-weight: initial;
+}
+
+.file-list-item-summary {
+	opacity: 1;
+}
+
+.file-list-item {
+	color: #777;
+}
+
+.file-list-item.active {
+	background-color: inherit;
+	color: black;
+}
+
+.ty-side-sort-btn.active {
+	background-color: inherit;
+}
+
+.file-list-item.active .file-list-item-file-name  {
+	font-weight: bold;
+}
+
+.file-list-item{
+    opacity:1 !important;
+}
+
+.file-library-node.active>.file-node-background{
+	background-color: rgba(32, 43, 51, 0.63);
+	background-color: var(--active-file-bg-color);
+}
+
+.file-tree-node.active>.file-node-content{
+	color: white;
+	color: var(--active-file-text-color);
+}
+
+.md-task-list-item>input {
+	margin-left: -1.7em;
+	margin-top: calc(1rem - 12px);
+	-webkit-appearance: button;
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover, 
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+	opacity: 1;
+}
+
+/* https://github.com/typora/typora-issues/issues/2046 */
+.os-windows-7 strong,
+.os-windows-7 strong  {
+	font-weight: 760;
+}
+
+.ty-preferences .btn-default {
+	background: transparent;
+}
+
+.ty-preferences .window-header {
+	border-bottom: 1px dashed #202B33;
+	box-shadow: none;
+}
+
+#sidebar-loading-template, #sidebar-loading-template.file-list-item {
+	color: #777;
+}
+
+.searchpanel-search-option-btn.active {
+	background: #777;
+	color: white;
+}
+
+.export-detail, .light .export-detail, 
+.light .export-item.active, 
+.light .export-items-list-control {
+	background: #e0e0e0;
+	border-radius: 2px;
+	font-weight: 700;
+	color: inherit
+}
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>Life-Mac软件清单-M1芯片</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><p>&nbsp;</p><p><span>                                </span></p><h1 id='1从-windows-到-macos----mac-软件清单'><span>1.从 Windows 到 macOS    Mac 软件清单</span></h1><blockquote><p><span>M1 芯片，Apple Silicon，aarch64 (ARMv8)</span>
+<span>M1 &lt; M1 Pro &lt; M1 Max</span>
+<span>MacBook Pro 14 A2442</span></p></blockquote><h2 id='11-系统'><span>1.1 系统</span></h2><ul><li><p><a href='https://support.apple.com/zh-cn/HT201236'><span>Mac 键盘快捷键</span></a></p></li><li><p><a href='https://pilotmoon.com/scrollreverser/'><span>反转鼠标-scrollreverser</span></a></p></li><li><p><a href='https://macwk.com/article/macos-terminal'><span>macOS终端常用命令大全</span></a></p><blockquote><p><a href='https://www.cnblogs.com/cina33blogs/p/8608473.html'><span>mac shell终端编辑命令行快捷键——行首，行尾Ctrl</span></a></p></blockquote></li><li><p><a href='https://support.apple.com/zh-cn/HT211861'><span>如果您需要在 Mac 上安装 Rosetta</span></a></p></li><li><p><span>Command Line Tools (CLT) for Xcode:</span></p><blockquote><p><code>xcode-select --install</code>
+<a href='https://developer.apple.com/downloads' target='_blank' class='url'>https://developer.apple.com/downloads</a><span> or </span><a href='https://itunes.apple.com/us/app/xcode/id497799835'><span>Xcode 3</span></a></p></blockquote></li><li><p><span>Homebrew（已原生支持M1）</span></p><blockquote><p><a href='https://brew.sh/index_zh-cn.html' target='_blank' class='url'>https://brew.sh/index_zh-cn.html</a>
+<a href='https://docs.brew.sh/Installation#macos-requirements' target='_blank' class='url'>https://docs.brew.sh/Installation#macos-requirements</a>
+<a href='https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/'><span>Homebrew镜像使用帮助</span></a></p></blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/usr/bin/ruby <span class="cm-attribute">-e</span> <span class="cm-string">"</span><span class="cm-quote">$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install)</span><span class="cm-string">"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#echo export PATH=/opt/homebrew/bin:$PATH &gt;&gt; ~/.zprofile</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'eval "$(/opt/homebrew/bin/brew shellenv)"'</span> &gt;&gt; ~/.zprofile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"'</span> &gt;&gt; ~/.zprofile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">source</span> ~/.zprofile</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 240px;"></div><div class="CodeMirror-gutters" style="display: none; height: 240px;"></div></div></div></pre><blockquote><p><span>如果需要同时安装arm版和x86版homebrew，可参考:</span><a href='https://mirari.cc/2021/07/28/M1芯片Mac搭建ios开发环境踩坑/'><span>M1芯片Mac搭建ios开发环境踩坑</span></a></p></blockquote></li><li><p><span>安装</span><code>jq</code><span>命令：</span><code>brew install jq</code></p></li><li><p><a href='https://macwk.com/soft/scudo'><span>防火墙:Scudo 2.0.3 中文破解版（已原生支持M1）</span></a></p></li><li><p><a href='https://www.macwk.com/soft/istat-menus'><span>iStat Menus(优秀的系统监控工具)（已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/stats'><span>【开源】Stats 2.6.17 中文版 (菜单栏系统监视器)（已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/network-and-battery'><span>Network &amp; Battery 12.4.2 中文破解版 (实时网速显示及电池健康)（已原生支持M1）</span></a></p><blockquote><p><span>商店25元，</span><a href='https://apps.apple.com/cn/app/id1387780159' target='_blank' class='url'>https://apps.apple.com/cn/app/id1387780159</a></p></blockquote></li><li><p><a href='https://macwk.com/soft/bartender-4'><span>Bartender 4 4.1.18 中文破解版 (方便的管理菜单栏图标) （已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/bettertouchtool'><span>BetterTouchTool 3.678 中文破解版 (超强鼠标触控板增强)（已原生支持M1）</span></a></p><blockquote><p><a href='https://zhuanlan.zhihu.com/p/267733218'><span>MAC上最强鼠标——Magic Mouse2使用指南</span></a></p></blockquote></li><li><p><a href='https://github.com/MonitorControl/MonitorControl'><span>MonitorControl（控制显示器音量）</span></a></p></li><li><p><a href='https://macwk.com/soft/one-switch'><span>One Switch 1.22 中文破解版 (系统功能快速开关工具)</span></a></p></li><li><p><span>终端:</span></p><ul><li><a href='https://iterm2.com/downloads/stable/iTerm2-3_4_10.zip'><span>iTerm2（已原生支持M1）</span></a></li></ul><blockquote><ul><li><a href='https://www.cnblogs.com/xishuai/p/mac-iterm2.html'><span>Mac OS 终端利器 iTerm2</span></a></li><li><a href='https://macwk.com/soft/iterm2'><span>iTerm2 3.5.0beta2 中文版 (强大的终端神器)</span></a></li></ul></blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ vim</span> ~/.zprofile</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## iTerm</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">### color 如果启用了ohmyzsh，貌似无需设置此处color</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#Set CLICOLOR if you want Ansi Colors in iTerm2</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#export CLICOLOR=1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#setsup thecolor scheme for list export</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#export LSCOLORS=gxfxcxdxbxegedabagacad</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#sets up theprompt color (currently a green similar to linux terminal)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ &nbsp; &nbsp; '</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#Set colors to match iTerm2 Terminal Colors</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#export TERM=xterm-256color</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">### proxy 配置代理别名</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">alias <span class="cm-def">setproxy</span><span class="cm-operator">=</span><span class="cm-string">"export ALL_PROXY=socks5://127.0.0.1:1080"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">alias <span class="cm-def">unsetproxy</span><span class="cm-operator">=</span><span class="cm-string">"unset ALL_PROXY"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## mysql</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">PATH</span><span class="cm-operator">=</span><span class="cm-def">$PATH</span>:/usr/local/mysql/bin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ source</span> ~/.zprofile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ setproxy</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ curl</span> cip.cc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ unsetproxy</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 552px;"></div><div class="CodeMirror-gutters" style="display: none; height: 552px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># vim可配色</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'syntax on</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">set</span> number</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">set</span> ruler<span class="cm-string">' &gt;&gt; ~/.vimrc</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 96px;"></div><div class="CodeMirror-gutters" style="display: none; height: 96px;"></div></div></div></pre><blockquote><ul><li><span>iTerm2 需要更换为powerline字体（可选Snazzy主题），并选中 use built-in powerline glyphs，和 Use ligatures等，</span><a href='https://blog.csdn.net/hiumanChung/article/details/111225497'><span>可参考此文章</span></a>
+<a href='https://ghost.oss.sherlocky.com/halo/iTerm2设置备份.png-halo'><img src="https://ghost.oss.sherlocky.com/halo/iTerm2%E8%AE%BE%E7%BD%AE%E5%A4%87%E4%BB%BD.png-halo" referrerpolicy="no-referrer" alt="iTerm2设置备份"></a></li><li><a href='https://sspai.com/post/53008'><span>10 个 Terminal 主题，让你的 macOS 终端更好看</span></a></li><li><a href='https://github.com/mbadolato/iTerm2-Color-Schemes'><span>iTerm Color Schemes</span></a></li></ul></blockquote><ul><li><p><span>Oh My Zsh</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#安装</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">sh</span> <span class="cm-attribute">-c</span> <span class="cm-string">"</span><span class="cm-quote">$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)</span><span class="cm-string">"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">brew install zsh-syntax-highlighting</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">brew install zsh-autosuggestions</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">git</span> clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">git</span> clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 216px;"></div><div class="CodeMirror-gutters" style="display: none; height: 216px;"></div></div></div></pre><p><span>修改</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">~/.zshrc</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="makefile"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="makefile"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">plugin (git</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">macos</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">zsh-syntax-highlighting</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">zsh-autosuggestions)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">ZSH_THEME=</span>agnoster</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">DEFAULT_USER=</span><span class="cm-string">"sherlock"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 144px;"></div><div class="CodeMirror-gutters" style="display: none; height: 144px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'ZSH_DISABLE_COMPFIX="true"'</span> &gt;&gt; ~/.zshrc</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">whoami</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># python和pip安装方法参考后文python部分</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip install powerline-status <span class="cm-attribute">--user</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">source</span> ~/.zshrc</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">whoami</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 240px;"></div><div class="CodeMirror-gutters" style="display: none; height: 240px;"></div></div></div></pre></li><li><p><span>安装 Anaconda 后终端出现的</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">(base)</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><p><span>字样去除方法</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'changeps1: False'</span> &gt;&gt; <span class="cm-builtin">vi</span> ~/.condarc</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre></li><li><p><span>SSH</span></p><ul><li><a href='http://www.hostbuf.com/downloads/finalshell_install.pkg'><span>FinalShell</span></a></li><li><a href='https://macwk.com/soft/termius'><span>Termius 7.21.1 破解版 (最好用的SSH连接客户端) （已原生支持M1）</span></a></li><li><a href='https://macwk.com/soft/transmit'><span>Transmit 5.8.2 中文破解版 (最好用的FTP客户端)</span></a></li></ul></li></ul></li><li><p><a href='https://macwk.com/soft/royal-tsx'><span>Royal TSX 5.0.4.1000 破解版 (最强远程管理软件)（已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/hyper'><span>Hyper 3.1.4 (命令行终端美化模拟器)（已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/soundsource'><span>SoundSource 5.3.7 破解版 (功能强大的mac音量控制器)（已原生支持M1）</span></a></p></li><li><p><a href='https://topnotch.app/'><span>TopNotch隐藏刘海</span></a></p></li><li><p><a href='https://macwk.com/soft/macos-assistant-macwk'><span>macOS 小助手 1.3.3 中文版 (mac常用命令集合)（已原生支持M1）</span></a></p></li><li><p><a href='https://lemon.qq.com/'><span>腾讯柠檬清理（已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/cleanmymac-x'><span>CleanMyMac X 4.8.9 中文破解版 (Mac优化清理工具)</span></a></p><blockquote><p><span>目前 CleanMyMac X 已知的问题有：电脑变卡甚至失去响应，权限丢失，pd 使用卡，one drive 无限上传，office 无法激活，todesk 运行无法连接等。</span></p></blockquote></li><li><p><a href='https://macwk.com/soft/app-cleaner-and-uninstaller-pro'><span>App Cleaner &amp; Uninstaller Pro 7.4.4 中文破解版 (应用深度清理卸载工具)</span></a></p><blockquote><p><a href='https://macwk.com/article/the-best-mac-uninstaller'><span>mac系统最好的软件卸载工具 - 专治应用残留卸载不干净的问题</span></a></p></blockquote></li><li><p><a href='https://macwk.com/soft/tuxera-ntfs'><span>Tuxera NTFS 2020.2 中文破解版 (NTFS磁盘读写工具)（原生支持M1）</span></a></p><blockquote><p><span>代理商已要求下架。。</span></p></blockquote></li><li><p><span>虚拟机：</span></p><ul><li><p><span>Parallels Desktop for ARM 17.0.1 （原生支持M1）</span></p><blockquote><p><a href='http://www.jbzy.cn/446.html'><span>Parallels Desktop 17安装Windows11+PD最佳设置+永久使用教程</span></a>
+<a href='http://www.jbzy.cn/476.html'><span>【绝版资源】Parallels Desktop 17一键启动Win11</span></a>
+<span>开源启动器 </span><a href='https://github.com/lihaoyun6/PD-Runner'><span>PD Runner</span></a>
+<a href='https://macwk.com/soft/pd-runner'><span>PD Runner 0.2.14 中文版 (PD 启动器/PD 无限试用)</span></a>
+<span>还可参见自己百度云盘</span>
+<span>官网：</span><a href='https://my.parallels.com/desktop/beta' target='_blank' class='url'>https://my.parallels.com/desktop/beta</a>
+<a href='https://mp.weixin.qq.com/s/OfM6xy2KCsDlZYCNSoT-pg'><span>M1跑ARM版Windows，爽不爽？</span></a>
+<span>当前已使用18版本，购买了标准版企业授权+Win11-21H2_1215镜像。</span></p></blockquote></li><li><p><a href='https://macwk.com/soft/vmware-fusion'><span>VMware Fusion Pro 12.2.0 中文破解版（原生支持M1）</span></a></p><blockquote><ul><li><span>Pro 12.0/12.1/12.2 最低需 macOS 10.15 系统，支持 macOS 11 Big Sur，但是不支持 m1！</span></li><li><span>Pro 12.2.0 支持 m1，最低需 macOS 11 系统，支持安装 linux arm 系统，但是不支持 安装 windows 系统。</span></li><li><span>Intel 处理器没啥限制，可以尽情享用！</span></li></ul></blockquote></li><li><p><a href='https://mac.getutm.app/'><span>UTM虚拟机</span></a></p></li><li><p><span>硬盘检测</span><a href='https://www.smartmontools.org/wiki/Download#InstalltheOSXDarwinpackage'><span>smartctl</span></a></p><blockquote><p><code>brew install smartmontools</code>
+<code>smartctl -a /dev/disk0</code>
+<span>里面的Percentage Used 就是损耗值，Data Units Written 就是写入量。</span></p></blockquote></li></ul></li></ul><h2 id='12-生活常用'><span>1.2 生活常用</span></h2><ul><li><p><a href='https://pinyin.sogou.com/mac/'><span>搜狗输入法（已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/ezip'><span>MacZip (eZip) 2.2 中文版 (很好用的压缩解压软件) （已原生支持M1）</span></a></p></li><li><p><a href='https://ezip.awehunt.com/download?s=web'><span>MacZip 2.2 中文版 官方地址</span></a></p></li><li><p><a href='https://www.icheese.org/mac-app/system/bandizip-for-mac/'><span>Bandizip</span></a></p></li><li><p><a href='https://work.weixin.qq.com/wework_admin/commdownload?platform=mac&amp;from=wwindex'><span>企业微信</span></a></p></li><li><p><a href='https://dldir1.qq.com/weixin/mac/WeChatMac.dmg'><span>微信（已原生支持M1）</span></a></p></li><li><p><a href='https://dldir1.qq.com/qqfile/QQforMac/QQ_6.7.5.dmg'><span>QQ</span></a></p></li><li><p><a href='https://go.microsoft.com/fwlink/?linkid=2093504&amp;platform=Mac&amp;Consent=0&amp;channel=Stable'><span>Microsoft Edge 中文版（已原生支持M1）</span></a></p></li><li><p><a href='https://www.google.com/chrome/'><span>Chrome（已原生支持M1）</span></a></p></li><li><p><a href='https://www.twinkstar.com/'><span>星愿浏览器</span></a></p></li><li><p><span>音乐播放</span></p><ul><li><a href='https://macwk.com/soft/audirvana'><span>Audirvana3.5.50 中文破解版 (无损音乐播放器)</span></a></li><li><a href='https://macwk.com/soft/yesplaymusic'><span>YesPlayMusic 网易云音乐（已原生支持M1）</span></a></li><li><a href='https://download.kugou.com/download/kugou_mac'><span>酷狗</span></a></li><li><a href='https://www.foobar2000.org/mac'><span>foobar2000</span></a></li></ul></li><li><p><span>视频播放：</span></p><ul><li><a href='https://iina.io/'><span>IINA</span></a></li><li><a href='https://macwk.com/soft/movist'><span>Movist Pro 2.6.7 中文破解版（2.6.0+已原生支持M1）</span></a></li><li><a href='https://free.nchc.org.tw/vlc/vlc/3.0.16/macosx/vlc-3.0.16-arm64.dmg'><span>VLC（已原生支持M1）</span></a></li><li><a href='https://mxplayerdownload.co/download-mx-player-mac-imacmacbook-airpro'><span>MX Player</span></a></li></ul></li><li><p><a href='https://dn3.freedownloadmanager.org/6/latest/fdm.dmg'><span>Free Download Manager 6.15.3 中文版</span></a></p></li><li><p><a href='https://macwk.com/soft/progressive-downloader'><span>Progressive Downloader 4.10.20 中文破解版 (mac多线程下载器)（已原生支持M1）</span></a></p></li><li><p><a href='https://www.synology.cn/zh-cn/support/download/DS918+?version=6.2#utilities'><span>Synology Drive Client</span></a></p><blockquote><p><a href='https://cndl.synology.cn/download/Utility/SynologyDriveClient/3.0.2-12682/Mac/Installer/synology-drive-client-12682.dmg?model=DS918%2B&amp;bays=4&amp;dsm_version=6.2.4&amp;build_number=25556'><span>3.0.2-12682 macOS版本直接下载地址</span></a></p></blockquote></li><li><p><a href='https://i.mi.com/static2?filename=MicloudWebStatic/res/home/mi-lab.htm&amp;locale=zh_CN'><span>小米云服务</span></a></p></li><li><p><a href='https://issuecdn.baidupcs.com/issue/netdisk/MACguanjia/BaiduNetdisk_mac_4.1.0.dmg'><span>百度云</span></a></p></li><li><p><a href='https://www.aliyundrive.com/download'><span>阿里云盘</span></a></p></li><li><p><a href='https://macwk.com/soft/downie'><span>Downie 4.3.8 (4301) 中文破解版 (最好的视频下载器)</span></a></p><blockquote><p><span>千万要取消自动更新!!!</span></p></blockquote></li><li><p><span>视频转码</span></p><ul><li><a href='https://macwk.com/soft/permute'><span>Permute 3.7.4 (2521) 中文破解版 (视频音频格式转换)</span></a></li></ul><blockquote><p><span>千万要取消自动更新!!!</span></p></blockquote><ul><li><p><a href='https://mkvtoolnix.download/downloads.html#macosx'><span>MKVToolNix官方网站</span></a></p><blockquote><p><span>官方不保证macOS平台下支持性：可从以下两个地址下载，或者使用brew安装</span>
+<a href='https://mkvtoolnix.download/macos/' target='_blank' class='url'>https://mkvtoolnix.download/macos/</a>
+<a href='https://www.fosshub.com/MKVToolNix.html' target='_blank' class='url'>https://www.fosshub.com/MKVToolNix.html</a>
+<a href='https://formulae.brew.sh/cask/mkvtoolnix#default' target='_blank' class='url'>https://formulae.brew.sh/cask/mkvtoolnix#default</a></p></blockquote></li></ul></li></ul><h2 id='13-办公'><span>1.3 办公</span></h2><ul><li><p><a href='https://macwk.com/soft/office'><span>Office for Mac</span></a></p><blockquote><p><span>查找名称为</span><code>com.microsoft.office.licensingV2.helper</code><span>的启动服务，将其设置为启动。</span></p></blockquote></li><li><p><a href='https://www.wps.cn/product/wpsmac'><span>WPS</span></a></p></li><li><p><a href='https://macwk.com/soft/pdf-reader'><span>PDF Reader Pro 2.8.2.3 中文破解版</span></a></p></li><li><p><a href='https://macwk.com/soft/adobe-acrobat-pro-dc'><span>Adobe Acrobat Pro DC 2021.007.20091 中文破解版</span></a></p></li><li><p><a href='https://macwk.com/soft/sublime-text'><span>Sublime Text 4.0 Build 4118 Dev 中文破解版 (已原生支持M1</span></a></p></li><li><p><span>Visual Studio Code (已原生支持M1)</span></p><blockquote><p><a href='https://code.visualstudio.com/docs/setup/mac' target='_blank' class='url'>https://code.visualstudio.com/docs/setup/mac</a>
+<a href='https://code.visualstudio.com/docs/?dv=osx' target='_blank' class='url'>https://code.visualstudio.com/docs/?dv=osx</a></p></blockquote></li><li><p><a href='https://github.com/atom/atom/releases/download/v1.58.0/atom-mac.zip'><span>Atom （M1 需要转译）</span></a></p></li><li><p><a href='https://macwk.com/soft/xmind'><span>XMind 2021 11.1.0 (202109232210) 中文破解版（已原生支持M1）</span></a></p></li><li><p><span>笔记: </span><a href='https://typora.io/'><span>Typora（已原生支持M1）</span></a><span> + PicGO</span></p><blockquote><p><span>官方1.0开始已开始收费</span>
+<a href='https://typora.io/releases/all' target='_blank' class='url'>https://typora.io/releases/all</a>
+<a href='https://github.com/Molunerfinn/picgo/releases'><span>PicGo.app</span></a></p></blockquote></li><li><p><a href='https://meeting.tencent.com/download-mac.html?from=1000&amp;fromSource=1&amp;macType=apple'><span>腾讯会议（已原生支持M1）</span></a></p></li><li><p><a href='https://www.foxmail.com/mac/download'><span>Foxmail</span></a></p></li><li><p><a href='https://sunlogin.oray.com/download/'><span>向日葵</span></a></p></li><li><p><a href='https://dl.todesk.com/macos/ToDesk_macOS_2.0.3.pkg'><span>ToDesk</span></a></p></li><li><p><a href='https://apps.apple.com/us/app/best-trace/id1037779758?l=zh&amp;ls=1&amp;mt=12'><span>Best Trace（美国区商店）</span></a></p></li><li><p><a href='https://macwk.com/soft/adobe-m1'><span>Adobe M1 系列 2021 中文破解版 (适用于M1芯片的Adobe全家桶)</span></a></p></li><li><p><a href='https://macwk.com/soft/snipaste'><span>Snipaste 2.7 Beta 中文版 (支持贴图的截图工具)</span></a></p></li><li><p><a href='https://macwk.com/soft/ishot'><span>iShot 1.8.5 中文版 (支持长截图的截图工具) （已原生支持M1）</span></a></p></li><li><p><a href='https://github.com/wulkano/kap'><span>【开源】Kap 不错的屏幕录制工具（已原生支持M1）</span></a></p></li><li><p><span>软媒云日历（凑合用）</span></p></li><li><p><a href='https://macwk.com/soft/things'><span>Things 3.15.2 中文破解版 (GTD时间日程管理工具) （已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/tinycal'><span>小历 1.17.1 中文破解版 (漂亮的状态栏日历)（已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/fantastical'><span>Fantastical 2.5.16 中文破解版 (爱不释手的日历应用)</span></a></p></li></ul><h2 id='14-效率提升'><span>1.4 效率提升</span></h2><ul><li><p><a href='https://macwk.com/soft/alfred-4'><span>Alfred 中文破解版 (本地搜索及应用快速启动)（已原生支持M1）</span></a></p><blockquote><p><span>安装完成进入欢迎入门界面的时候点击 跳过设置，</span><code>千万不要点开始设置</code><span>，否则会激活失败。</span>
+<span>历史剪贴板不可用的请确保在 Alfred 的偏好设置 -&gt; Features -&gt; Clipboard History -&gt; 剪贴板历史选项下勾选了 保留纯文本、保留图标、保留文件列表的选项。</span></p></blockquote></li><li><p><a href='https://u.tools/'><span>uTools（已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/paste'><span>Paste 3.0.11 中文破解版 (剪切板增强工具) （已原生支持M1）</span></a></p></li><li><p><a href='https://cn.fastclip.app/'><span>FastClip（AppStore良心1元）（已原生支持M1）</span></a></p></li><li><p><a href='https://macwk.com/soft/path-finder'><span>Path Finder 10.2 中文破解版 (强大的Finder替代工具)</span></a></p></li><li><p><span>QSpace 商店收费45¥</span></p></li><li><p><a href='https://www.easyfinderapp.com/'><span>EasyFinder2 文件/文件夹/软件快速访问和启动工具</span></a></p></li><li><p><a href='https://macwk.com/soft/beyond-compare'><span>Beyond Compare 4.4.0 (25886) 中文破解版 (文件对比比较神器)</span></a></p></li><li><p><a href='https://www.better365.cn/apps.html'><span>Better365团队出品BetterAndBetter、自动切换输入法、超级右键、iShot、FastZip等多款macOS软件</span></a></p></li><li><p><a href='https://macwk.com/soft/houdahspot'><span>HoudahSpot 6.1.8 (699) 中文破解版 (支持内容高亮的搜索工具)</span></a></p></li><li><p><a href='https://marco.org/apps#quitter'><span>定时关闭App</span></a></p></li><li><p><a href='http://wu.run/2019/03/27/mac-launchctl-guidance/'><span>Mac 下的定时任务工具：Launchctl</span></a></p><blockquote><p><a href='https://www.launchd.info/' target='_blank' class='url'>https://www.launchd.info/</a></p></blockquote></li></ul><h2 id='15-开发'><span>1.5 开发</span></h2><ul><li><p><span>Java</span></p><ul><li><p><span>zulu-jdk8</span></p><blockquote><p><a href='https://www.winsonlo.com/it/howto/zulu-jdk8-on-m1/' target='_blank' class='url'>https://www.winsonlo.com/it/howto/zulu-jdk8-on-m1/</a>
+<a href='https://www.azul.com/downloads/?version=java-8-lts&amp;os=macos&amp;architecture=arm-64-bit&amp;package=jdk' target='_blank' class='url'>https://www.azul.com/downloads/?version=java-8-lts&os=macos&architecture=arm-64-bit&package=jdk</a>
+<span>下载地址：</span><a href='https://cdn.azul.com/zulu/bin/zulu8.58.0.13-ca-jdk8.0.312-macosx_x64.dmg' target='_blank' class='url'>https://cdn.azul.com/zulu/bin/zulu8.58.0.13-ca-jdk8.0.312-macosx_x64.dmg</a></p></blockquote></li><li><p><span>zulu-jdk11</span></p><blockquote><p><a href='https://www.azul.com/downloads/?version=java-11-lts&amp;os=macos&amp;architecture=arm-64-bit&amp;package=jdk' target='_blank' class='url'>https://www.azul.com/downloads/?version=java-11-lts&os=macos&architecture=arm-64-bit&package=jdk</a></p></blockquote></li><li><p><span>MacBook Pro M1 Java 开发环境搭建</span></p><blockquote><p><a href='https://juejin.cn/post/6975767893778628616' target='_blank' class='url'>https://juejin.cn/post/6975767893778628616</a></p></blockquote></li><li><p><span>Java-环境搭建（Mac版）</span></p><blockquote><p><a href='https://juejin.cn/post/6844903895504797710' target='_blank' class='url'>https://juejin.cn/post/6844903895504797710</a></p></blockquote></li><li><p><span>Oracle JDK 17 on M1</span></p><blockquote><p><a href='https://www.oracle.com/java/technologies/downloads/#jdk17-mac' target='_blank' class='url'>https://www.oracle.com/java/technologies/downloads/#jdk17-mac</a>
+<span>下载地址：</span><a href='https://download.oracle.com/java/17/latest/jdk-17_macos-aarch64_bin.dmg' target='_blank' class='url'>https://download.oracle.com/java/17/latest/jdk-17_macos-aarch64_bin.dmg</a>
+<span>zulu-jdk17 下载地址：</span><a href='https://cdn.azul.com/zulu/bin/zulu17.28.13-ca-jdk17.0.0-macosx_aarch64.dmg' target='_blank' class='url'>https://cdn.azul.com/zulu/bin/zulu17.28.13-ca-jdk17.0.0-macosx_aarch64.dmg</a>
+<span>反编译：</span><a href='https://github.com/java-decompiler/jd-gui/releases/download/v1.6.6/jd-gui-osx-1.6.6.tar'><span>JD-GUI</span></a></p></blockquote><blockquote><p><a href='https://www.injdk.cn/'><span>Java I tell you - 各种JAVA JDK的镜像分发</span></a></p></blockquote></li></ul></li><li><p><span>Maven</span></p><blockquote><p><span>下载地址：</span><a href='https://maven.apache.org/download.cgi' target='_blank' class='url'>https://maven.apache.org/download.cgi</a></p></blockquote></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">MAVEN_HOME</span><span class="cm-operator">=</span>/opt/maven/apache-maven-3.8.4</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">PATH</span><span class="cm-operator">=</span><span class="cm-def">$PATH</span>:<span class="cm-def">$MAVEN_HOME</span>/bin</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">source</span> ~/.zprofile</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mvn <span class="cm-attribute">-version</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#需要给 Maven 仓库设置访问权限</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">chmod</span> <span class="cm-attribute">-R</span> <span class="cm-number">777</span> /Users/xxx/.m2/repository</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 192px;"></div><div class="CodeMirror-gutters" style="display: none; height: 192px;"></div></div></div></pre><ul><li><p><span>maven-mvnd</span></p><ul><li><p><span>项目地址：</span><a href='https://github.com/apache/maven-mvnd/releases'><span>mvnd</span></a></p></li><li><p><span>安装方法</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">brew install mvndaemon/homebrew-mvnd/mvnd</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mvnd <span class="cm-attribute">-v</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mvnd clean verify</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 72px;"></div><div class="CodeMirror-gutters" style="display: none; height: 72px;"></div></div></div></pre></li></ul></li><li><p><span>Gradle</span></p><blockquote><p><code>brew install gradle</code></p></blockquote></li><li><p><a href='https://www.jetbrains.com/zh-cn/idea/download/download-thanks.html?platform=macM1'><span>IDEA（已原生支持M1）</span></a></p><blockquote><ul><li><a href='https://www.jianshu.com/p/163a69cdafcc'><span>IntelliJ IDEA For Mac 快捷键</span></a></li><li><a href='https://www.jianshu.com/p/78d6b83be9f6'><span>Mac IDEA常用快捷键</span></a></li><li><a href='https://mp.weixin.qq.com/s/H3jjrwBDBk4YCZDvpCSQcg'><span>IntelliJ IDEA 的 Win 和 Mac 快捷键大全</span></a></li></ul></blockquote></li><li><p><span>IDEA 优化</span></p><blockquote><p><a href='https://www.v2ex.com/t/805934'><span>JetBrains 开发工具使用最新的 JBR 提高性能</span></a>
+<a href='https://blog.huijiewei.com/note/jetbrains-jbr-17'><span>JetBrains 开发工具使用最新的 JBR 提高性能</span></a>
+<a href='https://github.com/JetBrains/JetBrainsRuntime/releases/tag/jbr17_0_1b164.8'><span>jbr17_0_1b164.8</span></a>
+<span>vm配置文件在</span><code>~/Library/Application Support/JetBrains/IntelliJIdea2021.3/idea.vmoptions</code></p></blockquote></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--illegal-access</span><span class="cm-operator">=</span>warn</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-Dsun</span>.java2d<span class="cm-def">.metal</span><span class="cm-operator">=</span><span class="cm-atom">true</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.desktop/java.awt<span class="cm-def">.event</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.desktop/sun<span class="cm-def">.font</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.desktop/java<span class="cm-def">.awt</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.desktop/sun<span class="cm-def">.awt</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.base/java<span class="cm-def">.lang</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.base/java<span class="cm-def">.util</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.desktop/javax<span class="cm-def">.swing</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.desktop/sun<span class="cm-def">.swing</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.desktop/javax.swing.plaf<span class="cm-def">.basic</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.desktop/java.awt<span class="cm-def">.peer</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.desktop/javax.swing.text<span class="cm-def">.html</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-exports</span><span class="cm-operator">=</span>java.desktop/sun<span class="cm-def">.font</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-exports</span><span class="cm-operator">=</span>java.desktop/com.apple<span class="cm-def">.eawt</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-exports</span><span class="cm-operator">=</span>java.desktop/com.apple<span class="cm-def">.laf</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-exports</span><span class="cm-operator">=</span>java.desktop/com.apple.eawt<span class="cm-def">.event</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## fix IDEA 2021.3.2 with jbr 17 menu bar unavailable</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">--add-opens</span><span class="cm-operator">=</span>java.desktop/sun.lwawt<span class="cm-def">.macosx</span><span class="cm-operator">=</span>ALL-UNNAMED</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 456px;"></div><div class="CodeMirror-gutters" style="display: none; height: 456px;"></div></div></div></pre><ul><li><p><span>IDEA 自定义快捷键</span></p><ul><li><p><span>IDEA 快速打开文件所在目录</span></p><blockquote><p><span>参考：</span><a href='https://cloud.tencent.com/developer/article/1640081'><span>mac版idea打开文件所在目录</span></a>
+<span>改进：Show in Finder（在访达中打开）</span></p></blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="ruby"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="ruby"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-string-2">/usr/</span><span class="cm-variable">bin</span><span class="cm-operator">/</span><span class="cm-variable">open</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># -R 代表选中文件，而不是打开文件</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-operator">-</span><span class="cm-tag">R</span> <span class="cm-variable-3">$FileDir$/$FileName$</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable-3">$ProjectFileDir$</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 96px;"></div><div class="CodeMirror-gutters" style="display: none; height: 96px;"></div></div></div></pre><blockquote><p><span>单独配置一个鼠标快捷键 ctrl+option+cmd+单击</span></p></blockquote></li></ul></li><li><p><span>IDEA PlantUML</span></p><blockquote><p><span>安装插件</span><code>PlantUML integration</code><span> + graphviz</span>
+<code>brew install graphviz</code></p></blockquote></li><li><p><span>Git:</span></p><blockquote><p><a href='https://git-scm.com/download/mac' target='_blank' class='url'>https://git-scm.com/download/mac</a></p></blockquote><ul><li><p><span>SourceTree</span></p><blockquote><p><a href='https://www.sourcetreeapp.com/' target='_blank' class='url'>https://www.sourcetreeapp.com/</a></p></blockquote></li></ul></li><li><p><span>数据库客户端: </span><a href='https://macwk.com/soft/navicat-premium'><span>Navicat</span></a><span>，</span><a href='https://www.jetbrains.com/datagrip/download/download-thanks.html?platform=macM1'><span>DataGrip（已原生支持M1）</span></a></p></li><li><p><span>MongoDB: </span><a href='https://studio3t.com/download/'><span>Studio 3T（试用版）</span></a></p><blockquote><p><a href='https://blog.csdn.net/liliang_1314/article/details/110915186'><span>Mac Studio 3T解除时间限制</span></a>
+<a href='https://www.cnblogs.com/dzqdzq/p/11261419.html'><span>mac App 破解之路六 studio 3t</span></a></p></blockquote></li><li><p><a href='https://macwk.com/soft/redis-desktop-manager'><span>Redis Desktop Manager 2021.6.192 中文破解版（已原生支持M1）</span></a></p></li><li><p><a href='https://github.com/qishibo/AnotherRedisDesktopManager/releases'><span>Another Redis Desktop Manager 1.4.9</span></a></p><blockquote><p><span>也可以通过brew安装</span><code>brew install --cask another-redis-desktop-manager</code></p></blockquote></li><li><p><span>接口测试：</span></p><ul><li><a href='https://www.postman.com/downloads/' target='_blank' class='url'>https://www.postman.com/downloads/</a></li><li><a href='https://www.apipost.cn/download.html' target='_blank' class='url'>https://www.apipost.cn/download.html</a><span>（已原生支持M1）</span></li></ul></li><li><p><span>画图</span></p><blockquote><p><a href='https://github.com/jgraph/drawio-desktop/' target='_blank' class='url'>https://github.com/jgraph/drawio-desktop/</a>
+<a href='https://github.com/jgraph/drawio-desktop/releases/download/v15.4.0/draw.io-arm64-15.4.0.dmg' target='_blank' class='url'>https://github.com/jgraph/drawio-desktop/releases/download/v15.4.0/draw.io-arm64-15.4.0.dmg</a><span> （原生适配M1）</span></p></blockquote></li><li><p><span>Docker</span></p><ul><li><p><a href='https://docs.docker.com/desktop/mac/apple-silicon/'><span>Docker Desktop for Apple silicon</span></a></p></li><li><p><a href='https://docs.docker.com/desktop/mac/install/'><span>Install Docker Desktop on Mac</span></a></p></li><li><p><a href='https://docs.docker.com/buildx/working-with-buildx/'><span>Docker buildx</span></a></p></li><li><p><a href='https://printempw.github.io/build-x86-docker-images-on-an-m1-macs/'><span>使用 buildx 在 M1 Mac 上构建 x86 Docker 镜像</span></a></p><blockquote><p><span>Docker 的 buildx 还是实验性功能，需要在 Docker Desktop 设置中开启，具体位于 Preferences &gt; Experimental Features &gt; Enable CLI experimental features。</span></p></blockquote></li><li><p><span>镜像加速</span></p></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-string">"registry-mirrors"</span>: [</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">"https://xxx.mirror.aliyuncs.com"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-string">"https://05cec16ef1800f790fabc01198b68720.mirror.swr.myhuaweicloud.com"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">],</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 96px;"></div><div class="CodeMirror-gutters" style="display: none; height: 96px;"></div></div></div></pre><ul><li><p><span>禁用scan</span></p><blockquote><p><span>构建完镜像本地有时会报错 Use ‘docker scan’ to run Snyk tests against images to find vulnerabilities and learn how to fix them</span>
+<span>解决办法：在</span><code>~/.zshrc</code><span>添加</span><code>export DOCKER_SCAN_SUGGEST=false</code></p></blockquote></li></ul></li><li><p><span>富强:</span></p><ul><li><span>V2rayU </span><a href='https://github.com/yanue/V2rayU/releases/download/3.2.0/V2rayU.dmg' target='_blank' class='url'>https://github.com/yanue/V2rayU/releases/download/3.2.0/V2rayU.dmg</a></li><li><span>V2rayX </span><a href='https://github.com/Cenmrev/V2RayX/releases/download/v1.5.1/V2RayX.app.zip' target='_blank' class='url'>https://github.com/Cenmrev/V2RayX/releases/download/v1.5.1/V2RayX.app.zip</a></li><li><span>clashX</span>
+<a href='https://github.com/yichengchen/clashX' target='_blank' class='url'>https://github.com/yichengchen/clashX</a></li><li><a href='https://www.macwk.com/soft/proxifier'><span>Proxifier 3.6.6 破解版 (Mac系统全局代理客户端)（已原生支持M1）</span></a></li></ul></li><li><p><span>转码</span></p><ul><li><p><a href='https://evermeet.cx/ffmpeg/'><span>FFmpeg静态编译版（不支持原生M1，作者不计划适配，并生成性能不受影响）</span></a></p><blockquote><p><a href='https://evermeet.cx/ffmpeg/ffmpeg-4.4.1.7z' target='_blank' class='url'>https://evermeet.cx/ffmpeg/ffmpeg-4.4.1.7z</a>
+<a href='https://evermeet.cx/ffmpeg/ffprobe-4.4.1.7z' target='_blank' class='url'>https://evermeet.cx/ffmpeg/ffprobe-4.4.1.7z</a>
+<a href='https://evermeet.cx/ffmpeg/ffplay-4.4.1.7z' target='_blank' class='url'>https://evermeet.cx/ffmpeg/ffplay-4.4.1.7z</a></p></blockquote></li><li><p><a href='https://github.com/ssut/ffmpeg-on-apple-silicon'><span>FFmpge编译安装</span></a></p><blockquote><p><span>目前编译安装多次，均失败了，暂时先用静态版本吧</span></p></blockquote></li><li><p><a href='https://imagemagick.org/script/download.php'><span>ImageMagick</span></a></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">brew install imagemagick</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">brew install ghostscript</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#如果需要 svg支持</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">brew install librsvg</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#svg需要使用命令</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">rsvg-convert <span class="cm-number">1</span>.svg <span class="cm-attribute">-o</span> <span class="cm-number">1</span>.png</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 144px;"></div><div class="CodeMirror-gutters" style="display: none; height: 144px;"></div></div></div></pre></li></ul></li><li><p><a href='https://www.wireshark.org/#download'><span>WireShark 抓包（原生支持M1）</span></a></p></li><li><p><a href='https://www.telerik.com/download/fiddler/fiddler-everywhere-osx'><span>Fiddler（试用版）</span></a></p><blockquote><p><span>网盘收藏了一个mac天空免费版</span></p></blockquote></li><li><p><span>Android</span></p><ul><li><p><a href='https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2020.3.1.25/android-studio-2020.3.1.25-mac_arm.zip'><span>Android Studio（已原生支持M1）</span></a></p><blockquote><p><a href='https://developer.android.google.cn/studio?hl=zh-cn#downloads' target='_blank' class='url'>https://developer.android.google.cn/studio?hl=zh-cn#downloads</a>
+<a href='https://zhuanlan.zhihu.com/p/384730100' target='_blank' class='url'>https://zhuanlan.zhihu.com/p/384730100</a>
+<a href='https://developer.android.com/studio/archive' target='_blank' class='url'>https://developer.android.com/studio/archive</a>
+<a href='https://zhuanlan.zhihu.com/p/372158270' target='_blank' class='url'>https://zhuanlan.zhihu.com/p/372158270</a></p></blockquote></li><li><p><a href='https://developer.android.google.cn/ndk/downloads?hl=zh-cn'><span>NDK 下载 （貌似也不需要了）</span></a></p></li><li><p><span>ADB (貌似不需要单独安装了，studio就带有)</span></p><blockquote><p><code>brew cask install android-platform-tools</code>
+<span>安装完在：</span><code>~/Library/Android/sdk/platform-tools</code></p></blockquote></li></ul></li><li><p><a href='https://www.jianshu.com/p/ef16b3bec42b'><span>Node - M1芯片Mac搭建前端开发环境</span></a></p></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">brew install nvm</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#安装完需要按照提示手动配置下.zshrc</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">nvm i v15</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## 切换到x64下安装v12版本</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">arch <span class="cm-attribute">-x86_64</span> <span class="cm-builtin">zsh</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">nvm install v12</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> install exceljs</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> install <span class="cm-attribute">-g</span> agentkeepalive</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> install <span class="cm-attribute">-g</span> <span class="cm-builtin">npm</span>@8.3.0</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">npm</span> <span class="cm-attribute">-v</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 288px;"></div><div class="CodeMirror-gutters" style="display: none; height: 288px;"></div></div></div></pre><ul><li><p><span>Python</span></p><ul><li><p><span>安装方法</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">brew install python</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">curl</span> https://bootstrap.pypa.io/get-pip.py <span class="cm-attribute">-o</span> get-pip.py</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">python3 get-pip.py</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 72px;"></div><div class="CodeMirror-gutters" style="display: none; height: 72px;"></div></div></div></pre></li><li><p><span>国内镜像源</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">mkdir</span> ~/.pip</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'[global]</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">timeout <span class="cm-operator">=</span> <span class="cm-number">6000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">index-url <span class="cm-operator">=</span> https://pypi.tuna.tsinghua.edu.cn/simple</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">trusted-host <span class="cm-operator">=</span> pypi.tuna.tsinghua.edu.cn<span class="cm-string">' &gt; ~/.pip/pip.conf</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 或者</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">echo</span> <span class="cm-string">'[global]</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">timeout <span class="cm-operator">=</span> <span class="cm-number">6000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">index-url <span class="cm-operator">=</span> https://mirrors.aliyun.com/pypi/simple/</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">trusted-host <span class="cm-operator">=</span> mirrors.aliyun.com<span class="cm-string">' &gt; ~/.pip/pip.conf</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 240px;"></div><div class="CodeMirror-gutters" style="display: none; height: 240px;"></div></div></div></pre></li><li><p><a href='https://www.anaconda.com/products/individual'><span>Anaconda</span></a></p></li><li><p><a href='https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/'><span>Anaconda 镜像使用帮助</span></a></p></li></ul></li><li><p><span>Go</span></p><ul><li><p><a href='https://go.dev/dl/'><span>官网（已原生支持M1）</span></a></p></li><li><p><span>国内镜像加速</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 启用 Go Modules 功能</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">go env <span class="cm-attribute">-w</span> <span class="cm-def">GO111MODULE</span><span class="cm-operator">=</span>on</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 七牛 CDN</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">go env <span class="cm-attribute">-w</span> &nbsp;<span class="cm-def">GOPROXY</span><span class="cm-operator">=</span>https://goproxy.cn,direct</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 测试是否生效</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">go env | <span class="cm-builtin">grep</span> GOPROXY</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 144px;"></div><div class="CodeMirror-gutters" style="display: none; height: 144px;"></div></div></div></pre></li></ul></li></ul><h1 id='2macos-软件网站'><span>2.macOS 软件网站</span></h1><ul><li><p><a href='https://macwk.com/soft/all/p1?platform=m1' target='_blank' class='url'>https://macwk.com/soft/all/p1?platform=m1</a></p><blockquote><p><a href='https://macwk.com/soft/macwk-updater'><span>MacWk Updater 0.4.2 中文版 (MacWk应用更新管理器)</span></a></p></blockquote></li><li><p><a href='https://www.macat.vip/'><span>马可喵（有的收费）</span></a></p></li><li><p><a href='https://www.icheese.org/mac-app/' target='_blank' class='url'>https://www.icheese.org/mac-app/</a></p></li><li><p><a href='https://www.tntmac.com/' target='_blank' class='url'>https://www.tntmac.com/</a></p></li><li><p><a href='https://imactnt.com/' target='_blank' class='url'>https://imactnt.com/</a><span> (所谓的TNT中国)</span></p></li><li><p><a href='https://nmac.to/' target='_blank' class='url'>https://nmac.to/</a></p></li><li><p><a href='https://macdrop.net/' target='_blank' class='url'>https://macdrop.net/</a></p></li><li><p><a href='https://mac-torrent-download.net/' target='_blank' class='url'>https://mac-torrent-download.net/</a></p></li><li><p><a href='https://www.macbl.com/'><span>马可菠萝 - 分享你喜欢的MAC应用</span></a></p></li><li><p><a href='https://zh.okaapps.com/'><span>Mac和iOS最佳免费工具App集合 - Oka Apps</span></a></p></li><li><p><a href='http://www.jbzy.cn/'><span>绝版资源【</span><strong><span>收费</span></strong><span>】</span></a></p></li><li><p><a href='https://www.mac69.com/'><span>mac天空【</span><strong><span>收费</span></strong><span>】</span></a></p></li><li><p><a href='https://isapplesiliconready.com/zh'><span>已经为M1版MacBook优化的macOS应用程序之完整指南</span></a></p></li></ul><h1 id='3常见问题处理'><span>3.常见问题处理</span></h1><h2 id='31-arm-m1-芯片的-macs-常见问题的解决方法'><span>3.1 ARM M1 芯片的 Macs 常见问题的解决方法</span></h2><p><a href='https://macwk.com/article/arm-macs-issue' target='_blank' class='url'>https://macwk.com/article/arm-macs-issue</a></p><h2 id='32-macos-不能安装该软件因为当前无法从软件更新服务器获得-解决方法'><span>3.2 macOS “不能安装该软件，因为当前无法从软件更新服务器获得” 解决方法</span></h2><p><a href='https://macwk.com/article/macos-command-line-tools-cannot-be-installed' target='_blank' class='url'>https://macwk.com/article/macos-command-line-tools-cannot-be-installed</a></p><h2 id='33-xxxapp-已损坏无法打开你应该将它移到废纸篓打不开-xxx因为它来自身份不明的开发者解决方法'><span>3.3 xxx.app 已损坏，无法打开，你应该将它移到废纸篓/打不开 xxx，因为它来自身份不明的开发者解决方法</span></h2><p><a href='https://macwk.com/article/macos-file-damage' target='_blank' class='url'>https://macwk.com/article/macos-file-damage</a></p><h2 id='34-sip系统完整性保护怎么禁用sip系统完整性关闭方法'><span>3.4 SIP系统完整性保护怎么禁用？SIP系统完整性关闭方法</span></h2><p><a href='https://macwk.com/article/sipmac' target='_blank' class='url'>https://macwk.com/article/sipmac</a></p><h2 id='35-什么是-macos-应用签名应用公证又是什么意思'><span>3.5 什么是 macOS 应用签名？应用公证又是什么意思？</span></h2><p><a href='https://macwk.com/article/macos-app-signatures' target='_blank' class='url'>https://macwk.com/article/macos-app-signatures</a></p></div></div>
+</body>
+</html>
