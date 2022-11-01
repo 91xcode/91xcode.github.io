@@ -15,6 +15,8 @@
 export TERM=xterm 
 #禁用scan-构建完镜像本地有时会报错 Use ‘docker scan’ to run Snyk tests against images to find vulnerabilities and learn how to fix them
 export DOCKER_SCAN_SUGGEST=false
+#禁止brew自动更新 
+export DISABLE_AUTO_UPDATE=true
 
 #export DISABLE_AUTO_UPDATE="true"
 
