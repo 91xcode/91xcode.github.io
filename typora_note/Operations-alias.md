@@ -24,6 +24,15 @@ export DISABLE_AUTO_UPDATE=true
 alias toup='test() { echo $1 | tr "a-z" "A-Z" };test'
 alias tolow='test() { echo $1 | tr 'A-Z' 'a-z' };test'
 
+alias copypwd='test(){ pwd | pbcopy};test'
+alias copyfile='test(){ cat $1 | pbcopy};test'
+
+
+
+#Mac显示当前目录的大小
+sbs(){du -hd1 | sort -nr | perl -pe 's{([0-9]+)}{sprintf "%.1f%s", $1>=2**30? ($1/2**30, "G"): $1>=2**20? ($1/2**20, "M"): $1>=2**10? ($1/2**10, "K"): ($1, "")}e'}
+(($+commands[sbs])) || alias sbs=sbs
+
 #66测试环境
 alias login66mysql='mysql -h host -uroot -p123456 -A'    #mysql
 alias login66redis="redis-cli -h host -p 6379 -a '123456'"
