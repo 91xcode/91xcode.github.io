@@ -27,12 +27,8 @@ alias copyfile='test(){ cat $1 | pbcopy};test'
 
 #backup [文件] 将会在同一个目录下创建 [文件].bak
 backup() { cp "$1"{,.bak};}
-
-
-
 #Mac显示当前目录的大小
-function sbs(){  du -hd1 | perl -e 'sub h{%h=(K=>10,M=>20,G=>30);($n,$u)=shift=~/([0-9.]+)(\D)/;
-return $n*2**$h{$u}}print sort{h($b)<=>h($a)}<>;'}
+function sbs(){  du -hd1 | perl -e 'sub h{%h=(K=>10,M=>20,G=>30);($n,$u)=shift=~/([0-9.]+)(\D)/;return $n*2**$h{$u}}print sort{h($b)<=>h($a)}<>;'}
 (($+commands[sbs])) || alias sbs=sbs
 
 
