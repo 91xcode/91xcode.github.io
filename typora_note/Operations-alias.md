@@ -18,8 +18,6 @@ export DOCKER_SCAN_SUGGEST=false
 #禁止brew自动更新 
 export DISABLE_AUTO_UPDATE=true
 
-#export DISABLE_AUTO_UPDATE="true"
-
 #新增加的alias
 alias toup='test() { echo $1 | tr "a-z" "A-Z" };test'
 alias tolow='test() { echo $1 | tr 'A-Z' 'a-z' };test'
@@ -27,11 +25,17 @@ alias tolow='test() { echo $1 | tr 'A-Z' 'a-z' };test'
 alias copypwd='test(){ pwd | pbcopy};test'
 alias copyfile='test(){ cat $1 | pbcopy};test'
 
+#backup [文件] 将会在同一个目录下创建 [文件].bak
+backup() { cp "$1"{,.bak};}
+
 
 
 #Mac显示当前目录的大小
-sbs(){du -hd1 | sort -nr | perl -pe 's{([0-9]+)}{sprintf "%.1f%s", $1>=2**30? ($1/2**30, "G"): $1>=2**20? ($1/2**20, "M"): $1>=2**10? ($1/2**10, "K"): ($1, "")}e'}
+function sbs(){  du -hd1 | perl -e 'sub h{%h=(K=>10,M=>20,G=>30);($n,$u)=shift=~/([0-9.]+)(\D)/;
+return $n*2**$h{$u}}print sort{h($b)<=>h($a)}<>;'}
 (($+commands[sbs])) || alias sbs=sbs
+
+
 
 #66测试环境
 alias login66mysql='mysql -h host -uroot -p123456 -A'    #mysql
