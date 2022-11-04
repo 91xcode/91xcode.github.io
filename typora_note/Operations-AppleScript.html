@@ -283,112 +283,57 @@ span.cm-strikethrough { text-decoration: line-through; }
 
 
 /* cyrillic-ext */
-
 /* cyrillic */
-
 /* greek-ext */
-
 /* greek */
-
 /* vietnamese */
-
 /* latin-ext */
-
 /* latin */
-
 /* cyrillic-ext */
-
 /* cyrillic */
-
 /* greek-ext */
-
 /* greek */
-
 /* vietnamese */
-
 /* latin-ext */
-
 /* latin */
-
 /* cyrillic-ext */
-
 /* cyrillic */
-
 /* greek-ext */
-
 /* greek */
-
 /* vietnamese */
-
 /* latin-ext */
-
 /* latin */
-
 /* cyrillic-ext */
-
 /* cyrillic */
-
 /* greek-ext */
-
 /* greek */
-
 /* vietnamese */
-
 /* latin-ext */
-
 /* latin */
-
 @font-face {
-    font-family: 'Source Han SerifCN';
-    src: local('Source Han SerifCN Bold'), local('SourceHanSerifCN-Bold'), url('file:///Users/sai/Library/Application%20Support/abnerworks.Typora/themes/zj/SourceHanSerifCN-Bold.woff2') format('woff2');
-    font-weight: bold;
+    font-family: 'Source Sans Pro';
     font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/sai/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }@import '';
+
 :root {
     --side-bar-bg-color: #fff;
     --control-text-color: #777;
-    --select-text-bg-color: #ffafa3;
-    --active-file-text-color: #262626;
-    --active-file-border-color: #f22f27;
-    /* --active-file-bg-color: #fff3f0; */
-    --primary-color: #f22f27;
-    /* 中性色 */
-    --mid-1: #ffffff;
-    --mid-2: #fafafa;
-    --mid-3: #f5f5f5;
-    --mid-4: #f0f0f0;
-    --mid-5: #d9d9d9;
-    --mid-6: #bfbfbf;
-    --mid-7: #8c8c8c;
-    --mid-8: #595959;
-    --mid-9: #434343;
-    --mid-10: #262626;
-    --mid-11: #1f1f1f;
-    --mid-12: #141414;
-    --mid-13: #000000;
-    /* 主题色 */
-    --main-1: #fff3f0;
-    --main-2: #ffd4cc;
-    --main-3: #ffafa3;
-    --main-4: #ff887a;
-    --main-5: #ff5d52;
-    --main-6: #f22f27;
-    --main-7: #cc1616;
-    --main-8: #a60a0f;
-    --main-9: #80010a;
-    --main-10: #590009;
+    --font-sans-serif: 'Ubuntu', 'Source Sans Pro', sans-serif !important;
+    --font-monospace: 'Fira Code', 'Roboto Mono', monospace !important;
 }
 
 html {
-    font-size: 17px;
+    font-size: 16px;
 }
 
 body {
-    font-family: "Vollkorn", Palatino, Times;
-    /* font-family: 'Source Han SerifCN', Georgia, Times, 'SimSun', serif!important; */
-    color: var(--mid-13);
+    font-family: var(--font-sans-serif);
+    color: #34495e;
     -webkit-font-smoothing: antialiased;
-    line-height: 1.8rem;
+    line-height: 1.6rem;
     letter-spacing: 0;
     margin: 0;
     overflow-x: hidden;
@@ -397,77 +342,36 @@ body {
 #write {
     max-width: 860px;
     margin: 0 auto;
-    padding: 20px 30px 160px;
+    padding: 20px 30px 100px;
 }
 
 #write p {
-    line-height: 1.8rem;
+    line-height: 1.6rem;
     word-spacing: .05rem;
-    /* color: #3f3f3f; */
-    color: var(--mid-13);
 }
 
-
-/* #write ol li {
+#write ol li {
     padding-left: 0.5rem;
-} */
+}
 
-#write>ul:first-child,
-#write>ol:first-child {
+#write > ul:first-child,
+#write > ol:first-child {
     margin-top: 30px;
 }
 
-body>*:first-child {
+body > *:first-child {
     margin-top: 0 !important;
 }
 
-body>*:last-child {
+body > *:last-child {
     margin-bottom: 0 !important;
 }
 
-
-/* a {
-    color: var(--main-6);
-    font-weight: 500;
-    padding: 0 2px;
-    text-decoration: none;
-} */
-
 a {
-    color: blue;
-    font-weight: 500;
+    color: #42b983;
+    font-weight: 600;
     padding: 0 2px;
     text-decoration: none;
-}
-
-
-/* 链接 */
-
-
-/* #write a {
-    border-bottom: 1px solid var(--main-6);
-    color: var(--main-6);
-    text-decoration: none;
-} */
-
-#write a {
-    border-bottom: 1px solid blue;
-    color: blue;
-    text-decoration: none;
-}
-
-
-/* 目录 */
-
-#write a.md-toc-inner {
-    line-height: 1.6;
-    white-space: pre-line;
-    border-bottom: none;
-}
-
-#write a:hover {
-    border-bottom: 2px solid var(--main-6);
-    color: var(--main-7);
 }
 
 h1,
@@ -529,100 +433,36 @@ h3 a {
 }
 
 h1 {
-    text-align: center;
-    padding-bottom: 0.3em;
-    font-size: 2.2em;
-    line-height: 1.2;
-    margin: 2.4em auto 1.2em;
-    color: var(--main-10);
-}
-
-h1:after {
-    content: '';
-    display: block;
-    margin: 0.2em auto 0;
-    width: 100px;
-    height: 2px;
-    border-bottom: 2px solid var(--main-6);
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
 }
 
 h2 {
-    margin: 2em auto 1.4em;
-    /* padding-left: 10px; */
-    /* display:inline-block; */
-    line-height: 1.4;
-    font-size: 1.8em;
-    /* border-left: 9px solid var(--main-6); */
-    /* border-bottom: 1px solid #ddd; */
-    border-bottom: 1px solid var(--main-6);
-}
-
-h2::before {
-    content: '# '!important;
-    color: #f22f27;
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0 15px;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ddd;
 }
 
 h3 {
-    font-size: 1.4em;
+    font-size: 1.4rem;
     line-height: 1.43;
-    margin: 1.6em auto 1.2em;
-    padding-left: 9px;
-    border-left: 5px solid #f22f27;
-}
-
-
-/* 三级四级标题点击后左边的提示图标 */
-
-#write>h3.md-focus:before,
-#write>h4.md-focus:before {
-    width: auto;
-    height: auto;
-    background-color: var(--main-5);
-    color: var(--mid-1);
+    margin: 20px 0 7px;
 }
 
 h4 {
-    margin-top: 1.3em;
-    font-size: 1.2em;
-    padding-left: 6px;
-    padding-right: 6px;
-    display: inline-block;
-    border: 1px solid var(--main-6);
-    border-top: 4px solid var(--main-6);
+    font-size: 1.2rem;
 }
 
-#write h5::before,
-#write h6::before {
-    position: absolute;
-    right: calc(100% + .75em);
-    top: 0;
-    color: #5b5b5b;
-    font-size: 0.8rem;
-    font-weight: bold;
-    font-variant: 'small-caps';
-    white-space: nowrap;
-    /* 文本强制不换行 */
-    border: 0;
-}
-
-#write h5 {
-    /* margin-left: 2em; */
+h5 {
     font-size: 1rem;
 }
 
-#write h6 {
-    /* margin-left: 2.5em; */
+h6 {
     font-size: 1rem;
-}
-
-#write h5::before {
-    content: 'H5';
-    top: 0.18rem;
-}
-
-#write h6::before {
-    content: 'H6';
-    top: 0.18rem;
+    color: #777;
 }
 
 p,
@@ -634,8 +474,8 @@ table {
     margin: 0.8em 0;
 }
 
-li>ol,
-li>ul {
+li > ol,
+li > ul {
     margin: 0 0;
 }
 
@@ -649,25 +489,25 @@ hr {
     box-sizing: content-box;
 }
 
-body>h2:first-child {
+body > h2:first-child {
     margin-top: 0;
     padding-top: 0;
 }
 
-body>h1:first-child {
+body > h1:first-child {
     margin-top: 0;
     padding-top: 0;
 }
 
-body>h1:first-child+h2 {
+body > h1:first-child + h2 {
     margin-top: 0;
     padding-top: 0;
 }
 
-body>h3:first-child,
-body>h4:first-child,
-body>h5:first-child,
-body>h6:first-child {
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
     margin-top: 0;
     padding-top: 0;
 }
@@ -691,38 +531,30 @@ h6 p {
     margin-top: 0;
 }
 
-#write ol,
-#write ul {
-    padding-left: 25px;
-    margin: .5rem 0;
+li p.first {
+    display: inline-block;
 }
 
-#write ol>li,
-#write ul>li {
-    color: #db4d52;
-    font-weight: bold;
+ul,
+ol {
+    padding-left: 30px;
 }
 
-#write ol>li>*,
-#write ul>li>* {
-    color: #333;
-    font-weight: normal;
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
 }
 
-#write ol>li>*:not(ol):not(ul),
-#write ul>li>*:not(ol):not(ul) {
-    padding-left: .25rem;
-}
-
-#write ul {
-    list-style-type: disc;
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
 }
 
 blockquote {
-    border-left: 4px solid rgb(239, 112, 96);
+    border-left: 4px solid #42b983;
     padding: 10px 15px;
-    color: #3f3f3f;
-    background-color: #fff9f9;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
 }
 
 table {
@@ -731,7 +563,7 @@ table {
 }
 
 table tr {
-    border-top: 1px solid var(--main-6);
+    border-top: 1px solid #dfe2e5;
     margin: 0;
     padding: 0;
 }
@@ -743,7 +575,7 @@ thead {
 
 table tr th {
     font-weight: bold;
-    border: 1px solid var(--main-6);
+    border: 1px solid #dfe2e5;
     border-bottom: 0;
     text-align: left;
     margin: 0;
@@ -751,7 +583,7 @@ table tr th {
 }
 
 table tr td {
-    border: 1px solid var(--main-6);
+    border: 1px solid #dfe2e5;
     text-align: left;
     margin: 0;
     padding: 6px 13px;
@@ -768,89 +600,45 @@ table tr td:last-child {
 }
 
 #write strong {
-    padding: 0.1em;
-    color: #dc3545;
+    padding: 0 1px;
 }
 
 #write em {
-    padding: 0 2px 0 2px;
-    font-style: normal;
-    color: #ff3502;
-    /* color: #595959;
-    background: #F6EEFF; */
+    padding: 0 5px 0 2px;
 }
 
-
-/* 数学公式变蓝 */
-
-[md-inline='inline_math'] {
-    color: blue;
-    font-size: 100%;
+#write table thead th {
+    background-color: #f2f2f2;
 }
-
-
-/* 表格第一行 */
-
-
-/* #write table thead th {
-    background-color: var(--main-7);
-    color: #f8f8f8;
-} */
-
-
-/* 行号左框线 */
 
 #write .CodeMirror-gutters {
-    border-right: 1px solid rgba(204, 51, 0);
+    border-right: none;
 }
-
-
-/* 代码框 */
 
 #write .md-fences {
-    border: 1px solid #7a7a7a;
+    border: 1px solid #F4F4F4;
     -webkit-font-smoothing: initial;
-    margin: 2rem 0 !important;
-    /* padding: 0.3rem 0 !important; */
-    padding: 3px 5px;
-    line-height: 1.55rem;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0 !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
     border-radius: 2px;
-    font-family: 'Roboto Mono', 'Source Sans Pro', 'Microsoft YaHei', '微软雅黑' !important;
-    font-size: 0.9rem;
+    font-family: var(--font-monospace);
+    font-size: 0.85rem;
     word-wrap: normal;
-}
-
-#write [mdtype="math_block"] {
-    font-size: 1.2rem;
 }
 
 #write .CodeMirror-wrap .CodeMirror-code pre {
     padding-left: 12px;
-    line-height: 1.55rem;
 }
 
-.cm-s-inner .CodeMirror-linenumber {
-    width: 2ch !important;
-    color: rgba(128, 128, 255, 0.8);
-}
-
-#write .CodeMirror-cursors .CodeMirror-cursor {
-    border-left: 2px solid var(--main-4);
-}
-
-
-/* 行间代码 */
-
-#write code,
-tt {
+#write code, tt {
     padding: 2px 4px;
     border-radius: 2px;
-    font-family: 'Source Code Pro', Roboto Mono, Source Sans Pro, 'Microsoft YaHei', '微软雅黑' !important;
+    font-family: var(--font-monospace);
     font-size: 0.92rem;
-    color: #ff3502;
-    background-color: #f8f5ec;
-    /* color: #c7254e;
-    background-color: #f9f2f4;  */
+    color: #e96900;
+    background-color: #f8f8f8;
 }
 
 tt {
@@ -862,22 +650,7 @@ tt {
     color: #e96900;
 }
 
-
-/* 流程图块 */
-
-#write .md-diagram-panel {
-    position: relative;
-    margin: 24px auto;
-}
-
-#write .md-focus .md-diagram-panel {
-    border: 1px solid var(--main-4);
-    border-radius: 4px;
-}
-
-
 /* heighlight. */
-
 #write mark {
     background-color: #EBFFEB;
     border-radius: 2px;
@@ -900,60 +673,35 @@ tt {
     color: #22a2c9;
 }
 
-
-/* 任务列表小方框 */
-
-.md-task-list-item>input {
+.md-task-list-item > input {
     margin-left: -1.3em;
-    margin-top: 0.3rem;
-    -webkit-appearance: none;
 }
 
-.md-task-list-item>input:before {
-    content: '';
-    display: inline-block;
-    width: 0.875rem;
-    height: 0.875rem;
-    vertical-align: middle;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--mid-1);
-    border-radius: 2px;
-    border: 1px solid var(--main-4);
-    margin-top: -0.4rem;
-    transition: all 0.2s linear;
-}
-
-.md-task-list-item>input:checked:before,
-.md-task-list-item>input[checked]:before {
-    content: '\2714';
-    font-size: 0.625rem;
-    color: var(--mid-1);
-    border: 1px solid var(--main-6);
-    background-color: var(--main-6);
-}
-
-
-/* @media print {
+@media print {
     html {
         font-size: 13px;
     }
+
     table,
     pre {
         page-break-inside: avoid;
     }
+
     pre {
         word-wrap: break-word;
     }
-} */
+}
 
-
-/* .md-fences {
+.md-fences {
     background-color: #f8f8f8;
-} */
+}
+
+.md-diagram-panel {
+    position: static !important;
+}
 
 #write pre.md-meta-block {
-    /* padding: 1rem; */
+    padding: 1rem;
     font-size: 85%;
     line-height: 1.45;
     background-color: #f7f7f7;
@@ -963,54 +711,33 @@ tt {
     margin-top: 0 !important;
 }
 
-.mathjax-block>.code-tooltip {
+.mathjax-block > .code-tooltip {
     bottom: .375rem;
-    /* bottom: .575rem; */
 }
 
-#write>h3.md-focus:before {
+#write > h3.md-focus:before {
     left: -1.5625rem;
     top: .375rem;
 }
 
-#write>h4.md-focus:before {
+#write > h4.md-focus:before {
     left: -1.5625rem;
     top: .285714286rem;
 }
 
-#write>h5.md-focus:before {
+#write > h5.md-focus:before {
     left: -1.5625rem;
     top: .285714286rem;
 }
 
-#write>h6.md-focus:before {
+#write > h6.md-focus:before {
     left: -1.5625rem;
     top: .285714286rem;
 }
 
-
-/*--- 图片 ---*/
-
-.md-image {
-    margin: 24px auto;
-    border-radius: 4px;
-}
-
-.md-image img {
-    border-radius: 4px;
-}
-
-
-/* 当 “![shadow-随便写]()”写时，会有阴影 */
-
-.md-image img[alt|='shadow'] {
-    /* box-shadow: 0 4px 24px -6px #ddd; */
-    box-shadow: #84A1A8 0px 10px 15px;
-}
-
-.md-image>.md-meta {
+.md-image > .md-meta {
     border-radius: 3px;
-    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    font-family: var(--font-monospace);
     padding: 2px 0 0 4px;
     font-size: 0.9em;
     color: inherit;
@@ -1045,7 +772,6 @@ tt {
     top: 10px;
 }
 
-
 /** focus mode */
 
 .on-focus-mode blockquote {
@@ -1056,7 +782,7 @@ header,
 .context-menu,
 .megamenu-content,
 footer {
-    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-family: var(--font-sans-serif);
 }
 
 .file-node-content:hover .file-node-icon,
@@ -1073,72 +799,29 @@ footer {
 }
 
 .html-for-mac .context-menu {
-    --item-hover-bg-color: #e6f0fe;
+    --item-hover-bg-color: #E6F0FE;
 }
 
-
-/* 侧边栏 */
-
-.file-list-item.active {
-    background: var(--active-file-bg-color);
-    color: var(--active-file-text-color);
-    border-left: 4px solid var(--main-6);
-}
-
-.file-tree-node.active>.file-node-background {
-    background-color: var(--active-file-bg-color);
-    border-left: 4px solid var(--main-6);
-    border-color: var(--active-file-border-color);
-}
-
-@media print {
-    .typora-export * {
-        -webkit-print-color-adjust: exact;
-    }
-    html {
-        font-size: 16px!important;
-    }
-    body {
-        /* font-family: 'Source Han SerifCN', Georgia, Times, 'SimSun', serif!important; */
-        /* font-size: 16px!important; */
-        font-family: Times, 'SimSun', serif!important;
-        color: #000000!important;
-    }
-    p {
-        color: #000000!important;
-    }
-    a {
-        color: blue!important;
-        /* border-bottom: 1px solid blue!important; */
-    }
-    table,
-    pre {
-        page-break-inside: avoid;
-    }
-    pre {
-        word-wrap: break-word;
-    }
-}
 
  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>Operations-AppleScript</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
 <div id='write'  class=''><h1 id='applescript'><span>AppleScript</span></h1><h2 id='需求'><span>需求</span></h2><blockquote><p><span>macos一些批量操作利用AppleScript来实现</span>
-<span>macos版本11.6.1 </span></p></blockquote><h2 id='步骤'><span>步骤</span></h2><h3 id='1-typora批量导出为htmlscpt'><span>1. typora批量导出为html.scpt</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="javascript" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+<span>macos版本11.6.1 </span></p></blockquote><h2 id='步骤'><span>步骤</span></h2><h3 id='1-typora批量导出为htmlscpt'><span>1. typora批量导出为html.scpt</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="javascript" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">set</span> <span class="cm-variable">folderToProcess</span> <span class="cm-variable">to</span> (<span class="cm-variable">choose</span> <span class="cm-variable">folder</span> <span class="cm-keyword">with</span> <span class="cm-variable">prompt</span> <span class="cm-string">"Choose Folder::"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tell</span> <span class="cm-variable">application</span> <span class="cm-string">"Finder"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">activate</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">fileExt</span> <span class="cm-variable">to</span> {<span class="cm-string">".md"</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">theTopFolder</span> <span class="cm-variable">to</span> (<span class="cm-variable">folderToProcess</span> <span class="cm-variable">as</span> <span class="cm-variable">alias</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">repeat</span> <span class="cm-keyword">with</span> <span class="cm-variable">EachFile</span> <span class="cm-keyword">in</span> (<span class="cm-variable">get</span> <span class="cm-variable">every</span> <span class="cm-variable">file</span> <span class="cm-variable">of</span> <span class="cm-variable">folder</span> (<span class="cm-variable">folderToProcess</span> <span class="cm-variable">as</span> <span class="cm-variable">alias</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">try</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">copy</span> <span class="cm-variable">name</span> <span class="cm-variable">of</span> <span class="cm-variable">EachFile</span> <span class="cm-variable">as</span> <span class="cm-variable">string</span> <span class="cm-variable">to</span> <span class="cm-variable">FileName</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">repeat</span> <span class="cm-keyword">with</span> <span class="cm-variable">ext</span> <span class="cm-keyword">in</span> <span class="cm-variable">fileExt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">if</span> <span class="cm-variable">FileName</span> <span class="cm-variable">ends</span> <span class="cm-keyword">with</span> <span class="cm-variable">ext</span> <span class="cm-variable">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span> <span class="cm-variable">set</span> <span class="cm-variable">result</span> <span class="cm-variable">to</span> (<span class="cm-variable">open</span> <span class="cm-variable">EachFile</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">open</span> <span class="cm-variable">EachFile</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span> <span class="cm-variable">msg</span>(<span class="cm-variable">result</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">tell</span> <span class="cm-variable">application</span> <span class="cm-string">"System Events"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">tell</span> <span class="cm-variable">process</span> <span class="cm-string">"Typora"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span><span class="cm-variable">set</span> <span class="cm-variable">frontmost</span> <span class="cm-variable">to</span> <span class="cm-atom">true</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">delay</span> <span class="cm-number">3</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">click</span> (<span class="cm-variable">menu</span> <span class="cm-variable">item</span> <span class="cm-string">"HTML"</span> <span class="cm-variable">of</span> <span class="cm-variable">menu</span> <span class="cm-string">"导出"</span> <span class="cm-variable">of</span> <span class="cm-variable">menu</span> <span class="cm-variable">item</span> <span class="cm-string">"导出"</span> <span class="cm-variable">of</span> <span class="cm-variable">menu</span> <span class="cm-string">"文件"</span> <span class="cm-variable">of</span> <span class="cm-variable">menu</span> <span class="cm-variable">bar</span> <span class="cm-variable">item</span> <span class="cm-string">"文件"</span> <span class="cm-variable">of</span> <span class="cm-variable">menu</span> <span class="cm-variable">bar</span> <span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">delay</span> <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">click</span> <span class="cm-variable">button</span> <span class="cm-string">"存储"</span> <span class="cm-variable">of</span> <span class="cm-variable">sheet</span> <span class="cm-number">1</span> <span class="cm-variable">of</span> <span class="cm-variable">window</span> <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">click</span> <span class="cm-variable">button</span> <span class="cm-string">"替换"</span> <span class="cm-variable">of</span> <span class="cm-variable">sheet</span> <span class="cm-number">1</span> <span class="cm-variable">of</span> <span class="cm-variable">sheet</span> <span class="cm-number">1</span> <span class="cm-variable">of</span> <span class="cm-variable">window</span> <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">delay</span> <span class="cm-number">3</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-keyword">if</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">repeat</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-keyword">try</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">repeat</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">delay</span> <span class="cm-number">2</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">tell</span> <span class="cm-variable">application</span> <span class="cm-string">"Typora"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">quit</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 1276px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1276px;"></div></div></div></pre><h3 id='2-将粘贴板内容自动写到备忘录中scpt'><span>2. 将粘贴板内容自动写到备忘录中.scpt</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="javascript" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tell</span> <span class="cm-variable">application</span> <span class="cm-string">"Finder"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">activate</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">fileExt</span> <span class="cm-variable">to</span> {<span class="cm-string">".md"</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">theTopFolder</span> <span class="cm-variable">to</span> (<span class="cm-variable">folderToProcess</span> <span class="cm-variable">as</span> <span class="cm-variable">alias</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">repeat</span> <span class="cm-keyword">with</span> <span class="cm-variable">EachFile</span> <span class="cm-keyword">in</span> (<span class="cm-variable">get</span> <span class="cm-variable">every</span> <span class="cm-variable">file</span> <span class="cm-variable">of</span> <span class="cm-variable">folder</span> (<span class="cm-variable">folderToProcess</span> <span class="cm-variable">as</span> <span class="cm-variable">alias</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">try</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">copy</span> <span class="cm-variable">name</span> <span class="cm-variable">of</span> <span class="cm-variable">EachFile</span> <span class="cm-variable">as</span> <span class="cm-variable">string</span> <span class="cm-variable">to</span> <span class="cm-variable">FileName</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">repeat</span> <span class="cm-keyword">with</span> <span class="cm-variable">ext</span> <span class="cm-keyword">in</span> <span class="cm-variable">fileExt</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">if</span> <span class="cm-variable">FileName</span> <span class="cm-variable">ends</span> <span class="cm-keyword">with</span> <span class="cm-variable">ext</span> <span class="cm-variable">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span> <span class="cm-variable">set</span> <span class="cm-variable">result</span> <span class="cm-variable">to</span> (<span class="cm-variable">open</span> <span class="cm-variable">EachFile</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">open</span> <span class="cm-variable">EachFile</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span> <span class="cm-variable">msg</span>(<span class="cm-variable">result</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">tell</span> <span class="cm-variable">application</span> <span class="cm-string">"System Events"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">tell</span> <span class="cm-variable">process</span> <span class="cm-string">"Typora"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span><span class="cm-variable">set</span> <span class="cm-variable">frontmost</span> <span class="cm-variable">to</span> <span class="cm-atom">true</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">delay</span> <span class="cm-number">3</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">click</span> (<span class="cm-variable">menu</span> <span class="cm-variable">item</span> <span class="cm-string">"HTML"</span> <span class="cm-variable">of</span> <span class="cm-variable">menu</span> <span class="cm-string">"导出"</span> <span class="cm-variable">of</span> <span class="cm-variable">menu</span> <span class="cm-variable">item</span> <span class="cm-string">"导出"</span> <span class="cm-variable">of</span> <span class="cm-variable">menu</span> <span class="cm-string">"文件"</span> <span class="cm-variable">of</span> <span class="cm-variable">menu</span> <span class="cm-variable">bar</span> <span class="cm-variable">item</span> <span class="cm-string">"文件"</span> <span class="cm-variable">of</span> <span class="cm-variable">menu</span> <span class="cm-variable">bar</span> <span class="cm-number">1</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">delay</span> <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">click</span> <span class="cm-variable">button</span> <span class="cm-string">"存储"</span> <span class="cm-variable">of</span> <span class="cm-variable">sheet</span> <span class="cm-number">1</span> <span class="cm-variable">of</span> <span class="cm-variable">window</span> <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">click</span> <span class="cm-variable">button</span> <span class="cm-string">"替换"</span> <span class="cm-variable">of</span> <span class="cm-variable">sheet</span> <span class="cm-number">1</span> <span class="cm-variable">of</span> <span class="cm-variable">sheet</span> <span class="cm-number">1</span> <span class="cm-variable">of</span> <span class="cm-variable">window</span> <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">delay</span> <span class="cm-number">3</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-keyword">if</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">repeat</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-keyword">try</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">repeat</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">delay</span> <span class="cm-number">2</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">tell</span> <span class="cm-variable">application</span> <span class="cm-string">"Typora"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">quit</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 1012px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1012px;"></div></div></div></pre><h3 id='2-将粘贴板内容自动写到备忘录中scpt'><span>2. 将粘贴板内容自动写到备忘录中.scpt</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="javascript" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">set</span> <span class="cm-variable">noteHTMLText</span> <span class="cm-variable">to</span> <span class="cm-string">"&lt;pre style=\"font-family:Helvetica,sans-serif;\"&gt;"</span> <span class="cm-operator">&amp;</span> <span class="cm-variable">¬</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span>(<span class="cm-variable">the</span> <span class="cm-variable">clipboard</span> <span class="cm-variable">as</span> <span class="cm-variable">Unicode</span> <span class="cm-variable">text</span>) <span class="cm-operator">&amp;</span> <span class="cm-string">"&lt;/pre&gt;"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tell</span> <span class="cm-variable">application</span> <span class="cm-string">"Notes"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">activate</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">thisAccountName</span> <span class="cm-variable">to</span> <span class="cm-variable">my</span> <span class="cm-variable">getNameOfTargetAccount</span>(<span class="cm-string">"Choose an account:"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">display</span> <span class="cm-variable">dialog</span> <span class="cm-string">"Enter the title for the new note:"</span> <span class="cm-keyword">default</span> <span class="cm-variable">answer</span> <span class="cm-variable">¬</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string">"New Note"</span> <span class="cm-keyword">with</span> <span class="cm-variable">icon</span> <span class="cm-number">1</span> <span class="cm-keyword">with</span> <span class="cm-variable">title</span> <span class="cm-string">"New Note with Clipboard"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">the</span> <span class="cm-variable">noteTitle</span> <span class="cm-variable">to</span> <span class="cm-variable">the</span> <span class="cm-variable">text</span> <span class="cm-variable">returned</span> <span class="cm-variable">of</span> <span class="cm-variable">the</span> <span class="cm-variable">result</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">tell</span> <span class="cm-variable">account</span> <span class="cm-variable">thisAccountName</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">make</span> <span class="cm-keyword">new</span> <span class="cm-variable">note</span> <span class="cm-variable">at</span> <span class="cm-variable">folder</span> <span class="cm-string">"Notes"</span> <span class="cm-keyword">with</span> <span class="cm-variable">properties</span> {<span class="cm-variable">name</span>:<span class="cm-variable">noteTitle</span>, <span class="cm-variable">body</span>:<span class="cm-variable">noteHTMLText</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">on</span> <span class="cm-variable">getNameOfTargetAccount</span>(<span class="cm-variable">thisPrompt</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">tell</span> <span class="cm-variable">application</span> <span class="cm-string">"Notes"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">if</span> <span class="cm-variable">the</span> (<span class="cm-variable">count</span> <span class="cm-variable">of</span> <span class="cm-variable">accounts</span>) <span class="cm-variable">is</span> <span class="cm-variable">greater</span> <span class="cm-variable">than</span> <span class="cm-number">1</span> <span class="cm-variable">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">theseAccountNames</span> <span class="cm-variable">to</span> <span class="cm-variable">the</span> <span class="cm-variable">name</span> <span class="cm-variable">of</span> <span class="cm-variable">every</span> <span class="cm-variable">account</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">thisAccountName</span> <span class="cm-variable">to</span> <span class="cm-variable">¬</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span>(<span class="cm-variable">choose</span> <span class="cm-variable">from</span> <span class="cm-variable">list</span> <span class="cm-variable">theseAccountNames</span> <span class="cm-keyword">with</span> <span class="cm-variable">prompt</span> <span class="cm-variable">thisPrompt</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">if</span> <span class="cm-variable">thisAccountName</span> <span class="cm-variable">is</span> <span class="cm-atom">false</span> <span class="cm-variable">then</span> <span class="cm-variable">error</span> <span class="cm-variable">number</span> <span class="cm-operator">-</span><span class="cm-number">128</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">thisAccountName</span> <span class="cm-variable">to</span> <span class="cm-variable">thisAccountName</span> <span class="cm-variable">as</span> <span class="cm-variable">string</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">else</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">thisAccountName</span> <span class="cm-variable">to</span> <span class="cm-variable">the</span> <span class="cm-variable">name</span> <span class="cm-variable">of</span> <span class="cm-variable">account</span> <span class="cm-number">1</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-keyword">if</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">return</span> <span class="cm-variable">thisAccountName</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">end</span> <span class="cm-variable">getNameOfTargetAccount</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 822px;"></div><div class="CodeMirror-gutters" style="display: none; height: 822px;"></div></div></div></pre><h3 id='3-imessagescpt'><span>3. imessage.scpt</span></h3><p><span>vim  imessage.scpt</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="javascript" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 638px;"></div><div class="CodeMirror-gutters" style="display: none; height: 638px;"></div></div></div></pre><h3 id='3-imessagescpt'><span>3. imessage.scpt</span></h3><p><span>vim  imessage.scpt</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="javascript" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">on</span> <span class="cm-variable">run</span> {<span class="cm-variable">targetBuddyPhone</span>, <span class="cm-variable">targetMessage</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">set</span> <span class="cm-variable">myArray</span> <span class="cm-variable">to</span> <span class="cm-variable">my</span> <span class="cm-variable">theSplit</span>(<span class="cm-variable">targetMessage</span>, <span class="cm-string">"|"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">count</span> <span class="cm-variable">of</span> <span class="cm-variable">myArray</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">num</span> <span class="cm-variable">to</span> <span class="cm-variable">count</span> <span class="cm-variable">of</span> <span class="cm-variable">myArray</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">if</span> <span class="cm-variable">num</span> <span class="cm-operator">=</span> <span class="cm-number">0</span> <span class="cm-variable">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">ret</span> <span class="cm-variable">to</span> <span class="cm-string">"fail"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">else</span> <span class="cm-keyword">if</span> <span class="cm-variable">num</span> <span class="cm-operator">=</span> <span class="cm-number">1</span> <span class="cm-variable">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">input_text</span> <span class="cm-variable">to</span> <span class="cm-variable">item</span> <span class="cm-number">1</span> <span class="cm-variable">of</span> <span class="cm-variable">myArray</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">tell</span> <span class="cm-variable">application</span> <span class="cm-string">"Messages"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">myid</span> <span class="cm-variable">to</span> <span class="cm-variable">get</span> <span class="cm-variable">id</span> <span class="cm-variable">of</span> <span class="cm-variable">first</span> <span class="cm-variable">service</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">theBuddy</span> <span class="cm-variable">to</span> <span class="cm-variable">buddy</span> <span class="cm-variable">targetBuddyPhone</span> <span class="cm-variable">of</span> <span class="cm-variable">service</span> <span class="cm-variable">id</span> <span class="cm-variable">myid</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">send</span> <span class="cm-variable">input_text</span> <span class="cm-variable">to</span> <span class="cm-variable">theBuddy</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">ret</span> <span class="cm-variable">to</span> <span class="cm-string">"Ok from imput_text"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">else</span> <span class="cm-keyword">if</span> <span class="cm-variable">num</span> <span class="cm-operator">=</span> <span class="cm-number">2</span> <span class="cm-variable">then</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">input_text</span> <span class="cm-variable">to</span> <span class="cm-variable">item</span> <span class="cm-number">1</span> <span class="cm-variable">of</span> <span class="cm-variable">myArray</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">input_file</span> <span class="cm-variable">to</span> <span class="cm-variable">item</span> <span class="cm-number">2</span> <span class="cm-variable">of</span> <span class="cm-variable">myArray</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">theAttachment1</span> <span class="cm-variable">to</span> <span class="cm-variable">POSIX</span> <span class="cm-variable">file</span> <span class="cm-variable">input_file</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">tell</span> <span class="cm-variable">application</span> <span class="cm-string">"Messages"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">myid</span> <span class="cm-variable">to</span> <span class="cm-variable">get</span> <span class="cm-variable">id</span> <span class="cm-variable">of</span> <span class="cm-variable">first</span> <span class="cm-variable">service</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">theBuddy</span> <span class="cm-variable">to</span> <span class="cm-variable">buddy</span> <span class="cm-variable">targetBuddyPhone</span> <span class="cm-variable">of</span> <span class="cm-variable">service</span> <span class="cm-variable">id</span> <span class="cm-variable">myid</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">send</span> <span class="cm-variable">input_text</span> <span class="cm-variable">to</span> <span class="cm-variable">theBuddy</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">send</span> <span class="cm-variable">theAttachment1</span> <span class="cm-variable">to</span> <span class="cm-variable">theBuddy</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-variable">tell</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">ret</span> <span class="cm-variable">to</span> <span class="cm-string">"Ok from imput_file"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">end</span> <span class="cm-keyword">if</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">end</span> <span class="cm-variable">run</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">on</span> <span class="cm-variable">theSplit</span>(<span class="cm-variable">theString</span>, <span class="cm-variable">theDelimiter</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span> <span class="cm-variable">save</span> <span class="cm-variable">delimiters</span> <span class="cm-variable">to</span> <span class="cm-variable">restore</span> <span class="cm-variable">old</span> <span class="cm-variable">settings</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">oldDelimiters</span> <span class="cm-variable">to</span> <span class="cm-variable">AppleScript</span><span class="cm-string">'s text item delimiters</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span> <span class="cm-variable">set</span> <span class="cm-variable">delimiters</span> <span class="cm-variable">to</span> <span class="cm-variable">delimiter</span> <span class="cm-variable">to</span> <span class="cm-variable">be</span> <span class="cm-variable">used</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">AppleScript</span><span class="cm-string">'s text item delimiters to theDelimiter</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span> <span class="cm-variable">create</span> <span class="cm-variable">the</span> <span class="cm-variable">array</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">theArray</span> <span class="cm-variable">to</span> <span class="cm-variable">every</span> <span class="cm-variable">text</span> <span class="cm-variable">item</span> <span class="cm-variable">of</span> <span class="cm-variable">theString</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span> <span class="cm-variable">restore</span> <span class="cm-variable">the</span> <span class="cm-variable">old</span> <span class="cm-variable">setting</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-variable">set</span> <span class="cm-variable">AppleScript</span><span class="cm-string">'s text item delimiters to oldDelimiters</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-operator">--</span> <span class="cm-keyword">return</span> <span class="cm-variable">the</span> <span class="cm-variable">result</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-keyword">return</span> <span class="cm-variable">theArray</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">end</span> <span class="cm-variable">theSplit</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 1242px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1242px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">vim</span> send.sh</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 990px;"></div><div class="CodeMirror-gutters" style="display: none; height: 990px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="shell"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="shell"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">vim</span> send.sh</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-meta">#!/usr/bin/env bash</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">osascript ./imessage.scpt <span class="cm-string">"</span><span class="cm-def">$1</span><span class="cm-string">"</span> <span class="cm-string">"</span><span class="cm-def">$2</span><span class="cm-string">"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 130px;"></div><div class="CodeMirror-gutters" style="display: none; height: 130px;"></div></div></div></pre><p><span>执行</span></p><pre class="md-fences md-end-block ty-contain-cm md-focus" spellcheck="false" lang="javascript"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 110px;"></div><div class="CodeMirror-gutters" style="display: none; height: 110px;"></div></div></div></pre><p><span>执行</span></p><pre class="md-fences md-end-block ty-contain-cm md-focus" spellcheck="false" lang="javascript"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.<span class="cm-operator">/</span><span class="cm-variable">send</span>.<span class="cm-property">sh</span> <span class="cm-operator">+</span><span class="cm-number">40712344321</span> <span class="cm-string">"Message body goes here"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">or</span> <span class="cm-variable">directly</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
-</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">osascript</span> <span class="cm-variable">imessage</span>.<span class="cm-property">scpt</span> <span class="cm-operator">+</span><span class="cm-number">40712344321</span> <span class="cm-string">"Message body goes here"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 156px;"></div><div class="CodeMirror-gutters" style="display: none; height: 156px;"></div></div></div></pre></div></div>
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">osascript</span> <span class="cm-variable">imessage</span>.<span class="cm-property">scpt</span> <span class="cm-operator">+</span><span class="cm-number">40712344321</span> <span class="cm-string">"Message body goes here"</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 132px;"></div><div class="CodeMirror-gutters" style="display: none; height: 132px;"></div></div></div></pre></div></div>
 </body>
 </html>
