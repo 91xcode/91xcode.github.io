@@ -2,7 +2,7 @@
 
 多行输入单行输出：
 
-```
+```bash
 # cat test.txt | xargs
 
 a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -42,7 +42,7 @@ echo $*
 
 arg.txt文件内容：
 
-```
+```bash
 # cat arg.txt
 
 aaa
@@ -52,7 +52,7 @@ ccc
 
 xargs 的一个选项 -I，使用 -I 指定一个替换字符串 {}，这个字符串在 xargs 扩展时会被替换掉，当 -I 与 xargs 结合使用，每一个参数命令都会被执行一次：
 
-```
+```bash
 # cat arg.txt | xargs -I {} ./sk.sh -p {} -l
 
 -p aaa -l
@@ -64,7 +64,7 @@ xargs 的一个选项 -I，使用 -I 指定一个替换字符串 {}，这个字�
 
 xargs 结合 find 使用 用 rm 删除太多的文件时候，可能得到一个错误信息：/bin/rm Argument list too long. 用 xargs 去避免这个问题：
 
-```
+```bash
 find . -type f -name "*.log" -print0 | xargs -0 rm -f
 
 xargs -0 将 \0 作为定界符。

@@ -5,7 +5,7 @@
 
 
 
-```
+```bash
 1、编写hello world脚本
 
 #!/bin/bash

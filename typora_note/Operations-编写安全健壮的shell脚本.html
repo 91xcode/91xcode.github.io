@@ -3,7 +3,7 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
-<link href='https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
@@ -22,8 +22,6 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 @media screen and (max-width: 500px) { 
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
-  .CodeMirror-sizer { margin-left: 0px !important; }
-  .CodeMirror-gutters { display: none !important; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
@@ -51,7 +49,7 @@ sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inh
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
 figure > table { margin: 0px; }
-tr { break-inside: avoid; break-after: auto; }
+thead, tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
@@ -73,6 +71,7 @@ div.hr:focus { cursor: none; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
 .md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
 .CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
 .footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
 .footnotes + .footnotes { margin-top: 0px; }
 .md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
@@ -87,7 +86,7 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print { 
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
@@ -130,6 +129,7 @@ p > .md-image:only-child { display: inline-block; width: 100%; }
 }
 a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
 .footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
 .md-attr { display: none; }
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
@@ -282,104 +282,193 @@ span.cm-strikethrough { text-decoration: line-through; }
 }
 
 
-/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+/* cyrillic-ext */
 
-@include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
+/* cyrillic */
 
-/* =========== */
+/* greek-ext */
 
-/* pt-serif-regular - latin */
-/* pt-serif-italic - latin */
-/* pt-serif-700 - latin */
-/* pt-serif-700italic - latin */
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+/* cyrillic-ext */
+
+/* cyrillic */
+
+/* greek-ext */
+
+/* greek */
+
+/* vietnamese */
+
+/* latin-ext */
+
+/* latin */
+
+@font-face {
+    font-family: 'Source Han SerifCN';
+    src: local('Source Han SerifCN Bold'), local('SourceHanSerifCN-Bold'), url('file:///Users/sai/Library/Application%20Support/abnerworks.Typora/themes/zj/SourceHanSerifCN-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}@import '';
 :root {
-	--active-file-bg-color: #dadada;
-	--active-file-bg-color: rgba(32, 43, 51, 0.63);
-	--active-file-text-color: white;
-	--bg-color: #f3f2ee;
-	--text-color: #1f0909;
-	--control-text-color: #444;
-	--rawblock-edit-panel-bd: #e5e5e5;
-
-	--select-text-bg-color: rgba(32, 43, 51, 0.63);
-  --select-text-font-color: white;
-}
-
-pre {
-	--select-text-bg-color: #36284e;
-	--select-text-font-color: #fff;
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+    --select-text-bg-color: #ffafa3;
+    --active-file-text-color: #262626;
+    --active-file-border-color: #f22f27;
+    /* --active-file-bg-color: #fff3f0; */
+    --primary-color: #f22f27;
+    /* 中性色 */
+    --mid-1: #ffffff;
+    --mid-2: #fafafa;
+    --mid-3: #f5f5f5;
+    --mid-4: #f0f0f0;
+    --mid-5: #d9d9d9;
+    --mid-6: #bfbfbf;
+    --mid-7: #8c8c8c;
+    --mid-8: #595959;
+    --mid-9: #434343;
+    --mid-10: #262626;
+    --mid-11: #1f1f1f;
+    --mid-12: #141414;
+    --mid-13: #000000;
+    /* 主题色 */
+    --main-1: #fff3f0;
+    --main-2: #ffd4cc;
+    --main-3: #ffafa3;
+    --main-4: #ff887a;
+    --main-5: #ff5d52;
+    --main-6: #f22f27;
+    --main-7: #cc1616;
+    --main-8: #a60a0f;
+    --main-9: #80010a;
+    --main-10: #590009;
 }
 
 html {
-	font-size: 16px;
-	-webkit-font-smoothing: antialiased;
+    font-size: 17px;
 }
 
-html, body {
-	background-color: #f3f2ee;
-	font-family: "PT Serif", 'Times New Roman', Times, serif;
-	color: #1f0909;
-	line-height: 1.5em;
+body {
+    font-family: "Vollkorn", Palatino, Times;
+    /* font-family: 'Source Han SerifCN', Georgia, Times, 'SimSun', serif!important; */
+    color: var(--mid-13);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.8rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
 }
-
-/*#write {
-	overflow-x: auto;
-    max-width: initial;
-	padding-left: calc(50% - 17em);
-    padding-right: calc(50% - 17em);
-}
-
-@media (max-width: 36em) {
- 	#write {
- 		padding-left: 1em;
-    	padding-right: 1em;
- 	}
-}*/
 
 #write {
-	max-width: 40em;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 160px;
 }
 
-@media only screen and (min-width: 1400px) {
-	#write {
-			max-width: 914px;
-	}
+#write p {
+    line-height: 1.8rem;
+    word-spacing: .05rem;
+    /* color: #3f3f3f; */
+    color: var(--mid-13);
 }
 
-ol li {
-	list-style-type: decimal;
-	list-style-position: outside;
-}
-ul li {
-	list-style-type: disc;
-	list-style-position: outside;
+
+/* #write ol li {
+    padding-left: 0.5rem;
+} */
+
+#write>ul:first-child,
+#write>ol:first-child {
+    margin-top: 30px;
 }
 
-ol,
-ul {
-	list-style: none;
+body>*:first-child {
+    margin-top: 0 !important;
 }
 
-blockquote,
-q {
-	quotes: none;
+body>*:last-child {
+    margin-bottom: 0 !important;
 }
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-/* styles */
 
-/* ====== */
 
-/* headings */
+/* a {
+    color: var(--main-6);
+    font-weight: 500;
+    padding: 0 2px;
+    text-decoration: none;
+} */
+
+a {
+    color: blue;
+    font-weight: 500;
+    padding: 0 2px;
+    text-decoration: none;
+}
+
+
+/* 链接 */
+
+
+/* #write a {
+    border-bottom: 1px solid var(--main-6);
+    color: var(--main-6);
+    text-decoration: none;
+} */
+
+#write a {
+    border-bottom: 1px solid blue;
+    color: blue;
+    text-decoration: none;
+}
+
+
+/* 目录 */
+
+#write a.md-toc-inner {
+    line-height: 1.6;
+    white-space: pre-line;
+    border-bottom: none;
+}
+
+#write a:hover {
+    border-bottom: 2px solid var(--main-6);
+    color: var(--main-7);
+}
 
 h1,
 h2,
@@ -387,493 +476,648 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: bold;
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
 }
-h1 {
-	font-size: 1.875em;
-	/*30 / 16*/
-	line-height: 1.6em;
-	/* 48 / 30*/
-	margin-top: 2em;
-}
-h2,
-h3 {
-	font-size: 1.3125em;
-	/*21 / 16*/
-	line-height: 1.15;
-	/*24 / 21*/
-	margin-top: 2.285714em;
-	/*48 / 21*/
-	margin-bottom: 1.15em;
-	/*24 / 21*/
-}
-h3 {
-	font-weight: normal;
-}
-h4 {
-	font-size: 1.125em;
-	/*18 / 16*/
-	margin-top: 2.67em;
-	/*48 / 18*/
-}
-h5,
-h6 {
-	font-size: 1em;
-	/*16*/
-}
-h1 {
-	border-bottom: 1px solid;
-	margin-bottom: 1.875em;
-	padding-bottom: 0.8125em;
-}
-/* links */
 
-a {
-	text-decoration: none;
-	color: #065588;
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
 }
-a:hover,
-a:active {
-	text-decoration: underline;
+
+h1 tt,
+h1 code {
+    font-size: inherit !important;
 }
-/* block spacing */
+
+h2 tt,
+h2 code {
+    font-size: inherit !important;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit !important;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit !important;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit !important;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit !important;
+}
+
+h2 a,
+h3 a {
+    color: #34495e;
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: 0.3em;
+    font-size: 2.2em;
+    line-height: 1.2;
+    margin: 2.4em auto 1.2em;
+    color: var(--main-10);
+}
+
+h1:after {
+    content: '';
+    display: block;
+    margin: 0.2em auto 0;
+    width: 100px;
+    height: 2px;
+    border-bottom: 2px solid var(--main-6);
+}
+
+h2 {
+    margin: 2em auto 1.4em;
+    /* padding-left: 10px; */
+    /* display:inline-block; */
+    line-height: 1.4;
+    font-size: 1.8em;
+    /* border-left: 9px solid var(--main-6); */
+    /* border-bottom: 1px solid #ddd; */
+    border-bottom: 1px solid var(--main-6);
+}
+
+h2::before {
+    content: '# '!important;
+    color: #f22f27;
+}
+
+h3 {
+    font-size: 1.4em;
+    line-height: 1.43;
+    margin: 1.6em auto 1.2em;
+    padding-left: 9px;
+    border-left: 5px solid #f22f27;
+}
+
+
+/* 三级四级标题点击后左边的提示图标 */
+
+#write>h3.md-focus:before,
+#write>h4.md-focus:before {
+    width: auto;
+    height: auto;
+    background-color: var(--main-5);
+    color: var(--mid-1);
+}
+
+h4 {
+    margin-top: 1.3em;
+    font-size: 1.2em;
+    padding-left: 6px;
+    padding-right: 6px;
+    display: inline-block;
+    border: 1px solid var(--main-6);
+    border-top: 4px solid var(--main-6);
+}
+
+#write h5::before,
+#write h6::before {
+    position: absolute;
+    right: calc(100% + .75em);
+    top: 0;
+    color: #5b5b5b;
+    font-size: 0.8rem;
+    font-weight: bold;
+    font-variant: 'small-caps';
+    white-space: nowrap;
+    /* 文本强制不换行 */
+    border: 0;
+}
+
+#write h5 {
+    /* margin-left: 2em; */
+    font-size: 1rem;
+}
+
+#write h6 {
+    /* margin-left: 2.5em; */
+    font-size: 1rem;
+}
+
+#write h5::before {
+    content: 'H5';
+    top: 0.18rem;
+}
+
+#write h6::before {
+    content: 'H6';
+    top: 0.18rem;
+}
 
 p,
 blockquote,
-.md-fences {
-	margin-bottom: 1.5em;
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin-bottom: 1.5em;
+
+li>ol,
+li>ul {
+    margin: 0 0;
 }
-/* blockquote */
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body>h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h1:first-child+h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+#write ol,
+#write ul {
+    padding-left: 25px;
+    margin: .5rem 0;
+}
+
+#write ol>li,
+#write ul>li {
+    color: #db4d52;
+    font-weight: bold;
+}
+
+#write ol>li>*,
+#write ul>li>* {
+    color: #333;
+    font-weight: normal;
+}
+
+#write ol>li>*:not(ol):not(ul),
+#write ul>li>*:not(ol):not(ul) {
+    padding-left: .25rem;
+}
+
+#write ul {
+    list-style-type: disc;
+}
 
 blockquote {
-	font-style: italic;
-	border-left: 5px solid;
-	margin-left: 2em;
-	padding-left: 1em;
-}
-/* lists */
-
-ul,
-ol {
-	margin: 0 0 1.5em 1.5em;
-}
-/* tables */
-.md-meta,.md-before, .md-after {
-	color:#999;
+    border-left: 4px solid rgb(239, 112, 96);
+    padding: 10px 15px;
+    color: #3f3f3f;
+    background-color: #fff9f9;
 }
 
 table {
-	margin-bottom: 1.5em;
-	/*24 / 16*/
-	font-size: 1em;
-	/* width: 100%; */
-}
-thead th,
-tfoot th {
-	padding: .25em .25em .25em .4em;
-	text-transform: uppercase;
-}
-th {
-	text-align: left;
-}
-td {
-	vertical-align: top;
-	padding: .25em .25em .25em .4em;
+    padding: 0;
+    word-break: initial;
 }
 
-code,
-.md-fences {
-	background-color: #dadada;
+table tr {
+    border-top: 1px solid var(--main-6);
+    margin: 0;
+    padding: 0;
 }
 
-code {
-	padding-left: 2px;
-	padding-right: 2px;
-}
-
-.md-fences {
-	margin-left: 2em;
-	margin-bottom: 3em;
-	padding-left: 1ch;
-	padding-right: 1ch;
-}
-
-pre,
-code,
-tt {
-	font-size: .875em;
-	line-height: 1.714285em;
-}
-/* some fixes */
-
-h1 {
-	line-height: 1.3em;
-	font-weight: normal;
-	margin-bottom: 0.5em;
-}
-
-p + ul,
-p + ol{
-	margin-top: .5em;
-}
-
-h3 + ul,
-h4 + ul,
-h5 + ul,
-h6 + ul,
-h3 + ol,
-h4 + ol,
-h5 + ol,
-h6 + ol {
-	margin-top: .5em;
-}
-
-li > ul,
-li > ol {
-	margin-top: inherit;
-	margin-bottom: 0;
-}
-
-li ol>li {
-	list-style-type: lower-alpha;
-}
-
-li li ol>li{
-	list-style-type: lower-roman;
-}
-
-h2,
-h3 {
-	margin-bottom: .75em;
-}
-hr {
-	border-top: none;
-	border-right: none;
-	border-bottom: 1px solid;
-	border-left: none;
-}
-h1 {
-	border-color: #c5c5c5;
-}
-blockquote {
-	border-color: #bababa;
-	color: #656565;
-}
-
-blockquote ul,
-blockquote ol {
-	margin-left:0;
-}
-
-.ty-table-edit {
-	background-color: transparent;
-}
+table tr:nth-child(2n),
 thead {
-	background-color: #dadada;
-}
-tr:nth-child(even) {
-	background: #e8e7e7;
-}
-hr {
-	border-color: #c5c5c5;
-}
-.task-list{
-	padding-left: 1rem;
+    background-color: #fafafa;
 }
 
-.md-task-list-item {
-	padding-left: 1.5rem;
-	list-style-type: none;
+table tr th {
+    font-weight: bold;
+    border: 1px solid var(--main-6);
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
 }
 
-.md-task-list-item > input:before {
-	content: '\221A';
-	display: inline-block;
-	width: 1.25rem;
-  	height: 1.6rem;
-	vertical-align: middle;
-	text-align: center;
-	color: #ddd;
-	background-color: #F3F2EE;
+table tr td {
+    border: 1px solid var(--main-6);
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
 }
 
-.md-task-list-item > input:checked:before,
-.md-task-list-item > input[checked]:before{
-	color: inherit;
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
 }
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0.1em;
+    color: #dc3545;
+}
+
+#write em {
+    padding: 0 2px 0 2px;
+    font-style: normal;
+    color: #ff3502;
+    /* color: #595959;
+    background: #F6EEFF; */
+}
+
+
+/* 数学公式变蓝 */
+
+[md-inline='inline_math'] {
+    color: blue;
+    font-size: 100%;
+}
+
+
+/* 表格第一行 */
+
+
+/* #write table thead th {
+    background-color: var(--main-7);
+    color: #f8f8f8;
+} */
+
+
+/* 行号左框线 */
+
+#write .CodeMirror-gutters {
+    border-right: 1px solid rgba(204, 51, 0);
+}
+
+
+/* 代码框 */
+
+#write .md-fences {
+    border: 1px solid #7a7a7a;
+    -webkit-font-smoothing: initial;
+    margin: 2rem 0 !important;
+    /* padding: 0.3rem 0 !important; */
+    padding: 3px 5px;
+    line-height: 1.55rem;
+    border-radius: 2px;
+    font-family: 'Roboto Mono', 'Source Sans Pro', 'Microsoft YaHei', '微软雅黑' !important;
+    font-size: 0.9rem;
+    word-wrap: normal;
+}
+
+#write [mdtype="math_block"] {
+    font-size: 1.2rem;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+    line-height: 1.55rem;
+}
+
+.cm-s-inner .CodeMirror-linenumber {
+    width: 2ch !important;
+    color: rgba(128, 128, 255, 0.8);
+}
+
+#write .CodeMirror-cursors .CodeMirror-cursor {
+    border-left: 2px solid var(--main-4);
+}
+
+
+/* 行间代码 */
+
+#write code,
+tt {
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: 'Source Code Pro', Roboto Mono, Source Sans Pro, 'Microsoft YaHei', '微软雅黑' !important;
+    font-size: 0.92rem;
+    color: #ff3502;
+    background-color: #f8f5ec;
+    /* color: #c7254e;
+    background-color: #f9f2f4;  */
+}
+
+tt {
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+
+/* 流程图块 */
+
+#write .md-diagram-panel {
+    position: relative;
+    margin: 24px auto;
+}
+
+#write .md-focus .md-diagram-panel {
+    border: 1px solid var(--main-4);
+    border-radius: 4px;
+}
+
+
+/* heighlight. */
+
+#write mark {
+    background-color: #EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+
+/* 任务列表小方框 */
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+    margin-top: 0.3rem;
+    -webkit-appearance: none;
+}
+
+.md-task-list-item>input:before {
+    content: '';
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--mid-1);
+    border-radius: 2px;
+    border: 1px solid var(--main-4);
+    margin-top: -0.4rem;
+    transition: all 0.2s linear;
+}
+
+.md-task-list-item>input:checked:before,
+.md-task-list-item>input[checked]:before {
+    content: '\2714';
+    font-size: 0.625rem;
+    color: var(--mid-1);
+    border: 1px solid var(--main-6);
+    background-color: var(--main-6);
+}
+
+
+/* @media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+} */
+
+
+/* .md-fences {
+    background-color: #f8f8f8;
+} */
 
 #write pre.md-meta-block {
-	min-height: 1.875rem;
-	color: #555;
-	border: 0px;
-	background: transparent;
-	margin-top: -4px;
-	margin-left: 1em;
-	margin-top: 1em;
+    /* padding: 1rem; */
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: .375rem;
+    /* bottom: .575rem; */
+}
+
+#write>h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write>h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write>h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+
+/*--- 图片 ---*/
+
+.md-image {
+    margin: 24px auto;
+    border-radius: 4px;
+}
+
+.md-image img {
+    border-radius: 4px;
+}
+
+
+/* 当 “![shadow-随便写]()”写时，会有阴影 */
+
+.md-image img[alt|='shadow'] {
+    /* box-shadow: 0 4px 24px -6px #ddd; */
+    box-shadow: #84A1A8 0px 10px 15px;
 }
 
 .md-image>.md-meta {
-	color: #9B5146;
-}
-
-.md-image>.md-meta{
-	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
-}
-
-
-#write>h3.md-focus:before{
-	left: -1.5rem;
-	color:#999;
-	border-color:#999;
-}
-#write>h4.md-focus:before{
-	left: -1.5rem;
-	top: .25rem;
-	color:#999;
-	border-color:#999;
-}
-#write>h5.md-focus:before{
-	left: -1.5rem;
-	top: .0.3125rem;
-	color:#999;
-	border-color:#999;
-}
-#write>h6.md-focus:before{
-	left: -1.5rem;
-	top: 0.3125rem;
-	color:#999;
-	border-color:#999;
-}
-
-.md-toc:focus .md-toc-content{
-	margin-top: 19px;
-}
-
-.md-toc-content:empty:before{
-	color: #065588;
-}
-.md-toc-item {
-	color: #065588;
-}
-#write div.md-toc-tooltip {
-	background-color: #f3f2ee;
-}
-
-#typora-sidebar {
-	background-color: #f3f2ee;
-	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
-}
-
-.pin-outline #typora-sidebar {
-	background: inherit;
-	box-shadow: none;
-	border-right: 1px dashed;
-}
-
-.pin-outline #typora-sidebar:hover .outline-title-wrapper {
-	border-left:1px dashed;
-}
-
-.outline-item:hover {
-  background-color: #dadada;
-  border-left: 28px solid #dadada;
-  border-right: 18px solid #dadada;
-}
-
-.typora-node .outline-item:hover {
-  	border-right: 28px solid #dadada;
-}
-
-.outline-expander:before {
-  content: "\f0da";
-  font-family: FontAwesome;
-  font-size:14px;
-  top: 1px;
-}
-
-.outline-expander:hover:before,
-.outline-item-open>.outline-item>.outline-expander:before {
-  content: "\f0d7";
-}
-
-.modal-content {
-	background-color: #f3f2ee;
-}
-
-.auto-suggest-container ul li {
-	list-style-type: none;
-}
-
-/** UI for electron */
-
-.megamenu-menu,
-#top-titlebar, #top-titlebar *,
-.megamenu-content {
-	background: #f3f2ee;
-	color: #1f0909;
-}
-
-.megamenu-menu-header {
-	border-bottom: 1px dashed #202B33;
-}
-
-.megamenu-menu {
-	box-shadow: none;
-	border-right: 1px dashed;
-}
-
-header, .context-menu, .megamenu-content, footer {
-	font-family: "PT Serif", 'Times New Roman', Times, serif;
-    color: #1f0909;
-}
-
-#megamenu-back-btn {
-	color: #1f0909;
-	border-color: #1f0909;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title:before {
-	color: #1f0909;
-}
-
-.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
-	color: inherit;
-	background-color: #e8e7df;
-}
-
-.long-btn:hover {
-	background-color: #e8e7df;
-}
-
-#recent-file-panel tbody tr:nth-child(2n-1) {
-    background-color: transparent !important;
-}
-
-.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    border-radius: 3px;
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
     color: inherit;
 }
 
-.megamenu-menu-panel .btn {
-	background-color: #D2D1D1;
+.md-tag {
+    color: inherit;
 }
 
-.btn-default {
-	background-color: transparent;
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
 }
 
-.typora-sourceview-on #toggle-sourceview-btn,
-.ty-show-word-count #footer-word-count {
-	background: #c7c5c5;
+.sidebar-tabs {
+    border-bottom: none;
 }
 
 #typora-quick-open {
-    background-color: inherit;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
 }
 
-.md-diagram-panel {
-	margin-top: 8px;
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
 }
 
-.file-list-item-file-name {
-	font-weight: initial;
+#md-notification:before {
+    top: 10px;
 }
 
-.file-list-item-summary {
-	opacity: 1;
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
 }
 
-.file-list-item {
-	color: #777;
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
 }
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #e6f0fe;
+}
+
+
+/* 侧边栏 */
 
 .file-list-item.active {
-	background-color: inherit;
-	color: black;
+    background: var(--active-file-bg-color);
+    color: var(--active-file-text-color);
+    border-left: 4px solid var(--main-6);
 }
 
-.ty-side-sort-btn.active {
-	background-color: inherit;
+.file-tree-node.active>.file-node-background {
+    background-color: var(--active-file-bg-color);
+    border-left: 4px solid var(--main-6);
+    border-color: var(--active-file-border-color);
 }
 
-.file-list-item.active .file-list-item-file-name  {
-	font-weight: bold;
-}
-
-.file-list-item{
-    opacity:1 !important;
-}
-
-.file-library-node.active>.file-node-background{
-	background-color: rgba(32, 43, 51, 0.63);
-	background-color: var(--active-file-bg-color);
-}
-
-.file-tree-node.active>.file-node-content{
-	color: white;
-	color: var(--active-file-text-color);
-}
-
-.md-task-list-item>input {
-	margin-left: -1.7em;
-	margin-top: calc(1rem - 12px);
-	-webkit-appearance: button;
-}
-
-input {
-	border: 1px solid #aaa;
-}
-
-.megamenu-menu-header #megamenu-menu-header-title,
-.megamenu-menu-header:hover, 
-.megamenu-menu-header:focus {
-	color: inherit;
-}
-
-.dropdown-menu .divider {
-	border-color: #e5e5e5;
-	opacity: 1;
-}
-
-/* https://github.com/typora/typora-issues/issues/2046 */
-.os-windows-7 strong,
-.os-windows-7 strong  {
-	font-weight: 760;
-}
-
-.ty-preferences .btn-default {
-	background: transparent;
-}
-
-.ty-preferences .window-header {
-	border-bottom: 1px dashed #202B33;
-	box-shadow: none;
-}
-
-#sidebar-loading-template, #sidebar-loading-template.file-list-item {
-	color: #777;
-}
-
-.searchpanel-search-option-btn.active {
-	background: #777;
-	color: white;
-}
-
-.export-detail, .light .export-detail, 
-.light .export-item.active, 
-.light .export-items-list-control {
-	background: #e0e0e0;
-	border-radius: 2px;
-	font-weight: 700;
-	color: inherit
+@media print {
+    .typora-export * {
+        -webkit-print-color-adjust: exact;
+    }
+    html {
+        font-size: 16px!important;
+    }
+    body {
+        /* font-family: 'Source Han SerifCN', Georgia, Times, 'SimSun', serif!important; */
+        /* font-size: 16px!important; */
+        font-family: Times, 'SimSun', serif!important;
+        color: #000000!important;
+    }
+    p {
+        color: #000000!important;
+    }
+    a {
+        color: blue!important;
+        /* border-bottom: 1px solid blue!important; */
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
 }
 
  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
@@ -881,6 +1125,6 @@ input {
 </head>
 <body class='typora-export'><div class='typora-export-content'>
 <div id='write'  class=''><h1 id='编写安全健壮的shell脚本'><strong><span>编写安全健壮的shell脚本</span></strong></h1><p><span>编写shell脚本容易出现的问题：比如变量为空的时候，管道报错等，容易引起一系列问题甚至灾难性的结果。</span>
-<span>可以借助工具</span><a href='https://www.shellcheck.net/' target='_blank' class='url'>https://www.shellcheck.net/</a><span>来检查脚本里面可以改进的地方。</span></p><h2 id='脚本里使用set'><span>脚本里使用set</span></h2><p><span>建议使用</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">set -euo pipefail </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><h3 id='set--o'><span>set -o</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">set -o` 可以查看shell的选项开关，比如常用的`pipefail</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">set -o | pipefail </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 48px;"></div><div class="CodeMirror-gutters" style="display: none; height: 48px;"></div></div></div></pre><p><span>pipefail 是指在一个管道命令中，任意一个命令执行失败就认为命令报错（但是可以继续执行，想让它报错退出需要再加上set -e）</span></p><p><span>可以在shell脚本开头加上</span><code>set -o pipefail</code><span>，我们来看一个例子：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash set -o pipefail cat test.txt | tee test2.txt echo $? # 假设test.txt不存在，这个时候输出的是1 # 如果去掉 set -o pipefail，这个时候输出的是0 </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 48px;"></div><div class="CodeMirror-gutters" style="display: none; height: 48px;"></div></div></div></pre><h3 id='set--e'><span>set -e</span></h3><p><span>set -e 是指任意一条命令返回值不是0，脚本就退出不继续执行了。</span></p><p><span>如果有些程序想要人为的忽略报错，可以在命令开始前加上set +e，命令结束的时候再set -e，如：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash set -e ... set +e cmd set -e ... </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><h3 id='set--u'><span>set -u</span></h3><p><span>将未设置的参数或者变量视为错误并退出脚本。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash set -u echo 111 echo ${123} echo 222 </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><p><span>这个时候只会执行echo 111，因为${123}不存在，脚本就报错退出了。</span></p><h3 id='set--x'><span>set -x</span></h3><p><span>调试模式，会把每一个shell命令执行的结果都打印出来，效果等同于</span><code>bash -x test.sh</code></p><h3 id='set--f'><span>set -f</span></h3><p><span>禁用文件名通配符，比如脚本</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash set -f rm -rf *.md </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><p><span>这个时候只会删除文件名为</span><code>*.md</code><span>的文件，并不会把所有.md的文件都删除。</span></p><h2 id='编写脚本注意事项'><span>编写脚本注意事项</span></h2><figure><table><thead><tr><th><span>错误示范</span></th><th><span>正确示范</span></th></tr></thead><tbody><tr><td><span>a=</span><code>pwd</code></td><td><span>a=$(pwd)</span></td></tr><tr><td><span>echo $a</span></td><td><span>echo “${a}”</span></td></tr></tbody></table></figure><h2 id='trap捕获错误'><span>trap捕获错误</span></h2><p><span>trap是捕获信号的命令，常用的信号有：</span></p><figure><table><thead><tr><th><strong><span>编号</span></strong></th><th><strong><span>信号名称</span></strong></th><th><strong><span>缺省动作</span></strong></th><th><strong><span>描述</span></strong></th></tr></thead><tbody><tr><td><span>1</span></td><td><span>SIGHUP</span></td><td><span>终止</span></td><td><span>终止进程，挂起</span></td></tr><tr><td><span>2</span></td><td><span>SIGINT</span></td><td><span>终止</span></td><td><span>键盘输入中断命令，一般是CTRL+C</span></td></tr><tr><td><span>3</span></td><td><span>SIGQUIT</span></td><td><span>CoreDump</span></td><td><span>键盘输入退出命令，一般是CTRL+\</span></td></tr><tr><td><span>4</span></td><td><span>SIGILL</span></td><td><span>CoreDump</span></td><td><span>非法指令</span></td></tr><tr><td><span>5</span></td><td><span>SIGTRAP</span></td><td><span>CoreDump</span></td><td><span>trap指令发出，一般调试用</span></td></tr><tr><td><span>6</span></td><td><span>SIGABRT</span></td><td><span>CoreDump</span></td><td><span>abort(3)发出的终止信号</span></td></tr><tr><td><span>7</span></td><td><span>SIGBUS</span></td><td><span>CoreDump</span></td><td><span>非法地址</span></td></tr><tr><td><span>8</span></td><td><span>SIGFPE</span></td><td><span>CoreDump</span></td><td><span>浮点数异常</span></td></tr><tr><td><span>9</span></td><td><span>SIGKILL</span></td><td><span>终止</span></td><td><span>立即停止进程，不能捕获，不能忽略</span></td></tr><tr><td><span>10</span></td><td><span>SIGUSR1</span></td><td><span>终止</span></td><td><span>用户自定义信号1，像Nginx就支持USR1信号，用于重载配置，重新打开日志</span></td></tr><tr><td><span>11</span></td><td><span>SIGSEGV</span></td><td><span>CoreDump</span></td><td><span>无效内存引用</span></td></tr><tr><td><span>12</span></td><td><span>SIGUSR2</span></td><td><span>终止</span></td><td><span>用户自定义信号2</span></td></tr><tr><td><span>13</span></td><td><span>SIGPIPE</span></td><td><span>终止</span></td><td><span>管道不能访问</span></td></tr><tr><td><span>14</span></td><td><span>SIGALRM</span></td><td><span>终止</span></td><td><span>时钟信号，alrm(2)发出的终止信号</span></td></tr><tr><td><span>15</span></td><td><span>SIGTERM</span></td><td><span>终止</span></td><td><span>终止信号，进程会先关闭正在运行的任务或打开的文件再终止，有时间进程在有运行的任务而忽略此信号。不能捕捉</span></td></tr><tr><td><span>16</span></td><td><span>SIGSTKFLT</span></td><td><span>终止</span></td><td><span>处理器栈错误</span></td></tr><tr><td><span>17</span></td><td><span>SIGCHLD</span></td><td><span>可忽略</span></td><td><span>子进程结束时，父进程收到的信号</span></td></tr><tr><td><span>18</span></td><td><span>SIGCONT</span></td><td><span>可忽略</span></td><td><span>让终止的进程继续执行</span></td></tr><tr><td><span>19</span></td><td><span>SIGSTOP</span></td><td><span>停止</span></td><td><span>停止进程，不能忽略，不能捕获</span></td></tr><tr><td><span>20</span></td><td><span>SIGSTP</span></td><td><span>停止</span></td><td><span>停止进程，一般是CTRL+Z</span></td></tr><tr><td><span>21</span></td><td><span>SIGTTIN</span></td><td><span>停止</span></td><td><span>后台进程从终端读数据</span></td></tr><tr><td><span>22</span></td><td><span>SIGTTOU</span></td><td><span>停止</span></td><td><span>后台进程从终端写数据</span></td></tr><tr><td><span>23</span></td><td><span>SIGURG</span></td><td><span>可忽略</span></td><td><span>紧急数组是否到达socket</span></td></tr><tr><td><span>24</span></td><td><span>SIGXCPU</span></td><td><span>CoreDump</span></td><td><span>超出CPU占用资源限制</span></td></tr><tr><td><span>25</span></td><td><span>SIGXFSZ</span></td><td><span>CoreDump</span></td><td><span>超出文件大小资源限制</span></td></tr><tr><td><span>26</span></td><td><span>SIGVTALRM</span></td><td><span>终止</span></td><td><span>虚拟时钟信号，类似于SIGALRM，但计算的是进程占用的时间</span></td></tr><tr><td><span>27</span></td><td><span>SIGPROF</span></td><td><span>终止</span></td><td><span>类似与SIGALRM，但计算的是进程占用CPU的时间</span></td></tr><tr><td><span>28</span></td><td><span>SIGWINCH</span></td><td><span>可忽略</span></td><td><span>窗口大小改变发出的信号</span></td></tr><tr><td><span>29</span></td><td><span>SIGIO</span></td><td><span>终止</span></td><td><span>文件描述符准备就绪，可以输入/输出操作了</span></td></tr><tr><td><span>30</span></td><td><span>SIGPWR</span></td><td><span>终止</span></td><td><span>电源失败</span></td></tr><tr><td><span>31</span></td><td><span>SIGSYS</span></td><td><span>CoreDump</span></td><td><span>非法系统调用</span></td></tr></tbody></table></figure><h3 id='程序退出后删除临时文件'><span>程序退出后删除临时文件</span></h3><p><span>有时候我们的脚本会生成一些临时文件，虽然可以在脚本最后删除这些临时文件，但是有些例外情况比如脚本报错，这样临时文件就不能及时地清理掉，这个时候我们可以利用trap捕获EXIT信号来执行我们想要的命令。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash some_cmd clean_up() { &nbsp;  rm -rf /tmp/* &nbsp;  echo "cleaned up ..." } trap 'clean_up' EXIT </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 48px;"></div><div class="CodeMirror-gutters" style="display: none; height: 48px;"></div></div></div></pre><h3 id='程序意外退出删除临时文件'><span>程序意外退出删除临时文件</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash some_cmd clean_up() { &nbsp;  rm -rf /tmp/* &nbsp;  echo "cleaned up ..." } trap 'clean_up' SIGHUP SIGINT SIGTERM </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 48px;"></div><div class="CodeMirror-gutters" style="display: none; height: 48px;"></div></div></div></pre><h2 id='生成临时文件'><span>生成临时文件</span></h2><p><span>可以使用mktemp命令生成tmp文件，mktemp -d生成临时目录，避免临时目录重复使用的问题</span></p><pre class="md-fences md-end-block ty-contain-cm md-focus" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash tmp_file="$(mktemp)" tmp_folder="$(mktemp -d)" echo $tmp_file echo $tmp_folder</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre></div></div>
+<span>可以借助工具</span><a href='https://www.shellcheck.net/' target='_blank' class='url'>https://www.shellcheck.net/</a><span>来检查脚本里面可以改进的地方。</span></p><h2 id='脚本里使用set'><span>脚本里使用set</span></h2><p><span>建议使用</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">set -euo pipefail </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><h3 id='set--o'><span>set -o</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">set -o` 可以查看shell的选项开关，比如常用的`pipefail</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">set -o | pipefail </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 52px;"></div><div class="CodeMirror-gutters" style="display: none; height: 52px;"></div></div></div></pre><p><span>pipefail 是指在一个管道命令中，任意一个命令执行失败就认为命令报错（但是可以继续执行，想让它报错退出需要再加上set -e）</span></p><p><span>可以在shell脚本开头加上</span><code>set -o pipefail</code><span>，我们来看一个例子：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash set -o pipefail cat test.txt | tee test2.txt echo $? # 假设test.txt不存在，这个时候输出的是1 # 如果去掉 set -o pipefail，这个时候输出的是0 </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 52px;"></div><div class="CodeMirror-gutters" style="display: none; height: 52px;"></div></div></div></pre><h3 id='set--e'><span>set -e</span></h3><p><span>set -e 是指任意一条命令返回值不是0，脚本就退出不继续执行了。</span></p><p><span>如果有些程序想要人为的忽略报错，可以在命令开始前加上set +e，命令结束的时候再set -e，如：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash set -e ... set +e cmd set -e ... </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><h3 id='set--u'><span>set -u</span></h3><p><span>将未设置的参数或者变量视为错误并退出脚本。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash set -u echo 111 echo ${123} echo 222 </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p><span>这个时候只会执行echo 111，因为${123}不存在，脚本就报错退出了。</span></p><h3 id='set--x'><span>set -x</span></h3><p><span>调试模式，会把每一个shell命令执行的结果都打印出来，效果等同于</span><code>bash -x test.sh</code></p><h3 id='set--f'><span>set -f</span></h3><p><span>禁用文件名通配符，比如脚本</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash set -f rm -rf *.md </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p><span>这个时候只会删除文件名为</span><code>*.md</code><span>的文件，并不会把所有.md的文件都删除。</span></p><h2 id='编写脚本注意事项'><span>编写脚本注意事项</span></h2><figure><table><thead><tr><th><span>错误示范</span></th><th><span>正确示范</span></th></tr></thead><tbody><tr><td><span>a=</span><code>pwd</code></td><td><span>a=$(pwd)</span></td></tr><tr><td><span>echo $a</span></td><td><span>echo “${a}”</span></td></tr></tbody></table></figure><h2 id='trap捕获错误'><span>trap捕获错误</span></h2><p><span>trap是捕获信号的命令，常用的信号有：</span></p><figure><table><thead><tr><th><strong><span>编号</span></strong></th><th><strong><span>信号名称</span></strong></th><th><strong><span>缺省动作</span></strong></th><th><strong><span>描述</span></strong></th></tr></thead><tbody><tr><td><span>1</span></td><td><span>SIGHUP</span></td><td><span>终止</span></td><td><span>终止进程，挂起</span></td></tr><tr><td><span>2</span></td><td><span>SIGINT</span></td><td><span>终止</span></td><td><span>键盘输入中断命令，一般是CTRL+C</span></td></tr><tr><td><span>3</span></td><td><span>SIGQUIT</span></td><td><span>CoreDump</span></td><td><span>键盘输入退出命令，一般是CTRL+\</span></td></tr><tr><td><span>4</span></td><td><span>SIGILL</span></td><td><span>CoreDump</span></td><td><span>非法指令</span></td></tr><tr><td><span>5</span></td><td><span>SIGTRAP</span></td><td><span>CoreDump</span></td><td><span>trap指令发出，一般调试用</span></td></tr><tr><td><span>6</span></td><td><span>SIGABRT</span></td><td><span>CoreDump</span></td><td><span>abort(3)发出的终止信号</span></td></tr><tr><td><span>7</span></td><td><span>SIGBUS</span></td><td><span>CoreDump</span></td><td><span>非法地址</span></td></tr><tr><td><span>8</span></td><td><span>SIGFPE</span></td><td><span>CoreDump</span></td><td><span>浮点数异常</span></td></tr><tr><td><span>9</span></td><td><span>SIGKILL</span></td><td><span>终止</span></td><td><span>立即停止进程，不能捕获，不能忽略</span></td></tr><tr><td><span>10</span></td><td><span>SIGUSR1</span></td><td><span>终止</span></td><td><span>用户自定义信号1，像Nginx就支持USR1信号，用于重载配置，重新打开日志</span></td></tr><tr><td><span>11</span></td><td><span>SIGSEGV</span></td><td><span>CoreDump</span></td><td><span>无效内存引用</span></td></tr><tr><td><span>12</span></td><td><span>SIGUSR2</span></td><td><span>终止</span></td><td><span>用户自定义信号2</span></td></tr><tr><td><span>13</span></td><td><span>SIGPIPE</span></td><td><span>终止</span></td><td><span>管道不能访问</span></td></tr><tr><td><span>14</span></td><td><span>SIGALRM</span></td><td><span>终止</span></td><td><span>时钟信号，alrm(2)发出的终止信号</span></td></tr><tr><td><span>15</span></td><td><span>SIGTERM</span></td><td><span>终止</span></td><td><span>终止信号，进程会先关闭正在运行的任务或打开的文件再终止，有时间进程在有运行的任务而忽略此信号。不能捕捉</span></td></tr><tr><td><span>16</span></td><td><span>SIGSTKFLT</span></td><td><span>终止</span></td><td><span>处理器栈错误</span></td></tr><tr><td><span>17</span></td><td><span>SIGCHLD</span></td><td><span>可忽略</span></td><td><span>子进程结束时，父进程收到的信号</span></td></tr><tr><td><span>18</span></td><td><span>SIGCONT</span></td><td><span>可忽略</span></td><td><span>让终止的进程继续执行</span></td></tr><tr><td><span>19</span></td><td><span>SIGSTOP</span></td><td><span>停止</span></td><td><span>停止进程，不能忽略，不能捕获</span></td></tr><tr><td><span>20</span></td><td><span>SIGSTP</span></td><td><span>停止</span></td><td><span>停止进程，一般是CTRL+Z</span></td></tr><tr><td><span>21</span></td><td><span>SIGTTIN</span></td><td><span>停止</span></td><td><span>后台进程从终端读数据</span></td></tr><tr><td><span>22</span></td><td><span>SIGTTOU</span></td><td><span>停止</span></td><td><span>后台进程从终端写数据</span></td></tr><tr><td><span>23</span></td><td><span>SIGURG</span></td><td><span>可忽略</span></td><td><span>紧急数组是否到达socket</span></td></tr><tr><td><span>24</span></td><td><span>SIGXCPU</span></td><td><span>CoreDump</span></td><td><span>超出CPU占用资源限制</span></td></tr><tr><td><span>25</span></td><td><span>SIGXFSZ</span></td><td><span>CoreDump</span></td><td><span>超出文件大小资源限制</span></td></tr><tr><td><span>26</span></td><td><span>SIGVTALRM</span></td><td><span>终止</span></td><td><span>虚拟时钟信号，类似于SIGALRM，但计算的是进程占用的时间</span></td></tr><tr><td><span>27</span></td><td><span>SIGPROF</span></td><td><span>终止</span></td><td><span>类似与SIGALRM，但计算的是进程占用CPU的时间</span></td></tr><tr><td><span>28</span></td><td><span>SIGWINCH</span></td><td><span>可忽略</span></td><td><span>窗口大小改变发出的信号</span></td></tr><tr><td><span>29</span></td><td><span>SIGIO</span></td><td><span>终止</span></td><td><span>文件描述符准备就绪，可以输入/输出操作了</span></td></tr><tr><td><span>30</span></td><td><span>SIGPWR</span></td><td><span>终止</span></td><td><span>电源失败</span></td></tr><tr><td><span>31</span></td><td><span>SIGSYS</span></td><td><span>CoreDump</span></td><td><span>非法系统调用</span></td></tr></tbody></table></figure><h3 id='程序退出后删除临时文件'><span>程序退出后删除临时文件</span></h3><p><span>有时候我们的脚本会生成一些临时文件，虽然可以在脚本最后删除这些临时文件，但是有些例外情况比如脚本报错，这样临时文件就不能及时地清理掉，这个时候我们可以利用trap捕获EXIT信号来执行我们想要的命令。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash some_cmd clean_up() { &nbsp;  rm -rf /tmp/* &nbsp;  echo "cleaned up ..." } trap 'clean_up' EXIT </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 52px;"></div><div class="CodeMirror-gutters" style="display: none; height: 52px;"></div></div></div></pre><h3 id='程序意外退出删除临时文件'><span>程序意外退出删除临时文件</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash some_cmd clean_up() { &nbsp;  rm -rf /tmp/* &nbsp;  echo "cleaned up ..." } trap 'clean_up' SIGHUP SIGINT SIGTERM </span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 52px;"></div><div class="CodeMirror-gutters" style="display: none; height: 52px;"></div></div></div></pre><h2 id='生成临时文件'><span>生成临时文件</span></h2><p><span>可以使用mktemp命令生成tmp文件，mktemp -d生成临时目录，避免临时目录重复使用的问题</span></p><pre class="md-fences md-end-block ty-contain-cm md-focus" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 11px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#!/bin/bash tmp_file="$(mktemp)" tmp_folder="$(mktemp -d)" echo $tmp_file echo $tmp_folder</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 52px;"></div><div class="CodeMirror-gutters" style="display: none; height: 52px;"></div></div></div></pre></div></div>
 </body>
 </html>
