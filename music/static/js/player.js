@@ -116,7 +116,7 @@ class PlayerCreator {
         this.song_list = $('.music__list_content');
         let _str = '';
         this.musics.songs.forEach((song, i) => {
-            _str += `<li class="music__list__item">${song.title} <a href="https://91xcode.github.io/music/songs/${song.fileName}?raw=true" style="float:right;padding-right:12px">下载</a></li>`
+            _str += `<li class="music__list__item">${song.title} <a href="https://cdn.jsdelivr.net/gh/MusicSharing/music@latest/songs/${song.fileName}?raw=true" style="float:right;padding-right:12px">下载</a></li>`
         });
         this.song_list.html(_str);
     }
