@@ -125,6 +125,6 @@ trap是捕获信号的命令，常用的信号有：
 
 可以使用mktemp命令生成tmp文件，mktemp -d生成临时目录，避免临时目录重复使用的问题
 
-```
+```bash
 #!/bin/bash tmp_file="$(mktemp)" tmp_folder="$(mktemp -d)" echo $tmp_file echo $tmp_folder
 ```
