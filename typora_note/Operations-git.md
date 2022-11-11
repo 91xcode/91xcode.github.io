@@ -384,7 +384,7 @@ git checkout commit_id -- file_name
 ### 首次使用 git
 
 
-```
+```bash
 客户端首次使用 git 提交时需要将 id_rsa.pub 内容提交到 github 上不然每次都会提示输入用户名密码
 
 然后输入必要的配置

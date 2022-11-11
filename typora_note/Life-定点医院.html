@@ -1,0 +1,731 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ''; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ''; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ''; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: '−'; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/sai/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}@import '';
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+    --font-sans-serif: 'Ubuntu', 'Source Sans Pro', sans-serif !important;
+    --font-monospace: 'Fira Code', 'Roboto Mono', monospace !important;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans-serif);
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 100px;
+}
+
+#write p {
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+    margin-top: 30px;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0 2px;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit !important;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit !important;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit !important;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit !important;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit !important;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit !important;
+}
+
+h2 a,
+h3 a {
+    color: #34495e;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0 15px;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ddd;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0 7px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0 1px;
+}
+
+#write em {
+    padding: 0 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0 !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+tt {
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color: #EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+.md-diagram-panel {
+    position: static !important;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block > .code-tooltip {
+    bottom: .375rem;
+}
+
+#write > h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write > h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image > .md-meta {
+    border-radius: 3px;
+    font-family: var(--font-monospace);
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: var(--font-sans-serif);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>Life-定点医院</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><p><span>@</span><a href='这里写自定义目录标题'><span>TOC</span></a></p><p><span>主页: </span><a href='https://91xcode.github.io/'><span>link</span></a><span>.</span></p><p>&nbsp;</p><h1 id='2022北京城镇职工医保-报销医院'><span>2022北京城镇职工医保-报销医院</span></h1><h1 id='0-办理医保填写的4家定点医院'><span>0. 办理医保填写的4家定点医院：</span></h1><h2 id='以下我填的四家医院'><em><span>以下我填的四家医院</span></em></h2><ol start='' ><li><em><span>北大国际医院</span></em></li><li><em><span>海军总医院</span></em></li><li><em><span>温泉镇社区中心</span></em></li><li><em><span>解放军309医院</span></em></li></ol><p>&nbsp;</p><h1 id='1-北京市39家a类定点医疗机构'><span>1. 北京市39家A类定点医疗机构</span></h1><p><strong><span>医院不用选就能直接持卡就医</span></strong></p><p><strong><span>如何查询个人选择的定点医院？</span></strong></p><p><strong><span>人事解答：</span></strong><span>可拨打“12333”电话查询，也可关注北京社保官方微信，进入“我的社保”模块后选择城镇职工用户注册并登录，选择参保信息中的“您的定点医院”查询</span></p><h2 id='医疗机构名单'><span>医疗机构名单：</span></h2><ol start='' ><li><span>首都医科大学附属北京同仁医院</span></li><li><span>首都医科大学宣武医院</span></li><li><span>首都医科大学附属北京友谊医院</span></li><li><span>北京大学第一医院</span></li><li><span>中国医学科学院北京协和医院</span></li><li><span>北京大学人民医院</span></li><li><span>北京大学第三医院</span></li><li><span>北京积水潭医院</span></li><li><span>中国中医科学院广安门医院</span></li><li><span>首都医科大学附属北京朝阳医院</span></li><li><span>中日友好医院</span></li><li><span>北京大学首钢医院</span></li><li><span>首都医科大学附属北京中医医院</span></li><li><span>首都医科大学附属北京天坛医院</span></li><li><span>北京世纪坛医院（北京铁路总医院）</span></li><li><span>北京市健宫医院</span></li><li><span>北京市房山区良乡医院</span></li><li><span>北京市大兴区人民医院</span></li><li><span>北京市石景山医院</span></li><li><span>北京医院</span></li><li><span>首都医科大学附属北京安贞医院</span></li><li><span>首都医科大学附属北京潞河医院</span></li><li><span>国家电网公司北京电力医院</span></li><li><span>航空总医院</span></li><li><span>北京市海淀医院</span></li><li><span>北京市垂杨柳医院</span></li><li><span>北京市昌平区医院</span></li><li><span>北京市顺义区医院</span></li><li><span>北京市平谷区医院</span></li><li><span>北京市密云区医院</span></li><li><span>北京市延庆区医院</span></li><li><span>北京怀柔医院</span></li><li><span>北京清华长庚医院</span></li><li><span>中国医学科学院阜外医院</span></li><li><span>中国中医科学院西苑医院</span></li><li><span>首都医科大学附属复兴医院</span></li><li><span>航天中心医院</span></li><li><span>北京燕化医院</span></li><li><span>北京市第二医院</span></li></ol><h1 id='2-142家专科医院'><span>2. 142家专科医院</span></h1><p><strong><span>哪些医院属于专科医院？</span></strong></p><p><strong><span>人事解答：</span></strong><span>口腔、传染病、精神病、肿瘤、阜外心血管、妇产、儿童医院、结核、北京市按摩医院、急救中心(120、999)</span></p><h2 id='眼耳鼻喉类'><span>眼耳鼻喉类：</span></h2><ol start='' ><li><span>北京丰台阜仁眼科医院</span></li><li><span>北京润视眼科医院</span></li><li><span>北京美尔目医院</span></li><li><span>爱尔英智眼科医院</span></li><li><span>北京市华德眼科医院</span></li><li><span>北京圣康华医学研究院有限公司北京圣康华眼科医院</span></li><li><span>北京复兴博爱眼科中心</span></li><li><span>首都医科大学附属北京口腔医院</span></li><li><span>北京大学口腔医院</span></li><li><span>北京大学口腔医院门诊部</span></li><li><span>北京大学口腔医院第二门诊部</span></li><li><span>北京大学口腔医院第三门诊部</span></li><li><span>朝阳区东区第二口腔门诊部</span></li><li><span>北京南区口腔医院</span></li><li><span>北京市崇文口腔医院</span></li><li><span>北京市东城区口腔医院</span></li><li><span>北京地坛口腔门诊部</span></li><li><span>北京口腔工作者协会西城门诊部</span></li><li><span>北京市西城区中环广安门口腔门诊部</span></li><li><span>北京市西城区右安口腔门诊部</span></li><li><span>北京东平口腔门诊部</span></li><li><span>北京口腔工作者协会天秀口腔门诊部</span></li><li><span>北京正和口腔门诊部</span></li><li><span>怀柔区北京京北健永口腔医院</span></li></ol><h2 id='肿瘤类'><span>肿瘤类：</span></h2><ol start='' ><li><span>中国医学科学院肿瘤医院</span></li><li><span>北京肿瘤医院</span></li><li><span>北京大学肿瘤医院</span></li><li><span>北京市朝阳区桓兴肿瘤医院</span></li><li><span>北京市朝阳区三环肿瘤医院</span></li><li><span>北京伟达中医肿瘤医院</span></li><li><span>大兴区北京普祥中医肿瘤医院</span></li><li><span>北京密云京华肿瘤医院</span></li><li><span>经济技术开发区北京振国中西医结合肿瘤医院</span></li></ol><h2 id='妇幼保健类'><span>妇幼保健类：</span></h2><ol start='' ><li><span>首都儿科研究所附属儿童医院</span></li><li><span>首都医科大学附属北京儿童医院(北京市儿科研究所)</span></li><li><span>北京市朝阳区妇儿医院</span></li><li><span>北京市东城区第二妇幼保健院</span></li><li><span>首都医科大学附属北京妇产医院</span></li><li><span>北京市东城区第一妇幼保健院（北京市东四妇产医院）</span></li><li><span>西城区北京市西城区妇幼保健所</span></li><li><span>北京市西城区妇幼保健院</span></li><li><span>北京市海淀区妇幼保健院（北京市海淀区海淀街道社区卫生服务中心）</span></li><li><span>北京市丰台区妇幼保健院</span></li><li><span>北京市石景山区妇幼保健院</span></li><li><span>门头沟区北京市门头沟区妇幼保健院</span></li><li><span>昌平区北京市昌平区妇幼保健院</span></li><li><span>北京市通州区妇幼保健院</span></li><li><span>北京市顺义区妇幼保健院</span></li><li><span>北京市大兴区妇幼保健院</span></li><li><span>房山区北京市房山区妇幼保健医院</span></li><li><span>北京市怀柔区妇幼保健院</span></li><li><span>平谷区北京市平谷区妇幼保健院</span></li><li><span>密云县北京市密云县妇幼保健院</span></li><li><span>延庆县医院名称延庆县妇幼保健院</span></li><li><span>北京澳美佳妇科医院</span></li><li><span>北京东方康美妇科医院</span></li><li><span>北京市昌平区京北新世纪妇科医院</span></li></ol><h2 id='精神类'><span>精神类：</span></h2><ol start='' ><li><span>首都医科大学附属北京安定医院</span></li><li><span>北京市崇文区精神病防治院</span></li><li><span>北京市东城区精神卫生保健院</span></li><li><span>北京市海淀区精神卫生防治院</span></li><li><span>丰台区北京市丰台区精神病防治院</span></li><li><span>北京市昌平区精神卫生保健院</span></li><li><span>北京市通州区精神病医院</span></li><li><span>北京市顺义区精神病医院</span></li><li><span>北京市大兴区精神病医院</span></li><li><span>北京市房山区精神卫生保健院</span></li><li><span>北京市平谷区精神病医院</span></li><li><span>密云县精神卫生保健院</span></li><li><span>延庆县精神卫生保健院</span></li><li><span>北京民康医院（精神病、老年病专科）</span></li><li><span>北京回龙观医院（精神病专科）</span></li><li><span>顺义区北京市安康医院（精神病专科）</span></li><li><span>北京市门头沟区龙泉医院（精神病专科）</span></li><li><span>北京白云精神病康复医院</span></li></ol><h2 id='急救类'><span>急救类：</span></h2><ol start='' ><li><span>北京市红十字会急诊抢救中心(北京市红十字会紧急救援中心）</span></li><li><span>北京市朝阳区紧急医疗救援中心</span></li><li><span>北京市东城区急救站</span></li><li><span>北京市西城区急救站</span></li><li><span>北京急救中心</span></li><li><span>北京市石景山区急救站</span></li><li><span>慢性病类</span></li><li><span>北京石景山八大处风湿病医院</span></li><li><span>北京朝阳糖尿病医院</span></li><li><span>北京金典糖尿病医院</span></li><li><span>北京三诺健恒糖尿病医院</span></li><li><span>北京万和颈椎病医院</span></li><li><span>北京京城皮肤病医院</span></li><li><span>中国医学科学院阜外心血管病医院</span></li></ol><h2 id='综合类'><span>综合类：</span></h2><ol start='' ><li><span>北京市石景山区疾病预防控制中心门诊部</span></li><li><span>首都医科大学附属北京地坛医院</span></li><li><span>北京垡头大柳树医院</span></li><li><span>北京市朝阳区第三医院</span></li><li><span>东城区国家体育总局运动医学研究所体育医院</span></li><li><span>北京宣武流动医院</span></li><li><span>北京大学第六医院</span></li><li><span>北京市海淀区医学救援中心</span></li><li><span>北京丰台医星中西医结合医院</span></li><li><span>石景山区北京市石景山区五里坨医院</span></li><li><span>北京市昌平区益明医院</span></li><li><span>北京市怀柔安佳医院</span></li></ol><h2 id='传染病类'><span>传染病类：</span></h2><ol start='' ><li><span>北京市朝阳区结核病门诊部</span></li><li><span>北京市崇文区结核病防治所</span></li><li><span>北京市结核病防治所（北京结核病控制研究所）</span></li><li><span>北京市西城区结核病防治所</span></li><li><span>北京市宣武区结核病防治所</span></li><li><span>首都医科大学附属北京佑安医院（传染病专科）</span></li><li><span>中国人民解放军第三0二医院（传染病专科）</span></li><li><span>北京市丰台区疾病预防控制中心结核病防治所</span></li><li><span>北京市昌平区结核病防治所</span></li><li><span>北京市通州区疾病预防控制中心结核病防治所</span></li><li><span>北京市顺义区结核病防治中心</span></li><li><span>北京市顺义区传染病医院</span></li><li><span>北京市大兴区结核病预防控制中心</span></li><li><span>北京市房山区结核病防治所</span></li><li><span>北京市平谷区结核病预防控制中心</span></li><li><span>北京市密云县结核病防治所</span></li><li><span>延庆县结核病防治所</span></li></ol><h2 id='老年康复类'><span>老年康复类：</span></h2><ol start='' ><li><span>北京市老年病医院</span></li><li><span>北京天轩脑病康复医院</span></li><li><span>北京英智康复医院</span></li><li><span>北京按摩医院</span></li><li><span>北京市化工职业病防治院</span></li><li><span>北京市通州区老年病医院</span></li></ol><h2 id='骨科'><span>骨科：</span></h2><ol start='' ><li><span>北京金华骨专科医院</span></li><li><span>海淀区北京德尔康尼骨科医院</span></li><li><span>中国人民解放军66400部队骨病专科医院</span></li><li><span>北京市石景山区老医药卫生工作者协会中医骨伤医院</span></li><li><span>北京昌平圣济骨伤医院</span></li><li><span>北京皇城股骨头坏死专科医院</span></li><li><span>北京市亚太中医骨科医院</span></li><li><span>北京昌平区光明骨伤医院</span></li><li><span>北京大兴兴和骨伤医院</span></li><li><span>北京北亚骨科医院</span></li></ol><h2 id='其他类'><span>其他类：</span></h2><ol start='' ><li><span>北京脑血管病医院</span></li><li><span>北京市肛肠医院（北京市西城区二龙路医院)</span></li><li><span>北京市道培医院（血液病）</span></li><li><span>首都医科大学三博脑科医院</span></li><li><span>北京尔康百旺医院（脑科／癫痫）</span></li><li><span>北京道合肛肠医院</span></li><li><span>北京汉章针刀医院</span></li><li><span>通州区首都医科大学附属北京胸科医院</span></li></ol><h1 id='3-82家中医医院'><span>3. 82家中医医院</span></h1><h2 id='东城区'><span>东城区</span></h2><ol start='' ><li><span>北京国龙中医医院</span></li><li><span>北京国医药研究院天易中医门诊部</span></li><li><span>北京华都中医医院</span></li><li><span>北京崇文中方中医医院</span></li><li><span>北京同仁堂中医医院</span></li><li><span>北京市和平里医院（东城区和平里社区卫生服务中心）</span></li><li><span>北京市东四中医医院</span></li><li><span>北京中医药大学东直门医院</span></li><li><span>首都医科大学附属北京中医医院</span></li><li><span>北京市鼓楼中医医院</span></li><li><span>中国中医科学院望京医院骨伤医疗中心</span></li><li><span>中国中医科学院针灸医院</span></li><li><span>首都医科大学中医门诊部</span></li><li><span>北京市东城区中医药学会东单中医门诊部</span></li><li><span>北京市东城金针研究学会海运仓中医门诊部</span></li><li><span>中国中医科学院中医门诊部</span></li><li><span>北京安定门中医医院</span></li><li><span>北京国医堂中医研究院恒康中医门诊部</span></li><li><span>北京普康中医医院</span></li><li><span>北京中研医院管理中心东城中医医院</span></li></ol><h2 id='西城区'><span>西城区</span></h2><ol start='' ><li><span>北京广安中医门诊部</span></li><li><span>北京中医药大学附属护国寺中医医院（北京市针灸医院）</span></li><li><span>北京市回民医院</span></li><li><span>中国中医科学院广安门医院</span></li><li><span>北京市宣武中医医院</span></li><li><span>中国中医科学院广安门医院第二中医门诊部</span></li><li><span>北京市西城区康迈骨伤医院</span></li><li><span>北京市丰盛中医骨伤专科医院（北京市西城区丰盛医院）</span></li></ol><h2 id='海淀区'><span>海淀区</span></h2><ol start='' ><li><span>中国中医科学院西苑医院</span></li><li><span>中国中医科学院第一临床医药研究所北京市中西医结合医院</span></li><li><span>北京顺天德中医医院</span></li><li><span>北京中仁中医医院</span></li><li><span>北京圣育中医院</span></li><li><span>北京马应龙长青肛肠医院</span></li></ol><h2 id='朝阳区'><span>朝阳区</span></h2><ol start='' ><li><span>北京市第一中西医结合医院北京朝阳中西医结合医院</span></li><li><span>北京中医药大学第三附属医院</span></li><li><span>北京市朝阳区中医医院</span></li><li><span>中国中医科学院望京医院</span></li><li><span>北京广慈中医药研究院广济中医医院</span></li><li><span>中国藏学研究中心北京藏医院</span></li><li><span>北京中京苑医学科学研究院恒安中医院</span></li><li><span>北京京师中医医院</span></li><li><span>北京黄枢微创骨伤中医医院</span></li><li><span>北京中海中医医院</span></li></ol><h2 id='丰台区'><span>丰台区</span></h2><ol start='' ><li><span>北京市丰台中西医结合医院</span></li><li><span>北京东方京城中医医院</span></li><li><span>北京同仁堂第二中医医院</span></li><li><span>北京中医药大学东方医院</span></li><li><span>北京市丰台区兴隆中医医院（丰台区丰台社区卫生服务中心）</span></li><li><span>北京丰台体坛中医医院</span></li><li><span>北京国济中医医院</span></li><li><span>北京华军中医医院（中国国际生命医学工程院附属医院）</span></li><li><span>北京丰益肛肠医院</span></li></ol><h2 id='石景山区'><span>石景山区</span></h2><ol start='' ><li><span>北京中康佳中医药研究院长庚医院</span></li><li><span>北京市石景山区中医医院</span></li><li><span>中国中医科学院眼科医院</span></li></ol><h2 id='门头沟区'><span>门头沟区</span></h2><ol start='' ><li><span>北京市门头沟区中医医院</span></li></ol><h2 id='昌平区'><span>昌平区</span></h2><ol start='' ><li><span>北京市昌平区中西医结合医院</span></li><li><span>北京市昌平区中医医院鼓楼分院</span></li><li><span>北京市昌平区中医医院</span></li><li><span>北京市昌平区天通苑中医医院</span></li><li><span>北京市昌平区残疾人联合会西环南路中医门诊部</span></li><li><span>北京昌平天通益康中医门诊部</span></li><li><span>北京昌平普德中医药研究所西环里门诊部</span></li><li><span>北京王府中西医结合医院</span></li><li><span>北京市昌平区沙河中西医结合医院</span></li><li><span>北京大卫中医医院</span></li><li><span>北京国医堂中医医院</span></li><li><span>北京太申祥和中医医院</span></li></ol><h2 id='通州区'><span>通州区</span></h2><ol start='' ><li><span>北京市通州区中西医结合医院（北京市通州区中西医结合骨伤医院康复中心）</span></li><li><span>北京运河中医医院</span></li><li><span>北京通州中医门诊部</span></li></ol><h2 id='顺义区'><span>顺义区</span></h2><ol start='' ><li><span>北京市顺义区中医医院（北京中医医院顺义医院）</span></li><li><span>北京杏园金方国医医院</span></li></ol><h2 id='大兴区'><span>大兴区</span></h2><ol start='' ><li><span>中国中医科学院广安门医院（南区）</span></li></ol><h2 id='房山区'><span>房山区</span></h2><ol start='' ><li><span>北京博爱中西医结合医院</span></li><li><span>北京市房山区中医医院</span></li><li><span>北京今康中医医院</span></li></ol><h2 id='怀柔区'><span>怀柔区</span></h2><ol start='' ><li><span>北京康益德中西医结合肺科医院</span></li><li><span>北京市怀柔区中医医院</span></li></ol><h2 id='平谷区'><span>平谷区</span></h2><ol start='' ><li><span>北京市平谷区中医医院</span></li></ol><h2 id='密云区'><span>密云区</span></h2><ol start='' ><li><span>北京市密云县中医医院</span></li></ol><h2 id='延庆区'><span>延庆区</span></h2><ol start='' ><li><span>北京市延庆县中医医院</span></li></ol><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+</body>
+</html>
