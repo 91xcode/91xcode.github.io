@@ -12,7 +12,7 @@
 
 
 
-```zsh
+```bash
 
 fix(Git): subject
 
@@ -76,7 +76,7 @@ fix(Git): subject
 
 然后，我们尝试修改并进行提交，如提交本文档的修改：
 
-```sh
+```bash
 # 将文件添加到暂存区
 [mzh@MacBookPro git (master ✗)]$ git add README.md git_commit_template.md
 
@@ -106,7 +106,7 @@ Changes to be committed:
 
 ![img](https://hellogitlab.com/img/20220320142751.png)
 
-```sh
+```bash
 [mzh@MacBookPro git (master ✗)]$ git commit
 [master 1fd4972] docs(Git): use git commit template
  2 files changed, 133 insertions(+), 1 deletion(-)
