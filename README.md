@@ -39,4 +39,6 @@
 3.Mac清除DNS缓存命令
 	sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed
 
+
+
 ```
