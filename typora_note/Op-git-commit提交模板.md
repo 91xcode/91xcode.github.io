@@ -14,7 +14,7 @@
 
 ```zsh
 
-docs(Git): subject
+fix(Git): subject
 
 <body>
 
