@@ -135,10 +135,19 @@ sublime4 左侧没有目录
 
 ```
 
-### 7.MAC-解决 打不开应用 设置允许任何来源
+### 7.macOS 10.15 Catalina xxx.app已损坏，无法打开，你应该将它移到废纸篓解决方法
 
 ```
+对于MacOS 10.14以下的修复方法
+
 sudo spctl --master-disable
+
+对于MacOS 10.15以上的解决办法
+sudo xattr -rd com.apple.quarantine /Applications/xxxxxx.app
+
+比如：
+sudo xattr -rd com.apple.quarantine /Applications/Navicat\ Premium.app/
+
 ```
 
 ### 8.iterm2设置Snippets
