@@ -34,6 +34,8 @@ regex="([0-9A-Z]{32}) = "
 
 hash=${BASH_REMATCH[1]}
 
+echo "hash:"${hash}
+
 if [ ! -z $hash ]; then
     defaults delete $file $hash
 fi
