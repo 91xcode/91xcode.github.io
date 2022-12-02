@@ -105,6 +105,7 @@ getlocation() { lynx -dump http://www.ip-adress.com/ip_tracer/?QRY=$1|grep addre
  #wifi
 alias stopwifi="networksetup -setairportpower en0 off"
 alias startwifi="networksetup -setairportpower en0 on"
+alias restartwifi="networksetup -setairportpower en0 off &&  sleep 5 && networksetup -setairportpower en0 on && echo Reload OK!\n"
  
  
 ```
