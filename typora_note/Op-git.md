@@ -265,6 +265,39 @@ index6f8a38c..449b072 100644 //a版本的在index的对象的哈希值 b版本�
 //以下是比较信息 一行前面有- + ！或者没有表示，分别表示删、增、改、没有修改。
 ```
 
+
+
+### git diff比较介绍
+
+```
+git diff 用来比较文件之间的不同，其基本用法如下。
+
+git diff：显示工作目录(working tree)与索引区(即暂存区快照，就是git add过后的)之间的文件变更，即显示未被add的文件变更。
+
+git diff --cached 或 git diff --staged：显示索引区和最后一次commit(HEAD)之间的文件更改，即显示已add但还未commit的文件变更。也即用"git commit"（不带-a）将被提交的文件变更。
+
+git diff HEAD：显示工作目录与最后一次commit之间的文件变更，即显示所有未commit（包括未add和add两类）的文件变更。也即用"git commit -a”将被提交的文件变更。
+
+git diff <分支名1> <分支名2> ：比较两个分支上最后 commit 的内容的差别。比如，先git fetch下，然后比较远程的master与当前分支已经commit的内容差别：git diff origin/master origin/2201。此时是以origin/master分支为基础进行比较的，若把2201分支写在前面，则是以2201分支为基础进行比较的。 也可写作：git diff <分支名1>..<分支名2> 。
+
+要查看具体有哪些文件发生了变化，可以加上--stat参数：
+
+git diff origin/master origin/2201 --stat
+
+  
+ 
+根据--stat的结果可得到存在差异的文件列表，然后可用git diff 进一步查看该文件在两个分支中的差异：
+
+git diff origin/master origin/2201 biz/src/main/java/com/sports/gerrard/biz/service/MarketingActivityService.java 
+
+```
+
+
+
+
+
+
+
 ### git冲突标记
 
 ```
