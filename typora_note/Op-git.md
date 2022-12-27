@@ -82,6 +82,7 @@ git checkout -b test origin/dev
 
 3.建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；或者  git branch --set-upstream-to=origin/branch-name
 
+
 git提示--set-upstream过时了。
 
 4.git 怎么拉去指定分支的代码
@@ -110,7 +111,12 @@ git clone -b master http://gitslab.yiqing.com/declare/about.git
 
 git clone -b develop http://gitslab.yiqing.com/declare/about.git
 
+3.git clone xxx.git  下载文件到指定目录 并且重命名为xx
+例如 
+git clone https://github.com/plasticboy/vim-markdown.git ~/Downloads/xx
 
+4.git clone --branch v1.9 https://github.com/ethicalhack3r/DVWA.git  # 下载指定 Tag
+5.git clone --depth=1 https://github.com/coder352/jvim.git vim       # 只下载最近一次修改后的
 
 git branch -a 这条命令并没有每一次都从远程更新仓库信息，我们可以手动更新一下
 
