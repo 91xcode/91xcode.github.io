@@ -27,6 +27,7 @@ archey
 
 alias cp='cp -i'
 
+alias history='fc -il 1'
 
 alias v.='vim ~/.zshrc'
 alias s.='source ~/.zshrc && echo "Reload OK!"'
