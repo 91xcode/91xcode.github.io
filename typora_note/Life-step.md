@@ -52,6 +52,8 @@ brew upgrade
 # 常用的命令行工具安装
 #brew install vim
 
+#runcat、typora、postman、wps
+
 #常用的工具包安装
 brew install --cask iterm2
 brew install --cask firefox
@@ -67,6 +69,7 @@ brew install --cask phpstorm
 brew install --cask pycharm
 brew install --cask iina
 brew install --cask vlc
+brew install --cask snipaste
 brew install zsh zsh-completions
 brew install docker
 brew install nginx
@@ -75,6 +78,7 @@ brew install htop
 brew install redis
 brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
 brew install ripgrep-bin
+
 
 brew cleanup
 ```
@@ -470,5 +474,16 @@ pandoc -s -V theme:Newsprint 定点医院.md -o 定点医院.html
 
 阳子：我用过这个，https://www.storytrain.info/感觉是最良心的，每周都会更新号码
 
+```
+
+### 32.CDN 加速
+
+```
+
+jsDelivr 国外的一家优秀的公共 CDN 服务提供商
+https://www.jsdelivr.com/
+
+unpkg cdn 服务
+https://unpkg.com/
 ```
 
