@@ -349,3 +349,19 @@ rg -w "myword" .
 
 比如搜索 abc，可能有些单词包含 dabce ，那么也会被搜索出来，而加上 `-w` 就不会搜索出来了
 
+
+
+
+搜索文件
+```
+alias rgf='rg --files | rg'
+```
+
+搜索以 md 为后缀的文件
+```
+rg --files . | rg -e ".md$" # 正则匹配
+```
+
+
+
+https://www.liuvv.com/p/868944ef.html

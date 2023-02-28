@@ -1,0 +1,812 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ''; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ''; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ''; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: '−'; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print { 
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+/* cyrillic-ext */
+/* cyrillic */
+/* greek-ext */
+/* greek */
+/* vietnamese */
+/* latin-ext */
+/* latin */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/sai/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}@import '';
+
+:root {
+    --side-bar-bg-color: #fff;
+    --control-text-color: #777;
+    --font-sans-serif: 'Ubuntu', 'Source Sans Pro', sans-serif !important;
+    --font-monospace: 'Fira Code', 'Roboto Mono', monospace !important;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans-serif);
+    color: #34495e;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+#write {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 30px 100px;
+}
+
+#write p {
+    line-height: 1.6rem;
+    word-spacing: .05rem;
+}
+
+#write ol li {
+    padding-left: 0.5rem;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+    margin-top: 30px;
+}
+
+body > *:first-child {
+    margin-top: 0 !important;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+a {
+    color: #42b983;
+    font-weight: 600;
+    padding: 0 2px;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit !important;
+}
+
+h2 tt,
+h2 code {
+    font-size: inherit !important;
+}
+
+h3 tt,
+h3 code {
+    font-size: inherit !important;
+}
+
+h4 tt,
+h4 code {
+    font-size: inherit !important;
+}
+
+h5 tt,
+h5 code {
+    font-size: inherit !important;
+}
+
+h6 tt,
+h6 code {
+    font-size: inherit !important;
+}
+
+h2 a,
+h3 a {
+    color: #34495e;
+}
+
+h1 {
+    padding-bottom: .4rem;
+    font-size: 2.2rem;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 1.75rem;
+    line-height: 1.225;
+    margin: 35px 0 15px;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ddd;
+}
+
+h3 {
+    font-size: 1.4rem;
+    line-height: 1.43;
+    margin: 20px 0 7px;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    color: #777;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+li > ol,
+li > ul {
+    margin: 0 0;
+}
+
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+body > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+body > h3:first-child,
+body > h4:first-child,
+body > h5:first-child,
+body > h6:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+    margin-top: 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+blockquote {
+    border-left: 4px solid #42b983;
+    padding: 10px 15px;
+    color: #777;
+    background-color: rgba(66, 185, 131, .1);
+}
+
+table {
+    padding: 0;
+    word-break: initial;
+}
+
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fafafa;
+}
+
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr td {
+    border: 1px solid #dfe2e5;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+}
+
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+#write strong {
+    padding: 0 1px;
+}
+
+#write em {
+    padding: 0 5px 0 2px;
+}
+
+#write table thead th {
+    background-color: #f2f2f2;
+}
+
+#write .CodeMirror-gutters {
+    border-right: none;
+}
+
+#write .md-fences {
+    border: 1px solid #F4F4F4;
+    -webkit-font-smoothing: initial;
+    margin: 0.8rem 0 !important;
+    padding: 0.3rem 0 !important;
+    line-height: 1.43rem;
+    background-color: #F8F8F8 !important;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.85rem;
+    word-wrap: normal;
+}
+
+#write .CodeMirror-wrap .CodeMirror-code pre {
+    padding-left: 12px;
+}
+
+#write code, tt {
+    padding: 2px 4px;
+    border-radius: 2px;
+    font-family: var(--font-monospace);
+    font-size: 0.92rem;
+    color: #e96900;
+    background-color: #f8f8f8;
+}
+
+tt {
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    background-color: #f8f8f8;
+    color: #e96900;
+}
+
+/* heighlight. */
+#write mark {
+    background-color: #EBFFEB;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin: 0 2px;
+    color: #222;
+    font-weight: 500;
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.cm-s-inner .cm-link,
+.cm-s-inner.cm-link {
+    color: #22a2c9;
+}
+
+.cm-s-inner .cm-string {
+    color: #22a2c9;
+}
+
+.md-task-list-item > input {
+    margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+    background-color: #f8f8f8;
+}
+
+.md-diagram-panel {
+    position: static !important;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block > .code-tooltip {
+    bottom: .375rem;
+}
+
+#write > h3.md-focus:before {
+    left: -1.5625rem;
+    top: .375rem;
+}
+
+#write > h4.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h5.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+#write > h6.md-focus:before {
+    left: -1.5625rem;
+    top: .285714286rem;
+}
+
+.md-image > .md-meta {
+    border-radius: 3px;
+    font-family: var(--font-monospace);
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: inherit;
+}
+
+.md-toc {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#md-notification:before {
+    top: 10px;
+}
+
+/** focus mode */
+
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: var(--font-sans-serif);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>Op-Alfred</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='程序员的macos系列高效alfred进阶'><span>程序员的macOS系列：高效Alfred进阶</span></h1><p><a href='https://juejin.cn/user/1908407915780989'><img src="https://p3-passport.byteimg.com/img/user-avatar/5b6509598ea04aabf55f52a1ec117bae~100x100.awebp" referrerpolicy="no-referrer" alt="img"></a></p><p>&nbsp;</p><h2 id='1前言'><span>1、前言</span></h2><p><span>之前写的《程序员的macOS系列》文章，2018年写了二篇文章：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fihtcboy.com%2F2018%2F07%2F15%2F2018-07-15_%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84macOS%E7%B3%BB%E5%88%97%EF%BC%9A%E7%B2%BE%E9%80%89MacApp%2F'><span>精选Mac App</span></a><span>、 </span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fihtcboy.com%2F2018%2F09%2F30%2F2018-09-30_%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84macOS%E7%B3%BB%E5%88%97%EF%BC%9AMac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F'><span>Mac开发环境配置</span></a><span>，至今，已经过年一年半啦！收到很多同学的点赞，最后一篇 </span><code>高效Alfred进阶</code><span> 因为各种原因，没有写出来，所以都0202年啦！</span></p><p><span>其实 </span><code>macOS</code><span> 系统的高效，很大部分原因是因为有 </span><code>Unix/Linux</code><span> 的相似血统，本文讲解</span><code>Alfred</code><span>，就是效率工具的一员，相信注重效率的你，一早肯定听说过或者已经在使用，简单来说 Alfred 以键盘的高效代替鼠标操作的繁冗。还有很多效率方法，以后有机会在总结吧，大家也可以自行搜索 macOS 开发效率，博主之前也写过一些。那为什么会认为 </span><code>Alfred</code><span> 对程序员很重要呢？如果你没有用过，相信你读完本文就会明白。虽然网上已经有很多 </span><code>Alfred</code><span> 的教程，但是一直没有找到能相对全面，或很少从入口到进阶的文章，并且很多文章历史已经悠久，所以惟有抛砖引玉，自我总结一下，希望和大家一起努力提交效率！</span></p><ul><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fihtcboy.com%2F2018%2F07%2F15%2F2018-07-15_%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84macOS%E7%B3%BB%E5%88%97%EF%BC%9A%E7%B2%BE%E9%80%89MacApp%2F'><span>程序员的macOS系列：精选Mac App</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fihtcboy.com%2F2018%2F09%2F30%2F2018-09-30_%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84macOS%E7%B3%BB%E5%88%97%EF%BC%9AMac%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F'><span>程序员的macOS系列：Mac开发环境配置</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fihtcboy.com%2F2020%2F02%2F09%2F2020-02-09_%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84macOS%E7%B3%BB%E5%88%97%EF%BC%9A%E9%AB%98%E6%95%88Alfred%E8%BF%9B%E9%98%B6%2F'><span>程序员的macOS系列：高效Alfred进阶</span></a></li></ul><p><span>目前计划写《程序员的macOS系列》三篇已经完成 ✅，后续有想法在更新吧~</span></p><h2 id='alfred-提高程序员-100-效率指南'><span>Alfred 提高程序员 100% 效率指南</span></h2><p><strong><span>Alfred 4 for Mac</span></strong><span> 官网产品说明：</span></p><blockquote><p><span>Alfred is an award-winning app for macOS which boosts your efficiency with hotkeys, keywords, text expansion and more. Search your Mac and the web, and be more productive with custom actions to control your Mac. Alfred是一款屡获殊荣的macOS应用程序，可通过热键，关键字，文本扩展等功能提高您的效率。搜索Mac和网页的内容，并通过自定义操作来控制Mac来提高生产力。</span></p></blockquote><p><span>小帽子 </span><code>Alfred</code><span>（读</span><code>[&#39;ælfrid]</code><span>） 是 macOS 平台强大的效率软件！被誉为神兵利器！我们本篇文章基于2020年1月17号更新的版本 </span><code>Alfred 4.0.8（Build 1135）</code><span>，所以如果低于此版本导致部分功能没有的，请更新最新版本。或者有新功能此版本没有提及的，请以官网为准 </span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredapp.com%2F'><span>Alfred - Productivity App for macOS</span></a><span>。</span></p><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/13/1703c17072f4f5ca~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-4.png"></p><p>&nbsp;</p><p><span>需要注意的是，本文是以提高效率为准，不会讲解如何制作 Workflows（工作流），只会讲解有那些好用的工作流。另外，网上的教程很多都是15、16年为主，新的教程还是以其一功能为主讲，我一直思考，</span><code>怎么才能让新手从入门到精通 Alfred 呢？</code><span>，所以，为了让大家全面的了解，这里会从 Alfred 的偏好设置开始讲解，从上往下，一个一个解析，中间串插对整个功能的讲解。另外，如果操作或流程很简单的，也不提供截图。下面就让我们开始吧！</span></p><h3 id='general通用设置）'><span>General（通用设置）</span></h3><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae4cdeb0d1d~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-General.png"></p><p>&nbsp;</p><ul><li><p><code>Startup</code><span>（启动） 勾选表示系统重启时，会自动启动 Alfred。</span></p></li><li><p><code>Alfred Hotkey</code><span>（Alfred 热键） 设置显示 Alfred 输入框的键盘快捷键，我一般设置为 </span><code>command + Space</code><span>，也就是苹果键（Apple key，</span><code>⌘</code><span>）和空格键组合，很多人使用 </span><code>command + command</code><span> 或 </span><code>option + option</code><span>，双同键的组合，我认为是不够高效的。因为，你要双击（</span><code>double click</code><span>）才能响应，还是慢了一拍！</span></p></li><li><p><code>Where are you</code><span>（你在哪） 设置你所有的国家或地区，目的是更加人性化的内容，比如谷歌搜索或易呗（ebay），中国就淘宝什么的，目前这个针对中国区还没有什么作用。</span></p></li><li><p><code>Permissions</code><span>（权限） 点击 </span><code>Request Permissions...</code><span> 打开权限许可说明，主要是授权 Alfred 可以访问系统和电脑的那些权限：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae507e9da35~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-General-Permissions-Request-Permissions.png"></p><p>&nbsp;</p></li></ul><p><span>这个权限的设置，在下面的 </span><code>其它问题汇总</code><span> 再进一步说明，因为比较多，不影响大家阅读，我们先说重点！</span></p><h3 id='features主要功能）'><span>Features（主要功能）</span></h3><h4 id='default-results默认结果）'><span>Default Results（默认结果）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae4ae65878a~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Default-Results.png"></p><p><span>主要是设置搜索相关的默认配置。</span></p><p>&nbsp;</p><ul><li><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Applecations</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><span> </span></p><p><span>设置模糊搜索应用名字还有是不是搜索应用内的资源，比如搜索</span></p><p><span> </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">梁静茹</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><span> </span></p><p><span>可能在</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Music.app</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><span>。 第二个勾选项</span></p><p><span> </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Match Application’s keywords in default results</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><span> </span></p><p><span>的作用是匹配应用的关键词元数据。我们以苹果的 音乐App 为例说明，简介可以看到有一栏是关键词：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b8146be2f6b~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Default-Results-AppKeywords.png"></p></li></ul><p><span>App添加这些关键词信息，就是为了用户在 </span><code>Spotlight</code><span>、</span><code>Alfred</code><span>、</span><code>LaunchBar</code><span> 等应用搜索这些词语时，匹配并显示出来。一方面，这确实可以带来一定的便利，但是另一方面也会扰乱搜索结果，所以 Alfred 新版本默认禁止(取消勾选)了这种乱刷存在感的行为。不过，如果觉得用着还不错，可以自己重新勾选上啊。</span></p><ul><li><p><code>Essentials</code><span>(要点) 搜索系统偏好设置和联系人信息的内容。</span></p></li><li><p><code>Extras</code><span>（额外部分） 搜索 文件夹、文档、文本文件、图片、压缩文件、苹果脚本等内容。在右侧 </span><code>Advanced…</code><span> 按钮，可以自定添加格式内容，比如思维导图的 </span><code>.mmap</code><span> 和 markdown 文件的 </span><code>.md</code><span> ，根据自身需求可以添加对应的文件类型让 Alfred 去检索这些文件。只需要将 Alfred 无法检索到的文件类型拖至弹出的框内即可添加。</span></p></li><li><p><code>Unintelligent</code><span>（不智能的） 搜索全部类型的文件。（不推荐）</span></p></li><li><p><code>Search Scope</code><span>（搜索范围） 可以设置搜索的文件空间或目录等。</span></p></li><li><p><code>Fallbacks</code><span>（退路，应变计划） 用于设置搜索没有找到结果时，显示的可选的进一步的操作。 类似如下图，搜索wq时没有结果会显示一个可操作列表，前面2项是 Alfred自带的搜索项，剩下的是</span><code>自定义搜索</code><span>，可以自定添加或更改显示的操作项。（自定义搜索的内容参考下一节</span><code>Web Search（网站搜索）</code><span>的内容）。</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae4b11212f9~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Default-Results-Fallbacks.png"></p><p>&nbsp;</p></li></ul><h4 id='file-search文件搜索）'><span>File Search（文件搜索）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae4a4a79952~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-File-Search.png"></p><p>&nbsp;</p><p><span>通过关键字快速和突出搜索的文件的结果。</span></p><h5 id='search搜索）标签'><span>Search（搜索）标签</span></h5><ul><li><p><code>Quick Search</code><span>（快速搜索） 通过</span><code>&#39;</code><span>或 </span><code>spacebar</code><span>空格键可以可以快速查找文件。</span></p></li><li><p><code>Opening Files</code><span> 直接打开文件（默认就是open，不敲入关键字，即搜索文件名后回车，就是直接打开该文件）。默认是</span><code>open</code><span>，我一般设置为</span><code>op</code><span>，找到文件后，点击或按右边提示的快捷键，可以快速打开文件。比如：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae4b0c27174~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Open.png"></p><p>&nbsp;</p></li><li><p><code>Revealing Files</code><span> 打开文件所在的文件夹。默认用</span><code>find</code><span>，我一般设置为</span><code>fd</code><span>，fd + 搜索词，找到文件后，点击或按右边提示的快捷键，可以快速打开文件所在的文件夹。（这里省略图示，可以自己试试。）</span></p></li><li><p><code>Inside Files</code><span> 在文件内搜索内容。默认用</span><code>in</code><span>，in + 文件内容的搜索词，找到文件后，点击或按右边提示的快捷键，可以快速打开文件。（这里省略图示，可以自己试试。）</span></p></li><li><p><code>File Tags</code><span> 搜索文件标签。</span></p></li><li><p><code>Don&#39;t Show</code><span> 设置不搜索的内容，比如 Emails(邮箱内容）、Bookmarks（网页书签）、Music（音乐）等等。</span></p></li><li><p><code>Result Limit</code><span> 显示的搜索结果条数，可以设置为</span><code>20</code><span>、</span><code>30</code><span>、</span><code>40</code><span>条。</span></p></li></ul><h5 id='navigation导航）标签'><span>Navigation（导航）标签</span></h5><p><span>在 Alfred 的输入栏中浏览 macOS 的文件系统，而无需用鼠标操作Finder。熟悉命令行的同学都知道，在 Unix/Linux 系统中有两个很重要的符号：</span><code>/</code><span> 和 </span><code>~</code><span>。</span><strong><span>/</span></strong><span> 代表文件系统的根目录，所有的子文件都挂在这个根目录下；</span><strong><span>~</span></strong><span> 代表当前用户目录，里面包含了当前用户的所有资料，也就是打开 Finder（访达）之后你在侧边栏可以看到的目录。利用 Alfred 进行文件浏览也是基于这两个符号：</span></p><ul><li><code>/</code><span>：在 Alfred 输入栏中首先输入“/”，会带你进入 macOS根目录；</span></li><li><code>~</code><span>：在 Alfred 输入栏中首先输入“~”，会带你进入当前的用户目录；</span></li><li><code>Filtering</code><span> 启动模糊搜索。比如有一些目录可能我们不记得，例如 Documents、Desktop、Downloads 目录，我们可以搜索 </span><code>d*n</code><span>，用</span><code>*</code><span> 来进行模糊搜索。</span></li><li><code>Shortcuts</code><span> 设置快捷键导航。 </span><code>Use ← and → for folder navigation</code><span>：勾选这个复选框之后，可以利用 </span><code>←/→</code><span>（Left/Right键）来进入上一级目录或者下一级目录。但是 Alfred 默认</span><code>→</code><span>（Right键）为打开</span><code>Actions</code><span>（动作面板，将在后面介绍），因此如果你不想与此功能冲突的话，可以利用Alfred 默认的 </span><code>Command + Up</code><span> 和 </span><code>Command + Down</code><span> 来进行导览，或者更改 </span><code>Actions</code><span>（动作面板）使用的快捷键，下方有说明。 </span><code>Use ↩︎ to open folders in Finder</code><span>：勾选这个复选框后，按下 回车键（Enter键）后会直接在 Finder 中打开选中的文件夹。</span></li><li><code>Previous Path</code><span> 可以在这里设置热键和关键字，来进入上一个打开过的目录。</span></li></ul><p><span>文件导航中，左侧是文件列表，右侧是文件预览。新版本在右下角添加了一个配置菜单，点击 ⚙️️ 图标可以看到有这些选项：</span></p><ul><li><span>排序方式：名称、创建日期、修改日期</span></li><li><span>文件夹置顶</span></li><li><span>逆序排列，快捷键：</span><code>⇧Shift + ⌘Command + S</code></li><li><span>隐藏预览面板，快捷键：</span><code>⇧Shift + ⌘Command + I</code></li></ul><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b8127a85bd1~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-File-Search-Navigation.png"></p><p>&nbsp;</p><h5 id='buffer缓存）标签'><span>Buffer（缓存）标签</span></h5><p><span>文件多选缓存操作，可以从不同的文件夹中选择多个文件，或者同时对多个文件进行相同的操作等，可以进行批量操作，打开、共享、删除等等。</span></p><ul><li><span>Alt + ↑ ：把该文件加入列表；</span></li><li><span>Alt + ↓ ：把该文件加入列表，光标跳向下一个文件；</span></li><li><span>Alt + ← ：删除列表最后一个文件；</span></li><li><span>Alt + → ：对列表文件进行统一操作。</span></li></ul><p><span>利用以上的快捷键将一系列的文件加入到文件缓存区中（文件缓存区位于 Alfred 输入框上方），然后利用 </span><code>fn</code><span> 键或 </span><code>ctrl</code><span> 键、</span><code>⇥</code><span>键（Alt + Right键）等打开 </span><code>Actions</code><span>（动作面板）对这些文件进行同一操作。</span></p><ul><li><code>Buffer Clearing</code><span> 设置操作缓存文件后从缓存区清除文件，如果5分钟不使用缓存文件时也清除。</span></li><li><code>Compatibility</code><span>（兼容性） 如果上面的 </span><code>Alt</code><span>键 + 方向键与其它的操作冲突了，那么可以勾选这个复选框，那么将使用 </span><code>shift + Alft + 方向键</code><span> 来操作文件缓存。</span></li></ul><h5 id='advanced增强）标签'><span>Advanced（增强）标签</span></h5><p><span>设置文件搜索的高级配置项。默认就好，一般不需要关注。</span></p><h4 id='actions动作）'><span>Actions（动作）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae5e1ec518d~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Actions.png"></p><p>&nbsp;</p><ul><li><code>Show Actions</code><span>（显示动作） 在选中的文件或者目录上点击 </span><code>fn</code><span> 键或 </span><code>ctrl</code><span> 键、</span><code>⇥</code><span>等都可以触发其额外的操作，具体的动作见 </span><code>File Actions</code><span> 标签栏。</span></li><li><code>Selection Hotkey</code><span> 可以设置自定义的快捷键来显示动作。</span></li><li><code>Action Ordering</code><span> 动作排序显示，如果勾选，表示按最近使用的动作优先显示，否则就按默认排序。</span></li></ul><p><span>动作操作的效果示意图：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c49a1a2c96~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Actions-File-Actions.png"></p><p>&nbsp;</p><p><span>动作操作这里有一个 </span><code>Recent Documents...</code><span>，在 Alfred 输入框中输入某个App的名字，然后按下</span><code>fn</code><span> 键或 </span><code>ctrl</code><span> 键（Action设置的热键）打开关于这个App的操作列表，排在列表的第一个选项 </span><code>Recent Documents...</code><span>（App最近的浏览记录），按下回车键（Enter键）选择这个选项，就会在 Alfred 中呈现这个App最近打开的文件记录列表，你可以在其中选择想要的文件再次利用这个App打开。</span></p><p><span>这里以 Xcode app 为例：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b8162efdab4~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Actions-Recent-Documents.png"></p><p>&nbsp;</p><p><span>其它的操作，大家自己试试啊！这里省略吧，太多了。</span></p><h4 id='web-search网站搜索）'><span>Web Search（网站搜索）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae5fe548325~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Web-Search.png"></p><p>&nbsp;</p><p><span>网页搜索 Alfred 自带了不少，比如google、wiki、bing等网页搜索，但对于国内用户来说，还是得需要自定义百度、知乎等搜索，点击右下角的 </span><code>Add Custom Search</code><span>，按照提示的格式自己增加即可。</span></p><p><span>这里用一个例子来说明自定义的网页搜索设置，比如想搜索苹果的官方文档中</span><code>Swift</code><span>，真实的链接是 </span><code>https://developer.apple.com/search/?q=Swift</code><span>，那么每次搜索苹果的文档内容时，我们都要打死浏览器，打开苹果官方文档链接，然后输入</span><code>Swift</code><span>，才能看到结果。然这个步骤，可以利用 Aflred 这个网页搜索功能整合为一步，所以我们需要一个自定义的搜索，在 Aflred 点击右下角的 </span><code>Add Custom Search</code><span>，然后填写下图的信息：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c49a91cb06~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Web-Search-Custom.png"></p><p>&nbsp;</p><p><span>这里需要说明一下，</span><code>https://developer.apple.com/search/?q={query}</code><span> 中的 </span><code>{query}</code><span> 是通过 Alfred 输入框输入你需要搜索的关键词的变量，</span><code>Title</code><span> 就是上图的默认显示的提示语，右边还能上传一个icon图标，用于标识此搜索，</span><code>Keyword</code><span> 是这个网页搜索的快捷键，这里用 ad （apple document）作为快捷键，</span><code>Validation</code><span> 是用于测试这个网页搜索是不是正常工作，点击右边的 Test 按钮来测试。左下方的 </span><code>Copy URL for sharing</code><span>按钮，点击一下就可以将一个带有</span><code>alfred://</code><span> 前缀的字符串拷贝到系统剪切板，然后分享给好友，在 Alfred 中粘贴后回车键就可以导入。示例：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c4ae0daa2b~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Web-Search-Swift.png"></p><p>&nbsp;</p><p><span>这里列出一些搜索引擎的搜索的URL示例：</span></p><ul><li><span>掘金搜索：</span><code>https://juejin.im/search?type=all&amp;query={query}</code></li><li><span>简书搜索：</span><code>https://www.jianshu.com/search?utf8=%E2%9C%93&amp;q={query}</code></li><li><span>微信文章：</span><code>http://weixin.sogou.com/weixin?type=2&amp;query={query}</code></li><li><span>知乎内容：</span><code>https://www.zhihu.com/search?type=content&amp;q={query}</code></li><li><span>苹果文档：</span><code>https://developer.apple.com/documentation/{query}</code></li><li><span>淘宝搜索：</span><code>https://s.taobao.com/search?oe=utf-8&amp;q={query}</code></li><li><span>京东搜索：</span><code>https://search.jd.com/Search?enc=utf-8&amp;keyword={query}</code></li><li><span>GitHub：</span><code>https://github.com/search?utf8=%E2%9C%93&amp;q={query}</code></li><li><span>StackOverflow：</span><code>https://www.stackoverflow.com/search?q={query}</code></li><li><span>DuckDuckGo：</span><code>https://duckduckgo.com/?q={query}</code></li><li><span>爱奇艺：</span><code>https://so.iqiyi.com/so/q_{query}</code></li><li><span>哔哩哔哩：</span><code>https://search.bilibili.com/all?keyword={query}</code></li><li><span>豆瓣全站：</span><code>https://www.douban.com/search?q={query}</code></li><li><span>豆瓣电影：</span><code>https://movie.douban.com/subject_search?search_text={query}</code></li><li><span>少数派：</span><code>https://sspai.com/search/article?q={query}</code></li></ul><p><span>另外，配置搜索引擎时，借助网站方面的 </span><code>OpenSearch</code><span> 与 </span><code>SearchAction</code><span> 协议实现自动化填写 </span><code>Search URL</code><span>。不再像以前那样需要自己寻找关键词参数位置，然后替换为 </span><code>{query}</code><span> 了。添加搜索引擎时，在 Search URL 文本框中填入网站的域名，然后点击右侧的 </span><code>Lookup</code><span> 就会自动分析并显示可用的搜索链接格式，接着点击 </span><code>Use</code><span> 就可以了。但遗憾的是，并非所有网站都支持 OpenSearch 或 SearchAction 协议。（大家可以用</span><code>https://www.pinterest.com</code><span> 这个体验一下。）</span></p><p><span>这里分享一些博主自定义的网络搜索：</span></p><ul><li><span>掘金搜索：</span><code>alfred://customsearch/Search%20Juejin%20for%20%27%7Bquery%7D%27/jj/utf8/nospace/https%3A%2F%2Fjuejin.im%2Fsearch%3Ftype%3Dall%26query%3D%7Bquery%7D</code></li><li><span>简书搜索：</span><code>alfred://customsearch/Search%20Jianshu%20for%20%27%7Bquery%7D%27/js/utf8/nospace/https%3A%2F%2Fwww.jianshu.com%2Fsearch%3Futf8%3D%25E2%259C%2593%26q%3D%7Bquery%7D</code></li><li><span>微信文章：</span><code>alfred://customsearch/Search%20Weixin%20for%20%27%7Bquery%7D%27/gzh/utf8/nospace/https%3A%2F%2Fweixin.sogou.com%2Fweixin%3Ftype%3D2%26query%3D%7Bquery%7D</code></li><li><span>知乎内容：</span><code>alfred://customsearch/Search%20Zhihu%20for%20%27%7Bquery%7D%27/zh/utf8/nospace/https%3A%2F%2Fwww.zhihu.com%2Fsearch%3Ftype%3Dcontent%26q%3D%7Bquery%7D</code></li><li><span>苹果文档：</span><code>alfred://customsearch/Search%20%EF%A3%BFDeveloper%20for%20%27%7Bquery%7D%27/ad/utf8/nospace/https%3A%2F%2Fdeveloper.apple.com%2Fsearch%2F%3Fq%3D%7Bquery%7D</code></li><li><span>淘宝搜索：</span><code>alfred://customsearch/Search%20Taobao%20for%20%27%7Bquery%7D%27/tb/utf8/nospace/https%3A%2F%2Fs.taobao.com%2Fsearch%3Foe%3Dutf-8%26f%3D8%26q%3D%7Bquery%7D</code></li><li><span>京东搜索：</span><code>alfred://customsearch/Search%20JD%20for%20%27%7Bquery%7D%27/jd/utf8/nospace/https%3A%2F%2Fsearch.jd.com%2FSearch%3Fenc%3Dutf-8%26keyword%3D%7Bquery%7D</code></li><li><span>GitHub：</span><code>alfred://customsearch/Search%20Github%20for%20%27%7Bquery%7D%27/sh/utf8/nospace/https%3A%2F%2Fgithub.com%2Fsearch%3Futf8%3D%25E2%259C%2593%26q%3D%7Bquery%7D</code></li><li><span>StackOverflow：</span><code>alfred://customsearch/Search%20StackOverflow%20for%20%27%7Bquery%7D%27/so/utf8/nospace/https%3A%2F%2Fwww.stackoverflow.com%2Fsearch%3Fq%3D%7Bquery%7D</code></li></ul><p><span>上面这个自定义搜索，只需在 Alfred 输入框中粘贴这个字符串（</span><code>alfred://</code><span>前缀的字符串），按下回车键就可以导入这个自定义搜索到自己的Alfred中了。</span></p><p><span>更多搜索网站的大家可以自行收藏啊~</span></p><h4 id='web-bookmarks网页书签）'><span>Web Bookmarks（网页书签）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae622fafaaa~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Web-Bookmarks.png"></p><p>&nbsp;</p><p><span>目前 Alfred 支持 </span><code>Safari</code><span> 和 </span><code>Chrome</code><span> 浏览器的书签搜索。</span></p><ul><li><code>Show bookmarks</code><span> 为了更加方便和快捷的搜索书签，可以设置通过 </span><code>via keyword</code><span>关键词来直接搜索书签，设置前缀</span><code>w</code><span>为搜索书签。</span></li><li><code>Open Bookmarks</code><span> 设置搜索结果中的书签，从那个浏览器打开，可以选择默认系统的浏览器，或者书签来源的浏览器打开。</span></li></ul><p><span>以搜索 Safari 的书签中 </span><code>apple</code><span> 为例：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b814d0edd76~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Web-Bookmarks-Search.png"></p><p>&nbsp;</p><p><span>升级到 </span><code>macOS 10.15</code><span> 后可能会遇到书签搜索不到的问题，因为新版本 macOS 对软件访问权限做了限制，需要访问那个目录，都可以设置。所以，如果要让 Alfred 能搜索书签，需要在系统偏好设置中的 </span><code>安全性与隐私</code><span>-&gt; </span><code>隐私</code><span> -&gt;</span><code>完全磁盘访问权限</code><span> 勾选 </span><code>Alfred 4.app</code><span>。然后在 Alfred 中输入 </span><code>Reload Alfred Cache</code><span> 后回车键，Alfred 重新加载缓存就可以搜索书签。如果不给权限，那么在 </span><code>macOS 10.15</code><span> 下无法使用书签搜索。</span></p><h4 id='clipboard-history剪切版历史）'><span>Clipboard History（剪切版历史）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae76a8753fe~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Clipboard-History.png"></p><p>&nbsp;</p><p><span>默认情况下，Alfred 是没有打开剪贴板历史这个功能的，需要自己手动去开启，可以打开文字、图片、文件列表的剪贴板功能，自定义一个快捷键，光标在需要粘贴的地方，呼出剪贴板历史，选中需要粘贴的内容，回车即可。</span></p><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b81391baf8c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Clipboard-History-Examples.png"></p><p>&nbsp;</p><p><span>上图就是官网的示例，可以看出剪切版历史功能，可以显示复制的文本来源应用，时间等，图片的大小和尺寸等等。我们在来看看怎么使用，很简单，快捷键</span><code>⌥ + ⌘ + C</code><span>（</span><code>alt + commaand + C</code><span>）打开</span><code>剪切版历史视图</code><span>：</span></p><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b81b84f1af1~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Clipboard-History-Copy-Paste.gif"></p><p>&nbsp;</p><p><span>这个对于大量的复制和粘贴功能非常有用，具体使用大家自行体验就行。这里在说说配置内容：</span></p><ul><li><code>Clipboard History</code><span>（剪切版历史） 可以设置普通文本、图片和文件的保留时间，因为这里复制的内容，Alfred会自行保存一份，所以需要设置过期时间，避免软件占用过多的空间。</span></li><li><code>Viewer Hotkey</code><span> 用于设置全局的快捷键，用于在所有的软件界面都能调用出来，插入剪切的内容。我一般设置为 </span><code>⌥ + ⌘ + C</code><span>（</span><code>alt + commaand + C</code><span>）。</span></li><li><code>Viewer Keyword</code><span> 用于设置在 Alfred 输入框中输入 </span><code>cl</code><span> 后，可以快速进入到 </span><code>剪切版历史视图</code><span>，默认是 </span><code>clipboard</code><span> 关键词。另外，进入 </span><code>剪切版历史视图</code><span> 后，按 Alfred 的全局热键就可以重新回到输入框中。</span></li><li><code>Clear Keyword</code><span> 剪切版的内容不只是占用空间，可能你还包括了敏感的内容，所以你可能想清空剪切版的内容。所以，可以点击右边的</span><code>Clear Now</code><span>马上清空（注意，此执行没有确认弹窗。清空后剪切版数据不能恢复。），或者打开 Alfred 输入框输入</span><code>clear</code><span>，可以选择清除最近的 </span><code>5分钟</code><span>、</span><code>15分钟</code><span>或</span><code>全部数据</code><span>清除，大家可以自已操作一下。</span></li><li><code>Snippets</code><span>（片段） </span><code>Snippets</code><span>（片段）这个功能是下面一节内容介绍，这里建议都勾选。目前下一节在说。</span></li><li><code>Universal</code><span>（通用） 忽略从其它苹果设置同步过来的剪切版内容。建议不勾选。同步同一个苹果账号的剪切版功能是从macOS 10.13 、iOS 12 开始的，详细可以查看苹果官方文档 </span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsupport.apple.com%2Fzh-cn%2FHT209460'><span>使用通用剪贴板在 Apple 设备之间进行拷贝和粘贴 - Apple 支持</span></a><span>、</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsupport.apple.com%2Fzh-cn%2Fguide%2Fiphone%2Fiph220ea8dca%2Fios'><span>在 iPhone 上使用通用剪贴板 - Apple 支持</span></a><span>、</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsupport.apple.com%2Fzh-cn%2Fguide%2Fmac-help%2Fmchl70368996%2Fmac'><span>从 Mac 上拷贝并在设备间粘贴 - Apple 支持</span></a><span>。</span></li><li><code>Merging</code><span>（合并） 比如你复制了三段文本，可以你需要把它们组合成一段话，默认情况下需要你按3次快捷键，但是如果你勾选了这个 </span><code>Merging</code><span> 功能，就可以实现快速的合并一段剪切的内容。具体的使用也很简单，勾选 Merging 标签的 </span><code>Fast append selected text</code><span>后就可以，剪切的文本，默认是 </span><code>⌘ + C</code><span> 剪切一次，再按一次 </span><code>⌘ + C</code><span>（按住</span><code>⌘</code><span>不动，再按下</span><code>C</code><span>键），就是触发合并操作，此时的剪切的内容会与上一次剪切的内容合并为一个。合并内容的格式可以选择是用空格、换行或者不分隔的方式来分隔文本的合并。</span></li><li><code>Advanced</code><span>（增强） 这里可以设置一些高级的内容，比如在剪切版历史视图的项中，按回车键后自动粘贴到当前激活的应用的输入框中；复制的内容如果是相同的内容自动移动到最前面（不会重复保存）；剪切版的内容的最大尺寸，</span><code>256k</code><span>字符串、</span><code>512k</code><span>或不限制等；忽略的Apps，可以忽略 </span><code>Keychain Access</code><span>、</span><code>1Password</code><span>、</span><code>Wallet</code><span>等可能有敏感内容的剪切内容等。</span></li></ul><h4 id='snippets字符片段）'><span>Snippets（字符片段）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae691210af9~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Snippets.png"></p><p>&nbsp;</p><p><code>Snippet</code><span>（字符片段）的作用，简单来说就是能够将自定义的文字通过</span><strong><span>关键词</span></strong><span>或者</span><strong><span>快捷键</span></strong><span>的方式插入到当前光标之后。</span></p><p><span>官方示例：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b82ab38919f~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Snippets-Examples.gif"></p><p>&nbsp;</p><p><span>Snippets 主要是对于经常键入的文本的创建和共享代码段，例如当我们需要输入 </span><code>手机号码</code><span>、</span><code>URL</code><span>和 </span><code>Email</code><span>等等，如果每次输入都是6位字符以上，你是不是觉得很浪费时间啊！</span></p><p><span>官方示例动图的操作，输入 </span><code>tflip1</code><span> 时会自动替换为对应的一个文字表情包！有没有觉得很利害！很高效！这里使用需要先勾选配置中的 </span><code>Automatically expand snippets by keyword</code><span> 和系统偏好设置中的</span><code>安全性与隐私</code><span>-&gt; </span><code>隐私</code><span> -&gt;</span><code>辅助功能</code><span> 勾选 </span><code>Alfred 4.app</code><span>。</span></p><ul><li><code>Viewer Hotkey</code><span> 这里我们不单独设置一个快捷键，因为可以与上一节的 </span><code>Clipboard History</code><span>（剪切版历史）共用一个弹窗界面，这样更加高效，需要在 Clipboard History 的 </span><code>Snippets</code><span> 中勾选才能共用界面。</span></li><li><code>Snippet Keyword</code><span> 用于设置在 Alfred 输入框中输入 </span><code>snip</code><span> 后，可以快速进入到 </span><code>剪切版历史视图</code><span>，默认是 </span><code>snip</code><span> 关键词，你可以更改你喜欢的词，比如 </span><code>sn</code><span>。</span></li><li><code>Matching</code><span>（匹配） 设置匹配 </span><code>Snippet</code><span>（字符片段）的方式，是通过 </span><code>Name</code><span>（名字）和 </span><code>Keyword</code><span>（关键字）还是包括 </span><code>Snippet</code><span>（字符片段）。</span></li></ul><p><span>举个我经常使用的例子，比如，我要把博客的图片都是存放在 GitHub 的仓库中，例如某张图片的下载路径为： </span><code>https://github.com/iHTCboy/iGallery/raw/master/BlogImages/年份/月份/xxxx.png</code><span>。那么如果我在写博文时，需要插入这个图片，转换为 markdown 格式图片为：</span><code>![xxxx.png](https://github.com/iHTCboy/iGallery/raw/master/BlogImages/年份/月份/xxxx.png)</code><span>，如果每次我都是手写，你说是不是非常的痛！痛！痛！因为根本就没有什么技术含量。所以，我定义了这样的快捷方式：</span></p><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b972faf7333~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Snippets-Custom.png"></p><p>&nbsp;</p><p><span>用关键词 </span><code>gimg</code><span> 就能快速输入格式 </span><code>![{clipboard}](https://github.com/iHTCboy/iGallery/raw/master/BlogImages/2020/02/{clipboard})</code><span>，其中 </span><code>{clipboard}</code><span> 是当前剪切版的内容。看看最终的效果，大家就明白有多高效：</span></p><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b8350fd628c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Snippets-Copy-Paste.gif"></p><p>&nbsp;</p><p><span>这里，我只需要复制图片的名字（通过回</span><code>车键</code><span>快速重命名文件名的方式，</span><code>⌘ + A</code><span>全选再</span><code>⌘ + C</code><span>复制文件名，当然通过下文的 Workflows 也可以快捷复制文件名。），然后 </span><code>alt + ⌘ + C</code><span> 快速打开 </span><code>剪切版历史视图</code><span>，输入快捷关键词（</span><code>gimg</code><span>，不用输完，可以模糊匹配。）然后回车键就完成 markdown 格式图片生成。当然，最后二步可以合并成一步，就是在上图配置Snippets时，勾选 </span><code>Auto expansion allowed</code><span>，这样，直接在需要输入的地方输入 </span><code>gima</code><span> 就会显示替换的内容，又减少一步操作。大家有没有感觉比每次都记忆，</span><code>Snippet</code><span>（字符片段）是不是更快了~</span></p><p><span>另外，这里 Alfred 提供了一些替换时的 </span><code>占位符</code><span>，就是替换时，会自动变的，比如 </span><code>{time}</code><span>（如：16:26:23）、</span><code>{date}</code><span>（如：2020年2月9日）、</span><code>{clipboard}</code><span>（当前剪切版的内容）、</span><code>{random}</code><span>（注：</span><code>{random:..}</code><span>表示随机数，其它表示见编辑窗口的左下角</span><code>{}</code><span>。）等，更强大的替换操作， Alfred 建议使用 Workflow Snippet Trigger object。</span></p><p><span>如果一些 </span><code>Emoji</code><span>，可能通过 macOS 系统快捷键</span><code>ctrl + command + 空格键</code><span>打开表情界面选择需要的表情，但是这个查找过程也是很麻烦，有几百个 Emoji，所以其实可以通过 Snippet 来快速输入：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b970fb3e51e~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Snippets-Emoji.png"></p><p>&nbsp;</p><p><span>以上的 Emoji 表格，可以通过下载导入到你的 Alfred 中，下载地址：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FiHTCboy%2FmacOSConfig%2Ftree%2Fmaster%2FAlfred%2FSnippets'><span>macOSConfig/Alfred/Snippets · iHTCboy/macOSConfig</span></a><span>。</span></p><p><span>更多 Snippet 分组，需要查看官网推荐 </span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredapp.com%2Fextras%2Fsnippets%2F'><span>Snippets - Alfred</span></a><span>：</span></p><ul><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredapp.com%2Fmedia%2Fsnippets%2FMac%20symbols.alfredsnippets'><span>Mac Symbols</span></a><span>：集合了很多常用的Mac符号，比如输入 </span><code>!!cmd</code><span> 对应 </span><code>⌘</code><span>符号，“!!shift”对应“⇧”符号等等。有了这个集合，就再也不用在符号表中辛辛苦苦去找某个Mac标志符号了。</span></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredapp.com%2Fmedia%2Fsnippets%2FAscii%20Art.alfredsnippets'><span>ASCII Art</span></a><span>：集合了一些好玩的火星文字表情，比如 </span><code>(╯°□°）╯︵ ┻━┻</code><span>。</span></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredapp.com%2Fmedia%2Fsnippets%2FCurrency%20Symbols.alfredsnippets'><span>Currency Symbols</span></a><span>：集合了一些常用的货币符号，比如“::cny”代表“¥”，“::usd”代表“$”等等。</span></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredapp.com%2Fmedia%2Fsnippets%2FDynamic%20Content.alfredsnippets'><span>Dynamic Content examples</span></a><span>：一些关于动态占位符的例子，可以学习一下使用方法。</span></li><li><a href='https://link.juejin.cn/?target=http%3A%2F%2Fjoelcalifa.com%2Fblog%2Falfred-emoji-snippet-pack%2F'><span>Emoji Pack</span></a><span>：很强大的Emoji表情包。有海量的Emoji符号，输入对应的关键字就能自动插入想要的Emoji表情，简直不要太方便，再也不用一个个翻页的去找了。</span></li></ul><h5 id='对-snippet-关键字的建议'><span>对 Snippet 关键字的建议</span></h5><p><span>只要定义好了 Snippet 条目，则在任何文本输入的地方输入</span><code>分组Affix + 条目Keyword + 分组keyword</code><span>，就能自动展开相应的文本片段。但是这个 </span><code>Affix + Keyword</code><span> 组合的定义最好也遵循一定的规则，要容易记忆、方便输入，但同时也不能与其他热键冲突。以下是关于怎样定义 Affix 和 Keyword 的几个建议：</span></p><ol start='' ><li><span>在 Keyword 中不要使用正常词汇，以避免有些不期望的展开。比如如果你将 Keyword 定义为</span><code>apple</code><span>，则在任何输入 </span><code>apple</code><span> 的地方都会扩展成为定义好的文本片段，即使你想进行输入的就是 </span><code>apple</code><span> 这个单词本身。因此，最好能用一些特殊记法，比如将关键字每个单词的首字母捡出来连在一起等等；</span></li><li><span>所有的 Snippet 都要以非字母数字开头，比如感叹号（!），分号(;)，冒号(:)等等（类似于</span><code>!!office</code><span>，</span><code>::coffee</code><span>这样的）；</span></li><li><span>使用不常用的大写形式，比如 </span><code>officE</code><span>；</span></li><li><span>使用双重字母，比如 </span><code>ttime</code><span>。</span></li></ol><h5 id='动态占位符dynamic-placeholders）'><span>动态占位符（Dynamic Placeholders）</span></h5><p><span>很多时候，你想在文本中插入一些特定的内容，但这些内容在每一次输入的时候都会有所不同，比如比如 </span><code>{time}</code><span>（如：16:26:23）、</span><code>{date}</code><span>（如：2020年2月9日）、</span><code>{clipboard}</code><span>（当前剪切版的内容）、</span><code>{random}</code><span>（注：</span><code>{random:..}</code><span>表示随机数，其它表示见编辑窗口的左下角</span><code>{}</code><span>。）等等。</span></p><p><strong><span>显示日期时间</span></strong><span> 显示日期时间的占位符关键字有三个：</span></p><ul><li><code>{date}</code><span>：显示当前日期</span></li><li><code>{time}</code><span>：显示当前时间</span></li><li><code>{datetime}</code><span>：显示当前日期和时间</span></li></ul><p><span>日期和时间都有</span><code>short</code><span>、</span><code>medium</code><span>、</span><code>long</code><span>和</span><code>full</code><span>这几种显示方式，Alfred 默认的为midium。要想改变显示方式，只需在关键字后面接上相应的方式名称即可，例如</span><code>{date:long}</code><span>。这些显示方式的具体格式可以在系统的偏好设置设置 -&gt; 时间&amp;区域 中查看.</span></p><p><span>不仅能显示当前时间，还可以利用加减算数符号进行计算之后，显示过去或者未来的日期时间，比如 </span><code>{date +1D}</code><span> 会显示明天的日期，</span><code>{time -3h -30m}</code><span> 会显示3个半小时之前的时间等等。支持的算子有以下几种：</span></p><ul><li><span>1Y：年</span></li><li><span>1M：月</span></li><li><span>1D：天</span></li><li><span>1h：小时</span></li><li><span>1m：分钟</span></li><li><span>1s：秒</span></li></ul><p><span>在用算式计算时间时，同时也能接上显示方式，按照需要的格式显示相应的日期时间，比如</span><code>{time -2h -20m:long}</code><span>，</span><code>{date -2m:short}</code><span>。</span></p><p><strong><span>剪切板内容</span></strong><span> 利用 </span><code>{clipboard}</code><span> 的位移功能来选择不同顺序的剪切板文本，需要注意的是，这里的位移首先是从数字0开始，而不是1，</span><code>{clipboard:0}</code><span> 代表剪切板第一项内容，</span><code>{clipboard:1}</code><span>为第二项内容，</span><code>{clipboard:2}</code><span> 为第三项，以此类推。{clipboard}和{clipboard:0}的意义相同。</span></p><p><span>还可以加上一些转换命令，对剪切板中的文本进行格式转换：</span></p><ul><li><p><code>{clipboard:uppercase}</code><span>：将文本全部转换为大写；</span></p></li><li><p><code>{clipboard:lowercase}</code><span>：将文本全部转换为小写；</span></p></li><li><p><code>{clipboard:capitals}</code><span>：将文本中每个单词的首字母变为大写。</span></p></li><li><ul><li><code>{clipboard:trim}</code><span>：将文本中前后的换行、空格等空白字符删除。</span></li></ul></li></ul><p><strong><span>光标位置</span></strong><span> 利用 </span><code>{cursor}</code><span> 占位符，可以在输入 Snippet 扩展为对应文字后，光标自动定位到{cursor} 在文本中的位置，方便之后对某些内容的输入。</span></p><p><strong><span>随机值</span></strong><span> 随机值占位符 </span><code>{random}</code><span>，包含：</span></p><ul><li><span>随机的通用唯一标识符 UUID： </span><code>{random:UUID}</code><span>，形如 5FAF0AC6-B410-446C-A311-E41074205A05</span></li><li><span>随机数字：</span><code>{random:1..10}</code></li><li><span>列表中的随机项：</span><code>{random:苹果,香蕉,梨,葡萄,橙子}</code></li></ul><p><strong><span>修饰符（modifier）</span></strong><span> 4.0 版本引入了形如 </span><code>{placeholder:variation.modifier}</code><span> 的占位符语法，可分为三部份：placeholder 占位符类别、variation 变种（可理解为参数或子类别）、modifier 修饰符。生成 1 到 10 之间随机数字的占位符 </span><code>{random:1..10}</code><span> 中 </span><code>random</code><span> 是 placeholder 占位符类别，</span><code>1..10</code><span> 部分是 variation 变种，而 </span><code>modifier</code><span> 修饰符部分，可以选择这些：</span></p><ul><li><code>trim</code><span>：删去内容前后的换行、空格等空白字符。</span></li><li><code>reverse</code><span>：文本反转。</span></li><li><code>stripdiacritics</code><span>：去除重音标记，如 å 变为 a。</span></li><li><code>stripnonalphanumeric</code><span>：去除标点符号、Emoji 等非字母数字的字符。</span></li><li><code>uppercase</code><span>、</span><code>lowercase</code><span>、</span><code>capitalcase</code><span>：大写、小写、首字母大写转换。</span></li></ul><p><span>这些修饰符同样可用于剪贴板占位符、Workflow 内的变量，例如 </span><code>{clipboard:3.reverse}</code><span> 代表反转第三条剪贴板历史的内容；</span><code>{var:result.trim.uppercase}</code><span> 代表将 result 变量的内容，删除前后空白字符后，再转换为大写。可以看到，修饰符部分支持复合连用。</span></p><h5 id='富文本rich-text）'><span>富文本（Rich Text）</span></h5><p><span>4.0 版本加入了富文本支持，对于编写邮件等日常事务很有帮助，进一步扩展了使用场景。附加的编辑菜单，支持字体、粗体/斜体/下划线、颜色、复制/粘贴格式等简单的调整选项。另外，还能够自动识别副本文中的链接文本。如果这些编辑功能不能满足要求，我们也可以在「文本编辑」应用中编辑后粘贴过来。富文本在 Snippet 的列表中用 ✴️️ 加以标记。</span></p><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b970accd83c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Snippets-RichText.png"></p><p>&nbsp;</p><p><span>关于 Snippets 的使用，有很多技巧可以灵活使用，这里主要通过这2个，大家可以自己思考定义需要的片段！</span></p><h4 id='calculator计算器）'><span>Calculator（计算器）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae6f282de9f~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Calculator.png"></p><p>&nbsp;</p><ul><li><code>Standard</code><span>（标准） Alfred 也支持计算器计算可以简单地输入 </span><code>16 * 1024</code><span> 便能够计算出结果，敲击回车键之后能够自动保存到剪贴板中，方便快速复制和使用。当然也可以连续的输入 </span><code>16 * 1024 / 256</code><span>，更加复杂的 </span><code>(1 + 4) * 6 / (7 +3)</code><span>。</span></li><li><span>Advanced（增强） 利用 </span><code>GCMathParser</code><span> 模块，Alfred还能进行很多高级计算，比如三角运算、平方根等等。需要勾选此选项，在使用时以 </span><code>=</code><span> 作为开头，比如：</span><code>=log2(256) + sqrt(1024/2*3^4)</code><span> 表达式。 Alfred支持的高级计算有以下公式：</span><code>sin, cos, tan, log, log2, ln, exp, abs, sqrt, asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh, ceil, floor, round, trunc, rint, near, dtor, rtod</code><span>等。</span></li><li><code>Input</code><span> / </span><code>Output</code><span> 设置输入和输出的结果表达式的小数分分隔。</span></li></ul><p><span>非常贴心的是，当你在用 Excel 等软件进行财务计算时，数字往往会带上货币符号，比如 </span><code>¥</code><span>、</span><code>$</code><span>、</span><code>€</code><span>等。当从 Excel 拷贝这些带有符号的数字到输入框时，Alfred 会自动省略掉这些货币符号，这样你就能直接进行计算了，而不用还要在输入框中进行编辑。</span></p><h4 id='dictionary字典）'><span>Dictionary（字典）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae77f2280c9~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Dictionary.png"></p><p>&nbsp;</p><p><span>Alfred 内置了词典查询并使用 Apple 自带的词典软件，可以通过 </span><code>define</code><span> 和 </span><code>spell</code><span> 两个关键词唤起。这里 define 我改为了 </span><code>df</code><span> 这里更加快捷！值得一提的是 spell 能够帮你模糊拼写，有时候忘了单词怎么拼，可以使用它。</span></p><p><span>苹果默认的词典量很少，可以点击这里下载更多扩展词典：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FiHTCboy%2FmacOSConfig%2Ftree%2Fmaster%2FmacOS_Dictionary'><span>macOSConfig/macOS_Dictionary · iHTCboy/macOSConfig</span></a></p><p><span>以搜索</span><code>apple</code><span>示例：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c4d2e98abe~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Dictionary-Define.png"></p><p>&nbsp;</p><h4 id='contacts联系人）'><span>Contacts（联系人）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae8277bffd8~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Contacts.png"></p><p>&nbsp;</p><p><span>Alfred 也内置了 </span><code>Contacts</code><span>（通信录）查询，联动 Apple 自带的通讯录，输入对应小伙伴的名词能够查看对应名片，还能够 Copy 对应的信息。这里因为我们是程序员，所以其实很少使用到名片，所以这里就不作过多说明了。</span></p><h4 id='music音乐）'><span>Music（音乐）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae7cecaea07~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Music.png"></p><p>&nbsp;</p><p><span>可以从键盘控制 iTunes与 Alfred 的内置迷你播放器，搜索你的 iTunes音乐收藏，按流派风格或随机播放专辑等。这里国区喜欢用国区的音乐App，一般人都不会购买 Apple Music 服务，所以就不多说，需要的可以自己用用啊。</span></p><p><span>官网示例：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b974fde631c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Music-MiniPlayer.png"></p><p>&nbsp;</p><h4 id='1password密码）'><span>1Password（密码）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae81d5c9690~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-1Password.png"></p><p>&nbsp;</p><p><span>搜索并直接从 Alfred 打开你 </span><code>1Password</code><span> 中的书签。</span></p><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b973b32ca99~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-1Password-1Click.png"></p><p>&nbsp;</p><p><span>但是现在我已经不使用 </span><code>1Password</code><span> 密码管理软件了，因为 </span><code>iCloud</code><span> 的 </span><code>Passwords &amp; Accounts</code><span>（密码和账号）已经非常棒！不需要再记录或查找密码，当然，iCloud 现在对密码和账号的权限管理不足，没有单独的访问和管理密码，使用了macOS或iPhone的设备密码，所以如果密码泄漏就都完了。</span></p><h4 id='system系统）'><span>System（系统）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae9419683f9~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-System.png"></p><p>&nbsp;</p><p><span>Alfred 支持系统功能操作，例如：</span><code>Screen Saver</code><span>（显示待机屏幕）、</span><code>Empty Trash</code><span>（清空回收站）、</span><code>Log Out</code><span>（登出当前用户）、</span><code>Sleep</code><span>（睡眠模式）、</span><code>Sleep Displays</code><span>（关闭屏幕显示）、</span><code>Lock</code><span>（锁屏）、 </span><code>Restart</code><span>（重启）、</span><code>Shut Down</code><span>（关机）、</span><code>Volume Up</code><span>（增加音量）、</span><code>Volume Down</code><span>（减少音量）、</span><code>Toggle Mute</code><span>（静音）等快捷命令。</span></p><p><span>针对应用程序可以：</span><code>Hide</code><span>（隐藏）、</span><code>Quit</code><span>（退出程序）、</span><code>Force Quit</code><span>（强制退出）、</span><code>Quit All</code><span>（退出所有程序）。</span></p><p><code>Eject</code><span> 是弹出磁盘、存储卡或者虚拟磁盘镜像，如 .dmg 挂载后的磁盘。</span><code>Eject All</code><span>是全部弹出。</span></p><p><span>以上的操作，都是可以自定义关键字，另外有一些后面带 </span><code>Confirm</code><span>的，表示是一些危险的操作，可以勾选，在操作时会先弹窗提示操作的风险。</span></p><p><span>比较常用的推荐：</span><code>Lock</code><span> 锁屏，放心离开办公位，开会！如果是去厕所，则可以用 </span><code>Sleep Displays</code><span>，临时关闭屏幕；</span><code>Empty</code><span> 清空回收站。</span></p><h4 id='terminal终端）'><span>Terminal（终端）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae8d753644f~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Terminal.png"></p><p>&nbsp;</p><p><span>从 Alfred 在终端中运行命令和脚本，运行 shell 和终端命令，可以设置使用 </span><code>&gt;</code><span> 或其它更改为前缀符号来表示当前要执行命令，默认是打开 macOS 的</span><code>终端</code><span>软件，也可以更改为打开 </span><code>iTerm</code><span>，关于 iTerm 软件的使用和快捷键可以查看我之前的文章。</span></p><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b974649fcca~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Terminal-Shell.png"></p><p>&nbsp;</p><p><span>更改命令从 </span><code>iTerm</code><span> 打开的方式很简单，在 </span><code>Application</code><span> 选择为 </span><code>Custom</code><span>（自定义），然后在下方的文本框输入下面的苹果脚本代码就可以：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="vim" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="vim"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">on alfred_script(q) &nbsp;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  if application "iTerm2" is running or application "iTerm" is running then &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  run script " &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  on run {q} &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  tell application \":Applications:iTerm.app\" &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  activate &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  try &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  select first window &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  set onlywindow to false &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  on error &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  create window with default profile &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  select first window &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  set onlywindow to true &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  end try &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  tell current session of the first window &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  if onlywindow is false then &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  tell split vertically with default profile &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  write text q &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  end tell &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  end if &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  end tell &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  end tell &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  end run &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  " with parameters {q} &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  else &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  run script " &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  on run {q} &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  tell application \":Applications:iTerm.app\" &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  activate &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  try &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  select first window &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  on error &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  create window with default profile &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  select first window &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  end try &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  tell the first window &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  tell current session to write text q &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  end tell &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  end tell &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  end run &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  " with parameters {q} &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  end if &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">end alfred_script复制代码</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 946px;"></div><div class="CodeMirror-gutters" style="display: none; height: 946px;"></div></div></div></pre><h4 id='large-type放大镜风格）'><span>Large Type（放大镜风格）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae936e42fff~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Large-Type.png"></p><p>&nbsp;</p><p><span>一些执行结果的文本可能为了方便其它人？需要显示放大的效果，这里就不多说，感觉可以大家用的不多。例如执行 </span><code>2^10</code><span> 的结果，按 </span><code>comd + L</code><span> 快捷键就可以显示：</span></p><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9852cb67a7~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Large-Type-Calculator.png"></p><p>&nbsp;</p><h4 id='previews预览）'><span>Previews（预览）</span></h4><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae9bed491c6~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Features-Previews.png"></p><p>&nbsp;</p><p><span>熟悉 macOS 系统的同学都知道，macOS 有一个很方便的功能叫 </span><code>Quick Look</code><span>，就是在 Finder 中选中文件后按下 空白键（Space键），就能在不打开应用程序的情况下对文件进行快速预览，比如PDF、图片、视频、音频文件等等。Alfred 也集成了这一功能，不过此时的快捷键就不是Space了，而是 </span><code>⇧</code><span>键（</span><code>shift</code><span>键）。在 Alfred 的搜索结果列表中选中想要进行预览的文件，按下 shift键就能利用 Quick Look 进行预览了。有时候对某些文件或者某些路径下的文件进行预览，如果你不想对这些文件或者路径下的文件进行预览，可以在 </span><code>No Previews For</code><span> 和 </span><code>No Previews In</code><span>中设置。</span></p><h3 id='workflows工作流）'><span>Workflows（工作流）</span></h3><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c538785089~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Workflows.png"></p><p>&nbsp;</p><p><code>Workflows</code><span> 翻译中文为</span><strong><span>工作流</span></strong><span>，应该也比较好理解。网上上面介绍的功能，有一部分就是工作流，可以理解为Alfred自带的工作流。类似的，你是不是能想到一些可以定制化的操作流程呢？所以，当然也可以使用第三方的工作流，或者自己定义自己的工作流！</span></p><p><span>如果想要使用第三方的或者自定义的工作流，需要支付购买Alfred的</span><code>PowerPack</code><span>，Alfred的 PowerPack 是最值得购买的服务，没有之一。因为如果使用 Alfred 而没有 PowerPack 授权，那 Alfred 的强大的功能相当失去了左右臂。关于 PowerPack 细节我们在下一节内容在讨论，我们接着说 Workflows（工作流）。</span></p><p><span>Alfred 安装完「Powerpack」，就像车体安装了引擎，余下的事情就看我们如何 DIY，让引擎为我们提供无限动力。而引擎提供动力的燃料我们称其为 </span><code>Workflow</code><span>。官方对于 workflow 是这样描述的：</span></p><blockquote><p><span>With Alfred&#39;s Powerpack and workflows, you can extend Alfred and get things done in your own way. Replace repetitive tasks with workflows, and boost your productivity. Discover the abundance of workflows that integrate with your favourite Mac applications and web services, from social networks and note-taking apps to shopping and music services. We&#39;ve hand-picked a few of the best workflows here. You&#39;ll find hundreds more on </span><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org'><span>Packal</span></a><span>, a brilliant user-created repository for workflows, as well as on </span><a href='https://link.juejin.cn/?target=https%3A%2F%2Falfredforum.com'><span>Alfred Forum</span></a><span>, where you&#39;ll also find help in creating your own workflows. 借助Alfred的Powerpack和工作流程，您可以扩展Alfred并以自己的方式完成工作。用工作流替换重复的任务，并提高工作效率。 发现丰富的工作流程，这些工作流程与您喜欢的Mac应用程序和Web服务集成在一起，从社交网络和记笔记应用程序到购物和音乐服务。 我们在这里手工挑选了一些最佳的工作流程。在 </span><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org'><span>Packal</span></a><span>（一个出色的由用户创建上传的workflows的网站）上以及 </span><a href='https://link.juejin.cn/?target=https%3A%2F%2Falfredforum.com'><span>Alfred Forum</span></a><span>（您可以在其中找到有关创建自己的workflows的帮助）的更多信息。</span></p></blockquote><h4 id='认识-workflows-结构'><span>认识 Workflows 结构</span></h4><p><span>实现 WorkFlows 的四个基本对象：</span><code>trigger</code><span>、</span><code>keyword</code><span>、</span><code>action</code><span>、</span><code>output</code><span>。Alfred 通过将这四个基本对象合理链接「Connect」，便能实现各种高级功能。而在 Alfred 的 Workflow 配置界面中，大体上可以将其分为三栏，trigger 和 keyword 都会触发后续行为，所以归到「原因」类；Action 是「过程」类，也是 workflow 的核心，它负责处理用户需求；而 output 是「结果」类，负责把 action 的结果以一定的形式传递给用户，可以是直接屏显，也可以是另存为文件，也可以是返回到最后一个程序的输入框中。总之这三个类别「四个对象」各司其职，最终可以完成较为复杂的数据处理和用户需求。而这四个对象都可以用「线」链接，来形成直接或间接的条件结果关系。</span></p><p><span>本文主要是提高效率，所以关于如何自定义 Workflows（工作流）暂时不讲解，后面有需要在回来增加，原因 Workflow 创作的门槛比较低，类似iOS的 workflows，同时 workflow 支持的编程语言也非常多。可以参考现有的那些 Workflows（工作流），可以看到他们是怎么构建和流程的。另外，也可以参考我写过的 Workflows：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fihtcboy.com%2F2019%2F11%2F17%2F2019-11-17_%E4%B8%80%E4%B8%AAAlfred%E7%9A%84Workflow%E8%81%8A%E5%A4%A9%E5%86%85%E5%AE%B9%E5%BC%95%E7%94%A8%E6%B6%88%E6%81%AF%2F'><span>用 Alfred Workflow 实现聊天内容快速引用回复</span></a><span>，借鉴一些痛点，来实现自己的工作流！</span></p><p><span>下面会列出我现在使用的一些高效的 Workflows（工作流）插件，因为太多，所以就不全部都介绍，大家可以在这里看到我使用的全部 Alfred 相关的内容：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FiHTCboy%2FmacOSConfig%2Ftree%2Fmaster%2FAlfred'><span>macOSConfig/Alfred - iHTCboy</span></a></p><h4 id='高效-workflows-推荐'><span>高效 Workflows 推荐</span></h4><ul><li><p><span>最近使用的文件/应用等</span></p><p><span> </span></p><p><span>最近打开的文档：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034ba07881940a~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Workflows-Recent-Documents.png"></p></li></ul><p><span>最近打开的应用：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034ba027fdeb63~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Workflows-Recent-Apps.png"></p><p>&nbsp;</p><p><span>教程：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F47063'><span>妙用 Alfred 让你最近使用的文件触手可及</span></a><span> 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fmpco%2FAlfredWorkflow-Recent-Documents%2Freleases'><span>mpco/AlfredWorkflow-Recent-Documents</span></a></p><ul><li><p><strong><span>Finder路径快速打开切换到终端（iTerm）的路径</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org%2Fworkflow%2Fterminalfinder'><span>TerminalFinder | Packal</span></a></p></li><li><p><strong><span>快速复制当前文件夹路径或者文件名字</span></strong><span> 此插件来源：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fhzlzh%2FAlfred-Workflows'><span>hzlzh/Alfred-Workflows</span></a><span>，下面这个下载链接是博主改造后的，增加了文件名的复制，和使用最新的 Finder 图标。快捷复制当前Finder选择的文件(</span><code>cp</code><span>)的文件路径或文件名(</span><code>cpn</code><span>)。 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FiHTCboy%2FmacOSConfig%2Ftree%2Fmaster%2FAlfred'><span>macOSConfig/Alfred at master · iHTCboy/macOSConfig</span></a></p></li><li><p><strong><span>Xcode 开发者清理 DerivedData 数据</span></strong></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034ba01097b07f~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Workflows-Clear-Xcode-DerivedData.png"></p><p><span>下载：</span></p><p><span>ChopinChao/xcdd_workflow: a simple xcdd workflow for Alfred2</span></p><p>&nbsp;</p></li><li><p><strong><span>全局打开App（可自定义快捷键）</span></strong><span> 教程：</span><a href='https://link.juejin.cn/?target=http%3A%2F%2Fmac.bestswifter.com%2Fmac-gong-zuo-liu%2Fyou-xiu-workflow-tui-jian.html'><span>优秀 workflow 推荐 · GitBook</span></a><span> 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fbestswifter%2Fmy-workflow%2Fblob%2Fmaster%2FAppLauncher.alfredworkflow'><span>my-workflow/AppLauncher.alfredworkflow · bestswifter/my-workflow</span></a></p></li><li><p><strong><span>Linux Command</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fjaywcjlove%2Flinux-command'><span>jaywcjlove/linux-command: Linux命令大全搜索工具，内容包含Linux命令手册、详解、学习、搜集。https://git.io/linux</span></a></p></li><li><p><strong><span>Encode / Decode</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fwillfarrell%2Falfred-encode-decode-workflow'><span>willfarrell/alfred-encode-decode-workflow: Encoding and decoding a sting into multiple variations.</span></a></p></li><li><p><strong><span>快速调整图片尺寸</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org%2Fworkflow%2Fresize-image'><span>Resize Image | Packal</span></a></p></li><li><p><strong><span>配合 TinyPNG 快速压缩图片</span></strong><span> 教程：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fevolly.one%2F2019%2F04%2F12%2F77-alfred-gallery%2F'><span>alfred 使用 workflows 快速进行图片压缩</span></a><span> 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FBlackwinMin%2Falfred-gallery%2Fblob%2Fmaster%2Fimage%20Compressor%2Fimage%20Compressor.alfredworkflow'><span>alfred-gallery/image Compressor.alfredworkflow - BlackwinMin/alfred-gallery</span></a></p></li><li><p><strong><span>取色值工具</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org%2Fworkflow%2Fcolors'><span>Colors | Packal</span></a></p></li><li><p><strong><span>快速在当前 Finder 窗口创建新文件</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org%2Fworkflow%2Fnewfile'><span>NewFile | Packal</span></a></p></li><li><p><strong><span>Chrome History</span></strong><span> Chrome History 以及 Chrome Bookmarks 可以用于搜索 Chrome 的收藏书签和历史记录（支持模糊搜索）。 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Ftupton%2Falfred-chrome-history'><span>tupton/alfred-chrome-history: Search your Google Chrome history in Alfred</span></a></p></li><li><p><strong><span>从谷歌浏览器打开URL</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.packal.org%2Fworkflow%2Falfred-chrome'><span>Alfred Chrome | Packal</span></a></p></li><li><p><strong><span>有道翻译</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fkaiye%2Fworkflows-youdao%2F'><span>kaiye/workflows-youdao: 学英语和写工具</span></a></p></li><li><p><strong><span>谷歌翻译</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fxfslove%2Falfred-google-translate'><span>xfslove/alfred-google-translate: Alfred 3 workflow - translate with google api💵🚫</span></a></p></li><li><p><strong><span>聊天内容快速引用回复</span></strong><span> 教程：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fihtcboy.com%2F2019%2F11%2F17%2F2019-11-17_%E4%B8%80%E4%B8%AAAlfred%E7%9A%84Workflow%E8%81%8A%E5%A4%A9%E5%86%85%E5%AE%B9%E5%BC%95%E7%94%A8%E6%B6%88%E6%81%AF%2F'><span>用 Alfred Workflow 实现聊天内容快速引用回复</span></a><span> 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FiHTCboy%2FmacOSConfig%2Fblob%2Fmaster%2FAlfred%2FReply%20Message%20v1.0.alfredworkflow'><span>macOSConfig/Reply Message v1.0.alfredworkflow at master · iHTCboy/macOSConfig</span></a></p></li><li><p><strong><span>Evernote</span></strong><span> 支持印象笔记的全局搜索。这功能很好很强大，能够帮助自己快速定位到具体的印象笔记的条目之上。 下载：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredforum.com%2Ftopic%2F840-evernote-workflow-9-beta-4-alfred-4%2F'><span>Evernote Workflow 9 beta 4 (Alfred 4) - Share your Workflows - Alfred App Community Forum</span></a></p></li><li><p><strong><span>货币转换</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org%2Fworkflow%2Fcurrency-exchange'><span>Currency Exchange | Packal</span></a></p></li><li><p><strong><span>Dash</span></strong><span> 代码 Doc 文档全局快速搜索。 教程：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredapp.com%2Fblog%2Fproductivity%2Fdash-quicker-api-documentation-search%2F'><span>Dash: Quicker API Documentation Browsing - Alfred Blog</span></a></p></li><li><p><strong><span>世界主要城市时区查询</span></strong><span> 下载：</span><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org%2Fworkflow%2Ftimezones'><span>TimeZones | Packal</span></a></p></li></ul><p><span>这些工作流还有很多，大家可以发挥自己的需求自定制。另外，还有非常多没有推荐的，可以参考文末的 workflows 链接大全。</span></p><h4 id='更多-workflows-资源'><span>更多 Workflows 资源</span></h4><ul><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredapp.com%2Fworkflows%2F'><span>Workflows 官方站点</span></a><span> 官方推荐的「装机必备」系列 Workflows。</span></li><li><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org'><span>Packal</span></a><span> 官方推荐的 Workflows 分享站点。</span></li><li><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.alfredworkflow.com'><span>Workflows 中文站</span></a><span> 国人收藏的超多 Workflows.</span></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fzenorocha%2Falfred-workflows'><span>zenorocha/alfred-workflows: A collection of Alfred 3 and 4 workflows that will rock your world</span></a><span> 这个 Github 上维护的 workflows 很赞！汇总了开发用的 workflows。</span></li><li><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.alfredforum.com'><span>Alfred 论坛</span></a><span> 个人开发者开发的解决比较特别的问题的插件居多。</span></li></ul><h3 id='appearance外观）'><span>Appearance（外观）</span></h3><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c521d7f448~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Appearance.png"></p><p>&nbsp;</p><p><span>Alfred 默认的样式是白色背景不太好看，当然也提供了几个外观样式供大家选择。另外也可以自定义外观，比如上图中博主的主题，采用了玻璃背景透明，白色输入文字，蓝色选择文字，白灰色默认文字，淡黄色快捷键文字。喜欢折腾 DIY 样式的小伙伴可以在 Appearance 面板中修改或点击 </span><code>+</code><span> 增加 Alfred 交互面板的样式。另外，也可以下载别人的外观样式，比如在网站 </span><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org%2F'><span>Packal</span></a><span>。</span></p><p><span>下载博主此主题外观链接：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2FiHTCboy%2FmacOSConfig%2Ftree%2Fmaster%2FAlfred%2FAppearance'><span>iHTCboy-Theme.alfredappearance</span></a></p><h3 id='remote远程）'><span>Remote（远程）</span></h3><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c5a9e7255e~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Remote.png"></p><p>&nbsp;</p><p><span>Alfred 同时也支持使用 </span><code>移动端版本的 Alfred</code><span> 来控制桌面端，下载链接 </span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fapps.apple.com%2Fapp%2Falfred-remote%2Fid927944141%3Fign-mpt%3Duo%3D4'><span>Alfred Remote on the App Store for iOS</span></a><span>。</span></p><p><code>Alfred Remote for iOS</code><span> 最新版本 1.1 是 2015年9月1日发布的，收费 30 人民币。如今5年不更新了，所以暂时不指望它带来什么高效，建议大家暂时也别下载吧。如果需要了解更多，可以参考这个文章的教程：</span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F28137'><span>OS X 效率启动器 Alfred 的最佳伴侣：Alfred Remote for iOS 上手详解 - 少数派</span></a><span>。</span></p><h3 id='advanced高级）'><span>Advanced（高级）</span></h3><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c6099c5645~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Advanced.png"></p><p>&nbsp;</p><ul><li><code>Files / Apps</code><span> 配置中有涉及 </span><code>Clear Application Cache</code><span>(缓存清理)、</span><code>Rebuild macOS Metadata</code><span>(元数据重建) 等高级配置功能，一般不需要配置。</span></li><li><code>Force Keyboard</code><span> 就是 Alfred 输入框中默认的输入法。</span></li><li><code>History</code></li><li><code>Action Modifiler</code><span> 搜索结果项右边的快捷键，默认是 </span><code>cmd + 数字</code><span>（cmd为苹果键 </span><code>⌘</code><span>），可以更改为 </span><code>^ + 数字</code><span>（^ 为 </span><code>ctrl</code><span> 键）。</span></li></ul><p><span>这里还有一些默认的动作快捷键，比如在 Alfred 输入</span><code>swift</code><span>后，通过下面三个快捷键可以快捷执行操作：</span></p><ul><li><code>ctrl + ↩︎</code><span>：在浏览器默认的搜索引擎来查询</span><code>swift</code><span>关键词。</span></li><li><code>alt + ↩︎</code><span>：打开 </span><code>Finder</code><span>（访达）的搜索框查询</span><code>swift</code><span>。</span></li><li><code>cmd + ↩︎</code><span>：打开 Alfred 搜索结果项所在的文件目录（如果是本地文件的话）。</span></li></ul><p><span>以上快捷键可以更改不能的 Action（动作），大家可以自行调整。</span></p><ul><li><code>Learning</code></li><li><code>Notifications</code></li><li><code>Network</code></li><li><code>Selection Hotkeys</code></li><li><code>Syncing</code><span>（同步） 可以设置 Alfred 所有的配置内容，包括 Workflows 工作流 和 Appearance 主题，都可以备份和同步。作者建议用 Dropbox 网盘同步，因为一些大家懂的原因，这里我建议使用 </span><code>iCloud Drive</code><span> 这样更加好！设置方式很简单，点击 </span><code>Set preference folder</code><span> 弹窗中，找到 iCloud 分类下的 iCloud Drive 目录，在目录下新建一个 </span><code>Alfred</code><span> 文件夹来存放 Alfred 所有配置的同步文件（Alfred.alfredpreferences），这样，以后如果你有多台 macOS 系统，登陆同一个 </span><code>Apple id</code><span> 账号就可以无缝的同步在所有的设备上面，不需要关注所有内容。点击 Alfred 的 </span><code>Reveal in Finder</code><span> 可以打开你设置的同步文件所在的目录。</span></li></ul><p><span>当然，目前每个 macOS 下的 Alfred 的 </span><code>Usage</code><span>（使用情况）不会同步共享，另外，如果你电脑的硬盘空间不足（少于20GB），</span><code>iCloud Drive</code><span>的内容在本地系统中经常被清空，导致需要在远端重新下载 Alfred 的同步文件（Alfred.alfredpreferences），只能说买电脑要空间大一点吧！</span></p><h3 id='powerpack动力组）'><span>Powerpack（动力组）</span></h3><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c64a47b29c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Powerpack.png"></p><p>&nbsp;</p><p><code>Workflows</code><span>（工作流）扩展功能、文件导航、剪贴板历史、通讯录、iTunes Mini播放器等，都是需要购买此 </span><code>Powerpack</code><span>（动力组） 升级包的，否则免费试用版本是无法使用工作流。博主个人推荐有经济能力的人可以购买正版的授权码，因为软件的价值，本系列的第一篇文章提过。</span></p><p><span>目前只支持 </span><code>VISA</code><span>、</span><code>Mastercard</code><span>（万事达卡）、</span><code>AMEX</code><span>（American Express，美国运通）的信用卡，或者 </span><code>Paypal</code><span> 支付。所以对于中国区来说还是不太友好！目前</span><code>2020年</code><span>的V4版本的单个授权码是 </span><code>£25</code><span> 英磅，大约 </span><code>￥225.26</code><span>人民币。而超级支持者可以支付 </span><code>£45</code><span> 英磅，大约 </span><code>￥405.10</code><span>人民币，终身免费升级。注意这里是单个用户，就是一个激活码只能用于一台macOS。具体的购买流程这里省略了，有条件的同学建议按需选择购买。</span></p><p><span>关于 Alfred 那些功能需要购买 Powerpack 后才能使用的，参考官网： </span><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredapp.com%2Fpowerpack%2F'><span>Alfred Powerpack - Take Control of Your Mac and macOS</span></a></p><h3 id='usage使用情况）'><span>Usage（使用情况）</span></h3><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fb9dd5934150~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Usage.png"></p><p>&nbsp;</p><p><span>Alfred 会统计使用的情况。从上图可以看到折线图显示的是28天的使用情况（当然因为编写文章时，因春节放假，所以有一个波谷区。），从2019年9月2号起，使用 Alfred 达到 6321 次，平均每天使用 39 次。同时也可以看到 Clipboard 和 Hotkeys 使用最频繁。为了说明 Alfred 的潜在价值，我们不妨做一个简单的计算，假设每天我都能够保持现况以每日平均唤醒 39 次为基数。假如每次 Alfred 的操作，可以为我节省 5s 的时间（往往有些复杂的操作会大于 5s，比如去寻找一个藏得很深的文件，或者一个记不全的文件或者一个不常用的软件，或者打开一个常用的书签等等)，那么 1 年下来，竟然能够节省 0.82 天。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">39 * 5 * 365 / 3600 / 24 = 0.823784722 天</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><span>换言之，Alfred 让你的生命延长了 0.82 天！那如果是 5 年，就是 4 天啦！这里是以 39 次为基数，从本文上面的教程可以看出，一个复杂的操作节省可以有几分钟，如果重复一百次就远不止，所以，节省的时间是非常可观的！总之，大家经常有大量重复的工作流或操作步骤，这就更加可观，所以马上使用起来吧！</span></p><h3 id='help帮助）'><span>Help（帮助）</span></h3><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c651926c92~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Help.png"></p><p>&nbsp;</p><p><span>注意页面有一个提示 </span><code>Try Searching the Preferences</code><span>，就是可以搜索软件的所有的配置项目，这个搜索功能非常有用的，因为 Alfred 有非常多的配置项，所以如果你不想一步一步点击打开，搜索永远是最快的，Alfred 中搜索 Alfred，作者还是很用心！另外在 Alfred 输入框中使用 </span><code>?关键词</code><span> 也可以搜索 Alfred 的偏好设置。</span></p><p><span>其它的就是帮助和反馈页面，点击会跳转到网页中，这里就不展开了。</span></p><h3 id='update更新）'><span>Update（更新）</span></h3><p>&nbsp;</p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c67f8c2bbb~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="Alfred-Update.png"></p><p>&nbsp;</p><p><span>这个更新页面也很重要，让我们了解到最新版本到底做了什么调整或新的功能。我发现很多应用没有做好 ChangeLog，至少说明软件做的不够用心，用户关心的不是你有多牛逼，自己使用自己体验，更新说明文档是一项软件开发中非常重要的一部分。这里就不细说了，有时候在其它文章在一起聊。</span></p><h3 id='其它问题汇总'><span>其它问题汇总</span></h3><p><span>在这里汇总一下，在使用 Alfred 时可能遇到的一些问题，这部分在后续会持续更新。其中，首次安装或启动时，默认会显示这样的权限弹窗：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b99fc95dde1~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="macOS-Permissions-for-Alfred.png"></p><p>&nbsp;</p><p><span>说明权限是 Alfred 最重要和基础的必要条件，下面我们就来看看有那些必要的系统权限。</span></p><h4 id='macos-系统权限问题'><span>macOS 系统权限问题</span></h4><p><span>在 macOS 10.15 后，苹果收缩了软件访问系统的各种权限，比如说硬盘、文件夹、屏幕录制、输入监视、自动化等。我们来具体说说对 Alfred 的影响：</span></p><ul><li><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">辅助功能</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><span>：允许 App 控制你的电脑。</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b99a57f4802~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="macOS-Preferences-UniversalAccess.png"></p></li></ul><p><span>在 Alfred 中用于控制电脑的时如果没有权限时：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b99a28b0438~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="macOS-Preferences-UniversalAccess-Alfred.png"></p><p>&nbsp;</p><ul><li><p><code>输入监视</code><span>：即使正在使用其它App，也允许下面的App监视来自键盘的输入。 在 Alfred 中应用说无处不键盘，全部都使用到键盘，其中强烈依赖的有 Snippets，另外 Workflows 也用于监听键盘。</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9aa2b738ba~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="macOS-Preferences-Input-Monitoring.png"></p><p>&nbsp;</p></li><li><p><code>完全磁盘访问权限</code><span>：允许 App 访问诸如“邮件”、“信息”、Safari 浏览器、“家庭”、时间机器备份，以及此 Mac 上所有用户的部分管理设置等数据。 在 Alfred 中很多数据都是依赖于系统的磁盘目录。</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9b44800e52~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="macOS-Preferences-Full-Access.png"></p><p>&nbsp;</p></li><li><p><code>文件和文件夹</code><span>：允许App访问文件和文件夹</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9b49b0e0e0~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="macOS-Preferences-Folder-Access.png"></p><p>&nbsp;</p></li></ul><p><span>在 Alfred 中如果需要打开或跳转到相应目录都是需要文件目录权限。需要注意的时，当然勾选了上面的</span><code>完全磁盘访问权限</code><span> 后，此项默认变成默认勾选，变成无法操作的状态，这个很好理解。如果首次安装时 Alfred后，会出现访问桌面时类型的文件夹权限的提示：</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9b899b3b78~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="macOS-Preferences-Folder-Access-Desktop.png"></p><p>&nbsp;</p><ul><li><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">自动化</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 22px;"></div></div></div></pre><p><span>：允许 App 控制其他 App。这将允许 App 访问这些受控制 App 中的文稿和数据，并在其中执行操作。</span></p><p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9c5943371c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp" referrerpolicy="no-referrer" alt="macOS-Preferences-Automation.png"></p></li></ul><p><span>这个 Alfred 中用到最多的是访问 Finder（访达）App。</span></p><p><span>综上，我们主要是想讲解一下系统的权限和 Alfred 使用到的权限，这样更好的了解这些权限，以便你来决定那些敏感或数据可以通过这些设置来关闭或启动，</span><code>在高效和隐私之间做一个平衡点</code><span>。</span></p><h4 id='书签功能搜索无结果'><span>书签功能搜索无结果</span></h4><p><span>如果你刚升级到 macOS 10.15 后，可能会出现搜索浏览器的书签没有搜索到的问题。这是因为系统权限原因，需要在系统偏好设置中的 </span><code>安全性与隐私</code><span>-&gt; </span><code>隐私</code><span> -&gt;</span><code>完全磁盘访问权限</code><span> 勾选 </span><code>Alfred 4.app</code><span>。然后在 Alfred 中输入 </span><code>Reload Alfred Cache</code><span> 后回车键，Alfred 重新加载缓存就可以搜索书签。如果不给权限，那么在 </span><code>macOS 10.15</code><span> 下无法使用书签搜索。</span></p><h2 id='总结'><span>总结</span></h2><p><span>综上，我们已经把 Alfred 的所有功能都讲解完！大家是不是有一个全面的了解了呢！基于最新的 Alfred v4.0 版本！没有想到2年前立下的flag，2年后才完成，所以</span><code>希望这篇文章也2年内都能正确和高效的给大家指导作用！</code><span>（按 Alfred 更新的情况，改版不会变化很大啊~）又是万字文章，可能不是所有人都能有耐心看完，但希望你是看完并有所收获！Alfred 是 macOS 系统上</span><code>程序员必备的效率神器</code><span>！希望大家看到本文章</span><code>为时未晚</code><span>！都能更好地使用 Alfred 来提高日常的生活和工作效率啊！</span></p><p><span>由于篇幅长度的限制，部分内容的扩展和深度可以阅读下面的参考文章。建议大家看完本文后，都操作一遍，而没有使用过的同学，更加应该开始使用 Alfred！希望大家都开始自己的 Alfred 之旅！提高自己日常工作生活的效率，省时省力，</span><code>让效率为程序员所用！</code></p><h2 id='参考'><span>参考</span></h2><ul><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredapp.com%2F'><span>Alfred - Productivity App for macOS</span></a></li><li><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.packal.org%2F'><span>Packal - Alfred Workflows and Themes</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Falfredforum.com'><span>Alfred Forum</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.cnblogs.com%2Fkaiye%2Fp%2F5115005.html'><span>Mac 词典工具推荐：Youdao Alfred Workflow（可同步单词本） - 猫哥_kaiye - 博客园</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fihtcboy.com%2F2019%2F11%2F17%2F2019-11-17_%E4%B8%80%E4%B8%AAAlfred%E7%9A%84Workflow%E8%81%8A%E5%A4%A9%E5%86%85%E5%AE%B9%E5%BC%95%E7%94%A8%E6%B6%88%E6%81%AF%2F'><span>用 Alfred Workflow 实现聊天内容快速引用回复 | iHTCboy&#39;s blog</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.ezloo.com%2F2019%2F04%2Falfred.html'><span>Mac OS必备工具：Alfred - 曙光博客</span></a></li><li><a href='https://link.juejin.cn/?target=http%3A%2F%2Fblog.surfacew.com%2Ftool%2F2016%2F08%2F03%2FAlfred%2F'><span>Alfred 效率神器全攻略</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F28137'><span>OS X 效率启动器 Alfred 的最佳伴侣：Alfred Remote for iOS 上手详解 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsupport.apple.com%2Fzh-cn%2FHT209460'><span>使用通用剪贴板在 Apple 设备之间进行拷贝和粘贴 - Apple 支持</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsupport.apple.com%2Fzh-cn%2Fguide%2Fiphone%2Fiph220ea8dca%2Fios'><span>在 iPhone 上使用通用剪贴板 - Apple 支持</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsupport.apple.com%2Fzh-cn%2Fguide%2Fmac-help%2Fmchl70368996%2Fmac'><span>从 Mac 上拷贝并在设备间粘贴 - Apple 支持</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fstidio%2FAlfred-Workflow'><span>stidio/Alfred-Workflow: Alfred Workflow教程与实例; CDto: 打开Terminal并转到任意文件夹或文件所在目录; Effective IP:查询本机和外网IP地址，解析任意URL和域名的IP地址，以及进行归属地和运营商查询; UpdateAllNPM: 更新所有Node.js全局模块; UpdateAllPIP: 更新所有Python模块</span></a></li><li><a href='https://link.juejin.cn/?target=http%3A%2F%2Fwww.lifepro.site%2Fblog%2Fblogdetail%2F84%2F'><span>玩转Mac Alfred - LifePro</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.kancloud.cn%2Fchopin%2Fmac_program%2F882465'><span>2.2. Mac 第一神软 Alfred · Mac 高效实用指南 · 看云</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F43973'><span>总是在 Mac 「装机必备」看到的搜索利器 Alfred，究竟是怎么用的？| 新手问号 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F55098'><span>一切为了让效率更进一步，Alfred 4.0 更新详解 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F57648'><span>Alfred Workflow 从使用到创造 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F46034'><span>真正提升你的输入效率，从用好 Alfred 的这个功能开始：Alfred Snippets - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F47063'><span>妙用 Alfred 让你最近使用的文件触手可及 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F51174'><span>看起来很复杂的 DEVONthink 搜索，用 Alfred Workflow 就能轻松搞定 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F47710'><span>从 0 到 1 写一个 Alfred Workflow - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F48386'><span>小白实践《从 0 到 1 写一个 Alfred Workflow》遇到的问题及解决方案 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F33460'><span>Windows 上的 Alfred，免费开源的效率启动器：Wox - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F32979'><span>从零开始学习 Alfred：基础功能及设置 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F42859'><span>使用 AppleScript、Tags 和 Alfred 重新打造文件管理和搜索系统 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F35377'><span>用 Ai Search 和 Drafts 实现 Alfred 的搜索体验 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fsspai.com%2Fpost%2F32680'><span>5 款提高文件处理效率的 Alfred 扩展 - 少数派</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fpost.smzdm.com%2Fp%2F677989%2F'><span>Alfred，叫你一声Mac上的效率神器你敢答应吗？</span><em><span>值客原创</span></em><span>什么值得买</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.jianshu.com%2Fp%2F0e78168da7ab'><span>Mac效率神器Alfred以及常用Workflow - 简书</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F33753656'><span>Mac效率神器Alfred系列教程---Snippets文字扩展 - 知乎</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F19986749'><span>用Alfred大幅提升操作效率 - workflow - 知乎</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F33515314'><span>Mac效率神器Alfred系列教程---剪切板历史记录 - 知乎</span></a></li><li><strong><span>Workflows推荐</span></strong></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fzenorocha%2Falfred-workflows'><span>zenorocha/alfred-workflows: A collection of Alfred 3 and 4 workflows that will rock your world</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fwhyliam%2Fwhyliam.workflows.youdao'><span>whyliam/whyliam.workflows.youdao: 使用有道翻译你想知道的单词和语句</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fkaiye%2Fworkflows-youdao%2F'><span>kaiye/workflows-youdao: 学英语和写工具</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fwww.alfredforum.com%2Fforum%2F3-share-your-workflows%2F'><span>Share your Workflows - Alfred App Community Forum</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fjaywcjlove%2Flinux-command'><span>jaywcjlove/linux-command: Linux命令大全搜索工具，内容包含Linux命令手册、详解、学习、搜集。https://git.io/linux</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fblog.imcompany.cn%2Fpost%2Fna-xie-ti-gao-xiao-lu-de-alfred-workflow%2F'><span>那些提高效率的Alfred Workflow - I&#39;m company</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fhzlzh%2FAlfred-Workflows'><span>hzlzh/Alfred-Workflows: Make your Alfred more powerful. (include Workflows, Extensions and Themes)</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fwillfarrell%2Falfred-workflows'><span>willfarrell/alfred-workflows: Alfred Workflows for Developers</span></a></li><li><a href='https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fhzlzh%2FAlfredWorkflow.com'><span>hzlzh/AlfredWorkflow.com: A public Collection of Alfred Workflows.</span></a></li></ul><p>&nbsp;</p><ul><li><span>如有侵权，联系必删！</span></li><li><span>如有不正确的地方，欢迎指导！</span></li><li><span>如有疑问，欢迎在评论区一起讨论！</span></li></ul><p>&nbsp;</p><p><a href='https://juejin.cn/post/6844904062484217863' target='_blank' class='url'>https://juejin.cn/post/6844904062484217863</a></p><p>&nbsp;</p></div></div>
+</body>
+</html>
