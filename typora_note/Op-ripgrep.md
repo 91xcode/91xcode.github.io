@@ -49,7 +49,7 @@ ARGS:
 
 >   在终端上，rg 的搜索结果是显示颜色的，下文中的示例是从字符终端工具下复制下来的文本，并不是真正的 rg 真正对应的颜色，特此说明。
 
-<iframe class="absolute top-0 w-full h-full" frameborder="0" src="https://www.ixigua.com/iframe/6970411981119423010?autoplay=0" referrerpolicy="unsafe-url" allowfullscreen="" style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: initial; --tw-border-spacing-x:0; --tw-border-spacing-y:0; --tw-translate-x:0; --tw-translate-y:0; --tw-rotate:0; --tw-skew-x:0; --tw-skew-y:0; --tw-scale-x:1; --tw-scale-y:1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness:proximity; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width:0px; --tw-ring-offset-color:#fff; --tw-ring-color:rgb(59 130 246 / 0.5); --tw-ring-offset-shadow:0 0 #0000; --tw-ring-shadow:0 0 #0000; --tw-shadow:0 0 #0000; --tw-shadow-colored:0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; display: block; vertical-align: middle; position: absolute; top: 0px; height: 368.477px; width: 655.078px;"></iframe>
+
 
 ### 大小写[#](https://youwu.today/skill/tools/ripgrep-grep-alternative/#大小写)
 
