@@ -491,4 +491,4 @@ https://unpkg.com/
 
 必须软件
 
-![image-20230303162543443](/Users/sai/Library/Application Support/typora-user-images/image-20230303162543443.png)
+![image-20230303162543443](https://cdn.jsdelivr.net/gh/91xcode/static@master/pic/image-20230303162543443.png)
