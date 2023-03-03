@@ -70,6 +70,7 @@ brew install --cask pycharm
 brew install --cask iina
 brew install --cask vlc
 brew install --cask snipaste
+brew install --cask postman
 brew install zsh zsh-completions
 brew install docker
 brew install nginx
