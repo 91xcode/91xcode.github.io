@@ -72,13 +72,14 @@ brew install --cask vlc
 brew install --cask snipaste
 brew install --cask postman
 brew install zsh zsh-completions
-brew install docker
 brew install nginx
 brew install archey
 brew install htop
 brew install redis
 brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
 brew install ripgrep-bin
+brew install colima
+brew install docker docker-compose 
 
 
 brew cleanup
