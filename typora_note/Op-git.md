@@ -194,6 +194,22 @@ git commit --amend
 
 
 
+### Git 查看某个文件指定committed的全部内容
+
+```
+
+得到commitid
+git log 
+
+查看某个文件指定committed的全部内容
+git show commitid:filenamepath
+
+查看某个文件指定committed的修改内容
+git show commitid filenamepath
+```
+
+
+
 ### git add后回退方法
 
 ```

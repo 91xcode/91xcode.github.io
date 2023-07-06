@@ -247,6 +247,13 @@ brew info go
   添加到github ssh key
   ssh -T git@github.com
 
+
+如果是最新系统版本的Mac 
+macOS Ventura 13.4
+需要在~/.ssh/config 中添加
+Host *
+HostKeyAlgorithms +ssh-rsa
+PubkeyAcceptedKeyTypes +ssh-rsa
 ```
 
 ### 16.Mac升级10.15 Catalina，根目录无权限 完美解决办法
