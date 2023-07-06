@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>导航</title>
+    <link rel="shortcut icon" href="https://testingcf.jsdelivr.net/gh/91xcode/static@master/91xcode.github.io/best.ico" type="image/x-icon" />
+    <!-- Bootstrap core CSS -->
+    <link href="https://testingcf.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://testingcf.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/offcanvas.css" rel="stylesheet">
+    <link href="https://testingcf.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://testingcf.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/css/site.min.css?v5">
+    <script type="text/javascript" src="https://testingcf.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/jquery-2.1.4.js"></script>
+    <style>
+        table tr td a {
+            color: #6F5499;
+        }
+        .text-white {
+            color: #fff;
+        }
+        .octicon {
+            display: inline-block;
+            fill: currentColor;
+            vertical-align: text-top;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://91xcode.github.io">导航</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://github.com/91xcode/91xcode.github.io" target="_blank"><svg height="20" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                            </svg></a></li>
+                    <li><a target="_blank" href="about/index.html">关于</a></li>
+                    <li><a target="_blank" href="integrated/index.html">聚合导航</a></li>
+                </ul>
+            </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <!-- <div class="col-xs-12 col-sm-9"> -->
+            <div class="col-xs-12 col-sm-12">
+                <div class=""></div>
+                <div class="row" id="row-id">
+                </div>
+                <!--/row-->
+            </div>
+        </div>
+        <!--/row-->
+        <hr>
+        <footer>
+            <p style="text-align: center">Copyright &copy; 2021-2030 导航</p>
+        </footer>
+    </div>
+    <!--/.container-->
+    <!-- Bootstrap core JavaScript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="https://testingcf.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://testingcf.jsdelivr.net/gh/91xcode/static@master/bootstrap-3.3.4-dist/js/offcanvas.js"></script>
+    <script type="text/javascript">
+    var arrLi = {
+
+
+        "Typora": [
+            { "tag_name": "Mysql日志", "tag_link": "typora_note/Mysql日志" },
+            { "tag_name": "Mac", "tag_link": "typora_note/mac" },
+            { "tag_name": "Example.md", "tag_link": "typora_note/Example" },
+            { "tag_name": "国债逆回购", "tag_link": "typora_note/Life-国债逆回购" },
+            { "tag_name": "支付宝基金知识", "tag_link": "typora_note/Life-支付宝里面的基金知识" },
+            { "tag_name": "社保小常识", "tag_link": "typora_note/Life-社保小常识" },
+            { "tag_name": "医保政策", "tag_link": "typora_note/Life-医保政策" },
+            //{ "tag_name": "最后一个Typora免费版0.11.18", "tag_link": "typora_note/Life-最后一个Typora免费版0.11.18.html" },
+            { "tag_name": "step", "tag_link": "typora_note/Life-step" },
+            { "tag_name": "brew安装指定版本软件", "tag_link": "typora_note/Life-brew安装指定版本软件" },
+            { "tag_name": "AppleScript", "tag_link": "typora_note/Op-AppleScript" },
+            { "tag_name": "RabbitMQ工作模式md", "tag_link": "typora_note/Op-RabbitMQ工作模式" },
+            { "tag_name": "Git", "tag_link": "typora_note/Op-git" },
+            { "tag_name": "Shell-100例", "tag_link": "typora_note/Op-shell-100例" },
+            { "tag_name": "端口检查", "tag_link": "typora_note/Op-端口检查" },
+            { "tag_name": "检查域名解析", "tag_link": "typora_note/Op-检查域名解析" },
+            { "tag_name": "编写健壮shell脚本", "tag_link": "typora_note/Op-编写安全健壮的shell脚本" },
+            { "tag_name": "两台PC传输文件", "tag_link": "typora_note/Op-两台计算机直接传输文件" },
+            { "tag_name": "typora-mac版破解", "tag_link": "typora_note/Life-typora-mac版破解" },
+            { "tag_name": "alias", "tag_link": "typora_note/Op-alias" },
+            { "tag_name": "Mac软件清单-M1芯片", "tag_link": "typora_note/Life-Mac软件清单-M1芯片" },
+            { "tag_name": "Shell处理JSON", "tag_link": "typora_note/Op-Shell脚本来处理JSON" },
+            { "tag_name": "路由器", "tag_link": "typora_note/Life-路由器" },
+            { "tag_name": "Bash常用备注", "tag_link": "typora_note/Op-Bash常用备注.html" },
+            { "tag_name": "git-commit提交模板", "tag_link": "typora_note/Op-git-commit提交模板" },
+            { "tag_name": "PHPStorm快捷键", "tag_link": "typora_note/Op-PHPStorm快捷键" },
+            { "tag_name": "MacOS-Command-Line", "tag_link": "typora_note/Op-MacOS-Command-Line" },
+            { "tag_name": "ripgrep", "tag_link": "typora_note/Op-ripgrep" },
+            { "tag_name": "Tampermonkey", "tag_link": "typora_note/Op-Tampermonkey" },
+            { "tag_name": "Alfred", "tag_link": "typora_note/Op-Alfred" },
+            { "tag_name": "Go测试", "tag_link": "typora_note/Op-go测试" }
+        ],
+
+         "生活工具": [
+            { "tag_name": "贷款计算", "tag_link": "loan-rate/index.html" },
+            { "tag_name": "天气", "tag_link": "weather/index.html" },
+            { "tag_name": "日历", "tag_link": "calendar/index.html" },
+            { "tag_name": "网络电视", "tag_link": "iptv/index.html" },
+            { "tag_name": "m3u8下载", "tag_link": "m3u8-downloader/index.html" },
+            { "tag_name": "m3u8播放", "tag_link": "m3u8-play/index.html" },
+            { "tag_name": "视频解析", "tag_link": "vip-video-parse/index.html" },
+            { "tag_name": "发票小助手", "tag_link": "notes/fapiao.html" },
+            { "tag_name": "极路由", "tag_link": "http://192.168.199.1/cgi-bin/turbo/;stok=610a4644ed06271eb15a453a7993acfc/admin_web/system" },
+            { "tag_name": "wifi卡片", "tag_link": "wifi/index.html" },
+            { "tag_name": "网抑云启动", "tag_link": "163-music/index.html" },
+            { "tag_name": "爱康国宾", "tag_link": "http://www.ikang.com/" },
+            { "tag_name": "思维导图", "tag_link": "naotu/index.html" },
+            { "tag_name": "医保医院", "tag_link": "http://ybj.beijing.gov.cn/2020_zwfw/2020_bmcx/202002/t20200217_1644108.html" },
+            { "tag_name": "生活常识", "tag_link": "notes/life.html" },
+            { "tag_name": "成语接龙", "tag_link": "notes/ChengYuJieLong.html" },
+            { "tag_name": "北京社保01", "tag_link": "http://rsj.beijing.gov.cn/csibiz/" },
+            { "tag_name": "北京社保02", "tag_link": "http://fuwu.rsj.beijing.gov.cn/bjdkhy/sbqycx/sbRights/sbRightsHome" },
+            { "tag_name": "北京公积金", "tag_link": "http://gjj.beijing.gov.cn/" },
+            { "tag_name": "北京摇号", "tag_link": "https://xkczb.jtw.beijing.gov.cn/" },
+            { "tag_name": "北京地铁", "tag_link": "https://www.bjsubway.com/" },
+            { "tag_name": "北京一卡通", "tag_link": "http://www.bmac.com.cn/" },
+            { "tag_name": "baby-news", "tag_link": "http://roll.baby.sina.com.cn/babynewslist/hyq/default/default/index_2.shtml" },
+            { "tag_name": "我的音乐", "tag_link": "music/index.html" },
+            { "tag_name": "北京景点预约", "tag_link": "typora_note/Life-北京需要预约景点" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" }
+
+        ],
+
+
+        "DevTools": [
+            { "tag_name": "Crontab", "tag_link": "crontab/index.html" },
+            { "tag_name": "Unixtime", "tag_link": "timestamp/index.html" },
+            { "tag_name": "Json-format", "tag_link": "json-format/index.html" },
+            { "tag_name": "Json_to_go", "tag_link": "notes/json_to_go.html" },
+            { "tag_name": "Hash计算", "tag_link": "notes/hash.html" },
+            { "tag_name": "颜色值转换", "tag_link": "notes/color.html" },
+            { "tag_name": "ipaddress ", "tag_link": "https://www.ipaddress.com/" },
+            { "tag_name": "Cheatsheets", "tag_link": "https://devhints.io/" },
+            { "tag_name": "随机密码", "tag_link": "password/index.html" },
+            { "tag_name": "常用转换工具", "tag_link": "notes/demo.html" },
+            { "tag_name": "常用资源", "tag_link": "base-source/index.html" },
+            { "tag_name": "lookdiv.com", "tag_link": "http://lookdiv.com/index/index/indexcodeindex.html" },
+            { "tag_name": "脚本在线执行", "tag_link": "https://tool.lu/coderunner/" },
+            { "tag_name": "谷歌插件", "tag_link": "https://www.cnblogs.com/chengxy-nds/p/13886332.html" },
+            { "tag_name": "临时邮箱", "tag_link": "https://tempmail.plus/zh/" },
+            { "tag_name": "临时短信", "tag_link": "notes/free-sms.html" },
+            { "tag_name": "短信邮箱", "tag_link": "http://www.eavea.com/blog/index.php/mianfeizaixianyouxiangheduanxinpingtai.html" },
+            // { "tag_name": "所有颜色", "tag_link": "https://encycolorpedia.cn/8b4513" },
+            
+            { "tag_name": "qrcode", "tag_link": "notes/qrcode.html" },
+            { "tag_name": "在线书库", "tag_link": "https://www.ituring.com.cn/" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "在线头像", "tag_link": "https://vue-color-avatar.vercel.app/" },
+            { "tag_name": "json2swagger3", "tag_link": "notes/json2swagger3-php.html" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" }
+        ],
+
+
+        "工作记录": [
+            { "tag_name": "Linux", "tag_link": "notes/linux.html" },
+            { "tag_name": "markdown", "tag_link": "html2markdown/index.html" },
+            { "tag_name": "rg", "tag_link": "notes/rg.html" },
+            { "tag_name": "vim", "tag_link": "notes/vim.html" },
+            // { "tag_name": "git", "tag_link": "notes/git.html" },
+            { "tag_name": "mac", "tag_link": "notes/mac.html" },
+            { "tag_name": "bash", "tag_link": "notes/bash.html" },
+            { "tag_name": "access-log", "tag_link": "notes/access-log.html" },
+            { "tag_name": "Js-more-demo", "tag_link": "https://fengyuanchen.github.io/" },
+            { "tag_name": "find", "tag_link": "notes/find.html" },
+            { "tag_name": "shell", "tag_link": "notes/shell.html" },
+            { "tag_name": "interview", "tag_link": "http://interview.xiaoyou66.com" },
+            { "tag_name": "python", "tag_link": "notes/python.html" },
+            { "tag_name": "curl", "tag_link": "notes/curl.html" },
+            { "tag_name": "curl转换", "tag_link": "https://curl.trillworks.com/" },
+            { "tag_name": "docker", "tag_link": "notes/docker.html" },
+            { "tag_name": "ChromeDriver下载", "tag_link": "https://sites.google.com/a/chromium.org/chromedriver/downloads" },
+            { "tag_name": "github下载", "tag_link": "github-directory-downloader/index.html" },
+            { "tag_name": "go", "tag_link": "notes/golang.html" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            
+
+            { "tag_name": "sleazyfork", "tag_link": "https://sleazyfork.org/zh-CN" },
+            { "tag_name": "jsdelivr-github", "tag_link": "https://www.jsdelivr.com/github" },
+            { "tag_name": "jsdelivr-cdn", "tag_link": "https://www.jsdelivr.com/" },
+            { "tag_name": "chatgpt", "tag_link": "https://chatgpt.ddiu.me/" },
+            { "tag_name": "公交可视化", "tag_link": "https://bus.ljl.li/" }
+
+        ],
+        "视频媒体": [
+            { "tag_name": "ahhhhfs", "tag_link": "https://www.ahhhhfs.com/" },
+            { "tag_name": "蛋蛋赞", "tag_link": "https://www.dandanzan10.top/" },
+            { "tag_name": "cctv直播", "tag_link": "https://tv.cctv.com/live/index.shtml" },
+            { "tag_name": "NBA直播", "tag_link": "http://www.luxiangwu.com/" },
+            { "tag_name": "直播吧", "tag_link": "https://www.zhibo8.cc/nba/luxiang.htm" },
+            { "tag_name": "低端影视(主)", "tag_link": "https://ddys.tv/" },
+            { "tag_name": "低端影视(备)", "tag_link": "http://ddys2.me/" },
+            { "tag_name": "laowang", "tag_link": "https://home.laowang.me/" },
+            { "tag_name": "400mov", "tag_link": "https://400mov.com/" },
+            { "tag_name": "wandou", "tag_link": "https://www.wandou.pro/" },
+            { "tag_name": "555电影", "tag_link": "https://555dd10.com/" },
+            { "tag_name": "dmdy2", "tag_link": "https://dmdy2.vip/" },
+            { "tag_name": "ajeee", "tag_link": "https://www.ajeee.com/" },
+            { "tag_name": "6080dy2", "tag_link": "https://www.6080dy2.com/" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" }
+
+
+        ],
+
+
+
+        "HotTools": [
+            { "tag_name": "做饭指南", "tag_link": "https://cook.aiurs.co/" },
+            { "tag_name": "杂货铺", "tag_link": "https://tmioe.com/" },
+            { "tag_name": "圈子", "tag_link": "https://www.appmiu.com/circle" },
+            { "tag_name": "youtd主页", "tag_link": "https://hit.youtd.cc/" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "youtd网站", "tag_link": "https://dp.youtd.cc/" },
+            { "tag_name": "免费可用节点", "tag_link": "https://proxypool.laowang.me/" },
+            { "tag_name": "订阅转换", "tag_link": "https://sub.laowang.me/" },
+            { "tag_name": "ClashX-Pro", "tag_link": "https://qust.me/post/clashxProMac/" },
+
+            { "tag_name": "boot-cdn", "tag_link": "www.bootcdn.cn" },
+            
+            { "tag_name": "oktools", "tag_link": "https://oktools.net/json" },
+            { "tag_name": "tooltt", "tag_link": "https://tooltt.com/view.html" },
+            { "tag_name": "html格式化", "tag_link": "https://tool.oschina.net/codeformat/html" },
+            { "tag_name": "mysqlgo", "tag_link": "https://tools.zhequtao.com/mysqlgo" },
+            { "tag_name": "gist", "tag_link": "https://gist.github.com/" },
+            { "tag_name": "abskoop", "tag_link": "https://nsfw.abskoop.com/" },
+            { "tag_name": "nav3", "tag_link": "https://www.nav3.cn/" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" }
+            
+
+        ],
+        "美女": [
+            { "tag_name": "蛋蛋赞weibo", "tag_link": "https://weibo.com/p/1005051874765800/home?is_all=1" },
+            { "tag_name": "央视音影", "tag_link": "https://app.cctv.com/" },
+            { "tag_name": "kkoo", "tag_link": "https://kkoo.icu/" },
+            { "tag_name": "nsfwp", "tag_link": "https://nsfwpicx.com/" },
+            { "tag_name": "95mm", "tag_link": "https://www.95mm.org/qingchun" },
+            { "tag_name": "ons", "tag_link": "https://ons.ooo/" },
+            { "tag_name": "mmdabaobei", "tag_link": "https://www.mmdabaobei.com/" },
+            { "tag_name": "3650000", "tag_link": "https://3650000.xyz/" },
+            { "tag_name": "hefollo", "tag_link": "https://hefollo.com/" },
+            { "tag_name": "图片库", "tag_link": "notes/pic.html" },
+            { "tag_name": "Beauties", "tag_link": "http://www.1y.is" },
+            { "tag_name": "mm.tvv.tw", "tag_link": "https://mm.tvv.tw" },
+            { "tag_name": "jingxiangtu", "tag_link": "https://www.jingxiangtu.com/" },
+            { "tag_name": "ryuryu", "tag_link": "http://ryuryu.tw/" },
+            { "tag_name": "everia(优)", "tag_link": "https://everia.club/" },
+            { "tag_name": "dopaminegirl", "tag_link": "https://dopaminegirl.com/" },
+            { "tag_name": "kissgoddess", "tag_link": "https://kissgoddess.com/" },
+            { "tag_name": "aitudao", "tag_link": "http://www.aitudao.com/" },
+            { "tag_name": "h-webtoon", "tag_link": "https://h-webtoon.com/" },
+            { "tag_name": "jpmn8", "tag_link": "https://www.jpmn8.com/" },
+            { "tag_name": "otaotu", "tag_link": "https://www.otaotu.com/" },
+            { "tag_name": "660000.xyz", "tag_link": "http://660000.xyz/" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" }
+
+        ],
+        "参考地址": [
+            { "tag_name": "boblee", "tag_link": "https://boblee.cn/page/2/" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "读取Mac备忘录", "tag_link": "https://github.com/91xcode/readnotes" },
+            { "tag_name": "GitHub连接超时", "tag_link": "https://github.com/91xcode/makeGithubFast" },
+            { "tag_name": "lifengblog", "tag_link": "http://lifengblog.xyz" },
+            { "tag_name": "webcode", "tag_link": "https://github.com/mtfz88/webcode" },
+            { "tag_name": "blog.luckly-mjw.cn", "tag_link": "http://blog.luckly-mjw.cn/tool-show/index.html" },
+            { "tag_name": "baidufe.com", "tag_link": "https://www.baidufe.com/fehelper/index/index.html" },
+            { "tag_name": "公共组件库", "tag_link": "https://www.baidufe.com/component" },
+            { "tag_name": "bootcss-offcanvas", "tag_link": "https://v3.bootcss.com/examples/offcanvas/" },
+            { "tag_name": "bootstrap-offcanvas", "tag_link": "bootstrap-offcanvas/index.html" },
+            { "tag_name": "文件列表程序", "tag_link": "https://github.com/Xhofe/alist" },          
+            { "tag_name": "简历制作", "tag_link": "https://www.polebrief.com/index" },
+            { "tag_name": "spanish", "tag_link": "notes/spanish.html" },
+            { "tag_name": "刘明野", "tag_link": "http://tool.liumingye.cn/" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" }
+
+
+        ],
+        "网盘": [
+            { "tag_name": "阿里云盘", "tag_link": "https://www.aliyundrive.com/drive" },
+            { "tag_name": "drive.9t.ee", "tag_link": "https://drive.9t.ee/" },
+            { "tag_name": "ogr.youtd.cc", "tag_link": "https://ogr.youtd.cc/" },
+            { "tag_name": "share.laowang.me", "tag_link": "https://share.laowang.me" },
+            { "tag_name": "om.chirmyram.com", "tag_link": "https://om.chirmyram.com/" },
+            { "tag_name": "pity.eu.org", "tag_link": "https://pity.eu.org/" },
+            { "tag_name": "www.kugutsu.ml", "tag_link": "https://www.kugutsu.ml/" },
+            { "tag_name": "onlo.me", "tag_link": "https://onlo.me/" },
+            { "tag_name": "jlbx.xyz", "tag_link": "https://jlbx.xyz/" }
+        ],
+        "Bookstore": [
+            { "tag_name": "知乎盐选", "tag_link": "https://onehu.xyz/" },
+            { "tag_name": "优书网", "tag_link": "https://www.yousuu.com/bookstore/?channel" },
+            { "tag_name": "小鱼速读", "tag_link": "http://www.xysudu.com/" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" },
+            { "tag_name": "空白站位", "tag_link": "" }
+        ]
+    }
+
+    makeTbale(arrLi)
+
+    function makeTbale(arrLi) {
+
+        var _html = ""
+        for (var i in arrLi) {
+
+            _html += '<div class="col-xs-12 col-sm-6 col-lg-6"><div class="table-responsive"><table class="table"><tbody style="text-align: center"><th colspan="4">' + i + '</th><tr>';
+
+            arrLi[i].forEach(function(item, index) {
+                console.log(index, item)
+                //注意:i是取值的个数,i%3表示按样式取3个值之后,在重新写一个tr
+                if (index % 3 == 0) {
+                    _html += '</tr><tr>'
+                }
+                _html += '<td><a target="_blank" href="' + item.tag_link + '">' + item.tag_name + '</a></td>';
+
+            })
+
+            _html += '</tr></tbody></table></div></div>'
+
+
+        }
+        // console.log(_html)
+
+        document.getElementById("row-id").innerHTML = _html
+    }
+    </script>
+    <!-- Back2top -->
+    <link href="https://testingcf.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.css" rel="stylesheet">
+    <script type="text/javascript" src="https://testingcf.jsdelivr.net/gh/91xcode/static@master/back2top/back2top.js"></script>
+    <script type="text/javascript">
+    Back2top.init();
+    </script>
+</body>
+
+</html>
