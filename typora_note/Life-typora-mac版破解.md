@@ -17,15 +17,12 @@
 
 一开始想尝试查看typora的运行日志，看看日志有无license的验证过程，然而发现我找不到；
 运行typora，打开活动监视器，查看typora操作了哪些文件
-![图片描述](https://bbs.pediy.com/upload/attach/202206/726474_KNNTGMD5SH8HT8T.png)
-
- 
+![image-20231210020408785](/Users/liubing/Library/Application Support/typora-user-images/image-20231210020408785.png) 
 
 疑似的两个日志文件：
-![图片描述](https://bbs.pediy.com/upload/attach/202206/726474_43RGGG43UVPXXQY.png)
-![图片描述](https://bbs.pediy.com/upload/attach/202206/726474_UD3PBD5XPKBZTGP.png)
+![image-20231210020449504](/Users/liubing/Library/Application Support/typora-user-images/image-20231210020449504.png) 
 
- 
+![image-20231210020522911](/Users/liubing/Library/Application Support/typora-user-images/image-20231210020522911.png)
 
 实际分析发现不是我们想要的。
 进一步在系统目录尝试了寻找有无typora相关的文件：
@@ -37,19 +34,22 @@
 之前分析过windows的terminus、typora，猜测很有可能license在js代码里验证，所以直接在Typora.app 全局搜索license字段试试：
 显示包内容 -> 目录Contents/Resources/TypeMark -> 拖进vscode搜索：
 （稍微熟悉点app的包结构的话，应该知道js代码应该在资源目录下，然后分析一下会发现TypeMark是一个可疑地目录）
-![图片描述](https://bbs.pediy.com/upload/attach/202206/726474_GWBSCQ5SDK4NCFD.png)
+![image-20231210020550344](/Users/liubing/Library/Application Support/typora-user-images/image-20231210020550344.png)
 发现找到139个文件，也没法一个一个看，还得换个思路。
 
  
 
 进入typora，弹出购买窗口，点击购买，获取购买链接字符串:
 
- 
+ ![image-20231210020627419](/Users/liubing/Library/Application Support/typora-user-images/image-20231210020627419.png)
 
-![图片描述](https://bbs.pediy.com/upload/attach/202206/726474_H5D5VTHWBJ3DAFA.png)
-![图片描述](https://bbs.pediy.com/upload/attach/202206/726474_YFFYN44B9YPQW9P.png)
 
- 
+
+![image-20231210020645135](/Users/liubing/Library/Application Support/typora-user-images/image-20231210020645135.png)
+
+
+
+![image-20231210020707340](/Users/liubing/Library/Application Support/typora-user-images/image-20231210020707340.png) 
 
 尝试全局搜索购买链接的字符串`https://store.typora.io/`，发现还真有：
 ![图片描述](https://bbs.pediy.com/upload/attach/202206/726474_A8T75U5G52UVMTW.png)
