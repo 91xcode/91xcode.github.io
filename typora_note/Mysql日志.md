@@ -38,7 +38,7 @@ MySQL中有六种日志文件，
 　　之所以说重做日志是在事务开始之后逐步写入重做日志文件，而不一定是事务提交才写入重做日志缓存，
 　　原因就是，重做日志有一个缓存区Innodb_log_buffer，Innodb_log_buffer的默认大小为8M(这里设置的16M),Innodb存储引擎先将重做日志写入innodb_log_buffer中。
 
-　　![img](https://images2017.cnblogs.com/blog/380271/201801/380271-20180128095300756-752816619.png)
+　　![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192328039.png)
 
 　　然后会通过以下三种方式将innodb日志缓冲区的日志刷新到磁盘
 　　1，Master Thread 每秒一次执行刷新Innodb_log_buffer到重做日志文件。
@@ -76,14 +76,13 @@ MySQL中有六种日志文件，
 　　innodb_undo_tablespaces = 4 --指定有4个undo log文件
 
 　　如果undo使用的共享表空间，这个共享表空间中又不仅仅是存储了undo的信息，共享表空间的默认为与MySQL的数据目录下面，其属性由参数innodb_data_file_path配置。
-　　![img](https://images2017.cnblogs.com/blog/380271/201801/380271-20180128095358756-173424995.png)
+　　![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192328789.png)
 
 其他：
 　　undo是在事务开始之前保存的被修改数据的一个版本，产生undo日志的时候，同样会伴随类似于保护事务持久化机制的redolog的产生。
 　　默认情况下undo文件是保持在共享表空间的，也即ibdatafile文件中，当数据库中发生一些大的事务性操作的时候，要生成大量的undo信息，全部保存在共享表空间中的。
 　　因此共享表空间可能会变的很大，默认情况下，也就是undo 日志使用共享表空间的时候，被“撑大”的共享表空间是不会也不能自动收缩的。
 　　因此，mysql5.7之后的“独立undo 表空间”的配置就显得很有必要了。
-
 
 **二进制日志（binlog）：**
 
@@ -105,13 +104,13 @@ MySQL中有六种日志文件，
 
 什么时候释放：
 　　binlog的默认是保持时间由参数expire_logs_days配置，也就是说对于非活动的日志文件，在生成时间超过expire_logs_days配置的天数之后，会被自动删除。
-　　![img](https://images2017.cnblogs.com/blog/380271/201801/380271-20180128095430428-762176025.png)
+　　![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192328909.png)
 
 对应的物理文件：
 　　配置文件的路径为log_bin_basename，binlog日志文件按照指定大小，当日志文件达到指定的最大的大小之后，进行滚动更新，生成新的日志文件。
 　　对于每个binlog日志文件，通过一个统一的index文件来组织。
 
-![img](https://images2017.cnblogs.com/blog/380271/201801/380271-20180128095524959-627241840.png)　
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192345961.png)　
 
 其他：
 　　二进制日志的作用之一是还原数据库的，这与redo log很类似，很多人混淆过，但是两者有本质的不同
@@ -135,7 +134,7 @@ Tips:Redo log
 与原子性一样，事务的持久性也是通过日志来实现的，MySQL 使用重做日志（ redo log ）实现事务的持久性，重做日志由两部分组成，一是内存中的重做日志缓冲区，因为重做日志缓冲区在内存中，所以它是易失的；另一个就是在磁盘上的重做日志文件，它是持久的。
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/img_convert/04f4e3fdb52323277198348aae0ee8dc.png)当我们在一个事务中尝试对数据进行写时，它会先将数据从磁盘读入内存，并更新内存中缓存的数据，然后生成一条重做日志并写入重做日志缓存，当事务真正提交时，MySQL 会将重做日志缓存中的内容刷新到重做日志文件，再将内存中的数据更新到磁盘上，图中的第4、5步就是在事务提交时执行的。
+![在这里插入图片描述](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192345308.png)当我们在一个事务中尝试对数据进行写时，它会先将数据从磁盘读入内存，并更新内存中缓存的数据，然后生成一条重做日志并写入重做日志缓存，当事务真正提交时，MySQL 会将重做日志缓存中的内容刷新到重做日志文件，再将内存中的数据更新到磁盘上，图中的第4、5步就是在事务提交时执行的。
 
 重做日志执行
 

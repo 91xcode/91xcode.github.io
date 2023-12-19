@@ -1,6 +1,6 @@
 # 程序员的macOS系列：高效Alfred进阶
 
-[![img](https://p3-passport.byteimg.com/img/user-avatar/5b6509598ea04aabf55f52a1ec117bae~100x100.awebp)](https://juejin.cn/user/1908407915780989)
+[![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192347057.awebp)](https://juejin.cn/user/1908407915780989)
 
 
 
@@ -26,7 +26,7 @@
 
 
 
-![Alfred-4.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/13/1703c17072f4f5ca~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-4.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192347891.awebp)
 
 
 
@@ -36,7 +36,7 @@
 
 
 
-![Alfred-General.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae4cdeb0d1d~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-General.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192347443.awebp)
 
 
 
@@ -48,7 +48,7 @@
 
 -   `Permissions`（权限） 点击 `Request Permissions...` 打开权限许可说明，主要是授权 Alfred 可以访问系统和电脑的那些权限：
 
-    ![Alfred-General-Permissions-Request-Permissions.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae507e9da35~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![Alfred-General-Permissions-Request-Permissions.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192347767.awebp)
 
     
 
@@ -60,7 +60,7 @@
 
 
 
-![Alfred-Features-Default-Results.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae4ae65878a~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Default-Results.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192348178.awebp)
 
 主要是设置搜索相关的默认配置。
 
@@ -100,7 +100,7 @@
 
     的作用是匹配应用的关键词元数据。我们以苹果的 音乐App 为例说明，简介可以看到有一栏是关键词：
 
-    ![Alfred-Features-Default-Results-AppKeywords.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b8146be2f6b~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![Alfred-Features-Default-Results-AppKeywords.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192348275.awebp)
 
 App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、`LaunchBar` 等应用搜索这些词语时，匹配并显示出来。一方面，这确实可以带来一定的便利，但是另一方面也会扰乱搜索结果，所以 Alfred 新版本默认禁止(取消勾选)了这种乱刷存在感的行为。不过，如果觉得用着还不错，可以自己重新勾选上啊。
 
@@ -114,7 +114,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 -   `Fallbacks`（退路，应变计划） 用于设置搜索没有找到结果时，显示的可选的进一步的操作。 类似如下图，搜索wq时没有结果会显示一个可操作列表，前面2项是 Alfred自带的搜索项，剩下的是`自定义搜索`，可以自定添加或更改显示的操作项。（自定义搜索的内容参考下一节`Web Search（网站搜索）`的内容）。
 
-    ![Alfred-Features-Default-Results-Fallbacks.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae4b11212f9~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![Alfred-Features-Default-Results-Fallbacks.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192349119.awebp)
 
     
 
@@ -122,7 +122,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 
 
-![Alfred-Features-File-Search.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae4a4a79952~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-File-Search.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192349308.awebp)
 
 
 
@@ -134,7 +134,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 -   `Opening Files` 直接打开文件（默认就是open，不敲入关键字，即搜索文件名后回车，就是直接打开该文件）。默认是`open`，我一般设置为`op`，找到文件后，点击或按右边提示的快捷键，可以快速打开文件。比如：
 
-    ![Open.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae4b0c27174~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![Open.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192349465.awebp)
 
     
 
@@ -168,7 +168,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 
 
-![Alfred-Features-File-Search-Navigation.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b8127a85bd1~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-File-Search-Navigation.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192350606.awebp)
 
 
 
@@ -194,7 +194,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 
 
-![Alfred-Features-Actions.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae5e1ec518d~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Actions.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192350932.awebp)
 
 
 
@@ -204,7 +204,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 动作操作的效果示意图：
 
-![Alfred-Features-Actions-File-Actions.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c49a1a2c96~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Actions-File-Actions.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192350938.awebp)
 
 
 
@@ -212,7 +212,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 这里以 Xcode app 为例：
 
-![Alfred-Features-Actions-Recent-Documents.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b8162efdab4~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Actions-Recent-Documents.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192350197.awebp)
 
 
 
@@ -222,7 +222,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 
 
-![Alfred-Features-Web-Search.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae5fe548325~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Web-Search.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192351171.awebp)
 
 
 
@@ -230,13 +230,13 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 这里用一个例子来说明自定义的网页搜索设置，比如想搜索苹果的官方文档中`Swift`，真实的链接是 `https://developer.apple.com/search/?q=Swift`，那么每次搜索苹果的文档内容时，我们都要打死浏览器，打开苹果官方文档链接，然后输入`Swift`，才能看到结果。然这个步骤，可以利用 Aflred 这个网页搜索功能整合为一步，所以我们需要一个自定义的搜索，在 Aflred 点击右下角的 `Add Custom Search`，然后填写下图的信息：
 
-![Alfred-Features-Web-Search-Custom.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c49a91cb06~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Web-Search-Custom.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192351830.awebp)
 
 
 
 这里需要说明一下，`https://developer.apple.com/search/?q={query}` 中的 `{query}` 是通过 Alfred 输入框输入你需要搜索的关键词的变量，`Title` 就是上图的默认显示的提示语，右边还能上传一个icon图标，用于标识此搜索，`Keyword` 是这个网页搜索的快捷键，这里用 ad （apple document）作为快捷键，`Validation` 是用于测试这个网页搜索是不是正常工作，点击右边的 Test 按钮来测试。左下方的 `Copy URL for sharing`按钮，点击一下就可以将一个带有`alfred://` 前缀的字符串拷贝到系统剪切板，然后分享给好友，在 Alfred 中粘贴后回车键就可以导入。示例：
 
-![Alfred-Features-Web-Search-Swift.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c4ae0daa2b~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Web-Search-Swift.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192351238.awebp)
 
 
 
@@ -280,7 +280,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 
 
-![Alfred-Features-Web-Bookmarks.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae622fafaaa~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Web-Bookmarks.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192352474.awebp)
 
 
 
@@ -291,7 +291,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 以搜索 Safari 的书签中 `apple` 为例：
 
-![Alfred-Features-Web-Bookmarks-Search.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b814d0edd76~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Web-Bookmarks-Search.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192352105.awebp)
 
 
 
@@ -301,7 +301,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 
 
-![Alfred-Features-Clipboard-History.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae76a8753fe~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Clipboard-History.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192352782.awebp)
 
 
 
@@ -309,7 +309,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 
 
-![Alfred-Features-Clipboard-History-Examples.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b81391baf8c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Clipboard-History-Examples.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192353073.awebp)
 
 
 
@@ -317,7 +317,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 
 
-![Alfred-Features-Clipboard-History-Copy-Paste.gif](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b81b84f1af1~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Clipboard-History-Copy-Paste.gif](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192353394.awebp)
 
 
 
@@ -336,7 +336,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 
 
-![Alfred-Features-Snippets.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae691210af9~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Snippets.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192353838.awebp)
 
 
 
@@ -344,7 +344,7 @@ App添加这些关键词信息，就是为了用户在 `Spotlight`、`Alfred`、
 
 官方示例：
 
-![Alfred-Features-Snippets-Examples.gif](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b82ab38919f~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Snippets-Examples.gif](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192354034.awebp)
 
 
 
@@ -360,7 +360,7 @@ Snippets 主要是对于经常键入的文本的创建和共享代码段，例�
 
 
 
-![Alfred-Features-Snippets-Custom.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b972faf7333~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Snippets-Custom.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192354900.awebp)
 
 
 
@@ -368,7 +368,7 @@ Snippets 主要是对于经常键入的文本的创建和共享代码段，例�
 
 
 
-![Alfred-Features-Snippets-Copy-Paste.gif](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b8350fd628c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Snippets-Copy-Paste.gif](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192354038.awebp)
 
 
 
@@ -378,7 +378,7 @@ Snippets 主要是对于经常键入的文本的创建和共享代码段，例�
 
 如果一些 `Emoji`，可能通过 macOS 系统快捷键`ctrl + command + 空格键`打开表情界面选择需要的表情，但是这个查找过程也是很麻烦，有几百个 Emoji，所以其实可以通过 Snippet 来快速输入：
 
-![Alfred-Features-Snippets-Emoji.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b970fb3e51e~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Snippets-Emoji.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192354908.awebp)
 
 
 
@@ -457,7 +457,7 @@ Snippets 主要是对于经常键入的文本的创建和共享代码段，例�
 
 
 
-![Alfred-Features-Snippets-RichText.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b970accd83c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Snippets-RichText.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192354827.awebp)
 
 
 
@@ -467,7 +467,7 @@ Snippets 主要是对于经常键入的文本的创建和共享代码段，例�
 
 
 
-![Alfred-Features-Calculator.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae6f282de9f~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Calculator.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192354737.awebp)
 
 
 
@@ -481,7 +481,7 @@ Snippets 主要是对于经常键入的文本的创建和共享代码段，例�
 
 
 
-![Alfred-Features-Dictionary.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae77f2280c9~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Dictionary.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192355561.awebp)
 
 
 
@@ -491,7 +491,7 @@ Alfred 内置了词典查询并使用 Apple 自带的词典软件，可以通过
 
 以搜索`apple`示例：
 
-![Alfred-Features-Dictionary-Define.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c4d2e98abe~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Dictionary-Define.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192355769.awebp)
 
 
 
@@ -499,7 +499,7 @@ Alfred 内置了词典查询并使用 Apple 自带的词典软件，可以通过
 
 
 
-![Alfred-Features-Contacts.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae8277bffd8~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Contacts.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192355473.awebp)
 
 
 
@@ -509,7 +509,7 @@ Alfred 也内置了 `Contacts`（通信录）查询，联动 Apple 自带的通�
 
 
 
-![Alfred-Features-Music.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae7cecaea07~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Music.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192355904.awebp)
 
 
 
@@ -517,7 +517,7 @@ Alfred 也内置了 `Contacts`（通信录）查询，联动 Apple 自带的通�
 
 官网示例：
 
-![Alfred-Features-Music-MiniPlayer.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b974fde631c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Music-MiniPlayer.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192355236.awebp)
 
 
 
@@ -525,7 +525,7 @@ Alfred 也内置了 `Contacts`（通信录）查询，联动 Apple 自带的通�
 
 
 
-![Alfred-Features-1Password.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae81d5c9690~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-1Password.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192355543.awebp)
 
 
 
@@ -533,7 +533,7 @@ Alfred 也内置了 `Contacts`（通信录）查询，联动 Apple 自带的通�
 
 
 
-![Alfred-Features-1Password-1Click.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b973b32ca99~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-1Password-1Click.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192355541.awebp)
 
 
 
@@ -543,7 +543,7 @@ Alfred 也内置了 `Contacts`（通信录）查询，联动 Apple 自带的通�
 
 
 
-![Alfred-Features-System.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae9419683f9~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-System.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192356764.awebp)
 
 
 
@@ -561,7 +561,7 @@ Alfred 支持系统功能操作，例如：`Screen Saver`（显示待机屏幕�
 
 
 
-![Alfred-Features-Terminal.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae8d753644f~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Terminal.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192356249.awebp)
 
 
 
@@ -569,7 +569,7 @@ Alfred 支持系统功能操作，例如：`Screen Saver`（显示待机屏幕�
 
 
 
-![Alfred-Features-Terminal-Shell.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b974649fcca~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Terminal-Shell.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192356631.awebp)
 
 
 
@@ -625,7 +625,7 @@ end alfred_script复制代码
 
 
 
-![Alfred-Features-Large-Type.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae936e42fff~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Large-Type.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192356299.awebp)
 
 
 
@@ -633,7 +633,7 @@ end alfred_script复制代码
 
 
 
-![Alfred-Features-Large-Type-Calculator.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9852cb67a7~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Large-Type-Calculator.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192356623.awebp)
 
 
 
@@ -641,7 +641,7 @@ end alfred_script复制代码
 
 
 
-![Alfred-Features-Previews.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fae9bed491c6~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Features-Previews.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192356886.awebp)
 
 
 
@@ -651,7 +651,7 @@ end alfred_script复制代码
 
 
 
-![Alfred-Workflows.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c538785089~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Workflows.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192357898.awebp)
 
 
 
@@ -679,11 +679,11 @@ Alfred 安装完「Powerpack」，就像车体安装了引擎，余下的事情�
 
     最近打开的文档：
 
-    ![Workflows-Recent-Documents.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034ba07881940a~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![Workflows-Recent-Documents.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192357582.awebp)
 
 最近打开的应用：
 
-![Workflows-Recent-Apps.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034ba027fdeb63~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Workflows-Recent-Apps.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192357648.awebp)
 
 
 
@@ -695,7 +695,7 @@ Alfred 安装完「Powerpack」，就像车体安装了引擎，余下的事情�
 
 -   **Xcode 开发者清理 DerivedData 数据**
 
-    ![Workflows-Clear-Xcode-DerivedData.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034ba01097b07f~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![Workflows-Clear-Xcode-DerivedData.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192357672.awebp)
 
     下载：
 
@@ -749,7 +749,7 @@ Alfred 安装完「Powerpack」，就像车体安装了引擎，余下的事情�
 
 
 
-![Alfred-Appearance.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c521d7f448~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Appearance.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192357056.awebp)
 
 
 
@@ -761,7 +761,7 @@ Alfred 默认的样式是白色背景不太好看，当然也提供了几个外�
 
 
 
-![Alfred-Remote.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c5a9e7255e~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Remote.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192357454.awebp)
 
 
 
@@ -773,7 +773,7 @@ Alfred 同时也支持使用 `移动端版本的 Alfred` 来控制桌面端，�
 
 
 
-![Alfred-Advanced.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c6099c5645~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Advanced.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192358272.awebp)
 
 
 
@@ -802,7 +802,7 @@ Alfred 同时也支持使用 `移动端版本的 Alfred` 来控制桌面端，�
 
 
 
-![Alfred-Powerpack.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c64a47b29c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Powerpack.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192358263.awebp)
 
 
 
@@ -816,7 +816,7 @@ Alfred 同时也支持使用 `移动端版本的 Alfred` 来控制桌面端，�
 
 
 
-![Alfred-Usage.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/10/1702fb9dd5934150~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Usage.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192358348.awebp)
 
 
 
@@ -832,7 +832,7 @@ Alfred 会统计使用的情况。从上图可以看到折线图显示的是28�
 
 
 
-![Alfred-Help.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c651926c92~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Help.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192358145.awebp)
 
 
 
@@ -844,7 +844,7 @@ Alfred 会统计使用的情况。从上图可以看到折线图显示的是28�
 
 
 
-![Alfred-Update.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/170326c67f8c2bbb~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![Alfred-Update.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192358054.awebp)
 
 
 
@@ -854,7 +854,7 @@ Alfred 会统计使用的情况。从上图可以看到折线图显示的是28�
 
 在这里汇总一下，在使用 Alfred 时可能遇到的一些问题，这部分在后续会持续更新。其中，首次安装或启动时，默认会显示这样的权限弹窗：
 
-![macOS-Permissions-for-Alfred.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b99fc95dde1~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![macOS-Permissions-for-Alfred.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192358050.awebp)
 
 
 
@@ -870,35 +870,35 @@ Alfred 会统计使用的情况。从上图可以看到折线图显示的是28�
 
     ：允许 App 控制你的电脑。
 
-    ![macOS-Preferences-UniversalAccess.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b99a57f4802~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![macOS-Preferences-UniversalAccess.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192358144.awebp)
 
 在 Alfred 中用于控制电脑的时如果没有权限时：
 
-![macOS-Preferences-UniversalAccess-Alfred.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b99a28b0438~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![macOS-Preferences-UniversalAccess-Alfred.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192358857.awebp)
 
 
 
 -   `输入监视`：即使正在使用其它App，也允许下面的App监视来自键盘的输入。 在 Alfred 中应用说无处不键盘，全部都使用到键盘，其中强烈依赖的有 Snippets，另外 Workflows 也用于监听键盘。
 
-    ![macOS-Preferences-Input-Monitoring.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9aa2b738ba~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![macOS-Preferences-Input-Monitoring.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192359524.awebp)
 
     
 
 -   `完全磁盘访问权限`：允许 App 访问诸如“邮件”、“信息”、Safari 浏览器、“家庭”、时间机器备份，以及此 Mac 上所有用户的部分管理设置等数据。 在 Alfred 中很多数据都是依赖于系统的磁盘目录。
 
-    ![macOS-Preferences-Full-Access.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9b44800e52~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![macOS-Preferences-Full-Access.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192359851.awebp)
 
     
 
 -   `文件和文件夹`：允许App访问文件和文件夹
 
-    ![macOS-Preferences-Folder-Access.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9b49b0e0e0~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![macOS-Preferences-Folder-Access.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192359394.awebp)
 
     
 
 在 Alfred 中如果需要打开或跳转到相应目录都是需要文件目录权限。需要注意的时，当然勾选了上面的`完全磁盘访问权限` 后，此项默认变成默认勾选，变成无法操作的状态，这个很好理解。如果首次安装时 Alfred后，会出现访问桌面时类型的文件夹权限的提示：
 
-![macOS-Preferences-Folder-Access-Desktop.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9b899b3b78~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+![macOS-Preferences-Folder-Access-Desktop.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192359476.awebp)
 
 
 
@@ -908,7 +908,7 @@ Alfred 会统计使用的情况。从上图可以看到折线图显示的是28�
 
     ：允许 App 控制其他 App。这将允许 App 访问这些受控制 App 中的文稿和数据，并在其中执行操作。
 
-    ![macOS-Preferences-Automation.png](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/2/11/17034b9c5943371c~tplv-t2oaga2asx-zoom-in-crop-mark:3024:0:0:0.awebp)
+    ![macOS-Preferences-Automation.png](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192359285.awebp)
 
 这个 Alfred 中用到最多的是访问 Finder（访达）App。
 

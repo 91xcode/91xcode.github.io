@@ -81,7 +81,7 @@ ps  -ef | grep {programName}
 
 
 
-![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/29/169c951b4aeb85bd~tplv-t2oaga2asx-zoom-in-crop-mark:4536:0:0:0.image)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192346048.png)
 
 
 
@@ -94,7 +94,7 @@ ps -ef | grep {PID}
 
 
 
-![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/29/169c95da0f198a2b~tplv-t2oaga2asx-zoom-in-crop-mark:4536:0:0:0.image)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192346534.png)
 
 
 
@@ -107,7 +107,7 @@ netstat -tunlp | grep {port}
 
 
 
-![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/29/169c95a83753bfa6~tplv-t2oaga2asx-zoom-in-crop-mark:4536:0:0:0.image)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192346695.png)
 
 
 
@@ -120,7 +120,7 @@ netstat -nap | grep {PID}
 
 
 
-![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/29/169c9591a6b0d08b~tplv-t2oaga2asx-zoom-in-crop-mark:4536:0:0:0.image)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192346253.png)
 
 
 
@@ -128,7 +128,7 @@ netstat -nap | grep {PID}
 
 
 
-![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/29/169c9c015bec3513~tplv-t2oaga2asx-zoom-in-crop-mark:4536:0:0:0.image)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192346942.png)
 
 
 
@@ -145,7 +145,7 @@ CMD    命令的名称和参数
 
 
 
-![img](https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2019/3/29/169c9bf51161ce8d~tplv-t2oaga2asx-zoom-in-crop-mark:4536:0:0:0.image)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192347940.png)
 
 
 

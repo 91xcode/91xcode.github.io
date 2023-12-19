@@ -3,10 +3,11 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
-<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
@@ -54,7 +55,7 @@ thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
 .CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
-.CodeMirror-linenumber { }
+.CodeMirror-linenumber { -webkit-user-select: none; }
 .CodeMirror { text-align: left; }
 .CodeMirror-placeholder { opacity: 0.3; }
 .CodeMirror pre { padding: 0px 4px; }
@@ -86,12 +87,14 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print { 
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
   .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
   .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
@@ -199,99 +202,107 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
 .typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
 .md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
 
 
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-@font-face {
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/sai/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}@import '';
+/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
 
+@include-when-export url(https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
+
+/* =========== */
+
+/* pt-serif-regular - latin */
+/* pt-serif-italic - latin */
+/* pt-serif-700 - latin */
+/* pt-serif-700italic - latin */
 :root {
-    --side-bar-bg-color: #fff;
-    --control-text-color: #777;
-    --font-sans-serif: 'Ubuntu', 'Source Sans Pro', sans-serif !important;
-    --font-monospace: 'Fira Code', 'Roboto Mono', monospace !important;
+	--active-file-bg-color: #dadada;
+	--active-file-bg-color: rgba(32, 43, 51, 0.63);
+	--active-file-text-color: white;
+	--bg-color: #f3f2ee;
+	--text-color: #1f0909;
+	--control-text-color: #444;
+	--rawblock-edit-panel-bd: #e5e5e5;
+
+	--select-text-bg-color: rgba(32, 43, 51, 0.63);
+  --select-text-font-color: white;
+}
+
+pre {
+	--select-text-bg-color: #36284e;
+	--select-text-font-color: #fff;
 }
 
 html {
-    font-size: 16px;
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
 }
 
-body {
-    font-family: var(--font-sans-serif);
-    color: #34495e;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.6rem;
-    letter-spacing: 0;
-    margin: 0;
-    overflow-x: hidden;
+html, body {
+	background-color: #f3f2ee;
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+	color: #1f0909;
+	line-height: 1.5em;
 }
+
+/*#write {
+	overflow-x: auto;
+    max-width: initial;
+	padding-left: calc(50% - 17em);
+    padding-right: calc(50% - 17em);
+}
+
+@media (max-width: 36em) {
+ 	#write {
+ 		padding-left: 1em;
+    	padding-right: 1em;
+ 	}
+}*/
 
 #write {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 20px 30px 100px;
+	max-width: 40em;
 }
 
-#write p {
-    line-height: 1.6rem;
-    word-spacing: .05rem;
+@media only screen and (min-width: 1400px) {
+	#write {
+			max-width: 914px;
+	}
 }
 
-#write ol li {
-    padding-left: 0.5rem;
+ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+ul li {
+	list-style-type: disc;
+	list-style-position: outside;
 }
 
-#write > ul:first-child,
-#write > ol:first-child {
-    margin-top: 30px;
+ol,
+ul {
+	list-style: none;
 }
 
-body > *:first-child {
-    margin-top: 0 !important;
+blockquote,
+q {
+	quotes: none;
 }
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* styles */
 
-body > *:last-child {
-    margin-bottom: 0 !important;
-}
+/* ====== */
 
-a {
-    color: #42b983;
-    font-weight: 600;
-    padding: 0 2px;
-    text-decoration: none;
-}
+/* headings */
 
 h1,
 h2,
@@ -299,433 +310,499 @@ h3,
 h4,
 h5,
 h6 {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    line-height: 1.4;
-    cursor: text;
+	font-weight: bold;
 }
-
-h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
-    text-decoration: none;
-}
-
-h1 tt,
-h1 code {
-    font-size: inherit !important;
-}
-
-h2 tt,
-h2 code {
-    font-size: inherit !important;
-}
-
-h3 tt,
-h3 code {
-    font-size: inherit !important;
-}
-
-h4 tt,
-h4 code {
-    font-size: inherit !important;
-}
-
-h5 tt,
-h5 code {
-    font-size: inherit !important;
-}
-
-h6 tt,
-h6 code {
-    font-size: inherit !important;
-}
-
-h2 a,
-h3 a {
-    color: #34495e;
-}
-
 h1 {
-    padding-bottom: .4rem;
-    font-size: 2.2rem;
-    line-height: 1.3;
+	font-size: 1.875em;
+	/*30 / 16*/
+	line-height: 1.6em;
+	/* 48 / 30*/
+	margin-top: 2em;
 }
-
-h2 {
-    font-size: 1.75rem;
-    line-height: 1.225;
-    margin: 35px 0 15px;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid #ddd;
-}
-
+h2,
 h3 {
-    font-size: 1.4rem;
-    line-height: 1.43;
-    margin: 20px 0 7px;
+	font-size: 1.3125em;
+	/*21 / 16*/
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
 }
-
+h3 {
+	font-weight: normal;
+}
 h4 {
-    font-size: 1.2rem;
+	font-size: 1.125em;
+	/*18 / 16*/
+	margin-top: 2.67em;
+	/*48 / 18*/
 }
-
-h5 {
-    font-size: 1rem;
-}
-
+h5,
 h6 {
-    font-size: 1rem;
-    color: #777;
+	font-size: 1em;
+	/*16*/
 }
+h1 {
+	border-bottom: 1px solid;
+	margin-bottom: 1.875em;
+	padding-bottom: 0.8125em;
+}
+/* links */
+
+a {
+	text-decoration: none;
+	color: #065588;
+}
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+/* block spacing */
 
 p,
 blockquote,
-ul,
-ol,
-dl,
-table {
-    margin: 0.8em 0;
+.md-fences {
+	margin-bottom: 1.5em;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 1.5em;
+}
+/* blockquote */
 
-li > ol,
-li > ul {
-    margin: 0 0;
+blockquote {
+	font-style: italic;
+	border-left: 5px solid;
+	margin-left: 2em;
+	padding-left: 1em;
 }
-
-hr {
-    height: 2px;
-    padding: 0;
-    margin: 16px 0;
-    background-color: #e7e7e7;
-    border: 0 none;
-    overflow: hidden;
-    box-sizing: content-box;
-}
-
-body > h2:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-body > h1:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-body > h3:first-child,
-body > h4:first-child,
-body > h5:first-child,
-body > h6:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-a:first-child h1,
-a:first-child h2,
-a:first-child h3,
-a:first-child h4,
-a:first-child h5,
-a:first-child h6 {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-h1 p,
-h2 p,
-h3 p,
-h4 p,
-h5 p,
-h6 p {
-    margin-top: 0;
-}
-
-li p.first {
-    display: inline-block;
-}
+/* lists */
 
 ul,
 ol {
-    padding-left: 30px;
+	margin: 0 0 1.5em 1.5em;
 }
-
-ul:first-child,
-ol:first-child {
-    margin-top: 0;
-}
-
-ul:last-child,
-ol:last-child {
-    margin-bottom: 0;
-}
-
-blockquote {
-    border-left: 4px solid #42b983;
-    padding: 10px 15px;
-    color: #777;
-    background-color: rgba(66, 185, 131, .1);
+/* tables */
+.md-meta,.md-before, .md-after {
+	color:#999;
 }
 
 table {
-    padding: 0;
-    word-break: initial;
+	margin-bottom: 1.5em;
+	/*24 / 16*/
+	font-size: 1em;
+	/* width: 100%; */
+}
+thead th,
+tfoot th {
+	padding: .25em .25em .25em .4em;
+	text-transform: uppercase;
+}
+th {
+	text-align: left;
+}
+td {
+	vertical-align: top;
+	padding: .25em .25em .25em .4em;
 }
 
-table tr {
-    border-top: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 0;
+code,
+.md-fences {
+	background-color: #dadada;
 }
 
-table tr:nth-child(2n),
-thead {
-    background-color: #fafafa;
-}
-
-table tr th {
-    font-weight: bold;
-    border: 1px solid #dfe2e5;
-    border-bottom: 0;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-}
-
-table tr td {
-    border: 1px solid #dfe2e5;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-}
-
-table tr th:first-child,
-table tr td:first-child {
-    margin-top: 0;
-}
-
-table tr th:last-child,
-table tr td:last-child {
-    margin-bottom: 0;
-}
-
-#write strong {
-    padding: 0 1px;
-}
-
-#write em {
-    padding: 0 5px 0 2px;
-}
-
-#write table thead th {
-    background-color: #f2f2f2;
-}
-
-#write .CodeMirror-gutters {
-    border-right: none;
-}
-
-#write .md-fences {
-    border: 1px solid #F4F4F4;
-    -webkit-font-smoothing: initial;
-    margin: 0.8rem 0 !important;
-    padding: 0.3rem 0 !important;
-    line-height: 1.43rem;
-    background-color: #F8F8F8 !important;
-    border-radius: 2px;
-    font-family: var(--font-monospace);
-    font-size: 0.85rem;
-    word-wrap: normal;
-}
-
-#write .CodeMirror-wrap .CodeMirror-code pre {
-    padding-left: 12px;
-}
-
-#write code, tt {
-    padding: 2px 4px;
-    border-radius: 2px;
-    font-family: var(--font-monospace);
-    font-size: 0.92rem;
-    color: #e96900;
-    background-color: #f8f8f8;
-}
-
-tt {
-    margin: 0 2px;
-}
-
-#write .md-footnote {
-    background-color: #f8f8f8;
-    color: #e96900;
-}
-
-/* heighlight. */
-#write mark {
-    background-color: #EBFFEB;
-    border-radius: 2px;
-    padding: 2px 4px;
-    margin: 0 2px;
-    color: #222;
-    font-weight: 500;
-}
-
-#write del {
-    padding: 1px 2px;
-}
-
-.cm-s-inner .cm-link,
-.cm-s-inner.cm-link {
-    color: #22a2c9;
-}
-
-.cm-s-inner .cm-string {
-    color: #22a2c9;
-}
-
-.md-task-list-item > input {
-    margin-left: -1.3em;
-}
-
-@media print {
-    html {
-        font-size: 13px;
-    }
-
-    table,
-    pre {
-        page-break-inside: avoid;
-    }
-
-    pre {
-        word-wrap: break-word;
-    }
+code {
+	padding-left: 2px;
+	padding-right: 2px;
 }
 
 .md-fences {
-    background-color: #f8f8f8;
+	margin-left: 2em;
+	margin-bottom: 3em;
+	padding-left: 1ch;
+	padding-right: 1ch;
 }
 
-.md-diagram-panel {
-    position: static !important;
+pre,
+code,
+tt {
+	font-size: .875em;
+	line-height: 1.714285em;
+}
+/* some fixes */
+
+h1 {
+	line-height: 1.3em;
+	font-weight: normal;
+	margin-bottom: 0.5em;
+}
+
+p + ul,
+p + ol{
+	margin-top: .5em;
+}
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol {
+	margin-top: .5em;
+}
+
+li > ul,
+li > ol {
+	margin-top: inherit;
+	margin-bottom: 0;
+}
+
+li ol>li {
+	list-style-type: lower-alpha;
+}
+
+li li ol>li{
+	list-style-type: lower-roman;
+}
+
+h2,
+h3 {
+	margin-bottom: .75em;
+}
+hr {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+}
+h1 {
+	border-color: #c5c5c5;
+}
+blockquote {
+	border-color: #bababa;
+	color: #656565;
+}
+
+blockquote ul,
+blockquote ol {
+	margin-left:0;
+}
+
+.ty-table-edit {
+	background-color: transparent;
+}
+thead {
+	background-color: #dadada;
+}
+tr:nth-child(even) {
+	background: #e8e7e7;
+}
+hr {
+	border-color: #c5c5c5;
+}
+.task-list{
+	padding-left: 1rem;
+}
+
+.md-task-list-item {
+	padding-left: 1.5rem;
+	list-style-type: none;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.25rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #F3F2EE;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
 }
 
 #write pre.md-meta-block {
-    padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #f7f7f7;
-    border: 0;
-    border-radius: 3px;
-    color: #777777;
-    margin-top: 0 !important;
+	min-height: 1.875rem;
+	color: #555;
+	border: 0px;
+	background: transparent;
+	margin-top: -4px;
+	margin-left: 1em;
+	margin-top: 1em;
 }
 
-.mathjax-block > .code-tooltip {
-    bottom: .375rem;
+.md-image>.md-meta {
+	color: #9B5146;
 }
 
-#write > h3.md-focus:before {
-    left: -1.5625rem;
-    top: .375rem;
+.md-image>.md-meta{
+	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
 }
 
-#write > h4.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
+
+#write>h3.md-focus:before{
+	left: -1.5rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h4.md-focus:before{
+	left: -1.5rem;
+	top: .25rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h5.md-focus:before{
+	left: -1.5rem;
+	top: .0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h6.md-focus:before{
+	left: -1.5rem;
+	top: 0.3125rem;
+	color:#999;
+	border-color:#999;
 }
 
-#write > h5.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
 }
 
-#write > h6.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
+.md-toc-content:empty:before{
+	color: #065588;
+}
+.md-toc-item {
+	color: #065588;
+}
+#write div.md-toc-tooltip {
+	background-color: #f3f2ee;
 }
 
-.md-image > .md-meta {
-    border-radius: 3px;
-    font-family: var(--font-monospace);
-    padding: 2px 0 0 4px;
-    font-size: 0.9em;
+#typora-sidebar {
+	background-color: #f3f2ee;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+}
+
+.pin-outline #typora-sidebar {
+	background: inherit;
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+.pin-outline #typora-sidebar:hover .outline-title-wrapper {
+	border-left:1px dashed;
+}
+
+.outline-item:hover {
+  background-color: #dadada;
+  border-left: 28px solid #dadada;
+  border-right: 18px solid #dadada;
+}
+
+.typora-node .outline-item:hover {
+  	border-right: 28px solid #dadada;
+}
+
+.outline-expander:before {
+  content: "\f0da";
+  font-family: FontAwesome;
+  font-size:14px;
+  top: 1px;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  content: "\f0d7";
+}
+
+.modal-content {
+	background-color: #f3f2ee;
+}
+
+.auto-suggest-container ul li {
+	list-style-type: none;
+}
+
+/** UI for electron */
+
+.megamenu-menu,
+#top-titlebar, #top-titlebar *,
+.megamenu-content {
+	background: #f3f2ee;
+	color: #1f0909;
+}
+
+.megamenu-menu-header {
+	border-bottom: 1px dashed #202B33;
+}
+
+.megamenu-menu {
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+header, .context-menu, .megamenu-content, footer {
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+    color: #1f0909;
+}
+
+#megamenu-back-btn {
+	color: #1f0909;
+	border-color: #1f0909;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color: #1f0909;
+}
+
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+	color: inherit;
+	background-color: #e8e7df;
+}
+
+.long-btn:hover {
+	background-color: #e8e7df;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
     color: inherit;
 }
 
-.md-tag {
-    color: inherit;
+.megamenu-menu-panel .btn {
+	background-color: #D2D1D1;
 }
 
-.md-toc {
-    margin-top: 20px;
-    padding-bottom: 20px;
+.btn-default {
+	background-color: transparent;
 }
 
-.sidebar-tabs {
-    border-bottom: none;
+.typora-sourceview-on #toggle-sourceview-btn,
+.ty-show-word-count #footer-word-count {
+	background: #c7c5c5;
 }
 
 #typora-quick-open {
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
+    background-color: inherit;
 }
 
-#typora-quick-open-item {
-    background-color: #FAFAFA;
-    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
-    border-style: solid;
-    border-width: 1px;
+.md-diagram-panel {
+	margin-top: 8px;
 }
 
-#md-notification:before {
-    top: 10px;
+.file-list-item-file-name {
+	font-weight: initial;
 }
 
-/** focus mode */
-
-.on-focus-mode blockquote {
-    border-left-color: rgba(85, 85, 85, 0.12);
+.file-list-item-summary {
+	opacity: 1;
 }
 
-header,
-.context-menu,
-.megamenu-content,
-footer {
-    font-family: var(--font-sans-serif);
+.file-list-item {
+	color: #777;
 }
 
-.file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state {
-    visibility: visible;
+.file-list-item.active {
+	background-color: inherit;
+	color: black;
 }
 
-.mac-seamless-mode #typora-sidebar {
-    background-color: var(--side-bar-bg-color);
+.ty-side-sort-btn.active {
+	background-color: inherit;
 }
 
-.md-lang {
-    color: #b4654d;
+.file-list-item.active .file-list-item-file-name  {
+	font-weight: bold;
 }
 
-.html-for-mac .context-menu {
-    --item-hover-bg-color: #E6F0FE;
+.file-list-item{
+    opacity:1 !important;
 }
 
+.file-library-node.active>.file-node-background{
+	background-color: rgba(32, 43, 51, 0.63);
+	background-color: var(--active-file-bg-color);
+}
+
+.file-tree-node.active>.file-node-content{
+	color: white;
+	color: var(--active-file-text-color);
+}
+
+.md-task-list-item>input {
+	margin-left: -1.7em;
+	margin-top: calc(1rem - 12px);
+	-webkit-appearance: button;
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover, 
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+	opacity: 1;
+}
+
+/* https://github.com/typora/typora-issues/issues/2046 */
+.os-windows-7 strong,
+.os-windows-7 strong  {
+	font-weight: 760;
+}
+
+.ty-preferences .btn-default {
+	background: transparent;
+}
+
+.ty-preferences .window-header {
+	border-bottom: 1px dashed #202B33;
+	box-shadow: none;
+}
+
+#sidebar-loading-template, #sidebar-loading-template.file-list-item {
+	color: #777;
+}
+
+.searchpanel-search-option-btn.active {
+	background: #777;
+	color: white;
+}
+
+.export-detail, .light .export-detail, 
+.light .export-item.active, 
+.light .export-items-list-control {
+	background: #e0e0e0;
+	border-radius: 2px;
+	font-weight: 700;
+	color: inherit
+}
 
  @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
 </style><title>Op-PHPStorm快捷键</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='phpstorm-快捷键大全winlinuxmac）'><span>PHPStorm 快捷键大全（Win/Linux/Mac）</span></h1><p><a href='https://learnku.com/laravel/c/share'><span> 分享</span></a><span> </span><a href='https://learnku.com/laravel/t/5420/patches'><span> 1 个改进</span></a></p><blockquote><p><span>下面的～符号记得改成 ‘`’，markdown 语法会转义。使用频率是我自己为准。仅供参考</span></p></blockquote><h3 id='mac-符号'><span>Mac 符号</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>符号</span></th><th style='text-align:center;' ><span>解释</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>⌘</span></td><td style='text-align:center;' ><span>Command</span></td></tr><tr><td style='text-align:center;' ><span>⇧</span></td><td style='text-align:center;' ><span>Shift</span></td></tr><tr><td style='text-align:center;' ><span>⌃</span></td><td style='text-align:center;' ><span>Control</span></td></tr><tr><td style='text-align:center;' ><span>↩</span></td><td style='text-align:center;' ><span>Enter/Return</span></td></tr><tr><td style='text-align:center;' ><span>⌥</span></td><td style='text-align:center;' ><span>Option / Alt</span></td></tr></tbody></table></figure><h3 id='编辑'><span>编辑</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Ctrl + Space</span></td><td style='text-align:center;' ><span>⌃Space</span></td><td style='text-align:center;' ><span>代码自动完成（一般与输入法冲突）</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + Enter</span></td><td style='text-align:center;' ><span>⌘ ⇧ ↩</span></td><td style='text-align:center;' ><span>智能完善代码（如:if ()）</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + P</span></td><td style='text-align:center;' ><span>⌘P</span></td><td style='text-align:center;' ><span>方法参数提示，显示默认参数</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Q</span></td><td style='text-align:center;' ><span>⌃J</span></td><td style='text-align:center;' ><span>显示注释代码</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + mouse over code</span></td><td style='text-align:center;' ><span>⌘+mouse over code</span></td><td style='text-align:center;' ><span>查看到简短的函数介绍</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + F1</span></td><td style='text-align:center;' ><span>⌘F1</span></td><td style='text-align:center;' ><span>显示错误或警告信息的描述（需要把光标放到错误或警告位置）</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Insert</span></td><td style='text-align:center;' ><span>⌘N,⌃↩,⌃N</span></td><td style='text-align:center;' ><span>生成代码段（ 包括函数或类注释，版权信息，构造方法，抽象方法等）</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + O</span></td><td style='text-align:center;' ><span>⌃O</span></td><td style='text-align:center;' ><span>插入覆盖父类的方法</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + I</span></td><td style='text-align:center;' ><span>⌃I</span></td><td style='text-align:center;' ><span>实现抽象方法</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + T</span></td><td style='text-align:center;' ><span>⌘⌥T</span></td><td style='text-align:center;' ><span>选中的代码放在 if..else..、for、foreach 里，或者函数里，或者为选中的代码块添加区域解释（可以折叠该段代码，折叠后只显示解释，便于代码管理）</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + /</span></td><td style='text-align:center;' ><span>⌘/</span></td><td style='text-align:center;' ><span>以添加 “//” 的方式添加注释</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + /</span></td><td style='text-align:center;' ><span>⌘⌥/</span></td><td style='text-align:center;' ><span>添加 “/**/” 的方式添加注释</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + W</span></td><td style='text-align:center;' ><span>⌥↑</span></td><td style='text-align:center;' ><span>增量式的选中当前块</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + W</span></td><td style='text-align:center;' ><span>⌥↓</span></td><td style='text-align:center;' ><span>与 Ctrl + W 对应，减小选中范围</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Q</span></td><td style='text-align:center;' ><span>⌃⇧Q</span></td><td style='text-align:center;' ><span>显示包含光标所在位置的标签头</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Enter</span></td><td style='text-align:center;' ><span>⌥↩</span></td><td style='text-align:center;' ><span>显示意图行动。 Show Intention Action</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + L</span></td><td style='text-align:center;' ><span>⌘⌥L</span></td><td style='text-align:center;' ><span>格式化代码</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + I</span></td><td style='text-align:center;' ><span>⌃⌥I</span></td><td style='text-align:center;' ><span>自动缩进。</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Tab / Shift + Tab</span></td><td style='text-align:center;' ><span>tab,⇧+tab</span></td><td style='text-align:center;' ><span>手动缩进 / 反向缩进</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + X or Shift + Delete</span></td><td style='text-align:center;' ><span>⌘X</span></td><td style='text-align:center;' ><span>剪切</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + C or Ctrl + Insert</span></td><td style='text-align:center;' ><span>⌘C</span></td><td style='text-align:center;' ><span>复制</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + V or Shift + Insert</span></td><td style='text-align:center;' ><span>⌘V</span></td><td style='text-align:center;' ><span>粘贴</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + V</span></td><td style='text-align:center;' ><span>⌘⇧V</span></td><td style='text-align:center;' ><span>从粘贴板中选择内容进行粘贴</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + D</span></td><td style='text-align:center;' ><span>⌘D</span></td><td style='text-align:center;' ><span>将当前行或者选择的内容复制到下一行或光标处</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Y</span></td><td style='text-align:center;' ><span>⌘del</span></td><td style='text-align:center;' ><span>删除光标所在的行</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + J</span></td><td style='text-align:center;' ><span>⌃⇧J</span></td><td style='text-align:center;' ><span>合成选中代码到一行。格式化代码的反向动作</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Enter</span></td><td style='text-align:center;' ><span>⌘↩</span></td><td style='text-align:center;' ><span>智能线分割</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + Enter</span></td><td style='text-align:center;' ><span>⇧↩</span></td><td style='text-align:center;' ><span>另起一新行。无论光标在行的那个位置</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + U</span></td><td style='text-align:center;' ><span>⌘⇧U</span></td><td style='text-align:center;' ><span>字符大小写切换</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + ] / [</span></td><td style='text-align:center;' ><span>⌘⇧],⌘⇧[</span></td><td style='text-align:center;' ><span>以区块为单位，从光标处 向后 / 向前 选择，再次点击增加选择范围</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Delete</span></td><td style='text-align:center;' ><span>⌥ + del</span></td><td style='text-align:center;' ><span>删除光标之后的部分单词</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Backspace</span></td><td style='text-align:center;' ><span>⌥ + Backspace</span></td><td style='text-align:center;' ><span>删除光标之前的部分单词</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + +/-</span></td><td style='text-align:center;' ><span>⌘ +,-</span></td><td style='text-align:center;' ><span>折叠 / 打开代码块，再次点击扩大折叠 / 打开范围</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift +  +</span></td><td style='text-align:center;' ><span>⌘ ⇧+</span></td><td style='text-align:center;' ><span>打开全部</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift +  -</span></td><td style='text-align:center;' ><span>⌘ ⇧-</span></td><td style='text-align:center;' ><span>折叠全部</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + F4</span></td><td style='text-align:center;' ><span>⌘W</span></td><td style='text-align:center;' ><span>关闭当前页面</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr></tbody></table></figure><h3 id='搜索--替换'><span>搜索 / 替换</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Ctrl + F</span></td><td style='text-align:center;' ><span>⌘F</span></td><td style='text-align:center;' ><span>查找</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>F3</span></td><td style='text-align:center;' ><span>⌘G</span></td><td style='text-align:center;' ><span>查找下一个，结合查找使用</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F3</span></td><td style='text-align:center;' ><span>⌘⇧G</span></td><td style='text-align:center;' ><span>查找前一个，结合查找使用</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + R</span></td><td style='text-align:center;' ><span>⌘R</span></td><td style='text-align:center;' ><span>替换</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + F</span></td><td style='text-align:center;' ><span>⌘⇧F</span></td><td style='text-align:center;' ><span>在文件中查找</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + R</span></td><td style='text-align:center;' ><span>⌘⇧R</span></td><td style='text-align:center;' ><span>在文件中替换</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr></tbody></table></figure><h3 id='被使用搜索'><span>被使用搜索</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Alt + F7 / Ctrl + F7</span></td><td style='text-align:center;' ><span>⌥F7/⌘F7</span></td><td style='text-align:center;' ><span>全项目被使用查找 / 当前文件声明变量处</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + F7</span></td><td style='text-align:center;' ><span>⌘⇧F7</span></td><td style='text-align:center;' ><span>在文件中变量或函数被使用处高亮</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + F7</span></td><td style='text-align:center;' ><span>⌘⌥F7</span></td><td style='text-align:center;' ><span>显示详细被使用的位置列表</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr></tbody></table></figure><h3 id='项目运行'><span>项目运行</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Alt + Shift + F10</span></td><td style='text-align:center;' ><span>⌃⌥R</span></td><td style='text-align:center;' ><span>选择配置并运行</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Shift + F9</span></td><td style='text-align:center;' ><span>⌃⌥D</span></td><td style='text-align:center;' ><span>选择配置并 debug</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F10</span></td><td style='text-align:center;' ><span>⌃R</span></td><td style='text-align:center;' ><span>运行</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F9</span></td><td style='text-align:center;' ><span>⌃D</span></td><td style='text-align:center;' ><span>debug</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + F10</span></td><td style='text-align:center;' ><span>⌃⇧R,⌃⇧D</span></td><td style='text-align:center;' ><span>运行上次运行的配置</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + X</span></td><td style='text-align:center;' ><span>⌘⇧X</span></td><td style='text-align:center;' ><span>运行命令行</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr></tbody></table></figure><h3 id='debug-相关在-debug-的时候使用）'><span>debug 相关（在 debug 的时候使用）</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>F8</span></td><td style='text-align:center;' ><span>F8</span></td><td style='text-align:center;' ><span>步过。继续执行断点后程序，按行执行，按一次执行一行</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F7</span></td><td style='text-align:center;' ><span>F7</span></td><td style='text-align:center;' ><span>步进。进入到断点执行的内容程序</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F7</span></td><td style='text-align:center;' ><span>⇧F7</span></td><td style='text-align:center;' ><span>智能进入</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F8</span></td><td style='text-align:center;' ><span>⇧F8</span></td><td style='text-align:center;' ><span>步骤</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>ALT + F9</span></td><td style='text-align:center;' ><span>⌥F9</span></td><td style='text-align:center;' ><span>运行到光标</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>ALT + F8</span></td><td style='text-align:center;' ><span>⌥F8</span></td><td style='text-align:center;' ><span>计算表达式</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F9</span></td><td style='text-align:center;' ><span>⌘⌥R</span></td><td style='text-align:center;' ><span>继续执行断点以后的程序，停到下一个断点处</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + F8</span></td><td style='text-align:center;' ><span>⌘F8</span></td><td style='text-align:center;' ><span>为光标所在行打上断点</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl+Shift+F8</span></td><td style='text-align:center;' ><span>⌘⇧F8</span></td><td style='text-align:center;' ><span>浏览断点</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr></tbody></table></figure><h3 id='导航相关'><span>导航相关</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Ctrl + N</span></td><td style='text-align:center;' ><span>⌘O</span></td><td style='text-align:center;' ><span>搜索类。全项目范围</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + N</span></td><td style='text-align:center;' ><span>⌘⇧O</span></td><td style='text-align:center;' ><span>根据文件名搜索文件。全项目范围</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + Shift + N</span></td><td style='text-align:center;' ><span>⌘⌥O</span></td><td style='text-align:center;' ><span>搜索函数。全项目范围</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Right/Left</span></td><td style='text-align:center;' ><span>⌃←,⌃→</span></td><td style='text-align:center;' ><span>左右切换打开的文件</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F12</span></td><td style='text-align:center;' ><span>F12</span></td><td style='text-align:center;' ><span>放回上次打开的工具窗口</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Esc</span></td><td style='text-align:center;' ><span>Esc</span></td><td style='text-align:center;' ><span>返回编辑器界面</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift+ Esc</span></td><td style='text-align:center;' ><span>⇧ + Esc</span></td><td style='text-align:center;' ><span>光标返回编辑框，关闭无用的窗口</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl+ Shift + F4</span></td><td style='text-align:center;' ><span>⌘⇧F4</span></td><td style='text-align:center;' ><span>关闭活动运行 / 消息 // ... 选项卡</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + G</span></td><td style='text-align:center;' ><span>⌘L</span></td><td style='text-align:center;' ><span>按行号快速定位</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + E</span></td><td style='text-align:center;' ><span>⌘E</span></td><td style='text-align:center;' ><span>打开最近打开过的文件列表</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + Left/Right</span></td><td style='text-align:center;' ><span>⌘⌥←,⌘⌥→</span></td><td style='text-align:center;' ><span>返回 / 前进到上次导航操作</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + Backspace</span></td><td style='text-align:center;' ><span>⌘⇧ + Backspace</span></td><td style='text-align:center;' ><span>返回到上次编辑的位置</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + F1</span></td><td style='text-align:center;' ><span>⌥F1</span></td><td style='text-align:center;' ><span>调出目标窗口</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + B or Ctrl + Click</span></td><td style='text-align:center;' ><span>⌘B or ⌘ Click</span></td><td style='text-align:center;' ><span>跳转到函数的声明处</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + B</span></td><td style='text-align:center;' ><span>⌘⌥B</span></td><td style='text-align:center;' ><span>到实施（S）</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + I</span></td><td style='text-align:center;' ><span>⌥Space,⌘Y</span></td><td style='text-align:center;' ><span>打开快速定义查询</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + B</span></td><td style='text-align:center;' ><span>⌃⇧B</span></td><td style='text-align:center;' ><span>找变量的 类</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + U</span></td><td style='text-align:center;' ><span>⌘U</span></td><td style='text-align:center;' ><span>转到 super-method/super-class</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Up/Down</span></td><td style='text-align:center;' ><span>⌃↑,⌃↓</span></td><td style='text-align:center;' ><span>上下切换函数</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + ] / [</span></td><td style='text-align:center;' ><span>⌘],⌘[</span></td><td style='text-align:center;' ><span>定位到右 / 左侧最近的大括号处。连续点击扩大范围</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + F12</span></td><td style='text-align:center;' ><span>⌘F12</span></td><td style='text-align:center;' ><span>打开文件结构的弹出窗</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + H</span></td><td style='text-align:center;' ><span>⌃H</span></td><td style='text-align:center;' ><span>浏览选定类的层次结构</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F2 / Shift + F2</span></td><td style='text-align:center;' ><span>F2,⇧F2</span></td><td style='text-align:center;' ><span>下 / 上高亮错误或警告快速定位</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F4 / Ctrl + Enter</span></td><td style='text-align:center;' ><span>F4/⌘↓</span></td><td style='text-align:center;' ><span>查找变量来源</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Home</span></td><td style='text-align:center;' ><span>⌥ Home</span></td><td style='text-align:center;' ><span>组合显示导航栏</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F11</span></td><td style='text-align:center;' ><span>F3</span></td><td style='text-align:center;' ><span>切换书签</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + F11</span></td><td style='text-align:center;' ><span>⌥F3</span></td><td style='text-align:center;' ><span>切换书签助记符</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + #[0-9]</span></td><td style='text-align:center;' ><span>⌃0...⌃9</span></td><td style='text-align:center;' ><span>转到编号书签</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F11</span></td><td style='text-align:center;' ><span>⌘F3</span></td><td style='text-align:center;' ><span>显示书签</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr></tbody></table></figure><h3 id='重构相关'><span>重构相关</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>F5</span></td><td style='text-align:center;' ><span>F5</span></td><td style='text-align:center;' ><span>复制文件</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F6</span></td><td style='text-align:center;' ><span>F6</span></td><td style='text-align:center;' ><span>移动文件</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Delete</span></td><td style='text-align:center;' ><span>⌘ Del</span></td><td style='text-align:center;' ><span>安全删除</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F6</span></td><td style='text-align:center;' ><span>⇧F6</span></td><td style='text-align:center;' ><span>为所选文件重命名</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + N</span></td><td style='text-align:center;' ><span>⌘⌥N</span></td><td style='text-align:center;' ><span>内联变量</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + M</span></td><td style='text-align:center;' ><span>⌘⌥M</span></td><td style='text-align:center;' ><span>引入方法</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + V</span></td><td style='text-align:center;' ><span>⌘⌥V</span></td><td style='text-align:center;' ><span>引入变量</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + F</span></td><td style='text-align:center;' ><span>⌘⌥F</span></td><td style='text-align:center;' ><span>类似引入变量</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + C</span></td><td style='text-align:center;' ><span>⌘⌥C</span></td><td style='text-align:center;' ><span>引入常量</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr></tbody></table></figure><h3 id='版本控制--本地历史记录'><span>版本控制 / 本地历史记录</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Alt + ~</span></td><td style='text-align:center;' ><span>⌃V</span></td><td style='text-align:center;' ><span>打开版本操作控制台</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + K</span></td><td style='text-align:center;' ><span>⌘K</span></td><td style='text-align:center;' ><span>提交代码</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + T</span></td><td style='text-align:center;' ><span>⌘T</span></td><td style='text-align:center;' ><span>更新代码到本地</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Shift + C</span></td><td style='text-align:center;' ><span>⌥⇧C</span></td><td style='text-align:center;' ><span>浏览最近更改记录</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr></tbody></table></figure><h3 id='普通操作'><span>普通操作</span></h3><figure><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Ctrl + Shift + A</span></td><td style='text-align:center;' ><span>⌘⇧A</span></td><td style='text-align:center;' ><span>查找操作</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Alt + #[0-9]</span></td><td style='text-align:center;' ><span>⌘0...⌘9</span></td><td style='text-align:center;' ><span>打开对应的工具窗口</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + F12</span></td><td style='text-align:center;' ><span>⌘⇧F12</span></td><td style='text-align:center;' ><span>编辑区窗口最大化</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Shift + F</span></td><td style='text-align:center;' ><span>⌥⇧F</span></td><td style='text-align:center;' ><span>添加到收藏</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Shift + I</span></td><td style='text-align:center;' ><span>⌥⇧I</span></td><td style='text-align:center;' ><span>检查当前文件</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + ~</span></td><td style='text-align:center;' ><span>⌃~</span></td><td style='text-align:center;' ><span>快速切换主题</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + S</span></td><td style='text-align:center;' ><span>⌘,</span></td><td style='text-align:center;' ><span>打开设置窗口</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Tab</span></td><td style='text-align:center;' ><span>⌃+Tab</span></td><td style='text-align:center;' ><span>切换活动文件</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr></tbody></table></figure></div></div>
+<div id='write'  class=''><h1 id='phpstorm-快捷键大全winlinuxmac）'><span>PHPStorm 快捷键大全（Win/Linux/Mac）</span></h1><p><a href='https://learnku.com/laravel/c/share'><span> 分享</span></a><span> </span><a href='https://learnku.com/laravel/t/5420/patches'><span> 1 个改进</span></a></p><blockquote><p><span>下面的～符号记得改成 ‘`’，markdown 语法会转义。使用频率是我自己为准。仅供参考</span></p></blockquote><h3 id='mac-符号'><span>Mac 符号</span></h3><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>符号</span></th><th style='text-align:center;' ><span>解释</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>⌘</span></td><td style='text-align:center;' ><span>Command</span></td></tr><tr><td style='text-align:center;' ><span>⇧</span></td><td style='text-align:center;' ><span>Shift</span></td></tr><tr><td style='text-align:center;' ><span>⌃</span></td><td style='text-align:center;' ><span>Control</span></td></tr><tr><td style='text-align:center;' ><span>↩</span></td><td style='text-align:center;' ><span>Enter/Return</span></td></tr><tr><td style='text-align:center;' ><span>⌥</span></td><td style='text-align:center;' ><span>Option / Alt</span></td></tr></tbody></table></figure><h3 id='编辑'><span>编辑</span></h3><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Ctrl + Space</span></td><td style='text-align:center;' ><span>⌃Space</span></td><td style='text-align:center;' ><span>代码自动完成（一般与输入法冲突）</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + Enter</span></td><td style='text-align:center;' ><span>⌘ ⇧ ↩</span></td><td style='text-align:center;' ><span>智能完善代码（如:if ()）</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + P</span></td><td style='text-align:center;' ><span>⌘P</span></td><td style='text-align:center;' ><span>方法参数提示，显示默认参数</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Q</span></td><td style='text-align:center;' ><span>⌃J</span></td><td style='text-align:center;' ><span>显示注释代码</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + mouse over code</span></td><td style='text-align:center;' ><span>⌘+mouse over code</span></td><td style='text-align:center;' ><span>查看到简短的函数介绍</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + F1</span></td><td style='text-align:center;' ><span>⌘F1</span></td><td style='text-align:center;' ><span>显示错误或警告信息的描述（需要把光标放到错误或警告位置）</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Insert</span></td><td style='text-align:center;' ><span>⌘N,⌃↩,⌃N</span></td><td style='text-align:center;' ><span>生成代码段（ 包括函数或类注释，版权信息，构造方法，抽象方法等）</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + O</span></td><td style='text-align:center;' ><span>⌃O</span></td><td style='text-align:center;' ><span>插入覆盖父类的方法</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + I</span></td><td style='text-align:center;' ><span>⌃I</span></td><td style='text-align:center;' ><span>实现抽象方法</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + T</span></td><td style='text-align:center;' ><span>⌘⌥T</span></td><td style='text-align:center;' ><span>选中的代码放在 if..else..、for、foreach 里，或者函数里，或者为选中的代码块添加区域解释（可以折叠该段代码，折叠后只显示解释，便于代码管理）</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + /</span></td><td style='text-align:center;' ><span>⌘/</span></td><td style='text-align:center;' ><span>以添加 “//” 的方式添加注释</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + /</span></td><td style='text-align:center;' ><span>⌘⌥/</span></td><td style='text-align:center;' ><span>添加 “/**/” 的方式添加注释</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + W</span></td><td style='text-align:center;' ><span>⌥↑</span></td><td style='text-align:center;' ><span>增量式的选中当前块</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + W</span></td><td style='text-align:center;' ><span>⌥↓</span></td><td style='text-align:center;' ><span>与 Ctrl + W 对应，减小选中范围</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Q</span></td><td style='text-align:center;' ><span>⌃⇧Q</span></td><td style='text-align:center;' ><span>显示包含光标所在位置的标签头</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Enter</span></td><td style='text-align:center;' ><span>⌥↩</span></td><td style='text-align:center;' ><span>显示意图行动。 Show Intention Action</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + L</span></td><td style='text-align:center;' ><span>⌘⌥L</span></td><td style='text-align:center;' ><span>格式化代码</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + I</span></td><td style='text-align:center;' ><span>⌃⌥I</span></td><td style='text-align:center;' ><span>自动缩进。</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Tab / Shift + Tab</span></td><td style='text-align:center;' ><span>tab,⇧+tab</span></td><td style='text-align:center;' ><span>手动缩进 / 反向缩进</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + X or Shift + Delete</span></td><td style='text-align:center;' ><span>⌘X</span></td><td style='text-align:center;' ><span>剪切</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + C or Ctrl + Insert</span></td><td style='text-align:center;' ><span>⌘C</span></td><td style='text-align:center;' ><span>复制</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + V or Shift + Insert</span></td><td style='text-align:center;' ><span>⌘V</span></td><td style='text-align:center;' ><span>粘贴</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + V</span></td><td style='text-align:center;' ><span>⌘⇧V</span></td><td style='text-align:center;' ><span>从粘贴板中选择内容进行粘贴</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + D</span></td><td style='text-align:center;' ><span>⌘D</span></td><td style='text-align:center;' ><span>将当前行或者选择的内容复制到下一行或光标处</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Y</span></td><td style='text-align:center;' ><span>⌘del</span></td><td style='text-align:center;' ><span>删除光标所在的行</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + J</span></td><td style='text-align:center;' ><span>⌃⇧J</span></td><td style='text-align:center;' ><span>合成选中代码到一行。格式化代码的反向动作</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Enter</span></td><td style='text-align:center;' ><span>⌘↩</span></td><td style='text-align:center;' ><span>智能线分割</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + Enter</span></td><td style='text-align:center;' ><span>⇧↩</span></td><td style='text-align:center;' ><span>另起一新行。无论光标在行的那个位置</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + U</span></td><td style='text-align:center;' ><span>⌘⇧U</span></td><td style='text-align:center;' ><span>字符大小写切换</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + ] / [</span></td><td style='text-align:center;' ><span>⌘⇧],⌘⇧[</span></td><td style='text-align:center;' ><span>以区块为单位，从光标处 向后 / 向前 选择，再次点击增加选择范围</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Delete</span></td><td style='text-align:center;' ><span>⌥ + del</span></td><td style='text-align:center;' ><span>删除光标之后的部分单词</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Backspace</span></td><td style='text-align:center;' ><span>⌥ + Backspace</span></td><td style='text-align:center;' ><span>删除光标之前的部分单词</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + +/-</span></td><td style='text-align:center;' ><span>⌘ +,-</span></td><td style='text-align:center;' ><span>折叠 / 打开代码块，再次点击扩大折叠 / 打开范围</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift +  +</span></td><td style='text-align:center;' ><span>⌘ ⇧+</span></td><td style='text-align:center;' ><span>打开全部</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift +  -</span></td><td style='text-align:center;' ><span>⌘ ⇧-</span></td><td style='text-align:center;' ><span>折叠全部</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + F4</span></td><td style='text-align:center;' ><span>⌘W</span></td><td style='text-align:center;' ><span>关闭当前页面</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr></tbody></table></figure><h3 id='搜索--替换'><span>搜索 / 替换</span></h3><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Ctrl + F</span></td><td style='text-align:center;' ><span>⌘F</span></td><td style='text-align:center;' ><span>查找</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>F3</span></td><td style='text-align:center;' ><span>⌘G</span></td><td style='text-align:center;' ><span>查找下一个，结合查找使用</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F3</span></td><td style='text-align:center;' ><span>⌘⇧G</span></td><td style='text-align:center;' ><span>查找前一个，结合查找使用</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + R</span></td><td style='text-align:center;' ><span>⌘R</span></td><td style='text-align:center;' ><span>替换</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + F</span></td><td style='text-align:center;' ><span>⌘⇧F</span></td><td style='text-align:center;' ><span>在文件中查找</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + R</span></td><td style='text-align:center;' ><span>⌘⇧R</span></td><td style='text-align:center;' ><span>在文件中替换</span></td><td style='text-align:center;' ><span>★★☆☆☆</span></td></tr></tbody></table></figure><h3 id='被使用搜索'><span>被使用搜索</span></h3><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Alt + F7 / Ctrl + F7</span></td><td style='text-align:center;' ><span>⌥F7/⌘F7</span></td><td style='text-align:center;' ><span>全项目被使用查找 / 当前文件声明变量处</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + F7</span></td><td style='text-align:center;' ><span>⌘⇧F7</span></td><td style='text-align:center;' ><span>在文件中变量或函数被使用处高亮</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + F7</span></td><td style='text-align:center;' ><span>⌘⌥F7</span></td><td style='text-align:center;' ><span>显示详细被使用的位置列表</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr></tbody></table></figure><h3 id='项目运行'><span>项目运行</span></h3><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Alt + Shift + F10</span></td><td style='text-align:center;' ><span>⌃⌥R</span></td><td style='text-align:center;' ><span>选择配置并运行</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Shift + F9</span></td><td style='text-align:center;' ><span>⌃⌥D</span></td><td style='text-align:center;' ><span>选择配置并 debug</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F10</span></td><td style='text-align:center;' ><span>⌃R</span></td><td style='text-align:center;' ><span>运行</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F9</span></td><td style='text-align:center;' ><span>⌃D</span></td><td style='text-align:center;' ><span>debug</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + F10</span></td><td style='text-align:center;' ><span>⌃⇧R,⌃⇧D</span></td><td style='text-align:center;' ><span>运行上次运行的配置</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + X</span></td><td style='text-align:center;' ><span>⌘⇧X</span></td><td style='text-align:center;' ><span>运行命令行</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr></tbody></table></figure><h3 id='debug-相关在-debug-的时候使用）'><span>debug 相关（在 debug 的时候使用）</span></h3><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>F8</span></td><td style='text-align:center;' ><span>F8</span></td><td style='text-align:center;' ><span>步过。继续执行断点后程序，按行执行，按一次执行一行</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F7</span></td><td style='text-align:center;' ><span>F7</span></td><td style='text-align:center;' ><span>步进。进入到断点执行的内容程序</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F7</span></td><td style='text-align:center;' ><span>⇧F7</span></td><td style='text-align:center;' ><span>智能进入</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F8</span></td><td style='text-align:center;' ><span>⇧F8</span></td><td style='text-align:center;' ><span>步骤</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>ALT + F9</span></td><td style='text-align:center;' ><span>⌥F9</span></td><td style='text-align:center;' ><span>运行到光标</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>ALT + F8</span></td><td style='text-align:center;' ><span>⌥F8</span></td><td style='text-align:center;' ><span>计算表达式</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F9</span></td><td style='text-align:center;' ><span>⌘⌥R</span></td><td style='text-align:center;' ><span>继续执行断点以后的程序，停到下一个断点处</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + F8</span></td><td style='text-align:center;' ><span>⌘F8</span></td><td style='text-align:center;' ><span>为光标所在行打上断点</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl+Shift+F8</span></td><td style='text-align:center;' ><span>⌘⇧F8</span></td><td style='text-align:center;' ><span>浏览断点</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr></tbody></table></figure><h3 id='导航相关'><span>导航相关</span></h3><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Ctrl + N</span></td><td style='text-align:center;' ><span>⌘O</span></td><td style='text-align:center;' ><span>搜索类。全项目范围</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + N</span></td><td style='text-align:center;' ><span>⌘⇧O</span></td><td style='text-align:center;' ><span>根据文件名搜索文件。全项目范围</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + Shift + N</span></td><td style='text-align:center;' ><span>⌘⌥O</span></td><td style='text-align:center;' ><span>搜索函数。全项目范围</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Right/Left</span></td><td style='text-align:center;' ><span>⌃←,⌃→</span></td><td style='text-align:center;' ><span>左右切换打开的文件</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F12</span></td><td style='text-align:center;' ><span>F12</span></td><td style='text-align:center;' ><span>放回上次打开的工具窗口</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Esc</span></td><td style='text-align:center;' ><span>Esc</span></td><td style='text-align:center;' ><span>返回编辑器界面</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift+ Esc</span></td><td style='text-align:center;' ><span>⇧ + Esc</span></td><td style='text-align:center;' ><span>光标返回编辑框，关闭无用的窗口</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl+ Shift + F4</span></td><td style='text-align:center;' ><span>⌘⇧F4</span></td><td style='text-align:center;' ><span>关闭活动运行 / 消息 // ... 选项卡</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + G</span></td><td style='text-align:center;' ><span>⌘L</span></td><td style='text-align:center;' ><span>按行号快速定位</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + E</span></td><td style='text-align:center;' ><span>⌘E</span></td><td style='text-align:center;' ><span>打开最近打开过的文件列表</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + Left/Right</span></td><td style='text-align:center;' ><span>⌘⌥←,⌘⌥→</span></td><td style='text-align:center;' ><span>返回 / 前进到上次导航操作</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + Backspace</span></td><td style='text-align:center;' ><span>⌘⇧ + Backspace</span></td><td style='text-align:center;' ><span>返回到上次编辑的位置</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + F1</span></td><td style='text-align:center;' ><span>⌥F1</span></td><td style='text-align:center;' ><span>调出目标窗口</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + B or Ctrl + Click</span></td><td style='text-align:center;' ><span>⌘B or ⌘ Click</span></td><td style='text-align:center;' ><span>跳转到函数的声明处</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + B</span></td><td style='text-align:center;' ><span>⌘⌥B</span></td><td style='text-align:center;' ><span>到实施（S）</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + I</span></td><td style='text-align:center;' ><span>⌥Space,⌘Y</span></td><td style='text-align:center;' ><span>打开快速定义查询</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + B</span></td><td style='text-align:center;' ><span>⌃⇧B</span></td><td style='text-align:center;' ><span>找变量的 类</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + U</span></td><td style='text-align:center;' ><span>⌘U</span></td><td style='text-align:center;' ><span>转到 super-method/super-class</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Up/Down</span></td><td style='text-align:center;' ><span>⌃↑,⌃↓</span></td><td style='text-align:center;' ><span>上下切换函数</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + ] / [</span></td><td style='text-align:center;' ><span>⌘],⌘[</span></td><td style='text-align:center;' ><span>定位到右 / 左侧最近的大括号处。连续点击扩大范围</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + F12</span></td><td style='text-align:center;' ><span>⌘F12</span></td><td style='text-align:center;' ><span>打开文件结构的弹出窗</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + H</span></td><td style='text-align:center;' ><span>⌃H</span></td><td style='text-align:center;' ><span>浏览选定类的层次结构</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F2 / Shift + F2</span></td><td style='text-align:center;' ><span>F2,⇧F2</span></td><td style='text-align:center;' ><span>下 / 上高亮错误或警告快速定位</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F4 / Ctrl + Enter</span></td><td style='text-align:center;' ><span>F4/⌘↓</span></td><td style='text-align:center;' ><span>查找变量来源</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Home</span></td><td style='text-align:center;' ><span>⌥ Home</span></td><td style='text-align:center;' ><span>组合显示导航栏</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F11</span></td><td style='text-align:center;' ><span>F3</span></td><td style='text-align:center;' ><span>切换书签</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + F11</span></td><td style='text-align:center;' ><span>⌥F3</span></td><td style='text-align:center;' ><span>切换书签助记符</span></td><td style='text-align:center;' ><span>★★★★☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + #[0-9]</span></td><td style='text-align:center;' ><span>⌃0...⌃9</span></td><td style='text-align:center;' ><span>转到编号书签</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F11</span></td><td style='text-align:center;' ><span>⌘F3</span></td><td style='text-align:center;' ><span>显示书签</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr></tbody></table></figure><h3 id='重构相关'><span>重构相关</span></h3><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>F5</span></td><td style='text-align:center;' ><span>F5</span></td><td style='text-align:center;' ><span>复制文件</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>F6</span></td><td style='text-align:center;' ><span>F6</span></td><td style='text-align:center;' ><span>移动文件</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Delete</span></td><td style='text-align:center;' ><span>⌘ Del</span></td><td style='text-align:center;' ><span>安全删除</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Shift + F6</span></td><td style='text-align:center;' ><span>⇧F6</span></td><td style='text-align:center;' ><span>为所选文件重命名</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + N</span></td><td style='text-align:center;' ><span>⌘⌥N</span></td><td style='text-align:center;' ><span>内联变量</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + M</span></td><td style='text-align:center;' ><span>⌘⌥M</span></td><td style='text-align:center;' ><span>引入方法</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + V</span></td><td style='text-align:center;' ><span>⌘⌥V</span></td><td style='text-align:center;' ><span>引入变量</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + F</span></td><td style='text-align:center;' ><span>⌘⌥F</span></td><td style='text-align:center;' ><span>类似引入变量</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + C</span></td><td style='text-align:center;' ><span>⌘⌥C</span></td><td style='text-align:center;' ><span>引入常量</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr></tbody></table></figure><h3 id='版本控制--本地历史记录'><span>版本控制 / 本地历史记录</span></h3><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Alt + ~</span></td><td style='text-align:center;' ><span>⌃V</span></td><td style='text-align:center;' ><span>打开版本操作控制台</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + K</span></td><td style='text-align:center;' ><span>⌘K</span></td><td style='text-align:center;' ><span>提交代码</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + T</span></td><td style='text-align:center;' ><span>⌘T</span></td><td style='text-align:center;' ><span>更新代码到本地</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Shift + C</span></td><td style='text-align:center;' ><span>⌥⇧C</span></td><td style='text-align:center;' ><span>浏览最近更改记录</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr></tbody></table></figure><h3 id='普通操作'><span>普通操作</span></h3><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>Win / Linux</span></th><th style='text-align:center;' ><span>Mac</span></th><th style='text-align:center;' ><span>注释</span></th><th style='text-align:center;' ><span>使用频率</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Ctrl + Shift + A</span></td><td style='text-align:center;' ><span>⌘⇧A</span></td><td style='text-align:center;' ><span>查找操作</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr><tr><td style='text-align:center;' ><span>Alt + #[0-9]</span></td><td style='text-align:center;' ><span>⌘0...⌘9</span></td><td style='text-align:center;' ><span>打开对应的工具窗口</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Shift + F12</span></td><td style='text-align:center;' ><span>⌘⇧F12</span></td><td style='text-align:center;' ><span>编辑区窗口最大化</span></td><td style='text-align:center;' ><span>★★★☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Shift + F</span></td><td style='text-align:center;' ><span>⌥⇧F</span></td><td style='text-align:center;' ><span>添加到收藏</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Alt + Shift + I</span></td><td style='text-align:center;' ><span>⌥⇧I</span></td><td style='text-align:center;' ><span>检查当前文件</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + ~</span></td><td style='text-align:center;' ><span>⌃~</span></td><td style='text-align:center;' ><span>快速切换主题</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Alt + S</span></td><td style='text-align:center;' ><span>⌘,</span></td><td style='text-align:center;' ><span>打开设置窗口</span></td><td style='text-align:center;' ><span>★☆☆☆☆</span></td></tr><tr><td style='text-align:center;' ><span>Ctrl + Tab</span></td><td style='text-align:center;' ><span>⌃+Tab</span></td><td style='text-align:center;' ><span>切换活动文件</span></td><td style='text-align:center;' ><span>★★★★★</span></td></tr></tbody></table></figure></div></div>
 </body>
 </html>

@@ -3,13 +3,458 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
-<style type='text/css'>html {overflow-x: initial !important;}:root { --mermaid-theme:  default; --mermaid-sequence-numbers:  off; --mermaid-flowchart-curve:  linear; --mermaid--gantt-left-padding:  75; --sequence-theme:  simple; }
+<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --mermaid-theme:  default; --mermaid-sequence-numbers:  off; --mermaid-flowchart-curve:  linear; --mermaid--gantt-left-padding:  75; --sequence-theme:  simple; }
+.tooltip[data-v-70836592] { cursor: pointer; position: relative; display: block; width: 100%; text-align: center; z-index: 10; }
+.tooltip span[data-v-70836592] { border-bottom-width: 1px; border-bottom-style: dotted; }
+.tooltip[data-v-70836592]::after { display: none; content: attr(data-tooltip); background-color: rgb(232, 233, 233); max-width: 500px; width: 200px; position: absolute; left: -200px; right: 0px; margin: auto; opacity: 0; height: auto; font-size: 14px; padding: 10px; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; color: rgb(17, 17, 17); text-align: left; }
+.tooltip.bottom[data-v-70836592]::after { top: 80%; transition: opacity 0.3s ease 0.3s, top 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s; }
+.tooltip.bottom[data-v-70836592]:hover::after { display: block; top: 130%; opacity: 1; }
+.lifeline .line[data-v-6efc771f] { background-size: 1px 20px; }
+.zenuml .interaction { border: 0px dashed transparent; }
+.zenuml .interaction.sync { border-right-width: 7px; }
+.zenuml .interaction.inited-from-occurrence, .zenuml .interaction.self-invocation { border-left-width: 7px; }
+.zenuml .interaction.return { border-left-width: 7px; border-right-width: 7px; }
+.zenuml .interaction.return-to-start { border-left-width: 0px; }
+.zenuml .interaction:hover { cursor: pointer; }
+.zenuml .message { position: relative; }
+.zenuml .message > .name { text-align: center; }
+.zenuml .interaction.right-to-left > .occurrence { left: -14px; }
+.zenuml .interaction.self > .occurrence { left: -8px; margin-top: -10px; }
+.zenuml .fragment { border-width: 1px; margin: 8px 0px 0px; padding-bottom: 10px; }
+.zenuml .sequence-diagram * { box-sizing: inherit; }
+.zenuml .sequence-diagram { line-height: normal; }
+.zenuml .participant { border-width: 2px; padding: 8px 4px; min-width: 88px; max-width: 250px; text-align: center; pointer-events: all; }
+.no-fill svg.arrow polyline[data-v-ca07199a] { fill: none !important; }
+.async > .message > .point > svg.arrow > polyline[data-v-ca07199a] { fill: none; }
+.right-to-left.point[data-v-ca07199a] { left: 0px; right: auto; }
+.right-to-left.point > svg > polyline.right[data-v-ca07199a] { display: none; }
+.right-to-left.point > svg > polyline.left[data-v-ca07199a] { display: inline; }
+.point > svg > polyline.left[data-v-ca07199a] { display: none; }
+:root { --color-bg-base:  #fff; --color-text-base:  #000; --color-text-secondary:  #333; --color-border-base:  #000; }
+.theme-default { --color-text-base:  #222; --color-border-base:  #666; --color-message-arrow:  #000; --color-bg-occurrence:  #dedede; }
+.theme-mermaid { --color-bg-base:  #fff; --color-text-base:  #222; --color-border-base:  #666; --color-bg-occurrence:  #dedede; }
+.theme-mermaid .footer { visibility: hidden; }
+.theme-darcula { --color-bg-canvas:  #ffffff; --color-bg-frame:  #2b2b2b; --color-border-frame:  #cccccc; --color-bg-title:  #2b2b2b; --color-text-title:  #f8f8f2; --color-bg-participant:  #44475a; --color-text-participant:  #f8f8f2; --color-border-participant:  #cccccc; --color-text-message:  #ffb86c; --color-message-arrow:  #cccccc; --color-bg-message-hover:  #a6d2ff; --color-text-message-hover:  #174ad4; --color-text-comment:  #666666; --color-bg-fragment-header:  #44475a; --color-text-fragment:  #8be9fd; --color-border-fragment:  #cccccc; --color-bg-occurrence:  #44475a; --color-border-occurrence:  #555555; --color-text-link:  #a6d2ff; --color-text-control:  #e2ba88; }
+.theme-sky { --color-bg-canvas:  #ffffff; --color-bg-frame:  #ffffff; --color-border-frame:  #cccccc; --color-bg-title:  #deecfb; --color-text-title:  #032c72; --color-bg-participant:  #deecfb; --color-text-participant:  #032c72; --color-border-participant:  #032c72; --color-text-message:  #032c72; --color-message-arrow:  #032c72; --color-bg-message-hover:  #a6d2ff; --color-text-message-hover:  #174ad4; --color-text-comment:  #666666; --color-bg-fragment-header:  #f0f0f0; --color-text-fragment:  #032c72; --color-border-fragment:  #032c72; --color-bg-occurrence:  #deecfb; --color-border-occurrence:  #555555; --color-text-link:  #a6d2ff; --color-text-control:  #a6d2ff; }
+.theme-idle-afternoon { --color-bg-canvas:  #d8dad9; --color-bg-frame:  #d8dad9; --color-border-frame:  #324939; --color-bg-title:  #d8dad9; --color-text-title:  #182e27; --color-bg-participant:  #f3f5f7; --color-text-participant:  #182e27; --color-border-participant:  #182e27; --color-text-message:  #030809; --color-message-arrow:  #324939; --color-bg-message-hover:  #aea690; --color-text-message-hover:  #000000; --color-text-comment:  #030809; --color-bg-fragment-header:  #f0f0f0; --color-text-fragment:  #182e27; --color-border-fragment:  #344337; --color-bg-occurrence:  #f3f5f7; --color-border-occurrence:  #344337; --color-text-link:  #344337; --color-text-control:  #97a49b; }
+.theme-coles { --color-bg-canvas:  #ffffff; --color-bg-frame:  #ffde00; --color-border-frame:  #ee141f; --color-bg-title:  #ffffff; --color-text-title:  #182e27; --color-bg-participant:  #f3f5f7; --color-text-participant:  #000000; --color-border-participant:  #344337; --color-text-message:  #000000; --color-message-arrow:  #000000; --color-bg-message-hover:  #ee141f; --color-text-message-hover:  #ffffff; --color-text-comment:  #000000; --color-bg-fragment-header:  #ee141f; --color-text-fragment:  #ffffff; --color-border-fragment:  #ee141f; --color-bg-occurrence:  #f3f5f7; --color-border-occurrence:  #344337; --color-text-link:  #344337; --color-text-control:  #97a49b; }
+.theme-coles .footer { background-color: rgb(255, 255, 255); }
+.theme-woolworths { --color-bg-canvas:  #e6eaf3; --color-bg-frame:  #e6eaf3; --color-border-frame:  #049e50; --color-bg-title:  #ffffff; --color-text-title:  #12522f; --color-bg-participant:  #aacb51; --color-text-participant:  #000000; --color-border-participant:  #344337; --color-text-message:  #12522f; --color-message-arrow:  #049e50; --color-bg-message-hover:  #fffefb; --color-text-message-hover:  #ffffff; --color-text-comment:  #000000; --color-bg-fragment-header:  #aacb51; --color-text-fragment:  #12522f; --color-border-fragment:  #049e50; --color-bg-occurrence:  #aacb51; --color-border-occurrence:  #344337; --color-text-link:  #344337; --color-text-control:  #335c80; }
+.theme-anz { --color-bg-canvas:  #ffffff; --color-bg-frame:  #ffffff; --color-border-frame:  #089fd8; --color-bg-title:  #ffffff; --color-text-title:  #006e9c; --color-bg-participant:  #fcfdf8; --color-text-participant:  #00abd8; --color-border-participant:  #00abd8; --color-text-message:  #42a4e0; --color-message-arrow:  #089fd8; --color-bg-message-hover:  #006e9c; --color-text-message-hover:  #ffffff; --color-text-comment:  #000000; --color-bg-fragment-header:  #42a4e0; --color-text-fragment:  #006e9c; --color-border-fragment:  #089fd8; --color-bg-occurrence:  #fcfdf8; --color-border-occurrence:  #006e9c; --color-text-link:  #c9d8e7; --color-text-control:  #335c80; }
+.theme-anz .fragment .header { color: rgb(255, 255, 255); }
+.theme-nab { --color-bg-canvas:  #f2f4f6; --color-bg-participant:  #c30000; --color-text-participant:  #ffffff; --color-border-participant:  #c30000; --color-text-message:  #c30000; --color-bg-fragment-header:  #c30000; --color-text-fragment-header:  #ffffff; }
+.theme-google { --color-white:  #ffffff; --color-red-google:  #db4437; --color-blue-google:  #4285f4; --color-green-google:  #0f9d58; --color-yellow-google:  #f4b400; --color-bg-canvas:  var(--color-white); --color-bg-frame:  #f2f4f6; --color-border-frame:  #4285f4; --color-bg-title:  #4285f4; --color-text-title:  #ffffff; --color-bg-participant:  var(--color-red-google); --color-text-participant:  #ffffff; --color-border-participant:  #4285f4; --color-text-message:  var(--color-red-google); --color-message-arrow:  var(--color-red-google); --color-bg-message-hover:  #fffefb; --color-text-message-hover:  #ffffff; --color-text-comment:  #000000; --color-bg-fragment-header:  var(--color-green-google); --color-text-fragment:  #ffffff; --color-border-fragment:  #4285f4; --color-bg-occurrence:  #f4b400; --color-border-occurrence:  #4285f4; --color-text-link:  #c9d8e7; --color-text-control:  #335c80; }
+*, ::before, ::after { --tw-border-spacing-x:  0; --tw-border-spacing-y:  0; --tw-translate-x:  0; --tw-translate-y:  0; --tw-rotate:  0; --tw-skew-x:  0; --tw-skew-y:  0; --tw-scale-x:  1; --tw-scale-y:  1; --tw-pan-x:  ; --tw-pan-y:  ; --tw-pinch-zoom:  ; --tw-scroll-snap-strictness:  proximity; --tw-ordinal:  ; --tw-slashed-zero:  ; --tw-numeric-figure:  ; --tw-numeric-spacing:  ; --tw-numeric-fraction:  ; --tw-ring-inset:  ; --tw-ring-offset-width:  0px; --tw-ring-offset-color:  #fff; --tw-ring-color:  rgb(59 130 246 / 0.5); --tw-ring-offset-shadow:  0 0 #0000; --tw-ring-shadow:  0 0 #0000; --tw-shadow:  0 0 #0000; --tw-shadow-colored:  0 0 #0000; --tw-blur:  ; --tw-brightness:  ; --tw-contrast:  ; --tw-grayscale:  ; --tw-hue-rotate:  ; --tw-invert:  ; --tw-saturate:  ; --tw-sepia:  ; --tw-drop-shadow:  ; --tw-backdrop-blur:  ; --tw-backdrop-brightness:  ; --tw-backdrop-contrast:  ; --tw-backdrop-grayscale:  ; --tw-backdrop-hue-rotate:  ; --tw-backdrop-invert:  ; --tw-backdrop-opacity:  ; --tw-backdrop-saturate:  ; --tw-backdrop-sepia:  ; }
+::-webkit-backdrop { --tw-border-spacing-x:  0; --tw-border-spacing-y:  0; --tw-translate-x:  0; --tw-translate-y:  0; --tw-rotate:  0; --tw-skew-x:  0; --tw-skew-y:  0; --tw-scale-x:  1; --tw-scale-y:  1; --tw-pan-x:  ; --tw-pan-y:  ; --tw-pinch-zoom:  ; --tw-scroll-snap-strictness:  proximity; --tw-ordinal:  ; --tw-slashed-zero:  ; --tw-numeric-figure:  ; --tw-numeric-spacing:  ; --tw-numeric-fraction:  ; --tw-ring-inset:  ; --tw-ring-offset-width:  0px; --tw-ring-offset-color:  #fff; --tw-ring-color:  rgb(59 130 246 / 0.5); --tw-ring-offset-shadow:  0 0 #0000; --tw-ring-shadow:  0 0 #0000; --tw-shadow:  0 0 #0000; --tw-shadow-colored:  0 0 #0000; --tw-blur:  ; --tw-brightness:  ; --tw-contrast:  ; --tw-grayscale:  ; --tw-hue-rotate:  ; --tw-invert:  ; --tw-saturate:  ; --tw-sepia:  ; --tw-drop-shadow:  ; --tw-backdrop-blur:  ; --tw-backdrop-brightness:  ; --tw-backdrop-contrast:  ; --tw-backdrop-grayscale:  ; --tw-backdrop-hue-rotate:  ; --tw-backdrop-invert:  ; --tw-backdrop-opacity:  ; --tw-backdrop-saturate:  ; --tw-backdrop-sepia:  ; }
+.container { width: 100%; }
+@media (min-width: 640px) { 
+  .container { max-width: 640px; }
+}
+@media (min-width: 768px) { 
+  .container { max-width: 768px; }
+}
+@media (min-width: 1024px) { 
+  .container { max-width: 1024px; }
+}
+@media (min-width: 1280px) { 
+  .container { max-width: 1280px; }
+}
+@media (min-width: 1536px) { 
+  .container { max-width: 1536px; }
+}
+.zenuml .sr-only { position: absolute; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px; }
+.zenuml .pointer-events-none { pointer-events: none; }
+.zenuml .pointer-events-auto { pointer-events: auto; }
+.zenuml .invisible { visibility: hidden; }
+.zenuml .fixed { position: fixed; }
+.zenuml .absolute { position: absolute; }
+.zenuml .relative { position: relative; }
+.zenuml .sticky { position: sticky; }
+.zenuml .inset-0 { inset: 0px; }
+.zenuml .bottom-1 { bottom: 0.25rem; }
+.zenuml .left-1 { left: 0.25rem; }
+.zenuml .right-1 { right: 0.25rem; }
+.zenuml .top-0 { top: 0px; }
+.zenuml .top-8 { top: 2rem; }
+.zenuml .left-1\/2 { left: 50%; }
+.zenuml .right-0 { right: 0px; }
+.zenuml .right-\[100\%\] { right: 100%; }
+.zenuml .left-full { left: 100%; }
+.zenuml .z-40 { z-index: 40; }
+.zenuml .z-10 { z-index: 10; }
+.zenuml .col-span-2 { grid-column-start: span 2; grid-column-end: span 2; }
+.zenuml .col-span-1 { grid-column-start: span 1; grid-column-end: span 1; }
+.zenuml .col-span-4 { grid-column-start: span 4; grid-column-end: span 4; }
+.zenuml .float-right { float: right; }
+.zenuml .m-1 { margin: 0.25rem; }
+.zenuml .m-2 { margin: 0.5rem; }
+.zenuml .m-auto { margin: auto; }
+.zenuml .mx-auto { margin-left: auto; margin-right: auto; }
+.zenuml .mx-2 { margin-left: 0.5rem; margin-right: 0.5rem; }
+.zenuml .-my-px { margin-top: -1px; margin-bottom: -1px; }
+.zenuml .ml-3 { margin-left: 0.75rem; }
+.zenuml .mr-1 { margin-right: 0.25rem; }
+.zenuml .ml-4 { margin-left: 1rem; }
+.zenuml .mt-3 { margin-top: 0.75rem; }
+.zenuml .mt-4 { margin-top: 1rem; }
+.zenuml .mb-4 { margin-bottom: 1rem; }
+.zenuml .mt-8 { margin-top: 2rem; }
+.zenuml .-mt-12 { margin-top: -3rem; }
+.zenuml .mt-1 { margin-top: 0.25rem; }
+.zenuml .mb-0 { margin-bottom: 0px; }
+.zenuml .mt-2 { margin-top: 0.5rem; }
+.zenuml .box-border { box-sizing: border-box; }
+.zenuml .block { display: block; }
+.zenuml .inline-block { display: inline-block; }
+.zenuml .inline { display: inline; }
+.zenuml .flex { display: flex; }
+.zenuml .inline-flex { display: inline-flex; }
+.zenuml .table { display: table; }
+.zenuml .grid { display: grid; }
+.zenuml .contents { display: contents; }
+.zenuml .hidden { display: none; }
+.zenuml .h-10 { height: 2.5rem; }
+.zenuml .h-5 { height: 1.25rem; }
+.zenuml .h-0 { height: 0px; }
+.zenuml .h-screen { height: 100vh; }
+.zenuml .h-full { height: 100%; }
+.zenuml .h-4 { height: 1rem; }
+.zenuml .h-6 { height: 1.5rem; }
+.zenuml .h-12 { height: 3rem; }
+.zenuml .h-8 { height: 2rem; }
+.zenuml .h-14 { height: 3.5rem; }
+.zenuml .h-3 { height: 0.75rem; }
+.zenuml .min-h-screen { min-height: 100vh; }
+.zenuml .min-h-\[1em\] { min-height: 1em; }
+.zenuml .w-full { width: 100%; }
+.zenuml .w-96 { width: 24rem; }
+.zenuml .w-28 { width: 7rem; }
+.zenuml .w-4 { width: 1rem; }
+.zenuml .w-6 { width: 1.5rem; }
+.zenuml .w-8 { width: 2rem; }
+.zenuml .w-11\/12 { width: 91.666667%; }
+.zenuml .w-px { width: 1px; }
+.zenuml .w-3 { width: 0.75rem; }
+.zenuml .min-w-\[100px\] { min-width: 100px; }
+.zenuml .max-w-full { max-width: 100%; }
+.zenuml .max-w-7xl { max-width: 80rem; }
+.zenuml .flex-shrink-0, .zenuml .shrink-0 { flex-shrink: 0; }
+.zenuml .flex-grow, .zenuml .grow { flex-grow: 1; }
+.zenuml .origin-top-left { transform-origin: left top; }
+.zenuml .-translate-x-1\/2 { --tw-translate-x:  -50%; transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
+.zenuml .-translate-y-full { --tw-translate-y:  -100%; transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
+.zenuml .-translate-y-8 { --tw-translate-y:  -2rem; transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
+.zenuml .-translate-x-full { --tw-translate-x:  -100%; transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
+.zenuml .-translate-y-1\/2 { --tw-translate-y:  -50%; transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
+.zenuml .translate-y-1\/2 { --tw-translate-y:  50%; transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
+.zenuml .transform { transform: translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)); }
+.zenuml .cursor-pointer { cursor: pointer; }
+.zenuml .select-none { -webkit-user-select: none; }
+.zenuml .resize { resize: both; }
+.zenuml .grid-cols-6 { grid-template-columns: repeat(6, minmax(0px, 1fr)); }
+.zenuml .grid-cols-4 { grid-template-columns: repeat(4, minmax(0px, 1fr)); }
+.zenuml .grid-cols-1 { grid-template-columns: repeat(1, minmax(0px, 1fr)); }
+.zenuml .flex-row-reverse { flex-direction: row-reverse; }
+.zenuml .flex-col { flex-direction: column; }
+.zenuml .flex-nowrap { flex-wrap: nowrap; }
+.zenuml .items-start { align-items: flex-start; }
+.zenuml .items-end { align-items: flex-end; }
+.zenuml .items-center { align-items: center; }
+.zenuml .justify-center { justify-content: center; }
+.zenuml .justify-between { justify-content: space-between; }
+.zenuml .justify-around { justify-content: space-around; }
+.zenuml .gap-5 { row-gap: 1.25rem; column-gap: 1.25rem; }
+.zenuml .overflow-hidden { overflow: hidden; }
+.zenuml .overflow-visible { overflow: visible; }
+.zenuml .overflow-y-auto { overflow-y: auto; }
+.zenuml .whitespace-normal { white-space: normal; }
+.zenuml .whitespace-nowrap { white-space: nowrap; }
+.zenuml .rounded { border-top-left-radius: 0.25rem; border-top-right-radius: 0.25rem; border-bottom-right-radius: 0.25rem; border-bottom-left-radius: 0.25rem; }
+.zenuml .rounded-sm { border-top-left-radius: 0.125rem; border-top-right-radius: 0.125rem; border-bottom-right-radius: 0.125rem; border-bottom-left-radius: 0.125rem; }
+.zenuml .rounded-md { border-top-left-radius: 0.375rem; border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; border-bottom-left-radius: 0.375rem; }
+.zenuml .rounded-lg { border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem; border-bottom-right-radius: 0.5rem; border-bottom-left-radius: 0.5rem; }
+.zenuml .rounded-t { border-top-left-radius: 0.25rem; border-top-right-radius: 0.25rem; }
+.zenuml .rounded-t-md { border-top-left-radius: 0.375rem; border-top-right-radius: 0.375rem; }
+.zenuml .rounded-b-md { border-bottom-right-radius: 0.375rem; border-bottom-left-radius: 0.375rem; }
+.zenuml .border-2 { border-width: 2px; }
+.zenuml .border { border-width: 1px; }
+.zenuml .border-b-2 { border-bottom-width: 2px; }
+.zenuml .border-b { border-bottom-width: 1px; }
+.zenuml .border-t { border-top-width: 1px; }
+.zenuml .border-r { border-right-width: 1px; }
+.zenuml .border-solid { border-style: solid; }
+.zenuml .border-dashed { border-style: dashed; }
+.zenuml .border-red-900 { --tw-border-opacity:  1; border-color: rgb(127 29 29 / var(--tw-border-opacity)); }
+.zenuml .border-skin-frame { border-color: var(--color-border-frame, var(--color-border-base, #000)); }
+.zenuml .border-gray-200 { --tw-border-opacity:  1; border-color: rgb(229 231 235 / var(--tw-border-opacity)); }
+.zenuml .border-skin-participant { border-color: var(--color-border-participant, var(--color-border-frame, var(--color-border-base, #000))); }
+.zenuml .border-skin-fragment { border-color: var(--color-border-fragment, var(--color-border-frame, var(--color-border-base, #000))); }
+.zenuml .border-skin-message-arrow { border-color: var(--color-message-arrow, var(--color-border-frame, var(--color-border-base, #000))); }
+.zenuml .border-skin-occurrence { border-color: var(--color-border-occurrence, var(--color-border-frame, var(--color-border-base, #000))); }
+.zenuml .bg-gray-50 { --tw-bg-opacity:  1; background-color: rgb(249 250 251 / var(--tw-bg-opacity)); }
+.zenuml .bg-skin-canvas { background-color: var(--color-bg-canvas, var(--color-bg-base, #fff)); }
+.zenuml .bg-skin-frame { background-color: var(--color-bg-frame, var(--color-bg-canvas, var(--color-bg-base, #fff))); }
+.zenuml .bg-skin-title { background-color: var(--color-bg-title, var(--color-bg-frame, var(--color-bg-canvas, var(--color-bg-base, #fff)))); }
+.zenuml .bg-skin-base { background-color: var(--color-bg-base); }
+.zenuml .bg-green-200 { --tw-bg-opacity:  1; background-color: rgb(187 247 208 / var(--tw-bg-opacity)); }
+.zenuml .bg-white { --tw-bg-opacity:  1; background-color: rgb(255 255 255 / var(--tw-bg-opacity)); }
+.zenuml .bg-gray-500 { --tw-bg-opacity:  1; background-color: rgb(107 114 128 / var(--tw-bg-opacity)); }
+.zenuml .bg-skin-lifeline { background-color: var(--color-border-participant, var(--color-border-participant, var(--color-border-frame, var(--color-border-base, #000)))); }
+.zenuml .bg-skin-participant { background-color: var(--color-bg-participant, var(--color-bg-frame, var(--color-bg-canvas, var(--color-bg-base, #fff)))); }
+.zenuml .bg-gray-400 { --tw-bg-opacity:  1; background-color: rgb(156 163 175 / var(--tw-bg-opacity)); }
+.zenuml .bg-skin-divider { background-color: var(--color-border-participant, var(--color-border-frame, var(--color-border-base, #000))); }
+.zenuml .bg-skin-fragment-header { background-color: var(--color-bg-fragment-header, transparent); }
+.zenuml .bg-skin-occurrence { background-color: var(--color-bg-occurrence, var(--color-bg-participant, var(--color-bg-frame, var(--color-bg-canvas, var(--color-bg-base, #fff))))); }
+.zenuml .bg-opacity-75 { --tw-bg-opacity:  0.75; }
+.zenuml .fill-current { fill: currentcolor; }
+.zenuml .fill-none { fill: none; }
+.zenuml .stroke-current { stroke: currentcolor; }
+.zenuml .stroke-2 { stroke-width: 2px; }
+.zenuml .object-contain { object-fit: contain; }
+.zenuml .p-1 { padding: 0.25rem; }
+.zenuml .p-2 { padding: 0.5rem; }
+.zenuml .p-0 { padding: 0px; }
+.zenuml .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+.zenuml .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.zenuml .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.zenuml .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.zenuml .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.zenuml .px-4 { padding-left: 1rem; padding-right: 1rem; }
+.zenuml .py-5 { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+.zenuml .px-px { padding-left: 1px; padding-right: 1px; }
+.zenuml .pb-8 { padding-bottom: 2rem; }
+.zenuml .pt-8 { padding-top: 2rem; }
+.zenuml .pt-4 { padding-top: 1rem; }
+.zenuml .pb-20 { padding-bottom: 5rem; }
+.zenuml .pb-4 { padding-bottom: 1rem; }
+.zenuml .pb-32 { padding-bottom: 8rem; }
+.zenuml .pb-2 { padding-bottom: 0.5rem; }
+.zenuml .pr-24 { padding-right: 6rem; }
+.zenuml .pt-24 { padding-top: 6rem; }
+.zenuml .pb-10 { padding-bottom: 2.5rem; }
+.zenuml .pr-1 { padding-right: 0.25rem; }
+.zenuml .text-left { text-align: left; }
+.zenuml .text-center { text-align: center; }
+.zenuml .align-bottom { vertical-align: bottom; }
+.zenuml .text-xs { font-size: 0.75rem; line-height: 1rem; }
+.zenuml .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+.zenuml .text-base { font-size: 1rem; line-height: 1.5rem; }
+.zenuml .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+.zenuml .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.zenuml .font-bold { font-weight: 700; }
+.zenuml .font-semibold { font-weight: 600; }
+.zenuml .font-medium { font-weight: 500; }
+.zenuml .font-thin { font-weight: 100; }
+.zenuml .italic { font-style: italic; }
+.zenuml .leading-6 { line-height: 1.5rem; }
+.zenuml .leading-4 { line-height: 1rem; }
+.zenuml .text-skin-title { color: var(--color-text-title, var(--color-text-message, var(--color-text-base, #000))); }
+.zenuml .text-skin-control { color: var(--color-text-control, var(--color-text-secondary, var(--color-text-base, #000))); }
+.zenuml .text-skin-link { color: var(--color-text-link, var(--color-text-secondary, var(--color-text-base, #000))); }
+.zenuml .text-green-700 { --tw-text-opacity:  1; color: rgb(21 128 61 / var(--tw-text-opacity)); }
+.zenuml .text-white { --tw-text-opacity:  1; color: rgb(255 255 255 / var(--tw-text-opacity)); }
+.zenuml .text-gray-900 { --tw-text-opacity:  1; color: rgb(17 24 39 / var(--tw-text-opacity)); }
+.zenuml .text-gray-400 { --tw-text-opacity:  1; color: rgb(156 163 175 / var(--tw-text-opacity)); }
+.zenuml .text-gray-600 { --tw-text-opacity:  1; color: rgb(75 85 99 / var(--tw-text-opacity)); }
+.zenuml .text-gray-500 { --tw-text-opacity:  1; color: rgb(107 114 128 / var(--tw-text-opacity)); }
+.zenuml .text-skin-participant { color: var(--color-text-participant, var(--color-text-message, var(--color-text-base, #000))); }
+.zenuml .text-skin-base { color: var(--color-text-base); }
+.zenuml .text-skin-message { color: var(--color-text-message, var(--color-text-base, #000)); }
+.zenuml .text-skin-comment { color: var(--color-text-comment, var(--color-text-secondary, var(--color-text-base, #000))); }
+.zenuml .text-skin-fragment-header { color: var(--color-text-fragment-header, var(--color-text-message, #000)); }
+.zenuml .text-skin-fragment { color: var(--color-text-fragment, var(--color-text-message, #000)); }
+.zenuml .text-skin-message-arrow { color: var(--color-message-arrow, var(--color-border-frame, var(--color-border-base, #000))); }
+.zenuml .opacity-50 { opacity: 0.5; }
+.zenuml .shadow-sm { --tw-shadow:  0 1px 2px 0 rgb(0 0 0 / 0.05); --tw-shadow-colored:  0 1px 2px 0 var(--tw-shadow-color); box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow); }
+.zenuml .shadow-xl { --tw-shadow:  0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); --tw-shadow-colored:  0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color); box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow); }
+.zenuml .shadow { --tw-shadow:  0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); --tw-shadow-colored:  0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color); box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow); }
+.zenuml .shadow-slate-500\/50 { --tw-shadow-color:  rgb(100 116 139 / 0.5); --tw-shadow:  var(--tw-shadow-colored); }
+.zenuml .blur { --tw-blur:  blur(8px); filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow); }
+.zenuml .grayscale { --tw-grayscale:  grayscale(100%); filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow); }
+.zenuml .filter { filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow); }
+.zenuml .transition { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; }
+.zenuml .transition-opacity { transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; }
+.zenuml .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; }
+.zenuml .hover\:whitespace-normal:hover { white-space: normal; }
+.zenuml .hover\:bg-yellow-300:hover { --tw-bg-opacity:  1; background-color: rgb(253 224 71 / var(--tw-bg-opacity)); }
+.zenuml .hover\:bg-gray-100:hover { --tw-bg-opacity:  1; background-color: rgb(243 244 246 / var(--tw-bg-opacity)); }
+.zenuml .hover\:bg-skin-message-hover:hover { background-color: var(--color-bg-message-hover, var(--color-text-base, #000)); }
+.zenuml .hover\:text-gray-600:hover { --tw-text-opacity:  1; color: rgb(75 85 99 / var(--tw-text-opacity)); }
+.zenuml .hover\:text-gray-500:hover { --tw-text-opacity:  1; color: rgb(107 114 128 / var(--tw-text-opacity)); }
+.zenuml .hover\:text-skin-message-hover:hover { color: var(--color-text-message-hover, var(--color-bg-base, #fff)); }
+.zenuml .hover\:opacity-100:hover { opacity: 1; }
+.zenuml .focus\:outline-none:focus { outline: transparent solid 2px; outline-offset: 2px; }
+.zenuml .focus\:ring-2:focus { --tw-ring-offset-shadow:  var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color); --tw-ring-shadow:  var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color); box-shadow: var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow, 0 0 #0000); }
+.zenuml .focus\:ring-inset:focus { --tw-ring-inset:  inset; }
+.zenuml .focus\:ring-indigo-500:focus { --tw-ring-opacity:  1; --tw-ring-color:  rgb(99 102 241 / var(--tw-ring-opacity)); }
+.zenuml .group:hover .group-hover\:flex { display: flex; }
+.zenuml .group:hover .group-hover\:hidden { display: none; }
+@media (min-width: 640px) { 
+  .zenuml .sm\:my-8 { margin-top: 2rem; margin-bottom: 2rem; }
+  .zenuml .sm\:block { display: block; }
+  .zenuml .sm\:inline-block { display: inline-block; }
+  .zenuml .sm\:h-screen { height: 100vh; }
+  .zenuml .sm\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0px, 1fr)); }
+  .zenuml .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0px, 1fr)); }
+  .zenuml .sm\:gap-6 { row-gap: 1.5rem; column-gap: 1.5rem; }
+  .zenuml .sm\:p-2 { padding: 0.5rem; }
+  .zenuml .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .zenuml .sm\:align-middle { vertical-align: middle; }
+}
+@media (min-width: 1024px) { 
+  .zenuml .lg\:mx-auto { margin-left: auto; margin-right: auto; }
+  .zenuml .lg\:mx-0 { margin-left: 0px; margin-right: 0px; }
+  .zenuml .lg\:max-w-none { max-width: none; }
+  .zenuml .lg\:grid-cols-8 { grid-template-columns: repeat(8, minmax(0px, 1fr)); }
+  .zenuml .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0px, 1fr)); }
+  .zenuml .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+}
+.zenuml .\[\&\>svg\]\:h-full > svg { height: 100%; }
+.zenuml .\[\&\>svg\]\:w-full > svg { width: 100%; }
+.zenuml *, .zenuml ::before, .zenuml ::after { box-sizing: border-box; border: 0px solid rgb(229, 231, 235); }
+.zenuml ::before, .zenuml ::after { --tw-content:  ""; }
+.zenuml html { line-height: 1.5; tab-size: 4; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-feature-settings: normal; }
+.zenuml body { margin: 0px; line-height: inherit; }
+.zenuml hr { height: 0px; color: inherit; border-top-width: 1px; }
+.zenuml abbr:where([title]) { text-decoration-line: underline; text-decoration-style: dotted; }
+.zenuml h1, .zenuml h2, .zenuml h3, .zenuml h4, .zenuml h5, .zenuml h6 { font-size: inherit; font-weight: inherit; }
+.zenuml a { color: inherit; text-decoration: inherit; }
+.zenuml b, .zenuml strong { font-weight: bolder; }
+.zenuml code, .zenuml kbd, .zenuml samp, .zenuml pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 1em; }
+.zenuml small { font-size: 80%; }
+.zenuml sub, .zenuml sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+.zenuml sub { bottom: -0.25em; }
+.zenuml sup { top: -0.5em; }
+.zenuml table { text-indent: 0px; border-color: inherit; border-collapse: collapse; }
+.zenuml button, .zenuml input, .zenuml optgroup, .zenuml select, .zenuml textarea { font-family: inherit; font-size: 100%; font-weight: inherit; line-height: inherit; color: inherit; margin: 0px; padding: 0px; }
+.zenuml button, .zenuml select { text-transform: none; }
+.zenuml button, .zenuml [type="button"], .zenuml [type="reset"], .zenuml [type="submit"] { -webkit-appearance: button; background-color: transparent; background-image: none; }
+.zenuml progress { vertical-align: baseline; }
+.zenuml ::-webkit-inner-spin-button, .zenuml ::-webkit-outer-spin-button { height: auto; }
+.zenuml [type="search"] { -webkit-appearance: textfield; outline-offset: -2px; }
+.zenuml ::-webkit-search-decoration { -webkit-appearance: none; }
+.zenuml ::-webkit-file-upload-button { -webkit-appearance: button; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+.zenuml summary { display: list-item; }
+.zenuml blockquote, .zenuml dl, .zenuml dd, .zenuml h1, .zenuml h2, .zenuml h3, .zenuml h4, .zenuml h5, .zenuml h6, .zenuml hr, .zenuml figure, .zenuml p, .zenuml pre { margin: 0px; }
+.zenuml fieldset { margin: 0px; padding: 0px; }
+.zenuml legend { padding: 0px; }
+.zenuml ol, .zenuml ul, .zenuml menu { list-style: none; margin: 0px; padding: 0px; }
+.zenuml textarea { resize: vertical; }
+.zenuml input::placeholder, .zenuml textarea::placeholder { opacity: 1; color: rgb(156, 163, 175); }
+.zenuml button, .zenuml [role="button"] { cursor: pointer; }
+.zenuml :disabled { cursor: default; }
+.zenuml img, .zenuml svg, .zenuml video, .zenuml canvas, .zenuml audio, .zenuml iframe, .zenuml embed, .zenuml object { display: block; vertical-align: middle; }
+.zenuml img, .zenuml video { max-width: 100%; height: auto; }
+.zenuml [hidden] { display: none; }
+pre.zenuml { margin: 0px; }
+.zenuml { font-family: Helvetica, Verdana, serif; font-size: 16px; }
+.zenuml .frame .sequence-diagram .comments code { background-color: rgb(249, 242, 244); padding: 2px; margin: 1px 0px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; }
+.zenuml .frame .sequence-diagram .comments .rest-api .http-method-post { color: rgb(13, 75, 59); }
+.zenuml .frame .sequence-diagram .comments .rest-api .http-method-get { color: rgb(47, 61, 137); }
+.zenuml .frame .sequence-diagram .comments .rest-api .http-method-delete { color: rgb(126, 30, 35); }
+.zenuml .frame .sequence-diagram .comments ol, .zenuml .frame .sequence-diagram .comments ul { margin: 0px; padding-left: 20px; }
+.zenuml .frame .sequence-diagram .comments ul li { list-style-type: none; }
+.zenuml .frame .sequence-diagram .comments ul li input[type="checkbox"] { margin-left: -1em; }
+.zenuml .frame .sequence-diagram .comments table { border-collapse: collapse; border-spacing: 0px; empty-cells: show; border-color: rgb(203, 203, 203); }
+.zenuml .frame .sequence-diagram .comments table td, .zenuml .frame .sequence-diagram .comments table th { padding: 0.5em; }
+.zenuml .frame .sequence-diagram .comments table thead { background-color: rgb(224, 224, 224); }
+.zenuml .frame .sequence-diagram .comments table td { background-color: transparent; }
+.zenuml .theme-blue .sequence-diagram .divider .name { border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border: 1px solid rgb(226, 133, 83); color: rgb(226, 133, 83); }
+.zenuml .theme-blue .sequence-diagram .divider .left, .zenuml .theme-blue .sequence-diagram .divider .right { background-color: rgb(226, 133, 83); }
+.zenuml .theme-blue .sequence-diagram .lifeline .participant { border-color: rgb(3, 44, 114); background-color: rgba(146, 192, 240, 0.3); }
+.zenuml .theme-blue .sequence-diagram .lifeline .participant label { color: rgb(3, 44, 114); }
+.zenuml .theme-blue .sequence-diagram .lifeline .line { border-left-color: rgb(3, 44, 114); }
+.zenuml .theme-blue .sequence-diagram .message { border-bottom-color: rgb(3, 44, 114); }
+.zenuml .theme-blue .sequence-diagram .message .name { color: rgb(3, 44, 114); }
+.zenuml .theme-blue .sequence-diagram .message svg polyline { stroke: rgb(3, 44, 114); }
+.zenuml .theme-blue .sequence-diagram .message svg polyline.head { fill: rgb(3, 44, 114); }
+.zenuml .theme-blue .sequence-diagram .occurrence { border-color: rgb(3, 44, 114); background-color: rgb(255, 255, 255); }
+.zenuml .theme-blue .sequence-diagram .fragment { border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; border-color: rgba(4, 46, 110, 0.3); }
+.zenuml .theme-blue .sequence-diagram .fragment .header .name { background-color: rgba(4, 46, 110, 0.1); }
+.zenuml .theme-blue .sequence-diagram .fragment .header label { color: rgb(3, 44, 114); }
+.zenuml .theme-black-white .sequence-diagram .divider .name { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-color: rgb(0, 0, 0); box-shadow: rgb(0, 0, 0) 2px 2px; }
+.zenuml .theme-black-white .sequence-diagram .divider .left, .zenuml .theme-black-white .sequence-diagram .divider .right { background-color: rgb(0, 0, 0); }
+.zenuml .theme-black-white .sequence-diagram .lifeline .participant { border-color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); box-shadow: rgb(0, 0, 0) 2px 2px; }
+.zenuml .theme-black-white .sequence-diagram .lifeline .line { border-left-color: rgba(0, 0, 0, 0.4); }
+.zenuml .theme-black-white .sequence-diagram .message { border-bottom-color: rgb(0, 0, 0); }
+.zenuml .theme-black-white .sequence-diagram .message .name { color: rgb(0, 0, 0); }
+.zenuml .theme-black-white .sequence-diagram .message svg polyline { stroke: rgb(0, 0, 0); }
+.zenuml .theme-black-white .sequence-diagram .message svg polyline.head { fill: rgb(0, 0, 0); }
+.zenuml .theme-black-white .sequence-diagram .occurrence { border-color: rgb(0, 0, 0); background-color: rgb(245, 245, 245); }
+.zenuml .theme-black-white .sequence-diagram .fragment { border-color: rgba(0, 0, 0, 0.3); }
+.zenuml .theme-black-white .sequence-diagram .fragment .header .name { background-color: rgba(0, 0, 0, 0.07); }
+.zenuml .theme-star-uml .sequence-diagram .lifeline .participant { border-color: rgb(185, 64, 101); background-color: rgb(255, 254, 200); }
+.zenuml .theme-star-uml .sequence-diagram .lifeline .line { border-left-color: rgb(185, 64, 101); }
+.zenuml .theme-star-uml .sequence-diagram .message { border-bottom-color: rgb(185, 64, 101); }
+.zenuml .theme-star-uml .sequence-diagram .message svg polyline { stroke: rgb(185, 64, 101); }
+.zenuml .theme-star-uml .sequence-diagram .message svg polyline.head { fill: rgb(185, 64, 101); }
+.zenuml .theme-star-uml .sequence-diagram .occurrence { background-color: rgb(255, 254, 200); border-color: rgb(185, 64, 101); }
+.zenuml .blue-river .sequence-diagram { color: rgb(84, 82, 246); }
+.zenuml .blue-river .sequence-diagram .life-line-layer .lifeline.actor .participant::before { filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%); }
+.zenuml .blue-river .sequence-diagram .life-line-layer .participant { background-color: rgb(32, 151, 247); box-shadow: rgb(131, 196, 248) 4px 4px; border-top-left-radius: 9px; border-top-right-radius: 9px; border-bottom-right-radius: 9px; border-bottom-left-radius: 9px; color: rgb(255, 255, 255); }
+.zenuml .blue-river .sequence-diagram .life-line-layer .participant .interface { font-size: 0.8em; }
+.zenuml .blue-river .sequence-diagram .life-line-layer .line { border-left-color: rgb(32, 151, 247); }
+.zenuml .blue-river .sequence-diagram .message-layer .message { border-bottom-color: rgb(32, 151, 247); }
+.zenuml .blue-river .sequence-diagram .message-layer .message svg.arrow polyline { stroke: rgb(32, 151, 247); fill: rgb(32, 151, 247); }
+.zenuml .blue-river .sequence-diagram .message-layer .message.self svg.arrow polyline { fill: none; }
+.zenuml .blue-river .sequence-diagram .message-layer .message.self svg.arrow polyline.head { fill: rgb(32, 151, 247); }
+.zenuml .blue-river .sequence-diagram .message-layer .occurrence { background-color: rgb(229, 253, 232); border-color: rgb(101, 191, 115); box-shadow: rgb(147, 198, 155) 4px 4px; }
+.zenuml .blue-river .sequence-diagram .message-layer .fragment { border-color: rgb(32, 151, 247); }
+.zenuml .blue-river .sequence-diagram .message-layer .fragment .header .name label { display: inline-block; min-width: 50px; background-color: rgb(84, 82, 246); color: rgb(255, 255, 255); padding: 2px 0px 2px 10px; }
+.zenuml .blue-river .sequence-diagram .message-layer .fragment .header .name::after { content: SO; display: inline-block; background-color: rgb(84, 82, 246); margin-left: -23px; width: 34px; transform: translateY(-2px); height: 22px; clip-path: polygon(66% 0px, 100% 0px, 100% 66%, 66% 100%); }
+.zenuml .blue-river .sequence-diagram .message-layer .fragment .header > label { display: inline-block; min-width: 50px; font-weight: 700; color: rgb(255, 255, 255); background-color: rgb(101, 191, 115); }
+.zenuml .blue-river .sequence-diagram .message-layer .fragment .comments { border-color: inherit; }
+.zenuml .blue-river .sequence-diagram .message-layer .fragment .divider { border-bottom-color: inherit; }
+:root { --background:  #282a36; --hover:  #2b2b2b; --occurance-border:  #6e7191; --border:  #585b74; --white:  #f8f8f2; --current:  #44475a; --comment:  #6272a4; --cyan:  #8be9fd; --green:  #50fa7b; --orange:  #ffb86c; --pink:  #ff79c6; --purple:  #bd93f9; --red:  #ff5555; --yellow:  #f1fa8c; --crayola:  #a9b7c6; }
+body .zenuml.theme-dark { background-color: var(--background); }
+.zenuml.theme-dark .header { color: var(--crayola); font-weight: 700; }
+.zenuml.theme-dark .sequence-diagram .lifeline-group:hover { background-color: rgb(34, 48, 73); }
+.zenuml.theme-dark .sequence-diagram .lifeline .participant { border-color: var(--border); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; background: var(--background); }
+.zenuml.theme-dark .sequence-diagram .lifeline .participant label { color: var(--cyan); }
+.zenuml.theme-dark .sequence-diagram .lifeline .line { background: var(--border); }
+.zenuml.theme-dark .fragment > .header > .condition { color: var(--crayola); padding: 6px; }
+.zenuml.theme-dark .sequence-diagram .fragment .header label { color: var(--crayola); padding: 6px; }
+.zenuml.theme-dark .sequence-diagram .fragment .header .name { border-bottom-color: var(--border); }
+.zenuml.theme-dark .sequence-diagram .fragment .header .name label { color: var(--pink); font-weight: 400; }
+.zenuml.theme-dark .sequence-diagram .fragment { border-color: var(--border); }
+.zenuml.theme-dark .sequence-diagram .comments { border: none; background-color: transparent; color: var(--comment); }
+.zenuml.theme-dark .sequence-diagram .fragment .segment:not(:first-child) { border-top-color: var(--border); }
+.zenuml.theme-dark .sequence-diagram .interaction { color: var(--orange); }
+.zenuml.theme-dark .sequence-diagram .message { border-bottom-color: var(--border); }
+.zenuml.theme-dark .sequence-diagram .message .name:hover { color: var(--crayola); }
+.zenuml.theme-dark .sequence-diagram .message svg polyline { fill: var(--border); stroke: var(--border); }
+.zenuml.theme-dark .sequence-diagram .message.self svg > polyline:not(.head) { fill: none; }
+.zenuml.theme-dark .sequence-diagram .occurrence { background-color: var(--current); box-shadow: 0 0 0 1px var(--occurance-border); border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; }
+.zenuml.theme-dark .sequence-diagram .divider .left, .zenuml.theme-dark .sequence-diagram .divider .right { background: var(--border); }
+.zenuml.theme-dark .sequence-diagram .divider .name { color: var(--comment); }
+.zenuml.theme-dark .interaction .message > .name:hover { background-color: rgb(34, 139, 34); color: rgb(255, 255, 255); }
+p[data-v-15224042] { margin: 0px; line-height: 1.25em; }
+.occurrence[data-v-4e715276] { width: 15px; padding: 16px 0px 16px 5px; }
+[data-v-4e715276] > .statement-container:last-child > .interaction.return:last-of-type { margin-bottom: 0px; border-bottom-width: 0px; transform: translateY(1px); }
+[data-v-4e715276] > .statement-container:last-child > .interaction.return:last-of-type > .message { bottom: -17px; height: 0px; }
+.right-to-left.occurrence[data-v-4e715276] { left: -14px; }
+.occurrence { margin-top: -2px; }
+.interaction .occurrence.source[data-v-703306ae] { position: absolute; height: calc(100% + 14px); left: -12px; display: none; }
+.interaction .occurrence.source.right-to-left[data-v-703306ae] { left: unset; right: -13px; }
+.message.self[data-v-fbc5fa7e] { transform: translate(-5px); }
+.interaction .invisible-occurrence[data-v-40bff5d3] { height: 20px; }
+.interaction.async[data-v-40bff5d3] .message { width: 100%; }
+.collapsible-header[data-v-b41acdfc] { display: flex; width: 100%; justify-content: space-between; }
+.collapse-button[data-v-b41acdfc] { display: none; }
+.fragment:hover .collapsible-header .collapse-button.expanded[data-v-b41acdfc] { display: inline-block !important; }
+[data-v-0a896a9f], [data-v-0f640fba] { border-color: inherit; }
+.fragment.par > .block > .statement-container:not(:first-child) { border-top-color: inherit; border-top-width: 1px; border-top-style: solid; }
+[data-v-ce259a11], [data-v-a846d536], [data-v-7b7c43b8] { border-color: inherit; }
+.divider[data-v-9e567e69] { display: flex; align-items: center; }
+.name[data-v-9e567e69] { margin: 0px; padding: 2px 6px; }
+.left[data-v-9e567e69], .right[data-v-9e567e69] { height: 1px; flex-grow: 1; }
 
 
 :root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
@@ -57,7 +502,7 @@ thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
 table.md-table td { min-width: 32px; }
 .CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
-.CodeMirror-linenumber { }
+.CodeMirror-linenumber { -webkit-user-select: none; }
 .CodeMirror { text-align: left; }
 .CodeMirror-placeholder { opacity: 0.3; }
 .CodeMirror pre { padding: 0px 4px; }
@@ -89,12 +534,14 @@ blockquote > :first-child, li > :first-child { margin-top: 0px; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print { 
   body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
-  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
   .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
   .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
   .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
@@ -202,6 +649,7 @@ mark .md-meta { color: rgb(0, 0, 0); }
 .typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
 .typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
 .md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
 
 
 .CodeMirror { height: auto; }
@@ -285,97 +733,104 @@ span.cm-strikethrough { text-decoration: line-through; }
 }
 
 
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-/* cyrillic-ext */
-/* cyrillic */
-/* greek-ext */
-/* greek */
-/* vietnamese */
-/* latin-ext */
-/* latin */
-@font-face {
-    font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url('file:///Users/sai/Library/Application%20Support/abnerworks.Typora/themes/vue/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}@import '';
+/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
 
+@include-when-export url(https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
+
+/* =========== */
+
+/* pt-serif-regular - latin */
+/* pt-serif-italic - latin */
+/* pt-serif-700 - latin */
+/* pt-serif-700italic - latin */
 :root {
-    --side-bar-bg-color: #fff;
-    --control-text-color: #777;
-    --font-sans-serif: 'Ubuntu', 'Source Sans Pro', sans-serif !important;
-    --font-monospace: 'Fira Code', 'Roboto Mono', monospace !important;
+	--active-file-bg-color: #dadada;
+	--active-file-bg-color: rgba(32, 43, 51, 0.63);
+	--active-file-text-color: white;
+	--bg-color: #f3f2ee;
+	--text-color: #1f0909;
+	--control-text-color: #444;
+	--rawblock-edit-panel-bd: #e5e5e5;
+
+	--select-text-bg-color: rgba(32, 43, 51, 0.63);
+  --select-text-font-color: white;
+}
+
+pre {
+	--select-text-bg-color: #36284e;
+	--select-text-font-color: #fff;
 }
 
 html {
-    font-size: 16px;
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
 }
 
-body {
-    font-family: var(--font-sans-serif);
-    color: #34495e;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.6rem;
-    letter-spacing: 0;
-    margin: 0;
-    overflow-x: hidden;
+html, body {
+	background-color: #f3f2ee;
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+	color: #1f0909;
+	line-height: 1.5em;
 }
+
+/*#write {
+	overflow-x: auto;
+    max-width: initial;
+	padding-left: calc(50% - 17em);
+    padding-right: calc(50% - 17em);
+}
+
+@media (max-width: 36em) {
+ 	#write {
+ 		padding-left: 1em;
+    	padding-right: 1em;
+ 	}
+}*/
 
 #write {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 20px 30px 100px;
+	max-width: 40em;
 }
 
-#write p {
-    line-height: 1.6rem;
-    word-spacing: .05rem;
+@media only screen and (min-width: 1400px) {
+	#write {
+			max-width: 914px;
+	}
 }
 
-#write ol li {
-    padding-left: 0.5rem;
+ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+ul li {
+	list-style-type: disc;
+	list-style-position: outside;
 }
 
-#write > ul:first-child,
-#write > ol:first-child {
-    margin-top: 30px;
+ol,
+ul {
+	list-style: none;
 }
 
-body > *:first-child {
-    margin-top: 0 !important;
+blockquote,
+q {
+	quotes: none;
 }
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* styles */
 
-body > *:last-child {
-    margin-bottom: 0 !important;
-}
+/* ====== */
 
-a {
-    color: #42b983;
-    font-weight: 600;
-    padding: 0 2px;
-    text-decoration: none;
-}
+/* headings */
 
 h1,
 h2,
@@ -383,428 +838,494 @@ h3,
 h4,
 h5,
 h6 {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    line-height: 1.4;
-    cursor: text;
+	font-weight: bold;
 }
-
-h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
-    text-decoration: none;
-}
-
-h1 tt,
-h1 code {
-    font-size: inherit !important;
-}
-
-h2 tt,
-h2 code {
-    font-size: inherit !important;
-}
-
-h3 tt,
-h3 code {
-    font-size: inherit !important;
-}
-
-h4 tt,
-h4 code {
-    font-size: inherit !important;
-}
-
-h5 tt,
-h5 code {
-    font-size: inherit !important;
-}
-
-h6 tt,
-h6 code {
-    font-size: inherit !important;
-}
-
-h2 a,
-h3 a {
-    color: #34495e;
-}
-
 h1 {
-    padding-bottom: .4rem;
-    font-size: 2.2rem;
-    line-height: 1.3;
+	font-size: 1.875em;
+	/*30 / 16*/
+	line-height: 1.6em;
+	/* 48 / 30*/
+	margin-top: 2em;
 }
-
-h2 {
-    font-size: 1.75rem;
-    line-height: 1.225;
-    margin: 35px 0 15px;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid #ddd;
-}
-
+h2,
 h3 {
-    font-size: 1.4rem;
-    line-height: 1.43;
-    margin: 20px 0 7px;
+	font-size: 1.3125em;
+	/*21 / 16*/
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
 }
-
+h3 {
+	font-weight: normal;
+}
 h4 {
-    font-size: 1.2rem;
+	font-size: 1.125em;
+	/*18 / 16*/
+	margin-top: 2.67em;
+	/*48 / 18*/
 }
-
-h5 {
-    font-size: 1rem;
-}
-
+h5,
 h6 {
-    font-size: 1rem;
-    color: #777;
+	font-size: 1em;
+	/*16*/
 }
+h1 {
+	border-bottom: 1px solid;
+	margin-bottom: 1.875em;
+	padding-bottom: 0.8125em;
+}
+/* links */
+
+a {
+	text-decoration: none;
+	color: #065588;
+}
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+/* block spacing */
 
 p,
 blockquote,
-ul,
-ol,
-dl,
-table {
-    margin: 0.8em 0;
+.md-fences {
+	margin-bottom: 1.5em;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 1.5em;
+}
+/* blockquote */
 
-li > ol,
-li > ul {
-    margin: 0 0;
+blockquote {
+	font-style: italic;
+	border-left: 5px solid;
+	margin-left: 2em;
+	padding-left: 1em;
 }
-
-hr {
-    height: 2px;
-    padding: 0;
-    margin: 16px 0;
-    background-color: #e7e7e7;
-    border: 0 none;
-    overflow: hidden;
-    box-sizing: content-box;
-}
-
-body > h2:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-body > h1:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-body > h3:first-child,
-body > h4:first-child,
-body > h5:first-child,
-body > h6:first-child {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-a:first-child h1,
-a:first-child h2,
-a:first-child h3,
-a:first-child h4,
-a:first-child h5,
-a:first-child h6 {
-    margin-top: 0;
-    padding-top: 0;
-}
-
-h1 p,
-h2 p,
-h3 p,
-h4 p,
-h5 p,
-h6 p {
-    margin-top: 0;
-}
-
-li p.first {
-    display: inline-block;
-}
+/* lists */
 
 ul,
 ol {
-    padding-left: 30px;
+	margin: 0 0 1.5em 1.5em;
 }
-
-ul:first-child,
-ol:first-child {
-    margin-top: 0;
-}
-
-ul:last-child,
-ol:last-child {
-    margin-bottom: 0;
-}
-
-blockquote {
-    border-left: 4px solid #42b983;
-    padding: 10px 15px;
-    color: #777;
-    background-color: rgba(66, 185, 131, .1);
+/* tables */
+.md-meta,.md-before, .md-after {
+	color:#999;
 }
 
 table {
-    padding: 0;
-    word-break: initial;
+	margin-bottom: 1.5em;
+	/*24 / 16*/
+	font-size: 1em;
+	/* width: 100%; */
+}
+thead th,
+tfoot th {
+	padding: .25em .25em .25em .4em;
+	text-transform: uppercase;
+}
+th {
+	text-align: left;
+}
+td {
+	vertical-align: top;
+	padding: .25em .25em .25em .4em;
 }
 
-table tr {
-    border-top: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 0;
+code,
+.md-fences {
+	background-color: #dadada;
 }
 
-table tr:nth-child(2n),
-thead {
-    background-color: #fafafa;
-}
-
-table tr th {
-    font-weight: bold;
-    border: 1px solid #dfe2e5;
-    border-bottom: 0;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-}
-
-table tr td {
-    border: 1px solid #dfe2e5;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-}
-
-table tr th:first-child,
-table tr td:first-child {
-    margin-top: 0;
-}
-
-table tr th:last-child,
-table tr td:last-child {
-    margin-bottom: 0;
-}
-
-#write strong {
-    padding: 0 1px;
-}
-
-#write em {
-    padding: 0 5px 0 2px;
-}
-
-#write table thead th {
-    background-color: #f2f2f2;
-}
-
-#write .CodeMirror-gutters {
-    border-right: none;
-}
-
-#write .md-fences {
-    border: 1px solid #F4F4F4;
-    -webkit-font-smoothing: initial;
-    margin: 0.8rem 0 !important;
-    padding: 0.3rem 0 !important;
-    line-height: 1.43rem;
-    background-color: #F8F8F8 !important;
-    border-radius: 2px;
-    font-family: var(--font-monospace);
-    font-size: 0.85rem;
-    word-wrap: normal;
-}
-
-#write .CodeMirror-wrap .CodeMirror-code pre {
-    padding-left: 12px;
-}
-
-#write code, tt {
-    padding: 2px 4px;
-    border-radius: 2px;
-    font-family: var(--font-monospace);
-    font-size: 0.92rem;
-    color: #e96900;
-    background-color: #f8f8f8;
-}
-
-tt {
-    margin: 0 2px;
-}
-
-#write .md-footnote {
-    background-color: #f8f8f8;
-    color: #e96900;
-}
-
-/* heighlight. */
-#write mark {
-    background-color: #EBFFEB;
-    border-radius: 2px;
-    padding: 2px 4px;
-    margin: 0 2px;
-    color: #222;
-    font-weight: 500;
-}
-
-#write del {
-    padding: 1px 2px;
-}
-
-.cm-s-inner .cm-link,
-.cm-s-inner.cm-link {
-    color: #22a2c9;
-}
-
-.cm-s-inner .cm-string {
-    color: #22a2c9;
-}
-
-.md-task-list-item > input {
-    margin-left: -1.3em;
-}
-
-@media print {
-    html {
-        font-size: 13px;
-    }
-
-    table,
-    pre {
-        page-break-inside: avoid;
-    }
-
-    pre {
-        word-wrap: break-word;
-    }
+code {
+	padding-left: 2px;
+	padding-right: 2px;
 }
 
 .md-fences {
-    background-color: #f8f8f8;
+	margin-left: 2em;
+	margin-bottom: 3em;
+	padding-left: 1ch;
+	padding-right: 1ch;
 }
 
-.md-diagram-panel {
-    position: static !important;
+pre,
+code,
+tt {
+	font-size: .875em;
+	line-height: 1.714285em;
+}
+/* some fixes */
+
+h1 {
+	line-height: 1.3em;
+	font-weight: normal;
+	margin-bottom: 0.5em;
+}
+
+p + ul,
+p + ol{
+	margin-top: .5em;
+}
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol {
+	margin-top: .5em;
+}
+
+li > ul,
+li > ol {
+	margin-top: inherit;
+	margin-bottom: 0;
+}
+
+li ol>li {
+	list-style-type: lower-alpha;
+}
+
+li li ol>li{
+	list-style-type: lower-roman;
+}
+
+h2,
+h3 {
+	margin-bottom: .75em;
+}
+hr {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+}
+h1 {
+	border-color: #c5c5c5;
+}
+blockquote {
+	border-color: #bababa;
+	color: #656565;
+}
+
+blockquote ul,
+blockquote ol {
+	margin-left:0;
+}
+
+.ty-table-edit {
+	background-color: transparent;
+}
+thead {
+	background-color: #dadada;
+}
+tr:nth-child(even) {
+	background: #e8e7e7;
+}
+hr {
+	border-color: #c5c5c5;
+}
+.task-list{
+	padding-left: 1rem;
+}
+
+.md-task-list-item {
+	padding-left: 1.5rem;
+	list-style-type: none;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.25rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #F3F2EE;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
 }
 
 #write pre.md-meta-block {
-    padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #f7f7f7;
-    border: 0;
-    border-radius: 3px;
-    color: #777777;
-    margin-top: 0 !important;
+	min-height: 1.875rem;
+	color: #555;
+	border: 0px;
+	background: transparent;
+	margin-top: -4px;
+	margin-left: 1em;
+	margin-top: 1em;
 }
 
-.mathjax-block > .code-tooltip {
-    bottom: .375rem;
+.md-image>.md-meta {
+	color: #9B5146;
 }
 
-#write > h3.md-focus:before {
-    left: -1.5625rem;
-    top: .375rem;
+.md-image>.md-meta{
+	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
 }
 
-#write > h4.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
+
+#write>h3.md-focus:before{
+	left: -1.5rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h4.md-focus:before{
+	left: -1.5rem;
+	top: .25rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h5.md-focus:before{
+	left: -1.5rem;
+	top: .0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h6.md-focus:before{
+	left: -1.5rem;
+	top: 0.3125rem;
+	color:#999;
+	border-color:#999;
 }
 
-#write > h5.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
 }
 
-#write > h6.md-focus:before {
-    left: -1.5625rem;
-    top: .285714286rem;
+.md-toc-content:empty:before{
+	color: #065588;
+}
+.md-toc-item {
+	color: #065588;
+}
+#write div.md-toc-tooltip {
+	background-color: #f3f2ee;
 }
 
-.md-image > .md-meta {
-    border-radius: 3px;
-    font-family: var(--font-monospace);
-    padding: 2px 0 0 4px;
-    font-size: 0.9em;
+#typora-sidebar {
+	background-color: #f3f2ee;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+}
+
+.pin-outline #typora-sidebar {
+	background: inherit;
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+.pin-outline #typora-sidebar:hover .outline-title-wrapper {
+	border-left:1px dashed;
+}
+
+.outline-item:hover {
+  background-color: #dadada;
+  border-left: 28px solid #dadada;
+  border-right: 18px solid #dadada;
+}
+
+.typora-node .outline-item:hover {
+  	border-right: 28px solid #dadada;
+}
+
+.outline-expander:before {
+  content: "\f0da";
+  font-family: FontAwesome;
+  font-size:14px;
+  top: 1px;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  content: "\f0d7";
+}
+
+.modal-content {
+	background-color: #f3f2ee;
+}
+
+.auto-suggest-container ul li {
+	list-style-type: none;
+}
+
+/** UI for electron */
+
+.megamenu-menu,
+#top-titlebar, #top-titlebar *,
+.megamenu-content {
+	background: #f3f2ee;
+	color: #1f0909;
+}
+
+.megamenu-menu-header {
+	border-bottom: 1px dashed #202B33;
+}
+
+.megamenu-menu {
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+header, .context-menu, .megamenu-content, footer {
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+    color: #1f0909;
+}
+
+#megamenu-back-btn {
+	color: #1f0909;
+	border-color: #1f0909;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color: #1f0909;
+}
+
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+	color: inherit;
+	background-color: #e8e7df;
+}
+
+.long-btn:hover {
+	background-color: #e8e7df;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
     color: inherit;
 }
 
-.md-tag {
-    color: inherit;
+.megamenu-menu-panel .btn {
+	background-color: #D2D1D1;
 }
 
-.md-toc {
-    margin-top: 20px;
-    padding-bottom: 20px;
+.btn-default {
+	background-color: transparent;
 }
 
-.sidebar-tabs {
-    border-bottom: none;
+.typora-sourceview-on #toggle-sourceview-btn,
+.ty-show-word-count #footer-word-count {
+	background: #c7c5c5;
 }
 
 #typora-quick-open {
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
+    background-color: inherit;
 }
 
-#typora-quick-open-item {
-    background-color: #FAFAFA;
-    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
-    border-style: solid;
-    border-width: 1px;
+.md-diagram-panel {
+	margin-top: 8px;
 }
 
-#md-notification:before {
-    top: 10px;
+.file-list-item-file-name {
+	font-weight: initial;
 }
 
-/** focus mode */
-
-.on-focus-mode blockquote {
-    border-left-color: rgba(85, 85, 85, 0.12);
+.file-list-item-summary {
+	opacity: 1;
 }
 
-header,
-.context-menu,
-.megamenu-content,
-footer {
-    font-family: var(--font-sans-serif);
+.file-list-item {
+	color: #777;
 }
 
-.file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state {
-    visibility: visible;
+.file-list-item.active {
+	background-color: inherit;
+	color: black;
 }
 
-.mac-seamless-mode #typora-sidebar {
-    background-color: var(--side-bar-bg-color);
+.ty-side-sort-btn.active {
+	background-color: inherit;
 }
 
-.md-lang {
-    color: #b4654d;
+.file-list-item.active .file-list-item-file-name  {
+	font-weight: bold;
 }
 
-.html-for-mac .context-menu {
-    --item-hover-bg-color: #E6F0FE;
+.file-list-item{
+    opacity:1 !important;
 }
 
+.file-library-node.active>.file-node-background{
+	background-color: rgba(32, 43, 51, 0.63);
+	background-color: var(--active-file-bg-color);
+}
+
+.file-tree-node.active>.file-node-content{
+	color: white;
+	color: var(--active-file-text-color);
+}
+
+.md-task-list-item>input {
+	margin-left: -1.7em;
+	margin-top: calc(1rem - 12px);
+	-webkit-appearance: button;
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover, 
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+	opacity: 1;
+}
+
+/* https://github.com/typora/typora-issues/issues/2046 */
+.os-windows-7 strong,
+.os-windows-7 strong  {
+	font-weight: 760;
+}
+
+.ty-preferences .btn-default {
+	background: transparent;
+}
+
+.ty-preferences .window-header {
+	border-bottom: 1px dashed #202B33;
+	box-shadow: none;
+}
+
+#sidebar-loading-template, #sidebar-loading-template.file-list-item {
+	color: #777;
+}
+
+.searchpanel-search-option-btn.active {
+	background: #777;
+	color: white;
+}
+
+.export-detail, .light .export-detail, 
+.light .export-item.active, 
+.light .export-items-list-control {
+	background: #e0e0e0;
+	border-radius: 2px;
+	font-weight: 700;
+	color: inherit
+}
 
 
 mjx-container[jax="SVG"] {
@@ -941,7 +1462,7 @@ foreignObject[data-mjx-xml] {
   overflow: visible;
 }
 
-mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+mjx-container[jax="SVG2"] path[data-c], mjx-container[jax="SVG2"] use[data-c] {
   stroke-width: 3;
 }
 
@@ -958,7 +1479,7 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 </style><title>Example</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><p><span>@</span><a href='这里写自定义目录标题'><span>TOC</span></a></p><h1 id='欢迎使用markdown编辑器'><span>欢迎使用Markdown编辑器</span></h1><p><span>你好！ 这是你第一次使用 </span><strong><span>Markdown编辑器</span></strong><span> 所展示的欢迎页。如果你想学习如何使用Markdown编辑器, 可以仔细阅读这篇文章，了解一下Markdown的基本语法知识。</span></p><h2 id='新的改变'><span>新的改变</span></h2><p><span>我们对Markdown编辑器进行了一些功能拓展与语法支持，除了标准的Markdown编辑器功能，我们增加了如下几点新功能，帮助你用它写博客：</span></p><ol start='' ><li><strong><span>全新的界面设计</span></strong><span> ，将会带来全新的写作体验；</span></li><li><span>在创作中心设置你喜爱的代码高亮样式，Markdown </span><strong><span>将代码片显示选择的高亮样式</span></strong><span> 进行展示；</span></li><li><span>增加了 </span><strong><span>图片拖拽</span></strong><span> 功能，你可以将本地的图片直接拖拽到编辑区域直接展示；</span></li><li><span>全新的 </span><strong><span>KaTeX数学公式</span></strong><span> 语法；</span></li><li><span>增加了支持</span><strong><span>甘特图的mermaid语法</span><sup class='md-footnote'><a href='#dfref-footnote-1' name='ref-footnote-1'>1</a></sup></strong><span> 功能；</span></li><li><span>增加了 </span><strong><span>多屏幕编辑</span></strong><span> Markdown文章功能；</span></li><li><span>增加了 </span><strong><span>焦点写作模式、预览模式、简洁写作模式、左右区域同步滚轮设置</span></strong><span> 等功能，功能按钮位于编辑区域与预览区域中间；</span></li><li><span>增加了 </span><strong><span>检查列表</span></strong><span> 功能。</span></li></ol><h2 id='功能快捷键'><span>功能快捷键</span></h2><p><span>撤销：</span><kbd><span>Ctrl/Command</span></kbd><span> + </span><kbd><span>Z</span></kbd>
+<div id='write'  class=''><p><span>@</span><a href='这里写自定义目录标题'><span>TOC</span></a></p><h1 id='欢迎使用markdown编辑器'><span>欢迎使用Markdown编辑器</span></h1><p><span>你好！ 这是你第一次使用 </span><strong><span>Markdown编辑器</span></strong><span> 所展示的欢迎页。如果你想学习如何使用Markdown编辑器, 可以仔细阅读这篇文章，了解一下Markdown的基本语法知识。</span></p><h2 id='新的改变'><span>新的改变</span></h2><p><span>我们对Markdown编辑器进行了一些功能拓展与语法支持，除了标准的Markdown编辑器功能，我们增加了如下几点新功能，帮助你用它写博客：</span></p><ol start='' ><li><p><strong><span>全新的界面设计</span></strong><span> ，将会带来全新的写作体验；</span></p></li><li><p><span>在创作中心设置你喜爱的代码高亮样式，Markdown </span><strong><span>将代码片显示选择的高亮样式</span></strong><span> 进行展示；</span></p></li><li><p><span>增加了 </span><strong><span>图片拖拽</span></strong><span> 功能，你可以将本地的图片直接拖拽到编辑区域直接展示；</span></p></li><li><p><span>全新的 </span><strong><span>KaTeX数学公式</span></strong><span> 语法；</span></p></li><li><p><span>增加了支持</span><strong><span>甘特图的mermaid语法</span><sup class='md-footnote'><a href='#dfref-footnote-1' name='ref-footnote-1'>1</a></sup></strong><span> 功能；</span></p></li><li><p><span>增加了 </span><strong><span>多屏幕编辑</span></strong><span> Markdown文章功能；</span></p></li><li><p><span>增加了 </span><strong><span>焦点写作模式、预览模式、简洁写作模式、左右区域同步滚轮设置</span></strong><span> 等功能，功能按钮位于编辑区域与预览区域中间；</span></p></li><li><p><span>增加了 </span><strong><span>检查列表</span></strong><span> 功能。</span></p></li></ol><h2 id='功能快捷键'><span>功能快捷键</span></h2><p><span>撤销：</span><kbd><span>Ctrl/Command</span></kbd><span> + </span><kbd><span>Z</span></kbd>
 <span>重做：</span><kbd><span>Ctrl/Command</span></kbd><span> + </span><kbd><span>Y</span></kbd>
 <span>加粗：</span><kbd><span>Ctrl/Command</span></kbd><span> + </span><kbd><span>B</span></kbd>
 <span>斜体：</span><kbd><span>Ctrl/Command</span></kbd><span> + </span><kbd><span>I</span></kbd>
@@ -972,13 +1493,13 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 <span>查找：</span><kbd><span>Ctrl/Command</span></kbd><span> + </span><kbd><span>F</span></kbd>
 <span>替换：</span><kbd><span>Ctrl/Command</span></kbd><span> + </span><kbd><span>G</span></kbd></p><h2 id='合理的创建标题有助于目录的生成'><span>合理的创建标题，有助于目录的生成</span></h2><p><span>直接输入1次</span><kbd><span>#</span></kbd><span>，并按下</span><kbd><span>space</span></kbd><span>后，将生成1级标题。</span>
 <span>输入2次</span><kbd><span>#</span></kbd><span>，并按下</span><kbd><span>space</span></kbd><span>后，将生成2级标题。</span>
-<span>以此类推，我们支持6级标题。有助于使用</span><code>TOC</code><span>语法后生成一个完美的目录。</span></p><h2 id='如何改变文本的样式'><span>如何改变文本的样式</span></h2><p><em><span>强调文本</span></em><span> </span><em><span>强调文本</span></em></p><p><strong><span>加粗文本</span></strong><span> </span><strong><span>加粗文本</span></strong></p><p><span>==标记文本==</span></p><p><del><span>删除文本</span></del></p><blockquote><p><span>引用文本</span></p></blockquote><p><span>H~2~O is是液体。</span></p><p><span>2^10^ 运算结果是 1024.</span></p><h2 id='插入链接与图片'><span>插入链接与图片</span></h2><p><span>链接: </span><a href='https://www.csdn.net/'><span>link</span></a><span>.</span></p><p><span>图片: </span><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw" referrerpolicy="no-referrer" alt="Alt"></p><p><span>带尺寸的图片: </span><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw =30x30" referrerpolicy="no-referrer" alt="Alt"></p><p><span>居中的图片: </span><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw#pic_center" referrerpolicy="no-referrer" alt="Alt"></p><p><span>居中并且带尺寸的图片: </span><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw#pic_center =30x30" referrerpolicy="no-referrer" alt="Alt"></p><p><span>当然，我们为了让用户更加便捷，我们增加了图片拖拽功能。</span></p><h2 id='如何插入一段漂亮的代码片'><span>如何插入一段漂亮的代码片</span></h2><p><span>去</span><a href='https://mp.csdn.net/console/configBlog'><span>博客设置</span></a><span>页面，选择一款你喜欢的代码片高亮样式，下面展示同样高亮的 </span><code>代码片</code><span>.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="javascript"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9px; left: 12px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// An highlighted block</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">var</span> <span class="cm-def">foo</span> <span class="cm-operator">=</span> <span class="cm-string">'bar'</span>;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 44px;"></div><div class="CodeMirror-gutters" style="display: none; height: 44px;"></div></div></div></pre><h2 id='生成一个适合你的列表'><span>生成一个适合你的列表</span></h2><ul><li><p><span>项目</span></p><ul><li><p><span>项目</span></p><ul><li><span>项目</span></li></ul></li></ul></li></ul><ol start='' ><li><span>项目1</span></li><li><span>项目2</span></li><li><span>项目3</span></li></ol><ul><li class='md-task-list-item task-list-item task-list-not-done' ><input type='checkbox' /><p><span>计划任务</span></p></li><li class='md-task-list-item task-list-item task-list-done' ><input type='checkbox' checked/><p><span>完成任务</span></p></li></ul><h2 id='创建一个表格'><span>创建一个表格</span></h2><p><span>一个简单的表格是这么创建的：</span></p><figure><table><thead><tr><th><span>项目</span></th><th><span>Value</span></th></tr></thead><tbody><tr><td><span>电脑</span></td><td><span>$1600</span></td></tr><tr><td><span>手机</span></td><td><span>$12</span></td></tr><tr><td><span>导管</span></td><td><span>$1</span></td></tr></tbody></table></figure><h3 id='设定内容居中居左居右'><span>设定内容居中、居左、居右</span></h3><p><span>使用</span><code>:---------:</code><span>居中</span>
+<span>以此类推，我们支持6级标题。有助于使用</span><code>TOC</code><span>语法后生成一个完美的目录。</span></p><h2 id='如何改变文本的样式'><span>如何改变文本的样式</span></h2><p><em><span>强调文本</span></em><span> </span><em><span>强调文本</span></em></p><p><strong><span>加粗文本</span></strong><span> </span><strong><span>加粗文本</span></strong></p><p><span>==标记文本==</span></p><p><del><span>删除文本</span></del></p><blockquote><p><span>引用文本</span></p></blockquote><p><span>H~2~O is是液体。</span></p><p><span>2^10^ 运算结果是 1024.</span></p><h2 id='插入链接与图片'><span>插入链接与图片</span></h2><p><span>链接: </span><a href='https://www.csdn.net/'><span>link</span></a><span>.</span></p><p><span>图片: </span><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw" referrerpolicy="no-referrer" alt="Alt"></p><p><span>带尺寸的图片: </span><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw =30x30" referrerpolicy="no-referrer" alt="Alt"></p><p><span>居中的图片: </span><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw#pic_center" referrerpolicy="no-referrer" alt="Alt"></p><p><span>居中并且带尺寸的图片: </span><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9hdmF0YXIuY3Nkbi5uZXQvNy83L0IvMV9yYWxmX2h4MTYzY29tLmpwZw#pic_center =30x30" referrerpolicy="no-referrer" alt="Alt"></p><p><span>当然，我们为了让用户更加便捷，我们增加了图片拖拽功能。</span></p><h2 id='如何插入一段漂亮的代码片'><span>如何插入一段漂亮的代码片</span></h2><p><span>去</span><a href='https://mp.csdn.net/console/configBlog'><span>博客设置</span></a><span>页面，选择一款你喜欢的代码片高亮样式，下面展示同样高亮的 </span><code>代码片</code><span>.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="javascript"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="javascript"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">// An highlighted block</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">var</span> <span class="cm-def">foo</span> <span class="cm-operator">=</span> <span class="cm-string">'bar'</span>;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 48px;"></div><div class="CodeMirror-gutters" style="display: none; height: 48px;"></div></div></div></pre><h2 id='生成一个适合你的列表'><span>生成一个适合你的列表</span></h2><ul><li><p><span>项目</span></p><ul><li><p><span>项目</span></p><ul><li><p><span>项目</span></p></li></ul></li></ul></li></ul><ol start='' ><li><p><span>项目1</span></p></li><li><p><span>项目2</span></p></li><li><p><span>项目3</span></p></li></ol><ul><li class='md-task-list-item task-list-item task-list-not-done' ><input type='checkbox' /><p><span>计划任务</span></p></li><li class='md-task-list-item task-list-item task-list-done' ><input type='checkbox' checked/><p><span>完成任务</span></p></li></ul><h2 id='创建一个表格'><span>创建一个表格</span></h2><p><span>一个简单的表格是这么创建的：</span></p><figure class='table-figure'><table><thead><tr><th><span>项目</span></th><th><span>Value</span></th></tr></thead><tbody><tr><td><span>电脑</span></td><td><span>$1600</span></td></tr><tr><td><span>手机</span></td><td><span>$12</span></td></tr><tr><td><span>导管</span></td><td><span>$1</span></td></tr></tbody></table></figure><h3 id='设定内容居中居左居右'><span>设定内容居中、居左、居右</span></h3><p><span>使用</span><code>:---------:</code><span>居中</span>
 <span>使用</span><code>:----------</code><span>居左</span>
-<span>使用</span><code>----------:</code><span>居右</span></p><figure><table><thead><tr><th style='text-align:center;' ><span>第一列</span></th><th style='text-align:right;' ><span>第二列</span></th><th style='text-align:left;' ><span>第三列</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>第一列文本居中</span></td><td style='text-align:right;' ><span>第二列文本居右</span></td><td style='text-align:left;' ><span>第三列文本居左</span></td></tr></tbody></table></figure><h3 id='smartypants'><span>SmartyPants</span></h3><p><span>SmartyPants将ASCII标点字符转换为“智能”印刷标点HTML实体。例如：</span></p><figure><table><thead><tr><th><span>TYPE</span></th><th><span>ASCII</span></th><th><span>HTML</span></th></tr></thead><tbody><tr><td><span>Single backticks</span></td><td><code>&#39;Isn&#39;t this fun?&#39;</code></td><td><span>&#39;Isn&#39;t this fun?&#39;</span></td></tr><tr><td><span>Quotes</span></td><td><code>&quot;Isn&#39;t this fun?&quot;</code></td><td><span>&quot;Isn&#39;t this fun?&quot;</span></td></tr><tr><td><span>Dashes</span></td><td><code>-- is en-dash, --- is em-dash</code></td><td><span>-- is en-dash, --- is em-dash</span></td></tr></tbody></table></figure><h2 id='创建一个自定义列表'><span>创建一个自定义列表</span></h2><p><span>Markdown</span>
+<span>使用</span><code>----------:</code><span>居右</span></p><figure class='table-figure'><table><thead><tr><th style='text-align:center;' ><span>第一列</span></th><th style='text-align:right;' ><span>第二列</span></th><th style='text-align:left;' ><span>第三列</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>第一列文本居中</span></td><td style='text-align:right;' ><span>第二列文本居右</span></td><td style='text-align:left;' ><span>第三列文本居左</span></td></tr></tbody></table></figure><h3 id='smartypants'><span>SmartyPants</span></h3><p><span>SmartyPants将ASCII标点字符转换为“智能”印刷标点HTML实体。例如：</span></p><figure class='table-figure'><table><thead><tr><th><span>TYPE</span></th><th><span>ASCII</span></th><th><span>HTML</span></th></tr></thead><tbody><tr><td><span>Single backticks</span></td><td><code>&#39;Isn&#39;t this fun?&#39;</code></td><td><span>&#39;Isn&#39;t this fun?&#39;</span></td></tr><tr><td><span>Quotes</span></td><td><code>&quot;Isn&#39;t this fun?&quot;</code></td><td><span>&quot;Isn&#39;t this fun?&quot;</span></td></tr><tr><td><span>Dashes</span></td><td><code>-- is en-dash, --- is em-dash</code></td><td><span>-- is en-dash, --- is em-dash</span></td></tr></tbody></table></figure><h2 id='创建一个自定义列表'><span>创建一个自定义列表</span></h2><p><span>Markdown</span>
 <span>:  Text-to-HTML conversion tool</span></p><p><span>Authors</span>
 <span>:  John</span>
 <span>:  Luke</span></p><h2 id='如何创建一个注脚'><span>如何创建一个注脚</span></h2><p><span>一个具有注脚的文本。</span><sup class='md-footnote'><a href='#dfref-footnote-2' name='ref-footnote-2'>2</a></sup></p><h2 id='注释也是必不可少的'><span>注释也是必不可少的</span></h2><p><span>Markdown将文本转换为 HTML。</span></p><p><span>*[HTML]:   超文本标记语言</span></p><h2 id='katex数学公式'><span>KaTeX数学公式</span></h2><p><span>您可以使用渲染LaTeX数学表达式 </span><a href='https://khan.github.io/KaTeX/'><span>KaTeX</span></a><span>:</span></p><p><span>Gamma公式展示 $\Gamma(n) = (n-1)!\quad\forall</span>
-<span>n\in\mathbb N$ 是通过欧拉积分</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n126" cid="n126" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="21.558ex" height="5.232ex" role="img" focusable="false" viewBox="0 -1400.6 9528.6 2312.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.063ex;"><defs><path id="MJX-1-TEX-N-393" d="M128 619Q121 626 117 628T101 631T58 634H25V680H554V676Q556 670 568 560T582 444V440H542V444Q542 445 538 478T523 545T492 598Q454 634 349 634H334Q264 634 249 633T233 621Q232 618 232 339L233 61Q240 54 245 52T270 48T333 46H360V0H348Q324 3 182 3Q51 3 36 0H25V46H58Q100 47 109 49T128 61V619Z"></path><path id="MJX-1-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-1-TEX-I-1D467" d="M347 338Q337 338 294 349T231 360Q211 360 197 356T174 346T162 335T155 324L153 320Q150 317 138 317Q117 317 117 325Q117 330 120 339Q133 378 163 406T229 440Q241 442 246 442Q271 442 291 425T329 392T367 375Q389 375 411 408T434 441Q435 442 449 442H462Q468 436 468 434Q468 430 463 420T449 399T432 377T418 358L411 349Q368 298 275 214T160 106L148 94L163 93Q185 93 227 82T290 71Q328 71 360 90T402 140Q406 149 409 151T424 153Q443 153 443 143Q443 138 442 134Q425 72 376 31T278 -11Q252 -11 232 6T193 40T155 57Q111 57 76 -3Q70 -11 59 -11H54H41Q35 -5 35 -2Q35 13 93 84Q132 129 225 214T340 322Q352 338 347 338Z"></path><path id="MJX-1-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-LO-222B" d="M114 -798Q132 -824 165 -824H167Q195 -824 223 -764T275 -600T320 -391T362 -164Q365 -143 367 -133Q439 292 523 655T645 1127Q651 1145 655 1157T672 1201T699 1257T733 1306T777 1346T828 1360Q884 1360 912 1325T944 1245Q944 1220 932 1205T909 1186T887 1183Q866 1183 849 1198T832 1239Q832 1287 885 1296L882 1300Q879 1303 874 1307T866 1313Q851 1323 833 1323Q819 1323 807 1311T775 1255T736 1139T689 936T633 628Q574 293 510 -5T410 -437T355 -629Q278 -862 165 -862Q125 -862 92 -831T55 -746Q55 -711 74 -698T112 -685Q133 -685 150 -700T167 -741Q167 -789 114 -798Z"></path><path id="MJX-1-TEX-N-221E" d="M55 217Q55 305 111 373T254 442Q342 442 419 381Q457 350 493 303L507 284L514 294Q618 442 747 442Q833 442 888 374T944 214Q944 128 889 59T743 -11Q657 -11 580 50Q542 81 506 128L492 147L485 137Q381 -11 252 -11Q166 -11 111 57T55 217ZM907 217Q907 285 869 341T761 397Q740 397 720 392T682 378T648 359T619 335T594 310T574 285T559 263T548 246L543 238L574 198Q605 158 622 138T664 94T714 61T765 51Q827 51 867 100T907 217ZM92 214Q92 145 131 89T239 33Q357 33 456 193L425 233Q364 312 334 337Q285 380 233 380Q171 380 132 331T92 214Z"></path><path id="MJX-1-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-1-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-1-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-1-TEX-I-1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path id="MJX-1-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-1-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="393" xlink:href="#MJX-1-TEX-N-393"></use></g><g data-mml-node="mo" transform="translate(625,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1014,0)"><use data-c="1D467" xlink:href="#MJX-1-TEX-I-1D467"></use></g><g data-mml-node="mo" transform="translate(1479,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(2145.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="msubsup" transform="translate(3201.6,0)"><g data-mml-node="mo" transform="translate(0 1)"><use data-c="222B" xlink:href="#MJX-1-TEX-LO-222B"></use></g><g data-mml-node="mi" transform="translate(1046.4,1088.1) scale(0.707)"><use data-c="221E" xlink:href="#MJX-1-TEX-N-221E"></use></g><g data-mml-node="mn" transform="translate(589,-896.4) scale(0.707)"><use data-c="30" xlink:href="#MJX-1-TEX-N-30"></use></g></g><g data-mml-node="msup" transform="translate(5171.7,0)"><g data-mml-node="mi"><use data-c="1D461" xlink:href="#MJX-1-TEX-I-1D461"></use></g><g data-mml-node="TeXAtom" transform="translate(394,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D467" xlink:href="#MJX-1-TEX-I-1D467"></use></g><g data-mml-node="mo" transform="translate(465,0)"><use data-c="2212" xlink:href="#MJX-1-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1243,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g></g></g><g data-mml-node="msup" transform="translate(6848.2,0)"><g data-mml-node="mi"><use data-c="1D452" xlink:href="#MJX-1-TEX-I-1D452"></use></g><g data-mml-node="TeXAtom" transform="translate(499,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-1-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(778,0)"><use data-c="1D461" xlink:href="#MJX-1-TEX-I-1D461"></use></g></g></g><g data-mml-node="mi" transform="translate(8202.6,0)"><use data-c="1D451" xlink:href="#MJX-1-TEX-I-1D451"></use></g><g data-mml-node="mi" transform="translate(8722.6,0)"><use data-c="1D461" xlink:href="#MJX-1-TEX-I-1D461"></use></g><g data-mml-node="mstyle" transform="translate(9083.6,0)"><g data-mml-node="mspace"></g></g><g data-mml-node="mo" transform="translate(9250.6,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi mathvariant="normal">Γ</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mo data-mjx-texclass="OP">∫</mo><mn>0</mn><mi mathvariant="normal">∞</mi></msubsup><msup><mi>t</mi><mrow data-mjx-texclass="ORD"><mi>z</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>e</mi><mrow data-mjx-texclass="ORD"><mo>−</mo><mi>t</mi></mrow></msup><mi>d</mi><mi>t</mi><mstyle scriptlevel="0"><mspace width="0.167em"></mspace></mstyle><mo>.</mo></math></mjx-assistive-mml></mjx-container></div></div><blockquote><p><span>你可以找到更多关于的信息 </span><strong><span>LaTeX</span></strong><span> 数学表达式</span><a href='http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference' target='_blank'><span>here</span></a><span>.</span></p></blockquote><h2 id='新的甘特图功能丰富你的文章'><span>新的甘特图功能，丰富你的文章</span></h2><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart0" width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 798 196" height="196" style="max-width: 798px;"><style>#mermaidChart0 {font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart0 .error-icon{fill:#552222;}#mermaidChart0 .error-text{fill:#552222;stroke:#552222;}#mermaidChart0 .edge-thickness-normal{stroke-width:2px;}#mermaidChart0 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart0 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart0 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart0 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart0 .marker{fill:#333333;stroke:#333333;}#mermaidChart0 .marker.cross{stroke:#333333;}#mermaidChart0 svg{font-family:sans-serif;font-size:16px;}#mermaidChart0 .mermaid-main-font{font-family:"trebuchet ms",verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaidChart0 .exclude-range{fill:#eeeeee;}#mermaidChart0 .section{stroke:none;opacity:0.2;}#mermaidChart0 .section0{fill:rgba(102, 102, 255, 0.49);}#mermaidChart0 .section2{fill:#fff400;}#mermaidChart0 .section1,#mermaidChart0 .section3{fill:white;opacity:0.2;}#mermaidChart0 .sectionTitle0{fill:#333;}#mermaidChart0 .sectionTitle1{fill:#333;}#mermaidChart0 .sectionTitle2{fill:#333;}#mermaidChart0 .sectionTitle3{fill:#333;}#mermaidChart0 .sectionTitle{text-anchor:start;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaidChart0 .grid .tick{stroke:lightgrey;opacity:0.8;shape-rendering:crispEdges;}#mermaidChart0 .grid .tick text{font-family:sans-serif;fill:#333;}#mermaidChart0 .grid path{stroke-width:0;}#mermaidChart0 .today{fill:none;stroke:red;stroke-width:2px;}#mermaidChart0 .task{stroke-width:2;}#mermaidChart0 .taskText{text-anchor:middle;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaidChart0 .taskTextOutsideRight{fill:black;text-anchor:start;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaidChart0 .taskTextOutsideLeft{fill:black;text-anchor:end;}#mermaidChart0 .task.clickable{cursor:pointer;}#mermaidChart0 .taskText.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#mermaidChart0 .taskTextOutsideLeft.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#mermaidChart0 .taskTextOutsideRight.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#mermaidChart0 .taskText0,#mermaidChart0 .taskText1,#mermaidChart0 .taskText2,#mermaidChart0 .taskText3{fill:white;}#mermaidChart0 .task0,#mermaidChart0 .task1,#mermaidChart0 .task2,#mermaidChart0 .task3{fill:#8a90dd;stroke:#534fbc;}#mermaidChart0 .taskTextOutside0,#mermaidChart0 .taskTextOutside2{fill:black;}#mermaidChart0 .taskTextOutside1,#mermaidChart0 .taskTextOutside3{fill:black;}#mermaidChart0 .active0,#mermaidChart0 .active1,#mermaidChart0 .active2,#mermaidChart0 .active3{fill:#bfc7ff;stroke:#534fbc;}#mermaidChart0 .activeText0,#mermaidChart0 .activeText1,#mermaidChart0 .activeText2,#mermaidChart0 .activeText3{fill:black!important;}#mermaidChart0 .done0,#mermaidChart0 .done1,#mermaidChart0 .done2,#mermaidChart0 .done3{stroke:grey;fill:lightgrey;stroke-width:2;}#mermaidChart0 .doneText0,#mermaidChart0 .doneText1,#mermaidChart0 .doneText2,#mermaidChart0 .doneText3{fill:black!important;}#mermaidChart0 .crit0,#mermaidChart0 .crit1,#mermaidChart0 .crit2,#mermaidChart0 .crit3{stroke:#ff8888;fill:red;stroke-width:2;}#mermaidChart0 .activeCrit0,#mermaidChart0 .activeCrit1,#mermaidChart0 .activeCrit2,#mermaidChart0 .activeCrit3{stroke:#ff8888;fill:#bfc7ff;stroke-width:2;}#mermaidChart0 .doneCrit0,#mermaidChart0 .doneCrit1,#mermaidChart0 .doneCrit2,#mermaidChart0 .doneCrit3{stroke:#ff8888;fill:lightgrey;stroke-width:2;cursor:pointer;shape-rendering:crispEdges;}#mermaidChart0 .milestone{transform:rotate(45deg) scale(0.8,0.8);}#mermaidChart0 .milestoneText{font-style:italic;}#mermaidChart0 .doneCritText0,#mermaidChart0 .doneCritText1,#mermaidChart0 .doneCritText2,#mermaidChart0 .doneCritText3{fill:black!important;}#mermaidChart0 .activeCritText0,#mermaidChart0 .activeCritText1,#mermaidChart0 .activeCritText2,#mermaidChart0 .activeCritText3{fill:black!important;}#mermaidChart0 .titleText{text-anchor:middle;font-size:18px;fill:var(--text-color);font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaidChart0 :root{--mermaid-font-family:sans-serif;}#mermaidChart0 :root{--mermaid-alt-font-family:sans-serif;}</style><g></g><g></g><g class="grid" transform="translate(75, 146)" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle"><path class="domain" stroke="currentColor" d="M0,-111V0H703V-111"></path><g class="tick" opacity="1" transform="translate(44,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-07</text></g><g class="tick" opacity="1" transform="translate(132,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-09</text></g><g class="tick" opacity="1" transform="translate(220,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-11</text></g><g class="tick" opacity="1" transform="translate(308,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-13</text></g><g class="tick" opacity="1" transform="translate(395,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-15</text></g><g class="tick" opacity="1" transform="translate(483,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-17</text></g><g class="tick" opacity="1" transform="translate(571,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-19</text></g><g class="tick" opacity="1" transform="translate(659,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-21</text></g></g><g><rect x="0" y="48" width="788" height="24" class="section section0"></rect><rect x="0" y="72" width="788" height="24" class="section section0"></rect><rect x="0" y="96" width="788" height="24" class="section section0"></rect><rect x="0" y="120" width="788" height="24" class="section section0"></rect></g><g><rect id="des1" rx="3" ry="3" x="75" y="50" width="88" height="20" transform-origin="119px 60px" class="task done0 "></rect><rect id="des2" rx="3" ry="3" x="207" y="74" width="132" height="20" transform-origin="273px 84px" class="task active0 "></rect><rect id="des3" rx="3" ry="3" x="339" y="98" width="219" height="20" transform-origin="448.5px 108px" class="task task0 "></rect><rect id="des4" rx="3" ry="3" x="558" y="122" width="220" height="20" transform-origin="668px 132px" class="task task0 "></rect><text id="des1-text" font-size="11" x="119" y="63.5" text-height="20" class=" taskText taskText0  doneText0 width-33">已完成               </text><text id="des2-text" font-size="11" x="273" y="87.5" text-height="20" class=" taskText taskText0 activeText0 width-33">进行中               </text><text id="des3-text" font-size="11" x="448.5" y="111.5" text-height="20" class=" taskText taskText0  width-33">计划一               </text><text id="des4-text" font-size="11" x="668" y="135.5" text-height="20" class=" taskText taskText0  width-33">计划二               </text></g><g><text dy="0em" x="10" y="98" font-size="11" class="sectionTitle sectionTitle0"><tspan alignment-baseline="central" x="10">现有任务</tspan></text></g><g class="today"><line x1="142059" x2="142059" y1="25" y2="171" class="today"></line></g><text x="399" y="25" class="titleText">Adding GANTT diagram functionality to mermaid</text></svg></div><ul><li><span>关于 </span><strong><span>甘特图</span></strong><span> 语法，参考 </span><a href='https://mermaidjs.github.io/' target='_blank'><span>这儿</span></a><span>,</span></li></ul><h2 id='uml-图表'><span>UML 图表</span></h2><p><span>可以使用UML图表进行渲染。 </span><a href='https://mermaidjs.github.io/'><span>Mermaid</span></a><span>. 例如下面产生的一个序列图：</span></p><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart1" width="804" xmlns="http://www.w3.org/2000/svg" height="500" viewBox="-8 -8 804 500"><style>#mermaidChart1 {font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart1 .error-icon{fill:#552222;}#mermaidChart1 .error-text{fill:#552222;stroke:#552222;}#mermaidChart1 .edge-thickness-normal{stroke-width:2px;}#mermaidChart1 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart1 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart1 .marker{fill:#333333;stroke:#333333;}#mermaidChart1 .marker.cross{stroke:#333333;}#mermaidChart1 svg{font-family:sans-serif;font-size:16px;}#mermaidChart1 .actor{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#mermaidChart1 text.actor&gt;tspan{fill:black;stroke:none;}#mermaidChart1 .actor-line{stroke:grey;}#mermaidChart1 .messageLine0{stroke-width:1.5;stroke-dasharray:none;stroke:#333;}#mermaidChart1 .messageLine1{stroke-width:1.5;stroke-dasharray:2,2;stroke:#333;}#mermaidChart1 #arrowhead path{fill:#333;stroke:#333;}#mermaidChart1 .sequenceNumber{fill:white;}#mermaidChart1 #sequencenumber{fill:#333;}#mermaidChart1 #crosshead path{fill:#333;stroke:#333;}#mermaidChart1 .messageText{fill:#333;stroke:#333;}#mermaidChart1 .labelBox{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#mermaidChart1 .labelText,#mermaidChart1 .labelText&gt;tspan{fill:black;stroke:none;}#mermaidChart1 .loopText,#mermaidChart1 .loopText&gt;tspan{fill:black;stroke:none;}#mermaidChart1 .loopLine{stroke-width:2px;stroke-dasharray:2,2;stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);}#mermaidChart1 .note{stroke:#aaaa33;fill:#fff5ad;}#mermaidChart1 .noteText,#mermaidChart1 .noteText&gt;tspan{fill:black;stroke:none;}#mermaidChart1 .activation0{fill:#f4f4f4;stroke:#666;}#mermaidChart1 .activation1{fill:#f4f4f4;stroke:#666;}#mermaidChart1 .activation2{fill:#f4f4f4;stroke:#666;}#mermaidChart1 .actorPopupMenu{position:absolute;}#mermaidChart1 .actorPopupMenuPanel{position:absolute;fill:#ECECFF;box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);filter:drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));}#mermaidChart1 .actor-man line{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#mermaidChart1 .actor-man circle,#mermaidChart1 line{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;stroke-width:2px;}#mermaidChart1 :root{--mermaid-font-family:sans-serif;}#mermaidChart1 :root{--mermaid-alt-font-family:sans-serif;}</style><g></g><defs><symbol id="computer" width="24" height="24"><path transform="scale(.5)" d="M2 2v13h20v-13h-20zm18 11h-16v-9h16v9zm-10.228 6l.466-1h3.524l.467 1h-4.457zm14.228 3h-24l2-6h2.104l-1.33 4h18.45l-1.297-4h2.073l2 6zm-5-10h-14v-7h14v7z"></path></symbol></defs><defs><symbol id="database" fill-rule="evenodd" clip-rule="evenodd"><path transform="scale(.5)" d="M12.258.001l.256.004.255.005.253.008.251.01.249.012.247.015.246.016.242.019.241.02.239.023.236.024.233.027.231.028.229.031.225.032.223.034.22.036.217.038.214.04.211.041.208.043.205.045.201.046.198.048.194.05.191.051.187.053.183.054.18.056.175.057.172.059.168.06.163.061.16.063.155.064.15.066.074.033.073.033.071.034.07.034.069.035.068.035.067.035.066.035.064.036.064.036.062.036.06.036.06.037.058.037.058.037.055.038.055.038.053.038.052.038.051.039.05.039.048.039.047.039.045.04.044.04.043.04.041.04.04.041.039.041.037.041.036.041.034.041.033.042.032.042.03.042.029.042.027.042.026.043.024.043.023.043.021.043.02.043.018.044.017.043.015.044.013.044.012.044.011.045.009.044.007.045.006.045.004.045.002.045.001.045v17l-.001.045-.002.045-.004.045-.006.045-.007.045-.009.044-.011.045-.012.044-.013.044-.015.044-.017.043-.018.044-.02.043-.021.043-.023.043-.024.043-.026.043-.027.042-.029.042-.03.042-.032.042-.033.042-.034.041-.036.041-.037.041-.039.041-.04.041-.041.04-.043.04-.044.04-.045.04-.047.039-.048.039-.05.039-.051.039-.052.038-.053.038-.055.038-.055.038-.058.037-.058.037-.06.037-.06.036-.062.036-.064.036-.064.036-.066.035-.067.035-.068.035-.069.035-.07.034-.071.034-.073.033-.074.033-.15.066-.155.064-.16.063-.163.061-.168.06-.172.059-.175.057-.18.056-.183.054-.187.053-.191.051-.194.05-.198.048-.201.046-.205.045-.208.043-.211.041-.214.04-.217.038-.22.036-.223.034-.225.032-.229.031-.231.028-.233.027-.236.024-.239.023-.241.02-.242.019-.246.016-.247.015-.249.012-.251.01-.253.008-.255.005-.256.004-.258.001-.258-.001-.256-.004-.255-.005-.253-.008-.251-.01-.249-.012-.247-.015-.245-.016-.243-.019-.241-.02-.238-.023-.236-.024-.234-.027-.231-.028-.228-.031-.226-.032-.223-.034-.22-.036-.217-.038-.214-.04-.211-.041-.208-.043-.204-.045-.201-.046-.198-.048-.195-.05-.19-.051-.187-.053-.184-.054-.179-.056-.176-.057-.172-.059-.167-.06-.164-.061-.159-.063-.155-.064-.151-.066-.074-.033-.072-.033-.072-.034-.07-.034-.069-.035-.068-.035-.067-.035-.066-.035-.064-.036-.063-.036-.062-.036-.061-.036-.06-.037-.058-.037-.057-.037-.056-.038-.055-.038-.053-.038-.052-.038-.051-.039-.049-.039-.049-.039-.046-.039-.046-.04-.044-.04-.043-.04-.041-.04-.04-.041-.039-.041-.037-.041-.036-.041-.034-.041-.033-.042-.032-.042-.03-.042-.029-.042-.027-.042-.026-.043-.024-.043-.023-.043-.021-.043-.02-.043-.018-.044-.017-.043-.015-.044-.013-.044-.012-.044-.011-.045-.009-.044-.007-.045-.006-.045-.004-.045-.002-.045-.001-.045v-17l.001-.045.002-.045.004-.045.006-.045.007-.045.009-.044.011-.045.012-.044.013-.044.015-.044.017-.043.018-.044.02-.043.021-.043.023-.043.024-.043.026-.043.027-.042.029-.042.03-.042.032-.042.033-.042.034-.041.036-.041.037-.041.039-.041.04-.041.041-.04.043-.04.044-.04.046-.04.046-.039.049-.039.049-.039.051-.039.052-.038.053-.038.055-.038.056-.038.057-.037.058-.037.06-.037.061-.036.062-.036.063-.036.064-.036.066-.035.067-.035.068-.035.069-.035.07-.034.072-.034.072-.033.074-.033.151-.066.155-.064.159-.063.164-.061.167-.06.172-.059.176-.057.179-.056.184-.054.187-.053.19-.051.195-.05.198-.048.201-.046.204-.045.208-.043.211-.041.214-.04.217-.038.22-.036.223-.034.226-.032.228-.031.231-.028.234-.027.236-.024.238-.023.241-.02.243-.019.245-.016.247-.015.249-.012.251-.01.253-.008.255-.005.256-.004.258-.001.258.001zm-9.258 20.499v.01l.001.021.003.021.004.022.005.021.006.022.007.022.009.023.01.022.011.023.012.023.013.023.015.023.016.024.017.023.018.024.019.024.021.024.022.025.023.024.024.025.052.049.056.05.061.051.066.051.07.051.075.051.079.052.084.052.088.052.092.052.097.052.102.051.105.052.11.052.114.051.119.051.123.051.127.05.131.05.135.05.139.048.144.049.147.047.152.047.155.047.16.045.163.045.167.043.171.043.176.041.178.041.183.039.187.039.19.037.194.035.197.035.202.033.204.031.209.03.212.029.216.027.219.025.222.024.226.021.23.02.233.018.236.016.24.015.243.012.246.01.249.008.253.005.256.004.259.001.26-.001.257-.004.254-.005.25-.008.247-.011.244-.012.241-.014.237-.016.233-.018.231-.021.226-.021.224-.024.22-.026.216-.027.212-.028.21-.031.205-.031.202-.034.198-.034.194-.036.191-.037.187-.039.183-.04.179-.04.175-.042.172-.043.168-.044.163-.045.16-.046.155-.046.152-.047.148-.048.143-.049.139-.049.136-.05.131-.05.126-.05.123-.051.118-.052.114-.051.11-.052.106-.052.101-.052.096-.052.092-.052.088-.053.083-.051.079-.052.074-.052.07-.051.065-.051.06-.051.056-.05.051-.05.023-.024.023-.025.021-.024.02-.024.019-.024.018-.024.017-.024.015-.023.014-.024.013-.023.012-.023.01-.023.01-.022.008-.022.006-.022.006-.022.004-.022.004-.021.001-.021.001-.021v-4.127l-.077.055-.08.053-.083.054-.085.053-.087.052-.09.052-.093.051-.095.05-.097.05-.1.049-.102.049-.105.048-.106.047-.109.047-.111.046-.114.045-.115.045-.118.044-.12.043-.122.042-.124.042-.126.041-.128.04-.13.04-.132.038-.134.038-.135.037-.138.037-.139.035-.142.035-.143.034-.144.033-.147.032-.148.031-.15.03-.151.03-.153.029-.154.027-.156.027-.158.026-.159.025-.161.024-.162.023-.163.022-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.011-.178.01-.179.008-.179.008-.181.006-.182.005-.182.004-.184.003-.184.002h-.37l-.184-.002-.184-.003-.182-.004-.182-.005-.181-.006-.179-.008-.179-.008-.178-.01-.176-.011-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.022-.162-.023-.161-.024-.159-.025-.157-.026-.156-.027-.155-.027-.153-.029-.151-.03-.15-.03-.148-.031-.146-.032-.145-.033-.143-.034-.141-.035-.14-.035-.137-.037-.136-.037-.134-.038-.132-.038-.13-.04-.128-.04-.126-.041-.124-.042-.122-.042-.12-.044-.117-.043-.116-.045-.113-.045-.112-.046-.109-.047-.106-.047-.105-.048-.102-.049-.1-.049-.097-.05-.095-.05-.093-.052-.09-.051-.087-.052-.085-.053-.083-.054-.08-.054-.077-.054v4.127zm0-5.654v.011l.001.021.003.021.004.021.005.022.006.022.007.022.009.022.01.022.011.023.012.023.013.023.015.024.016.023.017.024.018.024.019.024.021.024.022.024.023.025.024.024.052.05.056.05.061.05.066.051.07.051.075.052.079.051.084.052.088.052.092.052.097.052.102.052.105.052.11.051.114.051.119.052.123.05.127.051.131.05.135.049.139.049.144.048.147.048.152.047.155.046.16.045.163.045.167.044.171.042.176.042.178.04.183.04.187.038.19.037.194.036.197.034.202.033.204.032.209.03.212.028.216.027.219.025.222.024.226.022.23.02.233.018.236.016.24.014.243.012.246.01.249.008.253.006.256.003.259.001.26-.001.257-.003.254-.006.25-.008.247-.01.244-.012.241-.015.237-.016.233-.018.231-.02.226-.022.224-.024.22-.025.216-.027.212-.029.21-.03.205-.032.202-.033.198-.035.194-.036.191-.037.187-.039.183-.039.179-.041.175-.042.172-.043.168-.044.163-.045.16-.045.155-.047.152-.047.148-.048.143-.048.139-.05.136-.049.131-.05.126-.051.123-.051.118-.051.114-.052.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.051.07-.052.065-.051.06-.05.056-.051.051-.049.023-.025.023-.024.021-.025.02-.024.019-.024.018-.024.017-.024.015-.023.014-.023.013-.024.012-.022.01-.023.01-.023.008-.022.006-.022.006-.022.004-.021.004-.022.001-.021.001-.021v-4.139l-.077.054-.08.054-.083.054-.085.052-.087.053-.09.051-.093.051-.095.051-.097.05-.1.049-.102.049-.105.048-.106.047-.109.047-.111.046-.114.045-.115.044-.118.044-.12.044-.122.042-.124.042-.126.041-.128.04-.13.039-.132.039-.134.038-.135.037-.138.036-.139.036-.142.035-.143.033-.144.033-.147.033-.148.031-.15.03-.151.03-.153.028-.154.028-.156.027-.158.026-.159.025-.161.024-.162.023-.163.022-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.011-.178.009-.179.009-.179.007-.181.007-.182.005-.182.004-.184.003-.184.002h-.37l-.184-.002-.184-.003-.182-.004-.182-.005-.181-.007-.179-.007-.179-.009-.178-.009-.176-.011-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.022-.162-.023-.161-.024-.159-.025-.157-.026-.156-.027-.155-.028-.153-.028-.151-.03-.15-.03-.148-.031-.146-.033-.145-.033-.143-.033-.141-.035-.14-.036-.137-.036-.136-.037-.134-.038-.132-.039-.13-.039-.128-.04-.126-.041-.124-.042-.122-.043-.12-.043-.117-.044-.116-.044-.113-.046-.112-.046-.109-.046-.106-.047-.105-.048-.102-.049-.1-.049-.097-.05-.095-.051-.093-.051-.09-.051-.087-.053-.085-.052-.083-.054-.08-.054-.077-.054v4.139zm0-5.666v.011l.001.02.003.022.004.021.005.022.006.021.007.022.009.023.01.022.011.023.012.023.013.023.015.023.016.024.017.024.018.023.019.024.021.025.022.024.023.024.024.025.052.05.056.05.061.05.066.051.07.051.075.052.079.051.084.052.088.052.092.052.097.052.102.052.105.051.11.052.114.051.119.051.123.051.127.05.131.05.135.05.139.049.144.048.147.048.152.047.155.046.16.045.163.045.167.043.171.043.176.042.178.04.183.04.187.038.19.037.194.036.197.034.202.033.204.032.209.03.212.028.216.027.219.025.222.024.226.021.23.02.233.018.236.017.24.014.243.012.246.01.249.008.253.006.256.003.259.001.26-.001.257-.003.254-.006.25-.008.247-.01.244-.013.241-.014.237-.016.233-.018.231-.02.226-.022.224-.024.22-.025.216-.027.212-.029.21-.03.205-.032.202-.033.198-.035.194-.036.191-.037.187-.039.183-.039.179-.041.175-.042.172-.043.168-.044.163-.045.16-.045.155-.047.152-.047.148-.048.143-.049.139-.049.136-.049.131-.051.126-.05.123-.051.118-.052.114-.051.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.052.07-.051.065-.051.06-.051.056-.05.051-.049.023-.025.023-.025.021-.024.02-.024.019-.024.018-.024.017-.024.015-.023.014-.024.013-.023.012-.023.01-.022.01-.023.008-.022.006-.022.006-.022.004-.022.004-.021.001-.021.001-.021v-4.153l-.077.054-.08.054-.083.053-.085.053-.087.053-.09.051-.093.051-.095.051-.097.05-.1.049-.102.048-.105.048-.106.048-.109.046-.111.046-.114.046-.115.044-.118.044-.12.043-.122.043-.124.042-.126.041-.128.04-.13.039-.132.039-.134.038-.135.037-.138.036-.139.036-.142.034-.143.034-.144.033-.147.032-.148.032-.15.03-.151.03-.153.028-.154.028-.156.027-.158.026-.159.024-.161.024-.162.023-.163.023-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.01-.178.01-.179.009-.179.007-.181.006-.182.006-.182.004-.184.003-.184.001-.185.001-.185-.001-.184-.001-.184-.003-.182-.004-.182-.006-.181-.006-.179-.007-.179-.009-.178-.01-.176-.01-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.023-.162-.023-.161-.024-.159-.024-.157-.026-.156-.027-.155-.028-.153-.028-.151-.03-.15-.03-.148-.032-.146-.032-.145-.033-.143-.034-.141-.034-.14-.036-.137-.036-.136-.037-.134-.038-.132-.039-.13-.039-.128-.041-.126-.041-.124-.041-.122-.043-.12-.043-.117-.044-.116-.044-.113-.046-.112-.046-.109-.046-.106-.048-.105-.048-.102-.048-.1-.05-.097-.049-.095-.051-.093-.051-.09-.052-.087-.052-.085-.053-.083-.053-.08-.054-.077-.054v4.153zm8.74-8.179l-.257.004-.254.005-.25.008-.247.011-.244.012-.241.014-.237.016-.233.018-.231.021-.226.022-.224.023-.22.026-.216.027-.212.028-.21.031-.205.032-.202.033-.198.034-.194.036-.191.038-.187.038-.183.04-.179.041-.175.042-.172.043-.168.043-.163.045-.16.046-.155.046-.152.048-.148.048-.143.048-.139.049-.136.05-.131.05-.126.051-.123.051-.118.051-.114.052-.11.052-.106.052-.101.052-.096.052-.092.052-.088.052-.083.052-.079.052-.074.051-.07.052-.065.051-.06.05-.056.05-.051.05-.023.025-.023.024-.021.024-.02.025-.019.024-.018.024-.017.023-.015.024-.014.023-.013.023-.012.023-.01.023-.01.022-.008.022-.006.023-.006.021-.004.022-.004.021-.001.021-.001.021.001.021.001.021.004.021.004.022.006.021.006.023.008.022.01.022.01.023.012.023.013.023.014.023.015.024.017.023.018.024.019.024.02.025.021.024.023.024.023.025.051.05.056.05.06.05.065.051.07.052.074.051.079.052.083.052.088.052.092.052.096.052.101.052.106.052.11.052.114.052.118.051.123.051.126.051.131.05.136.05.139.049.143.048.148.048.152.048.155.046.16.046.163.045.168.043.172.043.175.042.179.041.183.04.187.038.191.038.194.036.198.034.202.033.205.032.21.031.212.028.216.027.22.026.224.023.226.022.231.021.233.018.237.016.241.014.244.012.247.011.25.008.254.005.257.004.26.001.26-.001.257-.004.254-.005.25-.008.247-.011.244-.012.241-.014.237-.016.233-.018.231-.021.226-.022.224-.023.22-.026.216-.027.212-.028.21-.031.205-.032.202-.033.198-.034.194-.036.191-.038.187-.038.183-.04.179-.041.175-.042.172-.043.168-.043.163-.045.16-.046.155-.046.152-.048.148-.048.143-.048.139-.049.136-.05.131-.05.126-.051.123-.051.118-.051.114-.052.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.051.07-.052.065-.051.06-.05.056-.05.051-.05.023-.025.023-.024.021-.024.02-.025.019-.024.018-.024.017-.023.015-.024.014-.023.013-.023.012-.023.01-.023.01-.022.008-.022.006-.023.006-.021.004-.022.004-.021.001-.021.001-.021-.001-.021-.001-.021-.004-.021-.004-.022-.006-.021-.006-.023-.008-.022-.01-.022-.01-.023-.012-.023-.013-.023-.014-.023-.015-.024-.017-.023-.018-.024-.019-.024-.02-.025-.021-.024-.023-.024-.023-.025-.051-.05-.056-.05-.06-.05-.065-.051-.07-.052-.074-.051-.079-.052-.083-.052-.088-.052-.092-.052-.096-.052-.101-.052-.106-.052-.11-.052-.114-.052-.118-.051-.123-.051-.126-.051-.131-.05-.136-.05-.139-.049-.143-.048-.148-.048-.152-.048-.155-.046-.16-.046-.163-.045-.168-.043-.172-.043-.175-.042-.179-.041-.183-.04-.187-.038-.191-.038-.194-.036-.198-.034-.202-.033-.205-.032-.21-.031-.212-.028-.216-.027-.22-.026-.224-.023-.226-.022-.231-.021-.233-.018-.237-.016-.241-.014-.244-.012-.247-.011-.25-.008-.254-.005-.257-.004-.26-.001-.26.001z"></path></symbol></defs><defs><symbol id="clock" width="24" height="24"><path transform="scale(.5)" d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z"></path></symbol></defs><g><line id="actor0" x1="75" y1="5" x2="75" y2="436" class="200" stroke-width="0.5px" stroke="#999"></line><g id="root-0"><rect x="0" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="75" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 14px; font-weight: 400; font-family: Open-Sans, sans-serif;"><tspan x="75" dy="0">张三</tspan></text></g></g><g><line id="actor1" x1="322" y1="5" x2="322" y2="436" class="200" stroke-width="0.5px" stroke="#999"></line><g id="root-1"><rect x="247" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="322" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 14px; font-weight: 400; font-family: Open-Sans, sans-serif;"><tspan x="322" dy="0">李四</tspan></text></g></g><g><line id="actor2" x1="552" y1="5" x2="552" y2="436" class="200" stroke-width="0.5px" stroke="#999"></line><g id="root-2"><rect x="477" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="552" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 14px; font-weight: 400; font-family: Open-Sans, sans-serif;"><tspan x="552" dy="0">王五</tspan></text></g></g><defs><marker id="arrowhead" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z"></path></marker></defs><defs><marker id="crosshead" markerWidth="15" markerHeight="8" orient="auto" refX="16" refY="4"><path fill="black" stroke="#000000" stroke-width="1px" d="M 9,2 V 6 L16,4 Z" style="stroke-dasharray: 0px, 0px;"></path><path fill="none" stroke="#000000" stroke-width="1px" d="M 0,1 L 6,7 M 6,1 L 0,7" style="stroke-dasharray: 0px, 0px;"></path></marker></defs><defs><marker id="filled-head" refX="18" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L14,7 L9,1 Z"></path></marker></defs><defs><marker id="sequencenumber" refX="15" refY="15" markerWidth="60" markerHeight="40" orient="auto"><circle cx="15" cy="15" r="6"></circle></marker></defs><text x="199" y="80" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: &quot;trebuchet ms&quot;, verdana, arial, sans-serif; font-size: 16px; font-weight: 400;">你好！李四, 最近怎么样?</text><line x1="75" y1="111" x2="322" y2="111" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"></line><text x="437" y="126" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: &quot;trebuchet ms&quot;, verdana, arial, sans-serif; font-size: 16px; font-weight: 400;">你最近怎么样，王五？</text><line x1="322" y1="157" x2="552" y2="157" class="messageLine1" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line><text x="199" y="172" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: &quot;trebuchet ms&quot;, verdana, arial, sans-serif; font-size: 16px; font-weight: 400;">我很好，谢谢!</text><line x1="322" y1="203" x2="75" y2="203" class="messageLine1" stroke-width="2" stroke="none" marker-end="url(#crosshead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line><text x="437" y="218" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: &quot;trebuchet ms&quot;, verdana, arial, sans-serif; font-size: 16px; font-weight: 400;">我很好，谢谢!</text><line x1="322" y1="249" x2="552" y2="249" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#crosshead)" style="fill: none;"></line><g><rect x="577" y="257" fill="#EDF2AE" stroke="#666" width="211" height="53" rx="0" ry="0" class="note"></rect><text x="683" y="262" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-family: &quot;trebuchet ms&quot;, verdana, arial, sans-serif; font-size: 14px; font-weight: 400;"><tspan x="683">李四想了很长时间, 文字太长了</tspan></text><text x="683" y="278" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-family: &quot;trebuchet ms&quot;, verdana, arial, sans-serif; font-size: 14px; font-weight: 400;"><tspan x="683">不适合放在一行.</tspan></text></g><text x="199" y="325" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: &quot;trebuchet ms&quot;, verdana, arial, sans-serif; font-size: 16px; font-weight: 400;">打量着王五...</text><line x1="322" y1="356" x2="75" y2="356" class="messageLine1" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line><text x="314" y="371" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: &quot;trebuchet ms&quot;, verdana, arial, sans-serif; font-size: 16px; font-weight: 400;">很好... 王五, 你怎么样?</text><line x1="75" y1="402" x2="552" y2="402" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"></line><g><rect x="0" y="418" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="75" y="450.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 14px; font-weight: 400; font-family: Open-Sans, sans-serif;"><tspan x="75" dy="0">张三</tspan></text></g><g><rect x="247" y="418" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="322" y="450.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 14px; font-weight: 400; font-family: Open-Sans, sans-serif;"><tspan x="322" dy="0">李四</tspan></text></g><g><rect x="477" y="418" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="552" y="450.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 14px; font-weight: 400; font-family: Open-Sans, sans-serif;"><tspan x="552" dy="0">王五</tspan></text></g></svg></div><p><span>这将产生一个流程图。:</span></p><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart2" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="158" style="max-width: 408.6000061035156px;" viewBox="-8 -8 408.6000061035156 158"><style>#mermaidChart2 {font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart2 .error-icon{fill:#552222;}#mermaidChart2 .error-text{fill:#552222;stroke:#552222;}#mermaidChart2 .edge-thickness-normal{stroke-width:2px;}#mermaidChart2 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart2 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart2 .marker{fill:#333333;stroke:#333333;}#mermaidChart2 .marker.cross{stroke:#333333;}#mermaidChart2 svg{font-family:sans-serif;font-size:16px;}#mermaidChart2 .label{font-family:sans-serif;color:#333;}#mermaidChart2 .cluster-label text{fill:#333;}#mermaidChart2 .cluster-label span{color:#333;}#mermaidChart2 .label text,#mermaidChart2 span{fill:#333;color:#333;}#mermaidChart2 .node rect,#mermaidChart2 .node circle,#mermaidChart2 .node ellipse,#mermaidChart2 .node polygon,#mermaidChart2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart2 .node .label{text-align:center;}#mermaidChart2 .node.clickable{cursor:pointer;}#mermaidChart2 .arrowheadPath{fill:#333333;}#mermaidChart2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaidChart2 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart2 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaidChart2 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaidChart2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart2 .cluster text{fill:#333;}#mermaidChart2 .cluster span{color:#333;}#mermaidChart2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart2 :root{--mermaid-font-family:sans-serif;}#mermaidChart2 :root{--mermaid-alt-font-family:sans-serif;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-A LE-B" id="L-A-B" style="opacity: 1;"><path class="path" d="M76,54.14666666666667L117,29L187,29" marker-end="url(#arrowhead15)" style="fill:none"></path><defs><marker id="arrowhead15" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-A LE-C" id="L-A-C" style="opacity: 1;"><path class="path" d="M76,95.85333333333332L117,121L158,121" marker-end="url(#arrowhead16)" style="fill:none"></path><defs><marker id="arrowhead16" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-B LE-D" id="L-B-D" style="opacity: 1;"><path class="path" d="M229,29L283,29L325.6738749280956,58.326125834843815" marker-end="url(#arrowhead17)" style="fill:none"></path><defs><marker id="arrowhead17" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-C LE-D" id="L-C-D" style="opacity: 1;"><path class="path" d="M258,121L283,121L325.6738740217263,92.67387478466574" marker-end="url(#arrowhead18)" style="fill:none"></path><defs><marker id="arrowhead18" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(117,29)" style="opacity: 1;"><g transform="translate(-16,-11)" class="label"><rect rx="0" ry="0" width="32" height="22"></rect><foreignObject width="32" height="22"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-B" class="edgeLabel L-LS-A' L-LE-B">链接</span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-A-C" class="edgeLabel L-LS-A' L-LE-C"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-B-D" class="edgeLabel L-LS-B' L-LE-D"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span id="L-L-C-D" class="edgeLabel L-LS-C' L-LE-D"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-A-8" transform="translate(42,75)" style="opacity: 1;"><rect rx="0" ry="0" x="-34" y="-21" width="68" height="42" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-24,-11)"><foreignObject width="48" height="22"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">长方形</div></foreignObject></g></g></g><g class="node default" id="flowchart-B-9" transform="translate(208,29)" style="opacity: 1;"><circle x="-18" y="-21" r="21" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-8,-11)"><foreignObject width="16" height="22"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">圆</div></foreignObject></g></g></g><g class="node default" id="flowchart-C-11" transform="translate(208,121)" style="opacity: 1;"><rect rx="5" ry="5" x="-50" y="-21" width="100" height="42" class="label-container"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-40,-11)"><foreignObject width="80" height="22"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">圆角长方形</div></foreignObject></g></g></g><g class="node default" id="flowchart-D-13" transform="translate(350.29999923706055,75)" style="opacity: 1;"><polygon points="42.300000000000004,0 84.60000000000001,-42.300000000000004 42.300000000000004,-84.60000000000001 0,-42.300000000000004" transform="translate(-42.300000000000004,42.300000000000004)" class="label-container"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-16,-11)"><foreignObject width="32" height="22"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">菱形</div></foreignObject></g></g></g></g></g></g></svg></div><ul><li><span>关于 </span><strong><span>Mermaid</span></strong><span> 语法，参考 </span><a href='https://mermaidjs.github.io/' target='_blank'><span>这儿</span></a><span>,</span></li></ul><h2 id='flowchart流程图'><span>FLowchart流程图</span></h2><p><span>我们依旧会支持flowchart的流程图：</span></p><div class="md-diagram-panel md-fences-adv-panel"><div id="dmermaidChart3" style="font-family: sans-serif"><svg id="mermaidChart3" width="400" xmlns="http://www.w3.org/2000/svg" height="100" viewBox="768 0 512 512"><style>#mermaidChart3 {font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart3 .error-icon{fill:#552222;}#mermaidChart3 .error-text{fill:#552222;stroke:#552222;}#mermaidChart3 .edge-thickness-normal{stroke-width:2px;}#mermaidChart3 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart3 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart3 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart3 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart3 .marker{fill:#333333;stroke:#333333;}#mermaidChart3 .marker.cross{stroke:#333333;}#mermaidChart3 svg{font-family:sans-serif;font-size:16px;}#mermaidChart3 .label{font-family:sans-serif;color:#333;}#mermaidChart3 .cluster-label text{fill:#333;}#mermaidChart3 .cluster-label span{color:#333;}#mermaidChart3 .label text,#mermaidChart3 span{fill:#333;color:#333;}#mermaidChart3 .node rect,#mermaidChart3 .node circle,#mermaidChart3 .node ellipse,#mermaidChart3 .node polygon,#mermaidChart3 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart3 .node .label{text-align:center;}#mermaidChart3 .node.clickable{cursor:pointer;}#mermaidChart3 .arrowheadPath{fill:#333333;}#mermaidChart3 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaidChart3 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart3 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaidChart3 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaidChart3 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart3 .cluster text{fill:#333;}#mermaidChart3 .cluster span{color:#333;}#mermaidChart3 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart3 :root{--mermaid-font-family:sans-serif;}#mermaidChart3 :root{--mermaid-alt-font-family:sans-serif;}</style><g></g><g><path class="error-icon" d="m411.313,123.313c6.25-6.25 6.25-16.375 0-22.625s-16.375-6.25-22.625,0l-32,32-9.375,9.375-20.688-20.688c-12.484-12.5-32.766-12.5-45.25,0l-16,16c-1.261,1.261-2.304,2.648-3.31,4.051-21.739-8.561-45.324-13.426-70.065-13.426-105.867,0-192,86.133-192,192s86.133,192 192,192 192-86.133 192-192c0-24.741-4.864-48.327-13.426-70.065 1.402-1.007 2.79-2.049 4.051-3.31l16-16c12.5-12.492 12.5-32.758 0-45.25l-20.688-20.688 9.375-9.375 32.001-31.999zm-219.313,100.687c-52.938,0-96,43.063-96,96 0,8.836-7.164,16-16,16s-16-7.164-16-16c0-70.578 57.422-128 128-128 8.836,0 16,7.164 16,16s-7.164,16-16,16z"></path><path class="error-icon" d="m459.02,148.98c-6.25-6.25-16.375-6.25-22.625,0s-6.25,16.375 0,22.625l16,16c3.125,3.125 7.219,4.688 11.313,4.688 4.094,0 8.188-1.563 11.313-4.688 6.25-6.25 6.25-16.375 0-22.625l-16.001-16z"></path><path class="error-icon" d="m340.395,75.605c3.125,3.125 7.219,4.688 11.313,4.688 4.094,0 8.188-1.563 11.313-4.688 6.25-6.25 6.25-16.375 0-22.625l-16-16c-6.25-6.25-16.375-6.25-22.625,0s-6.25,16.375 0,22.625l15.999,16z"></path><path class="error-icon" d="m400,64c8.844,0 16-7.164 16-16v-32c0-8.836-7.156-16-16-16-8.844,0-16,7.164-16,16v32c0,8.836 7.156,16 16,16z"></path><path class="error-icon" d="m496,96.586h-32c-8.844,0-16,7.164-16,16 0,8.836 7.156,16 16,16h32c8.844,0 16-7.164 16-16 0-8.836-7.156-16-16-16z"></path><path class="error-icon" d="m436.98,75.605c3.125,3.125 7.219,4.688 11.313,4.688 4.094,0 8.188-1.563 11.313-4.688l32-32c6.25-6.25 6.25-16.375 0-22.625s-16.375-6.25-22.625,0l-32,32c-6.251,6.25-6.251,16.375-0.001,22.625z"></path><text class="error-text" x="1240" y="250" font-size="150px" style="text-anchor: middle;">Syntax error in graph</text><text class="error-text" x="1050" y="400" font-size="100px" style="text-anchor: middle;">mermaid version 8.14.0</text></g></svg></div></div><ul><li><span>关于 </span><strong><span>Flowchart流程图</span></strong><span> 语法，参考 </span><a href='http://adrai.github.io/flowchart.js/' target='_blank'><span>这儿</span></a><span>.</span></li></ul><h2 id='导出与导入'><span>导出与导入</span></h2><h3 id='导出'><span>导出</span></h3><p><span>如果你想尝试使用此编辑器, 你可以在此篇文章任意编辑。当你完成了一篇文章的写作, 在上方工具栏找到 </span><strong><span>文章导出</span></strong><span> ，生成一个.md文件或者.html文件进行本地保存。</span></p><h3 id='导入'><span>导入</span></h3><p><span>如果你想加载一篇你写过的.md文件，在上方工具栏可以选择导入功能进行对应扩展名的文件导入，</span>
+<span>n\in\mathbb N$ 是通过欧拉积分</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n126" cid="n126" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="1" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" width="full" style="min-width: 30.961ex; position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="5.232ex" role="img" focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.05ex; min-width: 30.961ex;"><defs><path id="MJX-1-TEX-N-393" d="M128 619Q121 626 117 628T101 631T58 634H25V680H554V676Q556 670 568 560T582 444V440H542V444Q542 445 538 478T523 545T492 598Q454 634 349 634H334Q264 634 249 633T233 621Q232 618 232 339L233 61Q240 54 245 52T270 48T333 46H360V0H348Q324 3 182 3Q51 3 36 0H25V46H58Q100 47 109 49T128 61V619Z"></path><path id="MJX-1-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-1-TEX-I-1D467" d="M347 338Q337 338 294 349T231 360Q211 360 197 356T174 346T162 335T155 324L153 320Q150 317 138 317Q117 317 117 325Q117 330 120 339Q133 378 163 406T229 440Q241 442 246 442Q271 442 291 425T329 392T367 375Q389 375 411 408T434 441Q435 442 449 442H462Q468 436 468 434Q468 430 463 420T449 399T432 377T418 358L411 349Q368 298 275 214T160 106L148 94L163 93Q185 93 227 82T290 71Q328 71 360 90T402 140Q406 149 409 151T424 153Q443 153 443 143Q443 138 442 134Q425 72 376 31T278 -11Q252 -11 232 6T193 40T155 57Q111 57 76 -3Q70 -11 59 -11H54H41Q35 -5 35 -2Q35 13 93 84Q132 129 225 214T340 322Q352 338 347 338Z"></path><path id="MJX-1-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-LO-222B" d="M114 -798Q132 -824 165 -824H167Q195 -824 223 -764T275 -600T320 -391T362 -164Q365 -143 367 -133Q439 292 523 655T645 1127Q651 1145 655 1157T672 1201T699 1257T733 1306T777 1346T828 1360Q884 1360 912 1325T944 1245Q944 1220 932 1205T909 1186T887 1183Q866 1183 849 1198T832 1239Q832 1287 885 1296L882 1300Q879 1303 874 1307T866 1313Q851 1323 833 1323Q819 1323 807 1311T775 1255T736 1139T689 936T633 628Q574 293 510 -5T410 -437T355 -629Q278 -862 165 -862Q125 -862 92 -831T55 -746Q55 -711 74 -698T112 -685Q133 -685 150 -700T167 -741Q167 -789 114 -798Z"></path><path id="MJX-1-TEX-N-221E" d="M55 217Q55 305 111 373T254 442Q342 442 419 381Q457 350 493 303L507 284L514 294Q618 442 747 442Q833 442 888 374T944 214Q944 128 889 59T743 -11Q657 -11 580 50Q542 81 506 128L492 147L485 137Q381 -11 252 -11Q166 -11 111 57T55 217ZM907 217Q907 285 869 341T761 397Q740 397 720 392T682 378T648 359T619 335T594 310T574 285T559 263T548 246L543 238L574 198Q605 158 622 138T664 94T714 61T765 51Q827 51 867 100T907 217ZM92 214Q92 145 131 89T239 33Q357 33 456 193L425 233Q364 312 334 337Q285 380 233 380Q171 380 132 331T92 214Z"></path><path id="MJX-1-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-1-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-1-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-1-TEX-I-1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path id="MJX-1-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-1-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(0.0181,-0.0181) translate(0, -1406.3)"><g data-mml-node="math"><g data-mml-node="mtable" transform="translate(2078,0) translate(-2078,0)"><g transform="translate(0 1406.3) matrix(1 0 0 -1 0 0) scale(55.25)"><svg data-table="true" preserveAspectRatio="xMidYMid" viewBox="4764.3 -1406.3 1 2312.5"><g transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="mlabeledtr" transform="translate(0,5.7)"><g data-mml-node="mtd"><g data-mml-node="mi"><use data-c="393" xlink:href="#MJX-1-TEX-N-393"></use></g><g data-mml-node="mo" transform="translate(625,0)"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1014,0)"><use data-c="1D467" xlink:href="#MJX-1-TEX-I-1D467"></use></g><g data-mml-node="mo" transform="translate(1479,0)"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(2145.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="msubsup" transform="translate(3201.6,0)"><g data-mml-node="mo" transform="translate(0 1)"><use data-c="222B" xlink:href="#MJX-1-TEX-LO-222B"></use></g><g data-mml-node="mi" transform="translate(1046.4,1088.1) scale(0.707)"><use data-c="221E" xlink:href="#MJX-1-TEX-N-221E"></use></g><g data-mml-node="mn" transform="translate(589,-896.4) scale(0.707)"><use data-c="30" xlink:href="#MJX-1-TEX-N-30"></use></g></g><g data-mml-node="msup" transform="translate(5171.7,0)"><g data-mml-node="mi"><use data-c="1D461" xlink:href="#MJX-1-TEX-I-1D461"></use></g><g data-mml-node="TeXAtom" transform="translate(394,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D467" xlink:href="#MJX-1-TEX-I-1D467"></use></g><g data-mml-node="mo" transform="translate(465,0)"><use data-c="2212" xlink:href="#MJX-1-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1243,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g></g></g><g data-mml-node="msup" transform="translate(6848.2,0)"><g data-mml-node="mi"><use data-c="1D452" xlink:href="#MJX-1-TEX-I-1D452"></use></g><g data-mml-node="TeXAtom" transform="translate(499,413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><use data-c="2212" xlink:href="#MJX-1-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(778,0)"><use data-c="1D461" xlink:href="#MJX-1-TEX-I-1D461"></use></g></g></g><g data-mml-node="mi" transform="translate(8202.6,0)"><use data-c="1D451" xlink:href="#MJX-1-TEX-I-1D451"></use></g><g data-mml-node="mi" transform="translate(8722.6,0)"><use data-c="1D461" xlink:href="#MJX-1-TEX-I-1D461"></use></g><g data-mml-node="mstyle" transform="translate(9083.6,0)"><g data-mml-node="mspace"></g></g><g data-mml-node="mo" transform="translate(9250.6,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use></g></g></g></g></svg><svg data-labels="true" preserveAspectRatio="xMaxYMid" viewBox="1278 -1406.3 1 2312.5"><g data-labels="true" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="mtd" id="mjx-eqn:1" transform="translate(0,755.7)"><text data-id-align="true"></text><g data-idbox="true" transform="translate(0,-750)"><g data-mml-node="mtext"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use><use data-c="31" xlink:href="#MJX-1-TEX-N-31" transform="translate(389,0)"></use><use data-c="29" xlink:href="#MJX-1-TEX-N-29" transform="translate(889,0)"></use></g></g></g></g></svg></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mtable displaystyle="true"><mlabeledtr><mtd><mtext>(1)</mtext></mtd><mtd><mi mathvariant="normal">Γ</mi><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo><mo>=</mo><msubsup><mo data-mjx-texclass="OP">∫</mo><mn>0</mn><mi mathvariant="normal">∞</mi></msubsup><msup><mi>t</mi><mrow data-mjx-texclass="ORD"><mi>z</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>e</mi><mrow data-mjx-texclass="ORD"><mo>−</mo><mi>t</mi></mrow></msup><mi>d</mi><mi>t</mi><mstyle scriptlevel="0"><mspace width="0.167em"></mspace></mstyle><mo>.</mo></mtd></mlabeledtr></mtable></math></mjx-assistive-mml></mjx-container></div></div><blockquote><p><span>你可以找到更多关于的信息 </span><strong><span>LaTeX</span></strong><span> 数学表达式</span><a href='http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference' target='_blank'><span>here</span></a><span>.</span></p></blockquote><h2 id='新的甘特图功能丰富你的文章'><span>新的甘特图功能，丰富你的文章</span></h2><div class="md-diagram-panel md-fences-adv-panel" lang="mermaid"><svg id="mermaidChart0" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 854 196" style="max-width: 854px; margin: auto;" role="graphics-document document" aria-roledescription="gantt" aria-labelledby="chart-title-mermaidChart0"><title id="chart-title-mermaidChart0">Adding GANTT diagram functionality to mermaid</title><style>#mermaidChart0{font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart0 .error-icon{fill:#552222;}#mermaidChart0 .error-text{fill:#552222;stroke:#552222;}#mermaidChart0 .edge-thickness-normal{stroke-width:2px;}#mermaidChart0 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart0 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart0 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart0 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart0 .marker{fill:#333333;stroke:#333333;}#mermaidChart0 .marker.cross{stroke:#333333;}#mermaidChart0 svg{font-family:sans-serif;font-size:16px;}#mermaidChart0 .mermaid-main-font{font-family:"trebuchet ms",verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaidChart0 .exclude-range{fill:#eeeeee;}#mermaidChart0 .section{stroke:none;opacity:0.2;}#mermaidChart0 .section0{fill:rgba(102, 102, 255, 0.49);}#mermaidChart0 .section2{fill:#fff400;}#mermaidChart0 .section1,#mermaidChart0 .section3{fill:white;opacity:0.2;}#mermaidChart0 .sectionTitle0{fill:#333;}#mermaidChart0 .sectionTitle1{fill:#333;}#mermaidChart0 .sectionTitle2{fill:#333;}#mermaidChart0 .sectionTitle3{fill:#333;}#mermaidChart0 .sectionTitle{text-anchor:start;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaidChart0 .grid .tick{stroke:lightgrey;opacity:0.8;shape-rendering:crispEdges;}#mermaidChart0 .grid .tick text{font-family:sans-serif;fill:#333;}#mermaidChart0 .grid path{stroke-width:0;}#mermaidChart0 .today{fill:none;stroke:red;stroke-width:2px;}#mermaidChart0 .task{stroke-width:2;}#mermaidChart0 .taskText{text-anchor:middle;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaidChart0 .taskTextOutsideRight{fill:black;text-anchor:start;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaidChart0 .taskTextOutsideLeft{fill:black;text-anchor:end;}#mermaidChart0 .task.clickable{cursor:pointer;}#mermaidChart0 .taskText.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#mermaidChart0 .taskTextOutsideLeft.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#mermaidChart0 .taskTextOutsideRight.clickable{cursor:pointer;fill:#003163!important;font-weight:bold;}#mermaidChart0 .taskText0,#mermaidChart0 .taskText1,#mermaidChart0 .taskText2,#mermaidChart0 .taskText3{fill:white;}#mermaidChart0 .task0,#mermaidChart0 .task1,#mermaidChart0 .task2,#mermaidChart0 .task3{fill:#8a90dd;stroke:#534fbc;}#mermaidChart0 .taskTextOutside0,#mermaidChart0 .taskTextOutside2{fill:black;}#mermaidChart0 .taskTextOutside1,#mermaidChart0 .taskTextOutside3{fill:black;}#mermaidChart0 .active0,#mermaidChart0 .active1,#mermaidChart0 .active2,#mermaidChart0 .active3{fill:#bfc7ff;stroke:#534fbc;}#mermaidChart0 .activeText0,#mermaidChart0 .activeText1,#mermaidChart0 .activeText2,#mermaidChart0 .activeText3{fill:black!important;}#mermaidChart0 .done0,#mermaidChart0 .done1,#mermaidChart0 .done2,#mermaidChart0 .done3{stroke:grey;fill:lightgrey;stroke-width:2;}#mermaidChart0 .doneText0,#mermaidChart0 .doneText1,#mermaidChart0 .doneText2,#mermaidChart0 .doneText3{fill:black!important;}#mermaidChart0 .crit0,#mermaidChart0 .crit1,#mermaidChart0 .crit2,#mermaidChart0 .crit3{stroke:#ff8888;fill:red;stroke-width:2;}#mermaidChart0 .activeCrit0,#mermaidChart0 .activeCrit1,#mermaidChart0 .activeCrit2,#mermaidChart0 .activeCrit3{stroke:#ff8888;fill:#bfc7ff;stroke-width:2;}#mermaidChart0 .doneCrit0,#mermaidChart0 .doneCrit1,#mermaidChart0 .doneCrit2,#mermaidChart0 .doneCrit3{stroke:#ff8888;fill:lightgrey;stroke-width:2;cursor:pointer;shape-rendering:crispEdges;}#mermaidChart0 .milestone{transform:rotate(45deg) scale(0.8,0.8);}#mermaidChart0 .milestoneText{font-style:italic;}#mermaidChart0 .doneCritText0,#mermaidChart0 .doneCritText1,#mermaidChart0 .doneCritText2,#mermaidChart0 .doneCritText3{fill:black!important;}#mermaidChart0 .activeCritText0,#mermaidChart0 .activeCritText1,#mermaidChart0 .activeCritText2,#mermaidChart0 .activeCritText3{fill:black!important;}#mermaidChart0 .titleText{text-anchor:middle;font-size:18px;fill:#333;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaidChart0 :root{--mermaid-alt-font-family:sans-serif;}</style><g></g><g></g><g class="grid" transform="translate(75, 146)" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle"><path class="domain" stroke="currentColor" d="M0,-111V0H759V-111"></path><g class="tick" opacity="1" transform="translate(47,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-07</text></g><g class="tick" opacity="1" transform="translate(142,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-09</text></g><g class="tick" opacity="1" transform="translate(237,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-11</text></g><g class="tick" opacity="1" transform="translate(332,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-13</text></g><g class="tick" opacity="1" transform="translate(427,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-15</text></g><g class="tick" opacity="1" transform="translate(522,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-17</text></g><g class="tick" opacity="1" transform="translate(617,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-19</text></g><g class="tick" opacity="1" transform="translate(712,0)"><line stroke="currentColor" y2="-111"></line><text fill="#000" y="3" dy="1em" stroke="none" font-size="10" style="text-anchor: middle;">2014-01-21</text></g></g><g><rect x="0" y="48" width="844" height="24" class="section section0"></rect><rect x="0" y="72" width="844" height="24" class="section section0"></rect><rect x="0" y="96" width="844" height="24" class="section section0"></rect><rect x="0" y="120" width="844" height="24" class="section section0"></rect></g><g><rect id="des1" rx="3" ry="3" x="75" y="50" width="95" height="20" transform-origin="122.5px 60px" class="task done0 "></rect><rect id="des2" rx="3" ry="3" x="217" y="74" width="143" height="20" transform-origin="288.5px 84px" class="task active0 "></rect><rect id="des3" rx="3" ry="3" x="360" y="98" width="237" height="20" transform-origin="478.5px 108px" class="task task0 "></rect><rect id="des4" rx="3" ry="3" x="597" y="122" width="237" height="20" transform-origin="715.5px 132px" class="task task0 "></rect><text id="des1-text" font-size="11" x="122.5" y="63.5" text-height="20" class=" taskText taskText0  doneText0 width-33">已完成               </text><text id="des2-text" font-size="11" x="288.5" y="87.5" text-height="20" class=" taskText taskText0 activeText0 width-33">进行中               </text><text id="des3-text" font-size="11" x="478.5" y="111.5" text-height="20" class=" taskText taskText0  width-33">计划一               </text><text id="des4-text" font-size="11" x="715.5" y="135.5" text-height="20" class=" taskText taskText0  width-33">计划二               </text></g><g><text dy="0em" x="10" y="98" font-size="11" class="sectionTitle sectionTitle0"><tspan alignment-baseline="central" x="10">现有任务</tspan></text></g><g class="today"><line x1="172511" x2="172511" y1="25" y2="171" class="today"></line></g><text x="427" y="25" class="titleText">Adding GANTT diagram functionality to mermaid</text></svg></div><ul><li><p><span>关于 </span><strong><span>甘特图</span></strong><span> 语法，参考 </span><a href='https://mermaidjs.github.io/' target='_blank'><span>这儿</span></a><span>,</span></p></li></ul><h2 id='uml-图表'><span>UML 图表</span></h2><p><span>可以使用UML图表进行渲染。 </span><a href='https://mermaidjs.github.io/'><span>Mermaid</span></a><span>. 例如下面产生的一个序列图：</span></p><div class="md-diagram-panel md-fences-adv-panel" lang="mermaid"><svg id="mermaidChart1" width="831" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="504" viewBox="-8 -8 831 504" role="graphics-document document" aria-roledescription="sequence" style="margin: auto;"><g><rect x="478" y="422" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="553" y="454.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 16px; font-weight: 400; font-family: sans-serif;"><tspan x="553" dy="0">王五</tspan></text></g><g><rect x="248" y="422" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="323" y="454.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 16px; font-weight: 400; font-family: sans-serif;"><tspan x="323" dy="0">李四</tspan></text></g><g><rect x="0" y="422" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="75" y="454.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 16px; font-weight: 400; font-family: sans-serif;"><tspan x="75" dy="0">张三</tspan></text></g><g><line id="actor2" x1="553" y1="5" x2="553" y2="422" class="200" stroke-width="0.5px" stroke="#999"></line><g id="root-2"><rect x="478" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="553" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 16px; font-weight: 400; font-family: sans-serif;"><tspan x="553" dy="0">王五</tspan></text></g></g><g><line id="actor1" x1="323" y1="5" x2="323" y2="422" class="200" stroke-width="0.5px" stroke="#999"></line><g id="root-1"><rect x="248" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="323" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 16px; font-weight: 400; font-family: sans-serif;"><tspan x="323" dy="0">李四</tspan></text></g></g><g><line id="actor0" x1="75" y1="5" x2="75" y2="422" class="200" stroke-width="0.5px" stroke="#999"></line><g id="root-0"><rect x="0" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="75" y="32.5" dominant-baseline="central" alignment-baseline="central" class="actor" style="text-anchor: middle; font-size: 16px; font-weight: 400; font-family: sans-serif;"><tspan x="75" dy="0">张三</tspan></text></g></g><style>#mermaidChart1{font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart1 .error-icon{fill:#552222;}#mermaidChart1 .error-text{fill:#552222;stroke:#552222;}#mermaidChart1 .edge-thickness-normal{stroke-width:2px;}#mermaidChart1 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart1 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart1 .marker{fill:#333333;stroke:#333333;}#mermaidChart1 .marker.cross{stroke:#333333;}#mermaidChart1 svg{font-family:sans-serif;font-size:16px;}#mermaidChart1 .actor{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#mermaidChart1 text.actor&gt;tspan{fill:black;stroke:none;}#mermaidChart1 .actor-line{stroke:grey;}#mermaidChart1 .messageLine0{stroke-width:1.5;stroke-dasharray:none;stroke:#333;}#mermaidChart1 .messageLine1{stroke-width:1.5;stroke-dasharray:2,2;stroke:#333;}#mermaidChart1 #arrowhead path{fill:#333;stroke:#333;}#mermaidChart1 .sequenceNumber{fill:white;}#mermaidChart1 #sequencenumber{fill:#333;}#mermaidChart1 #crosshead path{fill:#333;stroke:#333;}#mermaidChart1 .messageText{fill:#333;stroke:none;}#mermaidChart1 .labelBox{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#mermaidChart1 .labelText,#mermaidChart1 .labelText&gt;tspan{fill:black;stroke:none;}#mermaidChart1 .loopText,#mermaidChart1 .loopText&gt;tspan{fill:black;stroke:none;}#mermaidChart1 .loopLine{stroke-width:2px;stroke-dasharray:2,2;stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);}#mermaidChart1 .note{stroke:#aaaa33;fill:#fff5ad;}#mermaidChart1 .noteText,#mermaidChart1 .noteText&gt;tspan{fill:black;stroke:none;}#mermaidChart1 .activation0{fill:#f4f4f4;stroke:#666;}#mermaidChart1 .activation1{fill:#f4f4f4;stroke:#666;}#mermaidChart1 .activation2{fill:#f4f4f4;stroke:#666;}#mermaidChart1 .actorPopupMenu{position:absolute;}#mermaidChart1 .actorPopupMenuPanel{position:absolute;fill:#ECECFF;box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);filter:drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));}#mermaidChart1 .actor-man line{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#mermaidChart1 .actor-man circle,#mermaidChart1 line{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;stroke-width:2px;}#mermaidChart1 :root{--mermaid-alt-font-family:sans-serif;}</style><g></g><defs><symbol id="computer" width="24" height="24"><path transform="scale(.5)" d="M2 2v13h20v-13h-20zm18 11h-16v-9h16v9zm-10.228 6l.466-1h3.524l.467 1h-4.457zm14.228 3h-24l2-6h2.104l-1.33 4h18.45l-1.297-4h2.073l2 6zm-5-10h-14v-7h14v7z"></path></symbol></defs><defs><symbol id="database" fill-rule="evenodd" clip-rule="evenodd"><path transform="scale(.5)" d="M12.258.001l.256.004.255.005.253.008.251.01.249.012.247.015.246.016.242.019.241.02.239.023.236.024.233.027.231.028.229.031.225.032.223.034.22.036.217.038.214.04.211.041.208.043.205.045.201.046.198.048.194.05.191.051.187.053.183.054.18.056.175.057.172.059.168.06.163.061.16.063.155.064.15.066.074.033.073.033.071.034.07.034.069.035.068.035.067.035.066.035.064.036.064.036.062.036.06.036.06.037.058.037.058.037.055.038.055.038.053.038.052.038.051.039.05.039.048.039.047.039.045.04.044.04.043.04.041.04.04.041.039.041.037.041.036.041.034.041.033.042.032.042.03.042.029.042.027.042.026.043.024.043.023.043.021.043.02.043.018.044.017.043.015.044.013.044.012.044.011.045.009.044.007.045.006.045.004.045.002.045.001.045v17l-.001.045-.002.045-.004.045-.006.045-.007.045-.009.044-.011.045-.012.044-.013.044-.015.044-.017.043-.018.044-.02.043-.021.043-.023.043-.024.043-.026.043-.027.042-.029.042-.03.042-.032.042-.033.042-.034.041-.036.041-.037.041-.039.041-.04.041-.041.04-.043.04-.044.04-.045.04-.047.039-.048.039-.05.039-.051.039-.052.038-.053.038-.055.038-.055.038-.058.037-.058.037-.06.037-.06.036-.062.036-.064.036-.064.036-.066.035-.067.035-.068.035-.069.035-.07.034-.071.034-.073.033-.074.033-.15.066-.155.064-.16.063-.163.061-.168.06-.172.059-.175.057-.18.056-.183.054-.187.053-.191.051-.194.05-.198.048-.201.046-.205.045-.208.043-.211.041-.214.04-.217.038-.22.036-.223.034-.225.032-.229.031-.231.028-.233.027-.236.024-.239.023-.241.02-.242.019-.246.016-.247.015-.249.012-.251.01-.253.008-.255.005-.256.004-.258.001-.258-.001-.256-.004-.255-.005-.253-.008-.251-.01-.249-.012-.247-.015-.245-.016-.243-.019-.241-.02-.238-.023-.236-.024-.234-.027-.231-.028-.228-.031-.226-.032-.223-.034-.22-.036-.217-.038-.214-.04-.211-.041-.208-.043-.204-.045-.201-.046-.198-.048-.195-.05-.19-.051-.187-.053-.184-.054-.179-.056-.176-.057-.172-.059-.167-.06-.164-.061-.159-.063-.155-.064-.151-.066-.074-.033-.072-.033-.072-.034-.07-.034-.069-.035-.068-.035-.067-.035-.066-.035-.064-.036-.063-.036-.062-.036-.061-.036-.06-.037-.058-.037-.057-.037-.056-.038-.055-.038-.053-.038-.052-.038-.051-.039-.049-.039-.049-.039-.046-.039-.046-.04-.044-.04-.043-.04-.041-.04-.04-.041-.039-.041-.037-.041-.036-.041-.034-.041-.033-.042-.032-.042-.03-.042-.029-.042-.027-.042-.026-.043-.024-.043-.023-.043-.021-.043-.02-.043-.018-.044-.017-.043-.015-.044-.013-.044-.012-.044-.011-.045-.009-.044-.007-.045-.006-.045-.004-.045-.002-.045-.001-.045v-17l.001-.045.002-.045.004-.045.006-.045.007-.045.009-.044.011-.045.012-.044.013-.044.015-.044.017-.043.018-.044.02-.043.021-.043.023-.043.024-.043.026-.043.027-.042.029-.042.03-.042.032-.042.033-.042.034-.041.036-.041.037-.041.039-.041.04-.041.041-.04.043-.04.044-.04.046-.04.046-.039.049-.039.049-.039.051-.039.052-.038.053-.038.055-.038.056-.038.057-.037.058-.037.06-.037.061-.036.062-.036.063-.036.064-.036.066-.035.067-.035.068-.035.069-.035.07-.034.072-.034.072-.033.074-.033.151-.066.155-.064.159-.063.164-.061.167-.06.172-.059.176-.057.179-.056.184-.054.187-.053.19-.051.195-.05.198-.048.201-.046.204-.045.208-.043.211-.041.214-.04.217-.038.22-.036.223-.034.226-.032.228-.031.231-.028.234-.027.236-.024.238-.023.241-.02.243-.019.245-.016.247-.015.249-.012.251-.01.253-.008.255-.005.256-.004.258-.001.258.001zm-9.258 20.499v.01l.001.021.003.021.004.022.005.021.006.022.007.022.009.023.01.022.011.023.012.023.013.023.015.023.016.024.017.023.018.024.019.024.021.024.022.025.023.024.024.025.052.049.056.05.061.051.066.051.07.051.075.051.079.052.084.052.088.052.092.052.097.052.102.051.105.052.11.052.114.051.119.051.123.051.127.05.131.05.135.05.139.048.144.049.147.047.152.047.155.047.16.045.163.045.167.043.171.043.176.041.178.041.183.039.187.039.19.037.194.035.197.035.202.033.204.031.209.03.212.029.216.027.219.025.222.024.226.021.23.02.233.018.236.016.24.015.243.012.246.01.249.008.253.005.256.004.259.001.26-.001.257-.004.254-.005.25-.008.247-.011.244-.012.241-.014.237-.016.233-.018.231-.021.226-.021.224-.024.22-.026.216-.027.212-.028.21-.031.205-.031.202-.034.198-.034.194-.036.191-.037.187-.039.183-.04.179-.04.175-.042.172-.043.168-.044.163-.045.16-.046.155-.046.152-.047.148-.048.143-.049.139-.049.136-.05.131-.05.126-.05.123-.051.118-.052.114-.051.11-.052.106-.052.101-.052.096-.052.092-.052.088-.053.083-.051.079-.052.074-.052.07-.051.065-.051.06-.051.056-.05.051-.05.023-.024.023-.025.021-.024.02-.024.019-.024.018-.024.017-.024.015-.023.014-.024.013-.023.012-.023.01-.023.01-.022.008-.022.006-.022.006-.022.004-.022.004-.021.001-.021.001-.021v-4.127l-.077.055-.08.053-.083.054-.085.053-.087.052-.09.052-.093.051-.095.05-.097.05-.1.049-.102.049-.105.048-.106.047-.109.047-.111.046-.114.045-.115.045-.118.044-.12.043-.122.042-.124.042-.126.041-.128.04-.13.04-.132.038-.134.038-.135.037-.138.037-.139.035-.142.035-.143.034-.144.033-.147.032-.148.031-.15.03-.151.03-.153.029-.154.027-.156.027-.158.026-.159.025-.161.024-.162.023-.163.022-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.011-.178.01-.179.008-.179.008-.181.006-.182.005-.182.004-.184.003-.184.002h-.37l-.184-.002-.184-.003-.182-.004-.182-.005-.181-.006-.179-.008-.179-.008-.178-.01-.176-.011-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.022-.162-.023-.161-.024-.159-.025-.157-.026-.156-.027-.155-.027-.153-.029-.151-.03-.15-.03-.148-.031-.146-.032-.145-.033-.143-.034-.141-.035-.14-.035-.137-.037-.136-.037-.134-.038-.132-.038-.13-.04-.128-.04-.126-.041-.124-.042-.122-.042-.12-.044-.117-.043-.116-.045-.113-.045-.112-.046-.109-.047-.106-.047-.105-.048-.102-.049-.1-.049-.097-.05-.095-.05-.093-.052-.09-.051-.087-.052-.085-.053-.083-.054-.08-.054-.077-.054v4.127zm0-5.654v.011l.001.021.003.021.004.021.005.022.006.022.007.022.009.022.01.022.011.023.012.023.013.023.015.024.016.023.017.024.018.024.019.024.021.024.022.024.023.025.024.024.052.05.056.05.061.05.066.051.07.051.075.052.079.051.084.052.088.052.092.052.097.052.102.052.105.052.11.051.114.051.119.052.123.05.127.051.131.05.135.049.139.049.144.048.147.048.152.047.155.046.16.045.163.045.167.044.171.042.176.042.178.04.183.04.187.038.19.037.194.036.197.034.202.033.204.032.209.03.212.028.216.027.219.025.222.024.226.022.23.02.233.018.236.016.24.014.243.012.246.01.249.008.253.006.256.003.259.001.26-.001.257-.003.254-.006.25-.008.247-.01.244-.012.241-.015.237-.016.233-.018.231-.02.226-.022.224-.024.22-.025.216-.027.212-.029.21-.03.205-.032.202-.033.198-.035.194-.036.191-.037.187-.039.183-.039.179-.041.175-.042.172-.043.168-.044.163-.045.16-.045.155-.047.152-.047.148-.048.143-.048.139-.05.136-.049.131-.05.126-.051.123-.051.118-.051.114-.052.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.051.07-.052.065-.051.06-.05.056-.051.051-.049.023-.025.023-.024.021-.025.02-.024.019-.024.018-.024.017-.024.015-.023.014-.023.013-.024.012-.022.01-.023.01-.023.008-.022.006-.022.006-.022.004-.021.004-.022.001-.021.001-.021v-4.139l-.077.054-.08.054-.083.054-.085.052-.087.053-.09.051-.093.051-.095.051-.097.05-.1.049-.102.049-.105.048-.106.047-.109.047-.111.046-.114.045-.115.044-.118.044-.12.044-.122.042-.124.042-.126.041-.128.04-.13.039-.132.039-.134.038-.135.037-.138.036-.139.036-.142.035-.143.033-.144.033-.147.033-.148.031-.15.03-.151.03-.153.028-.154.028-.156.027-.158.026-.159.025-.161.024-.162.023-.163.022-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.011-.178.009-.179.009-.179.007-.181.007-.182.005-.182.004-.184.003-.184.002h-.37l-.184-.002-.184-.003-.182-.004-.182-.005-.181-.007-.179-.007-.179-.009-.178-.009-.176-.011-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.022-.162-.023-.161-.024-.159-.025-.157-.026-.156-.027-.155-.028-.153-.028-.151-.03-.15-.03-.148-.031-.146-.033-.145-.033-.143-.033-.141-.035-.14-.036-.137-.036-.136-.037-.134-.038-.132-.039-.13-.039-.128-.04-.126-.041-.124-.042-.122-.043-.12-.043-.117-.044-.116-.044-.113-.046-.112-.046-.109-.046-.106-.047-.105-.048-.102-.049-.1-.049-.097-.05-.095-.051-.093-.051-.09-.051-.087-.053-.085-.052-.083-.054-.08-.054-.077-.054v4.139zm0-5.666v.011l.001.02.003.022.004.021.005.022.006.021.007.022.009.023.01.022.011.023.012.023.013.023.015.023.016.024.017.024.018.023.019.024.021.025.022.024.023.024.024.025.052.05.056.05.061.05.066.051.07.051.075.052.079.051.084.052.088.052.092.052.097.052.102.052.105.051.11.052.114.051.119.051.123.051.127.05.131.05.135.05.139.049.144.048.147.048.152.047.155.046.16.045.163.045.167.043.171.043.176.042.178.04.183.04.187.038.19.037.194.036.197.034.202.033.204.032.209.03.212.028.216.027.219.025.222.024.226.021.23.02.233.018.236.017.24.014.243.012.246.01.249.008.253.006.256.003.259.001.26-.001.257-.003.254-.006.25-.008.247-.01.244-.013.241-.014.237-.016.233-.018.231-.02.226-.022.224-.024.22-.025.216-.027.212-.029.21-.03.205-.032.202-.033.198-.035.194-.036.191-.037.187-.039.183-.039.179-.041.175-.042.172-.043.168-.044.163-.045.16-.045.155-.047.152-.047.148-.048.143-.049.139-.049.136-.049.131-.051.126-.05.123-.051.118-.052.114-.051.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.052.07-.051.065-.051.06-.051.056-.05.051-.049.023-.025.023-.025.021-.024.02-.024.019-.024.018-.024.017-.024.015-.023.014-.024.013-.023.012-.023.01-.022.01-.023.008-.022.006-.022.006-.022.004-.022.004-.021.001-.021.001-.021v-4.153l-.077.054-.08.054-.083.053-.085.053-.087.053-.09.051-.093.051-.095.051-.097.05-.1.049-.102.048-.105.048-.106.048-.109.046-.111.046-.114.046-.115.044-.118.044-.12.043-.122.043-.124.042-.126.041-.128.04-.13.039-.132.039-.134.038-.135.037-.138.036-.139.036-.142.034-.143.034-.144.033-.147.032-.148.032-.15.03-.151.03-.153.028-.154.028-.156.027-.158.026-.159.024-.161.024-.162.023-.163.023-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.01-.178.01-.179.009-.179.007-.181.006-.182.006-.182.004-.184.003-.184.001-.185.001-.185-.001-.184-.001-.184-.003-.182-.004-.182-.006-.181-.006-.179-.007-.179-.009-.178-.01-.176-.01-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.023-.162-.023-.161-.024-.159-.024-.157-.026-.156-.027-.155-.028-.153-.028-.151-.03-.15-.03-.148-.032-.146-.032-.145-.033-.143-.034-.141-.034-.14-.036-.137-.036-.136-.037-.134-.038-.132-.039-.13-.039-.128-.041-.126-.041-.124-.041-.122-.043-.12-.043-.117-.044-.116-.044-.113-.046-.112-.046-.109-.046-.106-.048-.105-.048-.102-.048-.1-.05-.097-.049-.095-.051-.093-.051-.09-.052-.087-.052-.085-.053-.083-.053-.08-.054-.077-.054v4.153zm8.74-8.179l-.257.004-.254.005-.25.008-.247.011-.244.012-.241.014-.237.016-.233.018-.231.021-.226.022-.224.023-.22.026-.216.027-.212.028-.21.031-.205.032-.202.033-.198.034-.194.036-.191.038-.187.038-.183.04-.179.041-.175.042-.172.043-.168.043-.163.045-.16.046-.155.046-.152.048-.148.048-.143.048-.139.049-.136.05-.131.05-.126.051-.123.051-.118.051-.114.052-.11.052-.106.052-.101.052-.096.052-.092.052-.088.052-.083.052-.079.052-.074.051-.07.052-.065.051-.06.05-.056.05-.051.05-.023.025-.023.024-.021.024-.02.025-.019.024-.018.024-.017.023-.015.024-.014.023-.013.023-.012.023-.01.023-.01.022-.008.022-.006.023-.006.021-.004.022-.004.021-.001.021-.001.021.001.021.001.021.004.021.004.022.006.021.006.023.008.022.01.022.01.023.012.023.013.023.014.023.015.024.017.023.018.024.019.024.02.025.021.024.023.024.023.025.051.05.056.05.06.05.065.051.07.052.074.051.079.052.083.052.088.052.092.052.096.052.101.052.106.052.11.052.114.052.118.051.123.051.126.051.131.05.136.05.139.049.143.048.148.048.152.048.155.046.16.046.163.045.168.043.172.043.175.042.179.041.183.04.187.038.191.038.194.036.198.034.202.033.205.032.21.031.212.028.216.027.22.026.224.023.226.022.231.021.233.018.237.016.241.014.244.012.247.011.25.008.254.005.257.004.26.001.26-.001.257-.004.254-.005.25-.008.247-.011.244-.012.241-.014.237-.016.233-.018.231-.021.226-.022.224-.023.22-.026.216-.027.212-.028.21-.031.205-.032.202-.033.198-.034.194-.036.191-.038.187-.038.183-.04.179-.041.175-.042.172-.043.168-.043.163-.045.16-.046.155-.046.152-.048.148-.048.143-.048.139-.049.136-.05.131-.05.126-.051.123-.051.118-.051.114-.052.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.051.07-.052.065-.051.06-.05.056-.05.051-.05.023-.025.023-.024.021-.024.02-.025.019-.024.018-.024.017-.023.015-.024.014-.023.013-.023.012-.023.01-.023.01-.022.008-.022.006-.023.006-.021.004-.022.004-.021.001-.021.001-.021-.001-.021-.001-.021-.004-.021-.004-.022-.006-.021-.006-.023-.008-.022-.01-.022-.01-.023-.012-.023-.013-.023-.014-.023-.015-.024-.017-.023-.018-.024-.019-.024-.02-.025-.021-.024-.023-.024-.023-.025-.051-.05-.056-.05-.06-.05-.065-.051-.07-.052-.074-.051-.079-.052-.083-.052-.088-.052-.092-.052-.096-.052-.101-.052-.106-.052-.11-.052-.114-.052-.118-.051-.123-.051-.126-.051-.131-.05-.136-.05-.139-.049-.143-.048-.148-.048-.152-.048-.155-.046-.16-.046-.163-.045-.168-.043-.172-.043-.175-.042-.179-.041-.183-.04-.187-.038-.191-.038-.194-.036-.198-.034-.202-.033-.205-.032-.21-.031-.212-.028-.216-.027-.22-.026-.224-.023-.226-.022-.231-.021-.233-.018-.237-.016-.241-.014-.244-.012-.247-.011-.25-.008-.254-.005-.257-.004-.26-.001-.26.001z"></path></symbol></defs><defs><symbol id="clock" width="24" height="24"><path transform="scale(.5)" d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z"></path></symbol></defs><defs><marker id="arrowhead" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z"></path></marker></defs><defs><marker id="crosshead" markerWidth="15" markerHeight="8" orient="auto" refX="4" refY="5"><path fill="none" stroke="#000000" stroke-width="1pt" d="M 1,2 L 6,7 M 6,2 L 1,7" style="stroke-dasharray: 0px, 0px;"></path></marker></defs><defs><marker id="filled-head" refX="18" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L14,7 L9,1 Z"></path></marker></defs><defs><marker id="sequencenumber" refX="15" refY="15" markerWidth="60" markerHeight="40" orient="auto"><circle cx="15" cy="15" r="6"></circle></marker></defs><g><rect x="578" y="257" fill="#EDF2AE" stroke="#666" width="237" height="57" rx="0" ry="0" class="note"></rect><text x="697" y="262" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-family: sans-serif; font-size: 16px; font-weight: 400;"><tspan x="697">李四想了很长时间, 文字太长了</tspan></text><text x="697" y="281" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-family: sans-serif; font-size: 16px; font-weight: 400;"><tspan x="697">不适合放在一行.</tspan></text></g><text x="199" y="80" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: sans-serif; font-size: 16px; font-weight: 400;">你好！李四, 最近怎么样?</text><line x1="75" y1="111" x2="323" y2="111" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"></line><text x="438" y="126" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: sans-serif; font-size: 16px; font-weight: 400;">你最近怎么样，王五？</text><line x1="323" y1="157" x2="553" y2="157" class="messageLine1" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line><text x="199" y="172" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: sans-serif; font-size: 16px; font-weight: 400;">我很好，谢谢!</text><line x1="323" y1="203" x2="75" y2="203" class="messageLine1" stroke-width="2" stroke="none" marker-end="url(#crosshead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line><text x="438" y="218" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: sans-serif; font-size: 16px; font-weight: 400;">我很好，谢谢!</text><line x1="323" y1="249" x2="553" y2="249" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#crosshead)" style="fill: none;"></line><text x="199" y="329" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: sans-serif; font-size: 16px; font-weight: 400;">打量着王五...</text><line x1="323" y1="360" x2="75" y2="360" class="messageLine1" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="stroke-dasharray: 3px, 3px; fill: none;"></line><text x="314" y="375" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-family: sans-serif; font-size: 16px; font-weight: 400;">很好... 王五, 你怎么样?</text><line x1="75" y1="406" x2="553" y2="406" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"></line></svg></div><p><span>这将产生一个流程图。:</span></p><div class="md-diagram-panel md-fences-adv-panel" lang="mermaid"><svg id="mermaidChart2" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 392px; margin: auto;" viewBox="-8 -8 392 136" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mermaidChart2{font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart2 .error-icon{fill:#552222;}#mermaidChart2 .error-text{fill:#552222;stroke:#552222;}#mermaidChart2 .edge-thickness-normal{stroke-width:2px;}#mermaidChart2 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart2 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart2 .marker{fill:#333333;stroke:#333333;}#mermaidChart2 .marker.cross{stroke:#333333;}#mermaidChart2 svg{font-family:sans-serif;font-size:16px;}#mermaidChart2 .label{font-family:sans-serif;color:#333;}#mermaidChart2 .cluster-label text{fill:#333;}#mermaidChart2 .cluster-label span,#mermaidChart2 p{color:#333;}#mermaidChart2 .label text,#mermaidChart2 span,#mermaidChart2 p{fill:#333;color:#333;}#mermaidChart2 .node rect,#mermaidChart2 .node circle,#mermaidChart2 .node ellipse,#mermaidChart2 .node polygon,#mermaidChart2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart2 .flowchart-label text{text-anchor:middle;}#mermaidChart2 .node .label{text-align:center;}#mermaidChart2 .node.clickable{cursor:pointer;}#mermaidChart2 .arrowheadPath{fill:#333333;}#mermaidChart2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaidChart2 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart2 .edgeLabel{background-color:#e8e8e8;text-align:center;}#mermaidChart2 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}#mermaidChart2 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaidChart2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart2 .cluster text{fill:#333;}#mermaidChart2 .cluster span,#mermaidChart2 p{color:#333;}#mermaidChart2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaidChart2 :root{--mermaid-alt-font-family:sans-serif;}</style><g><marker id="flowchart-pointEnd" class="marker flowchart" viewBox="0 0 10 10" refX="10" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker><marker id="flowchart-pointStart" class="marker flowchart" viewBox="0 0 10 10" refX="0" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker><marker id="flowchart-circleEnd" class="marker flowchart" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></circle></marker><marker id="flowchart-circleStart" class="marker flowchart" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></circle></marker><marker id="flowchart-crossEnd" class="marker cross flowchart" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2px; stroke-dasharray: 1px, 0px;"></path></marker><marker id="flowchart-crossStart" class="marker cross flowchart" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2px; stroke-dasharray: 1px, 0px;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M63,39.53448275862069L104,15.5L177,15.5" id="L-A-B-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A LE-B" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M63,76.4655172413793L104,100.5L145,100.5" id="L-A-C-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-A LE-C" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M208,15.5L265,15.5L307.03846153846155,41.96153846153846" id="L-B-D-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-B LE-D" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path><path d="M240,100.5L265,100.5L307.03846153846155,75.03846153846153" id="L-C-D-0" class=" edge-thickness-normal edge-pattern-solid flowchart-link LS-C LE-D" style="fill:none;" marker-end="url(#flowchart-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(104, 15.5)"><g class="label" transform="translate(-16, -12)"><foreignObject width="32" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">链接</span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default default flowchart-label" id="flowchart-A-0" transform="translate(31.5, 58)"><rect class="basic label-container" style="" rx="0" ry="0" x="-31.5" y="-19.5" width="63" height="39"></rect><g class="label" style="" transform="translate(-24, -12)"><rect></rect><foreignObject width="48" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">长方形</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-B-1" transform="translate(192.5, 15.5)"><circle style="" rx="0" ry="0" r="15.5" width="31" height="39"></circle><g class="label" style="" transform="translate(-8, -12)"><rect></rect><foreignObject width="16" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">圆</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-C-3" transform="translate(192.5, 100.5)"><rect class="basic label-container" style="" rx="5" ry="5" x="-47.5" y="-19.5" width="95" height="39"></rect><g class="label" style="" transform="translate(-40, -12)"><rect></rect><foreignObject width="80" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">圆角长方形</span></div></foreignObject></g></g><g class="node default default flowchart-label" id="flowchart-D-5" transform="translate(333, 58)"><polygon points="43,0 86,-43 43,-86 0,-43" class="label-container" transform="translate(-43,43)" style=""></polygon><g class="label" style="" transform="translate(-16, -12)"><rect></rect><foreignObject width="32" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="nodeLabel">菱形</span></div></foreignObject></g></g></g></g></g></svg></div><ul><li><p><span>关于 </span><strong><span>Mermaid</span></strong><span> 语法，参考 </span><a href='https://mermaidjs.github.io/' target='_blank'><span>这儿</span></a><span>,</span></p></li></ul><h2 id='flowchart流程图'><span>FLowchart流程图</span></h2><p><span>我们依旧会支持flowchart的流程图：</span></p><div class="md-diagram-panel md-fences-adv-panel" lang="mermaid"><div id="dmermaidChart3" style="font-family: sans-serif"><svg id="mermaidChart3" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 2412 512" style="max-width: 512px;" role="graphics-document document" aria-roledescription="error"><style>#mermaidChart3{font-family:sans-serif;font-size:16px;fill:#333;}#mermaidChart3 .error-icon{fill:#552222;}#mermaidChart3 .error-text{fill:#552222;stroke:#552222;}#mermaidChart3 .edge-thickness-normal{stroke-width:2px;}#mermaidChart3 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart3 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart3 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart3 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart3 .marker{fill:#333333;stroke:#333333;}#mermaidChart3 .marker.cross{stroke:#333333;}#mermaidChart3 svg{font-family:sans-serif;font-size:16px;}#mermaidChart3 :root{--mermaid-alt-font-family:sans-serif;}</style><g></g><g><path class="error-icon" d="m411.313,123.313c6.25-6.25 6.25-16.375 0-22.625s-16.375-6.25-22.625,0l-32,32-9.375,9.375-20.688-20.688c-12.484-12.5-32.766-12.5-45.25,0l-16,16c-1.261,1.261-2.304,2.648-3.31,4.051-21.739-8.561-45.324-13.426-70.065-13.426-105.867,0-192,86.133-192,192s86.133,192 192,192 192-86.133 192-192c0-24.741-4.864-48.327-13.426-70.065 1.402-1.007 2.79-2.049 4.051-3.31l16-16c12.5-12.492 12.5-32.758 0-45.25l-20.688-20.688 9.375-9.375 32.001-31.999zm-219.313,100.687c-52.938,0-96,43.063-96,96 0,8.836-7.164,16-16,16s-16-7.164-16-16c0-70.578 57.422-128 128-128 8.836,0 16,7.164 16,16s-7.164,16-16,16z"></path><path class="error-icon" d="m459.02,148.98c-6.25-6.25-16.375-6.25-22.625,0s-6.25,16.375 0,22.625l16,16c3.125,3.125 7.219,4.688 11.313,4.688 4.094,0 8.188-1.563 11.313-4.688 6.25-6.25 6.25-16.375 0-22.625l-16.001-16z"></path><path class="error-icon" d="m340.395,75.605c3.125,3.125 7.219,4.688 11.313,4.688 4.094,0 8.188-1.563 11.313-4.688 6.25-6.25 6.25-16.375 0-22.625l-16-16c-6.25-6.25-16.375-6.25-22.625,0s-6.25,16.375 0,22.625l15.999,16z"></path><path class="error-icon" d="m400,64c8.844,0 16-7.164 16-16v-32c0-8.836-7.156-16-16-16-8.844,0-16,7.164-16,16v32c0,8.836 7.156,16 16,16z"></path><path class="error-icon" d="m496,96.586h-32c-8.844,0-16,7.164-16,16 0,8.836 7.156,16 16,16h32c8.844,0 16-7.164 16-16 0-8.836-7.156-16-16-16z"></path><path class="error-icon" d="m436.98,75.605c3.125,3.125 7.219,4.688 11.313,4.688 4.094,0 8.188-1.563 11.313-4.688l32-32c6.25-6.25 6.25-16.375 0-22.625s-16.375-6.25-22.625,0l-32,32c-6.251,6.25-6.251,16.375-0.001,22.625z"></path><text class="error-text" x="1440" y="250" font-size="150px" style="text-anchor: middle;">Syntax error in text</text><text class="error-text" x="1250" y="400" font-size="100px" style="text-anchor: middle;">mermaid version 10.3.1</text></g></svg></div></div><ul><li><p><span>关于 </span><strong><span>Flowchart流程图</span></strong><span> 语法，参考 </span><a href='http://adrai.github.io/flowchart.js/' target='_blank'><span>这儿</span></a><span>.</span></p></li></ul><h2 id='导出与导入'><span>导出与导入</span></h2><h3 id='导出'><span>导出</span></h3><p><span>如果你想尝试使用此编辑器, 你可以在此篇文章任意编辑。当你完成了一篇文章的写作, 在上方工具栏找到 </span><strong><span>文章导出</span></strong><span> ，生成一个.md文件或者.html文件进行本地保存。</span></p><h3 id='导入'><span>导入</span></h3><p><span>如果你想加载一篇你写过的.md文件，在上方工具栏可以选择导入功能进行对应扩展名的文件导入，</span>
 <span>继续你的创作。</span></p><p>&nbsp;</p><div class='footnotes-area'  ><hr/>
 <div class='footnote-line'><span class='md-fn-count'>1</span> <a href='https://mermaidjs.github.io/'><span>mermaid语法说明</span></a> <a name='dfref-footnote-1' href='#ref-footnote-1' title='回到文档' class='reversefootnote' >↩</a></div>
 <div class='footnote-line'><span class='md-fn-count'>2</span> <span>注脚的解释</span> <a name='dfref-footnote-2' href='#ref-footnote-2' title='回到文档' class='reversefootnote' >↩</a></div></div></div></div>

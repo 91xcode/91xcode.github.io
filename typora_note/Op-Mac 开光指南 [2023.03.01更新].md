@@ -42,7 +42,7 @@
 
 下载软件时，尽量选择与架构匹配的，不要选 `Universal`，因为 `Universal` 会同时包含两个架构的软件包，体积更大但却没啥用。以下图 VSCode 为例，如果是 M1/M2 等苹果芯片则选 `Apple Silicon`，反之则选 `Intel Chip`。
 
-[![vscode-select-mac-platform](https://shockerli.net/post/mac-initialize/media/select-app-platform.jpg)](https://shockerli.net/post/mac-initialize/media/select-app-platform.jpg)
+[![vscode-select-mac-platform](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200001919.jpg)](https://shockerli.net/post/mac-initialize/media/select-app-platform.jpg)
 
 当然，目前绝大多数的软件是不支持这么选择的，也就是只提供了一个 `Universal` 通用版本，那安装后，电脑里就会多一个架构的软件，可以使用[柠檬清理](https://lemon.qq.com/)进行查找清理掉，不影响正常使用。
 
@@ -50,7 +50,7 @@
 
 - 方法①：桌面上右键安装包图标，选择「推出“XXX”」。
 
-[![移除桌面安装包镜像图标](https://shockerli.net/post/mac-initialize/media/remove-desktop-icon.png)](https://shockerli.net/post/mac-initialize/media/remove-desktop-icon.png)
+[![移除桌面安装包镜像图标](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200001664.png)](https://shockerli.net/post/mac-initialize/media/remove-desktop-icon.png)
 
 - 方法②：Finder（访达）左栏的「位置」处也有对应安装包，点按应用名称右侧的推出图标即可。
 - 方法③：重启系统后，安装包镜像会自动取消，对应的图标也会自动消失。
@@ -199,7 +199,7 @@
 
 然后在 `系统偏好设置 > 安全性与隐私 > 通用 > 任何来源` 打开：
 
-[![install-any-source-app](https://shockerli.net/post/mac-initialize/media/install-any-source-app.jpg)](https://shockerli.net/post/mac-initialize/media/install-any-source-app.jpg)
+[![install-any-source-app](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200001834.jpg)](https://shockerli.net/post/mac-initialize/media/install-any-source-app.jpg)
 
 ### 修改主机名
 
@@ -227,7 +227,7 @@
 
 ### 程序坞（Dock）
 
-[![mac-icon-dock](https://shockerli.net/post/mac-initialize/media/mac-icon-dock.png)](https://shockerli.net/post/mac-initialize/media/mac-icon-dock.png)
+[![mac-icon-dock](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200001503.png)](https://shockerli.net/post/mac-initialize/media/mac-icon-dock.png)
 
 `程序坞(Dock)` 是 macOS 桌面上日常 APP 和功能的便利管理，与 `Windows` 任务栏类似。
 
@@ -241,7 +241,7 @@
 
 或者将程序坞中的图标拖到废纸篓中也能删除图标。
 
-[![移除程序坞图标](https://shockerli.net/post/mac-initialize/media/remove-dock-icon.png)](https://shockerli.net/post/mac-initialize/media/remove-dock-icon.png)
+[![移除程序坞图标](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200001753.png)](https://shockerli.net/post/mac-initialize/media/remove-dock-icon.png)
 
 **添加**：从启动台（应用全列表）拖动图标到程序坞指定位置
 
@@ -257,7 +257,7 @@
 
 ### 菜单栏
 
-[![mac-icon-menu](https://shockerli.net/post/mac-initialize/media/mac-icon-menu.png)](https://shockerli.net/post/mac-initialize/media/mac-icon-menu.png)
+[![mac-icon-menu](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200002856.png)](https://shockerli.net/post/mac-initialize/media/mac-icon-menu.png)
 
 菜单栏中的系统图标尽量少一点，多留空间给应用图标，尤其是小屏、刘海屏。
 
@@ -285,7 +285,7 @@
 
 ### 访达（Finder）
 
-[![mac-icon-finder](https://shockerli.net/post/mac-initialize/media/mac-icon-finder.png)](https://shockerli.net/post/mac-initialize/media/mac-icon-finder.png)
+[![mac-icon-finder](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200002940.png)](https://shockerli.net/post/mac-initialize/media/mac-icon-finder.png)
 
 `访达(Finder)` 是 macOS 中文件可视化管理程序。
 
@@ -379,7 +379,7 @@ SIP（`System Integrity Protection`，系统完整性保护）是 macOS 所采�
 
 同意协议后会全程自动下载安装，文件比较大，需要等待一会。
 
-[![install-xcode-select](https://shockerli.net/post/mac-initialize/media/install-xcode-select.png)](https://shockerli.net/post/mac-initialize/media/install-xcode-select.png)
+[![install-xcode-select](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200002767.png)](https://shockerli.net/post/mac-initialize/media/install-xcode-select.png)
 
 ### Homebrew
 
@@ -421,13 +421,13 @@ Profiles → Default → Window → Background Image → Enabled（勾选，会�
 
 Profiles Command 配置：
 
-[![iTerm2 Profiles Command 配置](https://shockerli.net/post/mac-initialize/media/iterm-profile-setting.jpg)](https://shockerli.net/post/mac-initialize/media/iterm-profile-setting.jpg)
+[![iTerm2 Profiles Command 配置](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200002505.jpg)](https://shockerli.net/post/mac-initialize/media/iterm-profile-setting.jpg)
 
 注意：自定义的 Profile 会继承 `Default` 的配置，故自定义的 Profile 无需重复去配置颜色、主题、快捷键等。
 
 Profiles 使用及快捷键：
 
-[![iTerm2 Profiles 使用及快捷键](https://shockerli.net/post/mac-initialize/media/iterm-profile-usage.jpg)](https://shockerli.net/post/mac-initialize/media/iterm-profile-usage.jpg)
+[![iTerm2 Profiles 使用及快捷键](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200003582.jpg)](https://shockerli.net/post/mac-initialize/media/iterm-profile-usage.jpg)
 
 #### Status Bar
 
@@ -650,7 +650,7 @@ GitHub: https://github.com/ohmyzsh/ohmyzsh
 
 开源地址: https://github.com/Tencent/lemon-cleaner
 
-最值得使用的功能，莫过于**清理与当前芯片不同版本的二进制文件**： [![lemon-clean-rosetta](https://shockerli.net/post/mac-initialize/media/lemon-clean-rosetta.jpg)](https://shockerli.net/post/mac-initialize/media/lemon-clean-rosetta.jpg)
+最值得使用的功能，莫过于**清理与当前芯片不同版本的二进制文件**： [![lemon-clean-rosetta](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200004288.jpg)](https://shockerli.net/post/mac-initialize/media/lemon-clean-rosetta.jpg)
 
 ### 输入法
 
@@ -763,7 +763,7 @@ GitHub: https://github.com/ohmyzsh/ohmyzsh
 
 快捷键 `⌘ + ⇧ + P` 打开命令面板，输入 `shell`，选择 `Shell Command: Install 'code' command in PATH`。
 
-[![install-code-command-in-path](https://shockerli.net/post/mac-initialize/media/install-code-in-path.jpg)](https://shockerli.net/post/mac-initialize/media/install-code-in-path.jpg)
+[![install-code-command-in-path](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200004772.jpg)](https://shockerli.net/post/mac-initialize/media/install-code-in-path.jpg)
 
 然后在终端输入 `code .` 或者 `code [path]` 直接在 `VSCode` 打开文件或目录。
 
@@ -927,7 +927,7 @@ OpenJDK 是 Sun 在 2006 年开源的 Java SE 免费开源版本，采用 `GPLv2
 
 操作步骤：`MenuBar` → `File` → `Project Structure...`(`⌘ + ;`) → `SDKs` → `+` → `Download JDK`
 
-[![idea-jdk-download](https://shockerli.net/post/mac-initialize/media/idea-jdk-download.jpg)](https://shockerli.net/post/mac-initialize/media/idea-jdk-download.jpg)
+[![idea-jdk-download](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200004957.jpg)](https://shockerli.net/post/mac-initialize/media/idea-jdk-download.jpg)
 
 ##### JAVA_HOME
 

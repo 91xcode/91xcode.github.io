@@ -18,7 +18,7 @@
 就相当于有人找你借钱时，把自己的房子或车子抵押给你，这样欠钱不还的可能性也大大降低。
 下面是国债逆回购原理图片。
 
-![img](https://img2022.cnblogs.com/blog/794174/202201/794174-20220126090201626-777038141.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192312832.png)
 
 国债逆回购是相对于国债正回购而言的。
 目前上交所相关业务规则规定，普通的个人投资者，可以作为逆回购方通过债券质押式回购融出资金，但不能作为正回购方融入资金。
@@ -50,7 +50,7 @@
 
 国债逆回购主要有下面几种：
 
-![img](https://img2022.cnblogs.com/blog/794174/202201/794174-20220126090347505-2124178001.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192313534.png)
 
 上交所的交易代码是从小到大的，后缀与天数相关，而深交所的交易代码并不是从小到大排列，后缀也与天数无关。
 
@@ -68,19 +68,19 @@
 2、最少准备1000.01元。
 3、打开股票交易软件（此处以“涨乐财富通”为例，其他的证券APP都是类似的），找到“国债理财”。
 
-![img](https://img2022.cnblogs.com/blog/794174/202201/794174-20220126090502066-181399925.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192313485.png)
 
 4、进入后可以看到对应的国债逆回购品种，如下图所示。
-![img](https://img2022.cnblogs.com/blog/794174/202201/794174-20220126090517630-1462600481.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192313969.png)
 
 5、点击“查看所有国债理财产品”，因为国债逆回购“所见即所得”的特性，我们一般选择年化收益率最高的品种就可以了。
-![img](https://img2022.cnblogs.com/blog/794174/202201/794174-20220126090537558-1731405402.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192313309.png)
 
 6、选好产品后，点击产品，确认成交即可。
-![img](https://img2022.cnblogs.com/blog/794174/202201/794174-20220126090549541-1553468940.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192313464.png)
 
 7、输入参与金额，点击“下单”，就可以进行国债逆回购
-![img](https://img2022.cnblogs.com/blog/794174/202201/794174-20220126090600989-1734457290.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192313896.png)
 
 国债逆回购到期日当天无需任何操作，本金及利息自动到账。资金到账日只能是交易日，如果到期当天为非交易日，则顺延至下一个交易日入账。
 这里需要注意的是，我们是卖出。因为买入的话，就是正回购了，而作为普通投资者的我们，是无法作为正回购方融入资金的。
@@ -102,7 +102,7 @@
 一天内的年化收益率是变化的，以哪个年化收益率成交，就按哪个年化收益率计息。
 到期收益=成交金额×成交年化收益率×资金占用天数/365。
 
-![img](https://img2022.cnblogs.com/blog/794174/202201/794174-20220126090736644-887966338.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192313777.png)
 
 # 如何收益最大化
 
@@ -116,6 +116,6 @@
 
 春节也是投资国债逆回购的好机会，我们按照收益最大化的原理为大家整理出了一份投资攻略。
 
-![img](https://img2022.cnblogs.com/blog/794174/202201/794174-20220126090843239-641107638.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192314644.png)
 
 对于2022年春节的国债逆回购，在1月26日购买2天期和1月27日购买1天期，是最划算的。

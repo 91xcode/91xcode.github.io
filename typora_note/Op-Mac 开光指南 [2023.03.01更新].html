@@ -1,0 +1,889 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print { 
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) { 
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) { 
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571429rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ''; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ''; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ''; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: '−'; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; word-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; }
+.CodeMirror-wrap pre { word-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print { 
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+
+@include-when-export url(https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
+
+/* =========== */
+
+/* pt-serif-regular - latin */
+/* pt-serif-italic - latin */
+/* pt-serif-700 - latin */
+/* pt-serif-700italic - latin */
+:root {
+	--active-file-bg-color: #dadada;
+	--active-file-bg-color: rgba(32, 43, 51, 0.63);
+	--active-file-text-color: white;
+	--bg-color: #f3f2ee;
+	--text-color: #1f0909;
+	--control-text-color: #444;
+	--rawblock-edit-panel-bd: #e5e5e5;
+
+	--select-text-bg-color: rgba(32, 43, 51, 0.63);
+  --select-text-font-color: white;
+}
+
+pre {
+	--select-text-bg-color: #36284e;
+	--select-text-font-color: #fff;
+}
+
+html {
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+	background-color: #f3f2ee;
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+	color: #1f0909;
+	line-height: 1.5em;
+}
+
+/*#write {
+	overflow-x: auto;
+    max-width: initial;
+	padding-left: calc(50% - 17em);
+    padding-right: calc(50% - 17em);
+}
+
+@media (max-width: 36em) {
+ 	#write {
+ 		padding-left: 1em;
+    	padding-right: 1em;
+ 	}
+}*/
+
+#write {
+	max-width: 40em;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+			max-width: 914px;
+	}
+}
+
+ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+ul li {
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* styles */
+
+/* ====== */
+
+/* headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+}
+h1 {
+	font-size: 1.875em;
+	/*30 / 16*/
+	line-height: 1.6em;
+	/* 48 / 30*/
+	margin-top: 2em;
+}
+h2,
+h3 {
+	font-size: 1.3125em;
+	/*21 / 16*/
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-size: 1.125em;
+	/*18 / 16*/
+	margin-top: 2.67em;
+	/*48 / 18*/
+}
+h5,
+h6 {
+	font-size: 1em;
+	/*16*/
+}
+h1 {
+	border-bottom: 1px solid;
+	margin-bottom: 1.875em;
+	padding-bottom: 0.8125em;
+}
+/* links */
+
+a {
+	text-decoration: none;
+	color: #065588;
+}
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+/* block spacing */
+
+p,
+blockquote,
+.md-fences {
+	margin-bottom: 1.5em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 1.5em;
+}
+/* blockquote */
+
+blockquote {
+	font-style: italic;
+	border-left: 5px solid;
+	margin-left: 2em;
+	padding-left: 1em;
+}
+/* lists */
+
+ul,
+ol {
+	margin: 0 0 1.5em 1.5em;
+}
+/* tables */
+.md-meta,.md-before, .md-after {
+	color:#999;
+}
+
+table {
+	margin-bottom: 1.5em;
+	/*24 / 16*/
+	font-size: 1em;
+	/* width: 100%; */
+}
+thead th,
+tfoot th {
+	padding: .25em .25em .25em .4em;
+	text-transform: uppercase;
+}
+th {
+	text-align: left;
+}
+td {
+	vertical-align: top;
+	padding: .25em .25em .25em .4em;
+}
+
+code,
+.md-fences {
+	background-color: #dadada;
+}
+
+code {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.md-fences {
+	margin-left: 2em;
+	margin-bottom: 3em;
+	padding-left: 1ch;
+	padding-right: 1ch;
+}
+
+pre,
+code,
+tt {
+	font-size: .875em;
+	line-height: 1.714285em;
+}
+/* some fixes */
+
+h1 {
+	line-height: 1.3em;
+	font-weight: normal;
+	margin-bottom: 0.5em;
+}
+
+p + ul,
+p + ol{
+	margin-top: .5em;
+}
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol {
+	margin-top: .5em;
+}
+
+li > ul,
+li > ol {
+	margin-top: inherit;
+	margin-bottom: 0;
+}
+
+li ol>li {
+	list-style-type: lower-alpha;
+}
+
+li li ol>li{
+	list-style-type: lower-roman;
+}
+
+h2,
+h3 {
+	margin-bottom: .75em;
+}
+hr {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+}
+h1 {
+	border-color: #c5c5c5;
+}
+blockquote {
+	border-color: #bababa;
+	color: #656565;
+}
+
+blockquote ul,
+blockquote ol {
+	margin-left:0;
+}
+
+.ty-table-edit {
+	background-color: transparent;
+}
+thead {
+	background-color: #dadada;
+}
+tr:nth-child(even) {
+	background: #e8e7e7;
+}
+hr {
+	border-color: #c5c5c5;
+}
+.task-list{
+	padding-left: 1rem;
+}
+
+.md-task-list-item {
+	padding-left: 1.5rem;
+	list-style-type: none;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.25rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #F3F2EE;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
+}
+
+#write pre.md-meta-block {
+	min-height: 1.875rem;
+	color: #555;
+	border: 0px;
+	background: transparent;
+	margin-top: -4px;
+	margin-left: 1em;
+	margin-top: 1em;
+}
+
+.md-image>.md-meta {
+	color: #9B5146;
+}
+
+.md-image>.md-meta{
+	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+}
+
+
+#write>h3.md-focus:before{
+	left: -1.5rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h4.md-focus:before{
+	left: -1.5rem;
+	top: .25rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h5.md-focus:before{
+	left: -1.5rem;
+	top: .0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h6.md-focus:before{
+	left: -1.5rem;
+	top: 0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+.md-toc-content:empty:before{
+	color: #065588;
+}
+.md-toc-item {
+	color: #065588;
+}
+#write div.md-toc-tooltip {
+	background-color: #f3f2ee;
+}
+
+#typora-sidebar {
+	background-color: #f3f2ee;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+}
+
+.pin-outline #typora-sidebar {
+	background: inherit;
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+.pin-outline #typora-sidebar:hover .outline-title-wrapper {
+	border-left:1px dashed;
+}
+
+.outline-item:hover {
+  background-color: #dadada;
+  border-left: 28px solid #dadada;
+  border-right: 18px solid #dadada;
+}
+
+.typora-node .outline-item:hover {
+  	border-right: 28px solid #dadada;
+}
+
+.outline-expander:before {
+  content: "\f0da";
+  font-family: FontAwesome;
+  font-size:14px;
+  top: 1px;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  content: "\f0d7";
+}
+
+.modal-content {
+	background-color: #f3f2ee;
+}
+
+.auto-suggest-container ul li {
+	list-style-type: none;
+}
+
+/** UI for electron */
+
+.megamenu-menu,
+#top-titlebar, #top-titlebar *,
+.megamenu-content {
+	background: #f3f2ee;
+	color: #1f0909;
+}
+
+.megamenu-menu-header {
+	border-bottom: 1px dashed #202B33;
+}
+
+.megamenu-menu {
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+header, .context-menu, .megamenu-content, footer {
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+    color: #1f0909;
+}
+
+#megamenu-back-btn {
+	color: #1f0909;
+	border-color: #1f0909;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color: #1f0909;
+}
+
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+	color: inherit;
+	background-color: #e8e7df;
+}
+
+.long-btn:hover {
+	background-color: #e8e7df;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: inherit;
+}
+
+.megamenu-menu-panel .btn {
+	background-color: #D2D1D1;
+}
+
+.btn-default {
+	background-color: transparent;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn,
+.ty-show-word-count #footer-word-count {
+	background: #c7c5c5;
+}
+
+#typora-quick-open {
+    background-color: inherit;
+}
+
+.md-diagram-panel {
+	margin-top: 8px;
+}
+
+.file-list-item-file-name {
+	font-weight: initial;
+}
+
+.file-list-item-summary {
+	opacity: 1;
+}
+
+.file-list-item {
+	color: #777;
+}
+
+.file-list-item.active {
+	background-color: inherit;
+	color: black;
+}
+
+.ty-side-sort-btn.active {
+	background-color: inherit;
+}
+
+.file-list-item.active .file-list-item-file-name  {
+	font-weight: bold;
+}
+
+.file-list-item{
+    opacity:1 !important;
+}
+
+.file-library-node.active>.file-node-background{
+	background-color: rgba(32, 43, 51, 0.63);
+	background-color: var(--active-file-bg-color);
+}
+
+.file-tree-node.active>.file-node-content{
+	color: white;
+	color: var(--active-file-text-color);
+}
+
+.md-task-list-item>input {
+	margin-left: -1.7em;
+	margin-top: calc(1rem - 12px);
+	-webkit-appearance: button;
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover, 
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+	opacity: 1;
+}
+
+/* https://github.com/typora/typora-issues/issues/2046 */
+.os-windows-7 strong,
+.os-windows-7 strong  {
+	font-weight: 760;
+}
+
+.ty-preferences .btn-default {
+	background: transparent;
+}
+
+.ty-preferences .window-header {
+	border-bottom: 1px dashed #202B33;
+	box-shadow: none;
+}
+
+#sidebar-loading-template, #sidebar-loading-template.file-list-item {
+	color: #777;
+}
+
+.searchpanel-search-option-btn.active {
+	background: #777;
+	color: white;
+}
+
+.export-detail, .light .export-detail, 
+.light .export-item.active, 
+.light .export-items-list-control {
+	background: #e0e0e0;
+	border-radius: 2px;
+	font-weight: 700;
+	color: inherit
+}
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>Op-Mac 开光指南 [2023.03.01更新]</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='mac-开光指南-20230301更新'><span>Mac 开光指南 [2023.03.01更新]</span></h1><p><span>2021-11-22 </span></p><p><a href='https://shockerli.net/categories/mac/'><span> Mac </span></a></p><p><span> 约 9428 字 预计阅读 19 分钟</span></p><h2 id='文章目录'><span>文章目录</span></h2><p><a href='https://shockerli.net/post/mac-initialize/#应用安装'><span>应用安装</span></a><a href='https://shockerli.net/post/mac-initialize/#键盘符号与快捷键'><span>键盘符号与快捷键</span></a><a href='https://shockerli.net/post/mac-initialize/#基础设置'><span>基础设置</span></a><a href='https://shockerli.net/post/mac-initialize/#基础设施'><span>基础设施</span></a><a href='https://shockerli.net/post/mac-initialize/#系统工具'><span>系统工具</span></a><a href='https://shockerli.net/post/mac-initialize/#开发环境'><span>开发环境</span></a></p><p><span>💻 一份新 macOS 快速食用方法，普适新 Mac 或重装系统。</span></p><blockquote><p><span>本指南基于 MBP 14寸 12.5 系统（</span><strong><span>主</span></strong><span>）和 MBP 13寸 11.4 系统。</span></p><p><span>系统和软件的更新频繁，本项目不一定及时更新，故操作界面或步骤会略有差别，但影响不大。</span></p><p><span>本指南涉及内容较广，请选择适合自己的操作。</span></p><p><span>请善用 TOC 目录导航内容，GitHub 中 </span><code>README.md</code><span> 左侧的按钮更方便。</span></p><p><span>本指南遵循许可协议 </span><a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh'><span>CC BY-NC-ND 4.0</span></a><span>（请看</span><a href='https://shockerli.net/reprint-protocol'><span>转载要求</span></a><span>）</span></p><p><span>博客原文地址: </span><a href='https://shockerli.net/post/mac-initialize' target='_blank' class='url'>https://shockerli.net/post/mac-initialize</a></p><p><span>长期更新地址: </span><a href='https://github.com/shockerli/mac-initialize' target='_blank' class='url'>https://github.com/shockerli/mac-initialize</a></p><p><span>最后更新于 </span><code>2023-11-06</code></p></blockquote><h2 id='应用安装'><span>应用安装</span></h2><h3 id='安装软件'><span>安装软件</span></h3><h3 id='软件下载途径'><span>软件下载途径</span></h3><ul><li><p><span>App Store 搜索或排行榜</span></p></li><li><p><span>软件的官网，都会提供下载</span></p></li><li><p><span>第三方网站（不一定安全，需自行甄别）</span></p></li></ul><p><span>有一些软件，是没有上架应用商店（如搜狗输入法）、或应用商店里的是阉割版本（如柠檬清理），就需要去官网下载。</span></p><p><span>下载软件时，尽量选择与架构匹配的，不要选 </span><code>Universal</code><span>，因为 </span><code>Universal</code><span> 会同时包含两个架构的软件包，体积更大但却没啥用。以下图 VSCode 为例，如果是 M1/M2 等苹果芯片则选 </span><code>Apple Silicon</code><span>，反之则选 </span><code>Intel Chip</code><span>。</span></p><p><a href='https://shockerli.net/post/mac-initialize/media/select-app-platform.jpg'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200001919.jpg" referrerpolicy="no-referrer" alt="vscode-select-mac-platform"></a></p><p><span>当然，目前绝大多数的软件是不支持这么选择的，也就是只提供了一个 </span><code>Universal</code><span> 通用版本，那安装后，电脑里就会多一个架构的软件，可以使用</span><a href='https://lemon.qq.com/'><span>柠檬清理</span></a><span>进行查找清理掉，不影响正常使用。</span></p><h3 id='桌面上的安装包图标怎么去除'><span>桌面上的安装包图标怎么去除？</span></h3><ul><li><p><span>方法①：桌面上右键安装包图标，选择「推出“XXX”」。</span></p></li></ul><p><a href='https://shockerli.net/post/mac-initialize/media/remove-desktop-icon.png'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200001664.png" referrerpolicy="no-referrer" alt="移除桌面安装包镜像图标"></a></p><ul><li><p><span>方法②：Finder（访达）左栏的「位置」处也有对应安装包，点按应用名称右侧的推出图标即可。</span></p></li><li><p><span>方法③：重启系统后，安装包镜像会自动取消，对应的图标也会自动消失。</span></p></li></ul><h3 id='关闭软件更新'><span>关闭软件更新</span></h3><p><span>为何要关闭软件更新？因为默认会自动下载更新，也就会偷偷跑流量，而苹果系统更新都是几个G起步。不信看看 </span><code>/Library/Updates</code><span> 目录有多大。</span></p><p><span>关闭自动更新：</span></p><ul><li><p><code>系统偏好设置 → 软件更新 → 自动保持我的 Mac 运行最新版本（取消勾选）</code></p></li><li><p><code>系统偏好设置 → 软件更新 → 高级... → 取消所有勾选</code><span>（主要是</span><strong><span>下载可用的更新</span></strong><span>）</span></p></li><li><p><code>App Store → 偏好设置 → 自动更新（取消勾选）、自动下载站其他设备上购买的App（取消勾选）</code></p></li></ul><p><span>删除已下载的文件：</span></p><ul><li><p><span>关闭 </span><code>SIP</code><span>、删除目录 </span><code>/Library/Updates</code><span> 下的内容、再开启 </span><code>SIP</code><span>。</span></p></li></ul><p><span>进程 </span><code>nsurlsessiond</code><span> 会偷偷跑流量，有几个原因：</span></p><ul><li><p><span>正在下载系统或软件更新文件</span></p></li><li><p><span>iCloud 正在同步数据</span></p></li></ul><h2 id='键盘符号与快捷键'><span>键盘符号与快捷键</span></h2><h3 id='符号映射'><span>符号映射</span></h3><figure class='table-figure'><table><thead><tr><th><span>符号</span></th><th><span>按键</span></th></tr></thead><tbody><tr><td><span>⌘</span></td><td><span>Command</span></td></tr><tr><td><span>⇧</span></td><td><span>Shift</span></td></tr><tr><td><span>⇪</span></td><td><span>Caps Lock</span></td></tr><tr><td><span>⌥</span></td><td><span>Option = Alt</span></td></tr><tr><td><span>⌃</span></td><td><span>Control</span></td></tr><tr><td><span>Fn</span></td><td><span>功能键</span></td></tr><tr><td><span>↩</span></td><td><span>Enter</span></td></tr><tr><td><span>⌫</span></td><td><span>Delete</span></td></tr><tr><td><span>⌦</span></td><td><span>Fn + Delete</span></td></tr><tr><td><span>↑</span></td><td><span>上箭头</span></td></tr><tr><td><span>↓</span></td><td><span>下箭头</span></td></tr><tr><td><span>←</span></td><td><span>左箭头</span></td></tr><tr><td><span>→</span></td><td><span>右箭头</span></td></tr><tr><td><span>⇞</span></td><td><span>Fn + ↑ = Page Up</span></td></tr><tr><td><span>⇟</span></td><td><span>Fn + ↓ = Page Down</span></td></tr><tr><td><span>Home</span></td><td><span>Fn + ←</span></td></tr><tr><td><span>End</span></td><td><span>Fn + →</span></td></tr><tr><td><span>⇥</span></td><td><span>Tab = 右制表符</span></td></tr><tr><td><span>⇤</span></td><td><span>Shift + Tab = 左制表符</span></td></tr><tr><td><span>⎋</span></td><td><span>Esc = Escape</span></td></tr><tr><td><span>⏏</span></td><td><span>电源开关键</span></td></tr><tr><td><span>`</span></td><td><span>反引号（ESC 下面）</span></td></tr></tbody></table></figure><p><span>一定要熟记前 5 个符号的按键位置！！！</span></p><h3 id='常用快捷键'><span>常用快捷键</span></h3><p><span>大部分情况下，Command 键等同于 Windows 的 Ctrl 键，以下仅列出部分常用或与 Windows 不一样的快捷键，更多参考官方 </span><a href='https://support.apple.com/zh-cn/HT201236'><span>Mac 键盘快捷键</span></a><span> 以及对应软件的快捷键。</span></p><figure class='table-figure'><table><thead><tr><th><span>快捷键</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>Command + Z</span></td><td><span>撤销，</span><code>Shift + Command + Z</code><span>：重做</span></td></tr><tr><td><span>Command + 逗号 (</span><code>,</code><span>)</span></td><td><span>打开当前窗口应用的</span><strong><span>偏好设置</span></strong></td></tr><tr><td><span>Control + Command + Q</span></td><td><span>立即锁定屏幕</span></td></tr><tr><td><span>Command + D</span></td><td><span>复制所选文件</span></td></tr><tr><td><span>Option + Command + D</span></td><td><span>显示或隐藏“程序坞”</span></td></tr><tr><td><span>Control + Command + D</span></td><td><span>显示或隐藏所选字词的定义</span></td></tr><tr><td><span>Control + A</span></td><td><span>移至行或段落的开头</span></td></tr><tr><td><span>Control + E</span></td><td><span>移至行或段落的末尾</span></td></tr><tr><td><span>Control + U</span></td><td><span>终端软件里，直接清除行</span></td></tr><tr><td><span>Control + 空格</span></td><td><span>切换输入法</span></td></tr><tr><td><span>Command + Q</span></td><td><span>退出当前应用</span></td></tr></tbody></table></figure><ul><li><p><span>访达</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><span>快捷键</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>Command + 上箭头</span></td><td><span>打开包含当前文件夹的文件夹</span></td></tr><tr><td><span>Command + 左中括号 (</span><code>[</code><span>)</span></td><td><span>前往上一文件夹</span></td></tr><tr><td><span>Command + 右中括号 (</span><code>]</code><span>)</span></td><td><span>前往下一个文件夹</span></td></tr><tr><td><span>Command + Delete</span></td><td><span>将所选项移到废纸篓</span></td></tr><tr><td><span>Option + Command + C</span></td><td><span>复制当前目录的全路径</span></td></tr></tbody></table></figure><ul><li><p><span>窗口</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><span>快捷键</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>Command + Tab</span></td><td><span>在多个打开的 App 之间切换到</span><strong><span>下一个</span></strong><span>最近使用的 App</span></td></tr><tr><td><span>Command + Shift + Tab</span></td><td><span>在多个打开的 App 之间切换到</span><strong><span>上一个</span></strong><span>最近使用的 App</span></td></tr><tr><td><span>Command + `（反引号）</span></td><td><span>同一个应用的不同窗口间切换，已被最小化的窗口无法恢复</span></td></tr><tr><td><span>Command + M</span></td><td><span>最小化当前窗口，但无法通过快捷键切换回来，只能手动去菜单栏或程序坞重新打开</span></td></tr><tr><td><span>Command + H</span></td><td><span>隐藏当前应用，即该应用的所有窗口，可通过快捷键切换回来</span></td></tr><tr><td><span>Command + Option + H</span></td><td><span>隐藏其他应用</span></td></tr><tr><td><span>F3</span></td><td><span>显示当前桌面的所有已打开窗口（不含最小化或已隐藏）</span></td></tr><tr><td><span>Control + 上箭头</span></td><td><span>同上</span></td></tr><tr><td><span>触控板：四指向上轻扫</span></td><td><span>同上（如已设置</span><code>触控板 → 更多手势 → 调度中心</code><span>）</span></td></tr><tr><td><span>Control + 下箭头</span></td><td><span>显示当前应用的所有已打开窗口（不含最小化或已隐藏）</span></td></tr><tr><td><span>触控板：四指向下轻扫</span></td><td><span>同上（如已设置</span><code>触控板 → 更多手势 → App Expose</code><span>）</span></td></tr></tbody></table></figure><ul><li><p><span>桌面</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><span>快捷键</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>Control + 右箭头</span></td><td><span>向右切换桌面</span></td></tr><tr><td><span>触控板：四指向右轻扫</span></td><td><span>同上</span></td></tr><tr><td><span>Control + 左箭头</span></td><td><span>向左切换桌面</span></td></tr><tr><td><span>触控板：四指向左轻扫</span></td><td><span>同上</span></td></tr></tbody></table></figure><p><span>其他快捷键：选取苹果菜单 &gt; “系统偏好设置”，点按“键盘”，然后点按“快捷键”。</span></p><h2 id='基础设置'><span>基础设置</span></h2><h3 id='触控板设置'><span>触控板设置</span></h3><p><span>触控板的设置及使用教程，可查看 </span><code>系统偏好设置 &gt; 触控板</code><span>。</span></p><blockquote><p><span>让你的触控板变的跟鼠标不同，治疗你的手指关节炎😄</span></p></blockquote><ul><li><p><code>系统偏好设置 &gt; 触控板 &gt; 光标与点按</code></p><ul><li><p><code>轻点来点按（勾选）</code></p></li><li><p><span>可单指轻点=鼠标左键点击，可双指轻点=鼠标右键点击</span></p></li></ul></li><li><p><code>系统偏好设置 &gt; 触控板 &gt; 光标与点按</code></p><ul><li><p><code>查询与数据检测器（勾选）</code></p></li><li><p><code>三指轻点</code></p></li><li><p><span>对着词汇三指轻点，直接调用Mac自带词典查询，与右键中的「查询」一样</span></p></li></ul></li><li><p><code>系统偏好设置 &gt; 触控板 &gt; 更多手势</code></p><ul><li><p><code>App Expose（勾选）</code></p></li><li><p><code>在全屏幕显示的App之间轻扫（四指左右轻扫）</code></p></li><li><p><span>以上两个选项，将三指操作改为四指操作，是为了给「三指拖移」让路</span></p></li></ul></li><li><p><code>系统偏好设置 &gt; 辅助功能 &gt; 指针控制 &gt; 鼠标与触控板 &gt; 触控板选项</code></p><ul><li><p><code>启动拖移（勾选）&gt; 三指拖移</code></p></li><li><p><span>与鼠标左键按住拖动一样，三个手指同时在触控板滑动，可拖动任何窗口的菜单栏进行移动，也可以选择范围内容</span></p></li></ul></li></ul><p><span>学习触控板设置中的各个手势操作示范视频，别再跟鼠标一样用触控板啦。</span></p><h3 id='开启任何来源'><span>开启任何来源</span></h3><p><span>为何要「任何来源」权限？因为不开启就无法安装 </span><code>App Store</code><span> 以外的软件，比如从网站直接下载的 dmg 安装包。</span></p><p><code>被认可的开发者</code><span> 指的是购买了苹果企业证书对应用进行签名、且提交给苹果审核通过的软件。而大部分免费开源的应用是不会去购买此证书的。另外，破解应用因为会修改应用的文件从而导致签名失效而无法运行。所以，想安装第三方应用，需要开启 </span><code>任何来源</code><span> 这个权限。</span></p><p><code>macOS</code><span> 默认隐藏了 </span><code>任何来源</code><span> 选项，需要在终端执行以下命令显示此选项：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th style='text-align:left;' ><code>sudo spctl --master-disable</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td style='text-align:left;' >&nbsp;</td></tr></tbody></table></figure><p><span>然后在 </span><code>系统偏好设置 &gt; 安全性与隐私 &gt; 通用 &gt; 任何来源</code><span> 打开：</span></p><p><a href='https://shockerli.net/post/mac-initialize/media/install-any-source-app.jpg'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200001834.jpg" referrerpolicy="no-referrer" alt="install-any-source-app"></a></p><h3 id='修改主机名'><span>修改主机名</span></h3><blockquote><p><span>就是为了好看点，默认的太丑，隔空投送的显示名字和终端都会用到</span></p></blockquote><p><span>参考文章: </span><a href='https://shockerli.net/post/macos-hostname-scutil/' target='_blank' class='url'>https://shockerli.net/post/macos-hostname-scutil/</a></p><p><span>设置路径：</span><code>系统偏好设置 &gt; 共享</code><span> =&gt; 修改</span><code>电脑名称</code><span>、编辑</span><code>本地主机名</code></p><p><span>也可通过命令修改：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5</code></th><th><code># 修改主机名 sudo scutil --set HostName 自定义主机名 # 修改电脑名称 sudo scutil --set ComputerName 自定义电脑名</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='拼写辅助'><span>拼写辅助</span></h3><p><span>当你输入英文单词时，默认会提示你更正首字母为大写，烦人的很。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">系统偏好设置 &gt; 键盘 &gt; 文本 &gt; 自动大写字词的首字母（取消勾选）</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><p><span>同理，如果不想「自动纠正拼写」或其他输入相关的功能，也可在此面板一并调整。</span></p><h3 id='程序坞dock）'><span>程序坞（Dock）</span></h3><p><a href='https://shockerli.net/post/mac-initialize/media/mac-icon-dock.png'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200001503.png" referrerpolicy="no-referrer" alt="mac-icon-dock"></a></p><p><code>程序坞(Dock)</code><span> 是 macOS 桌面上日常 APP 和功能的便利管理，与 </span><code>Windows</code><span> 任务栏类似。</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">系统偏好设置 &gt; 程序坞与菜单栏 &gt; 程序坞` - `&gt; 将窗口最小化至应用程序图标（勾选）` - `&gt; 在程序坞中显示最近使用的应用程序（取消勾选）</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 48px;"></div><div class="CodeMirror-gutters" style="display: none; height: 48px;"></div></div></div></pre><p><span>从程序坞中挨个移除你不行要的应用图标，以及添加你希望常驻的图标。</span></p><p><strong><span>移除</span></strong><span>：</span><code>右键程序坞中应用图标 &gt; 选项 &gt; 从程序坞中移除</code></p><p><span>或者将程序坞中的图标拖到废纸篓中也能删除图标。</span></p><p><a href='https://shockerli.net/post/mac-initialize/media/remove-dock-icon.png'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200001753.png" referrerpolicy="no-referrer" alt="移除程序坞图标"></a></p><p><strong><span>添加</span></strong><span>：从启动台（应用全列表）拖动图标到程序坞指定位置</span></p><h3 id='显示器'><span>显示器</span></h3><h4 id='夜览'><span>夜览</span></h4><p><span>夜览与 </span><a href='https://justgetflux.com/'><span>f.lux</span></a><span> 功能类似，根据时间来自动调节显示器色温的护眼程序。不过系统自带夜览只支持内置显示器，外接显示器不会生效，此时可关闭夜览并使用 </span><code>f.lux</code><span>。</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>系统偏好设置 &gt; 显示器 &gt; 夜览... &gt; 设定时间 &gt; 日落到日出</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='菜单栏'><span>菜单栏</span></h3><p><a href='https://shockerli.net/post/mac-initialize/media/mac-icon-menu.png'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200002856.png" referrerpolicy="no-referrer" alt="mac-icon-menu"></a></p><p><span>菜单栏中的系统图标尽量少一点，多留空间给应用图标，尤其是小屏、刘海屏。</span></p><h4 id='时钟'><span>时钟</span></h4><p><span>默认时间格式太长，去除不必要的。</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>系统偏好设置 &gt; 程序坞与菜单栏 &gt; 时钟 &gt; 显示日期（取消勾选）、显示星期（取消勾选）、在时间中显示秒钟（勾选）</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='聚焦'><span>聚焦</span></h4><p><span>不需要在菜单栏展示，有快捷键 </span><code>⌘ + 空格</code><span>。</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>系统偏好设置 &gt; 程序坞与菜单栏 &gt; 聚焦 &gt; 在菜单栏中显示（取消勾选）</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='siri'><span>Siri</span></h4><p><span>不需要在菜单栏展示，可配置快捷键或语音指令。</span></p><p><code>系统偏好设置 &gt; Siri</code><span>，自行配置「听取“嘿Siri”」、快捷键等。</span></p><h3 id='访达finder）'><span>访达（Finder）</span></h3><p><a href='https://shockerli.net/post/mac-initialize/media/mac-icon-finder.png'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200002940.png" referrerpolicy="no-referrer" alt="mac-icon-finder"></a></p><p><code>访达(Finder)</code><span> 是 macOS 中文件可视化管理程序。</span></p><ul><li><p><code>访达 → 偏好设置 → 通用 → 开启新“访达”窗口时打开：「下载」</code></p><p><span>设置一个访达启动时的默认打开目录。</span></p></li><li><p><code>访达 → 偏好设置 → 通用 → 在标签页中打开文件夹（勾选）</code></p><p><span>开启多标签页功能。 （旧版系统不支持，可自行安装 </span><code>Path Finder</code><span> 或 </span><code>TotalFinder</code><span> 以使用该功能）</span></p></li><li><p><code>访达 → 偏好设置 → 高级 → 执行搜索时：「搜索当前文件夹」</code></p><p><span>默认是搜全电脑文件，但绝大多数我们期望的是搜索当前文件夹下的文件。</span></p></li><li><p><span>开启 </span><code>退出访达</code><span> 功能</span></p><p><span>一般都应用都能退出（</span><code>⌘ + Q</code><span>），但访达默认是不行的，需手动开启。</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3</code></th><th><code>defaults write com.apple.finder QuitMenuItem -bool true killall Finder</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure></li><li><p><span>显示目录全路径</span></p><p><code>Finder</code><span> 顶栏默认显示的是当前目录的名称，如需跟 Windows 一样显示全路径，需手动开启。</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3</code></th><th><code>defaults write com.apple.finder _FXShowPosixPathInTitle -bool true killall Finder</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure></li></ul><h3 id='服务'><span>服务</span></h3><p><code>服务</code><span> 是 macOS 中服务提供者程序为服务请求者程序提供的便捷服务（便捷入口、且支持设置快捷键）。</span></p><p><span>例如，</span><code>iTerm</code><span> 就在 </span><code>Finder</code></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>系统偏好设置 → 键盘 → 快捷键 → 服务</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>可开启所需服务，及设置其快捷键。</span></p><h3 id='密码长度限制'><span>密码长度限制</span></h3><p><span>macOS 10.14 后不允许设置 4 位数以下的密码。下面的命令可关闭这个策略的限制：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>pwpolicy -clearaccountpolicies</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='开机自启管理'><span>开机自启管理</span></h3><p><span>用户级别的开机自启应用管理，可在 </span><code>系统偏好设置 → 用户与群组 → 登录项</code><span> 列表中查看和开关。</span></p><p><span>系统级别的，比如 </span><code>Docker</code><span>，可用 </span><code>柠檬清理</code><span> 等系统工具进行管理。</span></p><p><span>如果是通过 </span><code>Homebrew</code><span> 安装的服务，那可用 </span><code>brew services</code><span> 命令管理。</span></p><p><span>也可以通过命令 </span><code>launchctl</code><span> 进行管理。</span></p><h3 id='关闭输入法切换时的提示图标'><span>关闭输入法切换时的提示图标</span></h3><blockquote><p><span>自 macOS 14 Sonoma 开始，默认会在切换输入法时，光标处有个提示图标。</span></p><p><span>在终端类软件中，执行以下指令，并按提示输入电脑密码，然后重启电脑后关闭该提示。</span></p></blockquote><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist redesigned_text_cursor -dict-add Enabled -bool NO</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='关于-sip'><span>关于 SIP</span></h3><p><span>SIP（</span><code>System Integrity Protection</code><span>，系统完整性保护）是 macOS 所采用的一项安全技术，能够帮助防止潜在恶意软件修改 macOS 上受保护的文件和文件夹。系统完整性保护可以限制 </span><code>root</code><span> 用户帐户，以及 </span><code>root</code><span> 用户能够在 macOS 的受保护部分完成的操作。</span></p><p><span>为了安全，</span><strong><span>强烈不建议</span></strong><span>关闭 </span><code>SIP</code><span> 保护。</span></p><p><span>如果一个应用需要关闭 SIP 才可运行，这意味着此应用本身也不安全，可直接放弃。</span></p><p><span>如果是临时性的需要（如上文提到的删除系统更新文件），可以先关闭、操作完后再立即开启。</span></p><h2 id='基础设施'><span>基础设施</span></h2><h3 id='xcode-command-line-tools'><span>Xcode Command Line Tools</span></h3><blockquote><p><span>macOS 系统很多软件都需要用到的依赖工具，不安装的话连 Git 都没法用🙄</span></p></blockquote><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>xcode-select --install</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>同意协议后会全程自动下载安装，文件比较大，需要等待一会。</span></p><p><a href='https://shockerli.net/post/mac-initialize/media/install-xcode-select.png'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200002767.png" referrerpolicy="no-referrer" alt="install-xcode-select"></a></p><h3 id='homebrew'><span>Homebrew</span></h3><p><span>开源免费、强大易用的软件安装管理器。</span></p><p><span>官网: </span><a href='https://brew.sh/'><span>https://brew.sh</span></a></p><p><span>GitHub: </span><a href='https://github.com/Homebrew/brew' target='_blank' class='url'>https://github.com/Homebrew/brew</a></p><p><span>因国内访问 GitHub 不稳定，可以直接参考清华大学镜像站的安装教程，简单快速、此处不做复述。</span></p><p><span>清华大学开源软件镜像站及安装、镜像教程: </span><a href='https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/' target='_blank' class='url'>https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/</a></p><h3 id='iterm2'><span>iTerm2</span></h3><p><span>开源免费、美观高效的最强终端工具。</span></p><p><span>官网下载: </span><a href='https://www.iterm2.com/'><span>https://www.iterm2.com</span></a></p><p><span>或 </span><code>brew install --cask iterm2</code></p><h4 id='颜色配置'><span>颜色配置</span></h4><p><span>颜色列表: </span><a href='https://iterm2colorschemes.com/'><span>https://iterm2colorschemes.com</span></a></p><p><span>颜色选择: </span><code>Profiles -&gt; Colors -&gt; Color Presets</code><span> 选择 </span><code>Solarized Dark</code></p><h4 id='背景图'><span>背景图</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Profiles → Default → Window → Background Image → Enabled（勾选，会弹窗让选择图片</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><p><span>还可调节透明度、缩放模式。</span></p><h4 id='profiles-command'><span>Profiles Command</span></h4><p><code>Profiles</code><span> 用于配置新建 Tab 的默认行为，而 </span><code>Profiles</code><span> 中的 Command 则可用于配置新建 Tab 时自动执行的命令，一般用于 SSH 远程连接的场景较多。</span></p><p><span>Profiles Command 配置：</span></p><p><a href='https://shockerli.net/post/mac-initialize/media/iterm-profile-setting.jpg'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200002505.jpg" referrerpolicy="no-referrer" alt="iTerm2 Profiles Command 配置"></a></p><p><span>注意：自定义的 Profile 会继承 </span><code>Default</code><span> 的配置，故自定义的 Profile 无需重复去配置颜色、主题、快捷键等。</span></p><p><span>Profiles 使用及快捷键：</span></p><p><a href='https://shockerli.net/post/mac-initialize/media/iterm-profile-usage.jpg'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200003582.jpg" referrerpolicy="no-referrer" alt="iTerm2 Profiles 使用及快捷键"></a></p><h4 id='status-bar'><span>Status Bar</span></h4><h4 id='配置左右键前后单词跳转'><span>配置左右键前后单词跳转</span></h4><blockquote><p><span>按住 </span><code>option + → or ←</code><span> 键，在命令的开始和结尾跳转切换</span></p></blockquote><p><code>Profiles → Default → Keys → Key Mappings</code><span>，点击 </span><code>+</code><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Keyboard shortcut`: `option + →` `Action`: `Send Escape Sequence` `Esc + f</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Keyboard shortcut`: `option + ←` `Action`: `Send Escape Sequence` `Esc + b</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 48px;"></div><div class="CodeMirror-gutters" style="display: none; height: 48px;"></div></div></div></pre><h4 id='iterm2-快速隐藏和显示'><span>iTerm2 快速隐藏和显示</span></h4><p><code>Keys → Hotkey</code><span>，勾选 </span><code>Show/hide all windows with a system-wide hotkey</code><span>，并设置快捷键，比如 </span><code>⌥ + ⌘ + .</code><span>（</span><code>option + command + 句点</code><span>）。</span></p><h4 id='在-finder-中打开当前目录'><span>在 Finder 中打开当前目录</span></h4><p><span>在终端中使用 </span><code>open</code><span> 命令即可：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>open .</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='粘贴自动转义'><span>粘贴自动转义</span></h4><p><span>从剪切板粘贴 URL 到 iTerm2 时会被转义。参考官方 </span><a href='https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#disable_magic_functions'><span>Wiki</span></a><span>。打开配置文件 </span><code>~/.zshrc</code><span>：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>DISABLE_MAGIC_FUNCTIONS=true</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='finder-中使用-iterm-打开当前目录'><span>Finder 中使用 iTerm 打开当前目录</span></h4><p><span>可在 Finder 中快捷的使用 iTerm 打开当前目录，避免手动的在 iTerm 中输入路径。</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>Finder → 文件右键 → 服务 → New iTerm2 Tab Here</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='oh-my-zsh'><span>Oh My Zsh</span></h3><p><code>Oh My Zsh</code><span> 让 </span><code>zsh</code><span> 变得更好用、配置更简单。（macOS 10.15 后已使用 </span><code>zsh</code><span> 作为默认 Shell）</span></p><p><span>GitHub: </span><a href='https://github.com/ohmyzsh/ohmyzsh' target='_blank' class='url'>https://github.com/ohmyzsh/ohmyzsh</a></p><ul><li><p><span>通过</span><code>curl</code><span>安装</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>设置 </span><code>zsh</code><span> 为当前用户的默认 </span><code>Shell</code></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>chsh -s /bin/zsh</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>配置文件</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5 6 7 8 9 10 11 12</code></th><th><code>.zshenv 中存放的环境变量配置项在任何场景下都能被读取，这里通常把$PATH等变量写在这里，这样无论是在交互 shell，或者运行程序都会读取此文件 .zshrc 主要用在交互 shell，上篇文章中就是对这个文件进行修改。对终端交互shell有用。 .zlogin 在 login shell 的时候读取，比如系统启动的时候会读取此文件 .zprofile 是.zlogin的替代品，如果使用了 .zlogin 就不必再关心此文件 .zlogout退出终端的时候读取，用于做一些清理工作 读取顺序 .zshenv → [.zprofile if login] → [.zshrc if interactive] → [.zlogin if login] → [.zlogout sometimes]</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='配置'><span>配置</span></h4><ul><li><p><span>禁用自动更新</span></p><p><span>默认会每次新开 Tab 时检查更新，编辑 </span><code>~/.zshrc</code><span>，取消该行内容的注释：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>zstyle &#39;:omz:update&#39; mode disabled</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure></li></ul><h4 id='插件'><span>插件</span></h4><h5 id='zsh-autosuggestions'><span>zsh-autosuggestions</span></h5><blockquote><p><span>输入命令时可提示自动补全（灰色部分），按键 </span><code>→</code><span> 即可补全</span></p><p><a href='https://github.com/zsh-users/zsh-autosuggestions' target='_blank' class='url'>https://github.com/zsh-users/zsh-autosuggestions</a></p></blockquote><p><span>通过 Brew 安装：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew install zsh-autosuggestions</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>安装完后，根据提示，打开 </span><code>~/.zshrc</code><span> 添加：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4</code></th><th><code>// 以下内容可能 Homebrew 版本不一样，以 brew 的提示为准 // 比如以前是 /usr/local/share/xxx // 可直接用 brew info zsh-autosuggestions 查看 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h5 id='zsh-syntax-highlighting'><span>zsh-syntax-highlighting</span></h5><blockquote><p><span>日常用的命令会高亮显示，命令错误显示红色</span></p><p><a href='https://github.com/zsh-users/zsh-syntax-highlighting' target='_blank' class='url'>https://github.com/zsh-users/zsh-syntax-highlighting</a></p></blockquote><p><span>通过 Brew 安装：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew install zsh-syntax-highlighting</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>安装完后，根据提示，打开 </span><code>~/.zshrc</code><span> 添加：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4</code></th><th><code>// 以下内容可能 Homebrew 版本不一样，以 brew 的提示为准 // 比如以前是 /usr/local/share/xxx // 可直接用 brew info zsh-syntax-highlighting 查看 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h5 id='autojump'><span>autojump</span></h5><blockquote><p><span>实现目录间快速跳转，想去哪个目录直接 </span><code>j + 目录名</code></p><p><a href='https://github.com/wting/autojump' target='_blank' class='url'>https://github.com/wting/autojump</a></p></blockquote><p><span>通过 Brew 安装：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew install autojump</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>安装完后，根据提示，打开 </span><code>~/.zshrc</code><span> 添加：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>[ -f /opt/homebrew/etc/profile.d/autojump.sh ] &amp;&amp; . /opt/homebrew/etc/profile.d/autojump.sh</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='主题'><span>主题</span></h4><p><span>主题列表: </span><a href='https://github.com/ohmyzsh/ohmyzsh/wiki/Themes' target='_blank' class='url'>https://github.com/ohmyzsh/ohmyzsh/wiki/Themes</a></p><p><span>内置主题: </span><code>$ZSH/themes</code><span>（</span><code>$HOME/.oh-my-zsh/themes</code><span>）</span></p><p><span>修改 </span><code>~/.zshrc</code><span> 配置文件：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>ZSH_THEME=&quot;robbyrussell&quot;</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>可在 </span><code>$ZSH/custom/themes</code><span> 下自定义主题。</span></p><h3 id='git'><span>Git</span></h3><h4 id='github-配置-ssh'><span>GitHub 配置 SSH</span></h4><p><span>终端执行命令 </span><code>ssh-keygen</code><span>，一路回车，生成密钥。</span></p><p><span>读取并拷贝密钥文本。</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>cat ~/.ssh/id_rsa.pub</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>打开 </span><a href='https://github.com/settings/ssh/new'><span>GitHub</span></a><span> SSH key 配置页面（</span><code>个人头像 &gt; Settings &gt; Access &gt; SSH and GPG keys &gt; New SSH Key</code><span>），将拷贝的 </span><code>ssh-rsa</code><span> 密钥内容添加到 GitHub。</span></p><h4 id='git-配置-user'><span>Git 配置 user</span></h4><p><span>终端执行命令 </span><code>git config --global -e</code><span> 打开 Git 全局配置文件，修改或添加 </span><code>[user]</code><span> 内容：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3</code></th><th><code>[user]    name = jioby    email = jioby@example.com</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>或者使用命令行方式：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2</code></th><th><code>git config --global user.name &quot;jioby&quot; git config --global user.email &quot;jioby@example.com&quot;</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='设置-lg-别名'><span>设置 lg 别名</span></h4><p><code>git config --global -e</code><span> 打开配置文件：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2</code></th><th><code>[alias]    lg = log --graph --pretty=format:&#39;%Cred%h%Creset | %ad | %Cblue%d%Creset %s %Cgreen(%an)%Creset&#39; --abbrev-commit --date=short</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>或者使用命令行方式：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>git config --global alias.lg &quot;log --graph --pretty=format:&#39;%Cred%h%Creset | %ad | %Cblue%d%Creset %s %Cgreen(%an)%Creset&#39; --abbrev-commit --date=short&quot;</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>接着可使用 </span><code>git lg</code><span> 清爽看日志：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4</code></th><th><code>* 5864617 | 2022-07-31 |  (HEAD -&gt; master, origin/master, origin/HEAD) update license to CC 4.0 (Jioby) * 3d8de53 | 2022-07-31 |  关闭自动更新，解决nsurlsessiond偷偷跑流量 (shockerli) * a0c313e | 2022-07-30 |  vscode install code command (shockerli) * 8ebffa3 | 2022-07-30 |  全新指南，支持macOS 12.x系统 (shockerli)</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='默认分支'><span>默认分支</span></h4><p><span>设置 Git 项目初始化时的默认分支，一般为 </span><code>master</code><span> 或 </span><code>main</code><span>。</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>git config --global init.defaultBranch &lt;name&gt;</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='vim'><span>Vim</span></h3><p><span>在 macOS 上 </span><code>Vim</code><span> 使用较浅，故配置够用即可，不装扩展。直接 </span><code>vim ~/.vimrc</code><span>：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</code></th><th><code>&quot; 推荐设置 colorscheme desert  &quot; 颜色显示方案 syntax on           &quot; 打开语法高亮 set tabstop=4       &quot; TAB 字符的显示宽度 &quot; 以下自选 set nocompatible    &quot; 不兼容 Vi set nu              &quot; 显示行号 set showmatch       &quot; 自动高亮匹配括号 set cursorline      &quot; 高亮光标所在行 set hlsearch        &quot; 高亮搜索匹配结果 set incsearch       &quot; 跟随输入，即时搜索 set ignorecase      &quot; 搜索忽略大小写 set history=1000    &quot; 历史操作记录次数 set autoread        &quot; 文件发生外部变更时提示 set wildmenu        &quot; 命令模式，底部按 Tab 自动补全 set smartindent     &quot; 智能缩进 set expandtab       &quot; 按 Tab 键时，使用空格替代制表符（不影响已有制表符） set shiftwidth=4    &quot; 自动缩进时，缩进长度 set softtabstop=-1  &quot; Tab 转为多少空格，负数表示与shiftwidth一致 set laststatus=2    &quot; 是否显示状态栏, 0:不显示, 1:多窗口时显示, 2:显示 set ruler           &quot; 这状态栏显示光标的当前位置（行数&amp;列数） set wrap            &quot; 自动换行</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><code>colorscheme</code><span> 可选项在 </span><code>/usr/share/vim/vim*/colors</code><span> 目录下，自己选。</span></p><h2 id='系统工具'><span>系统工具</span></h2><h3 id='柠檬清理'><span>柠檬清理</span></h3><blockquote><p><span>腾讯出品</span><strong><span>开源免费</span></strong><span>的清理、卸载、流量、监控、磁盘空间分析、开机启动管理等系统工具。</span></p></blockquote><p><span>官网下载: </span><a href='https://lemon.qq.com/'><span>https://lemon.qq.com</span></a></p><p><span>开源地址: </span><a href='https://github.com/Tencent/lemon-cleaner' target='_blank' class='url'>https://github.com/Tencent/lemon-cleaner</a></p><p><span>最值得使用的功能，莫过于</span><strong><span>清理与当前芯片不同版本的二进制文件</span></strong><span>： </span><a href='https://shockerli.net/post/mac-initialize/media/lemon-clean-rosetta.jpg'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200004288.jpg" referrerpolicy="no-referrer" alt="lemon-clean-rosetta"></a></p><h3 id='输入法'><span>输入法</span></h3><p><span>拼音输入法推荐 </span><code>搜狗输入法</code><span>，简单易用、词库齐全、安装即用。</span></p><p><span>官网下载: </span><a href='https://pinyin.sogou.com/mac/' target='_blank' class='url'>https://pinyin.sogou.com/mac/</a></p><p><span>输入法配置：</span><code>系统偏好设置 &gt; 键盘 &gt; 输入法</code><span>：删除无用的输入法（</span><code>ABC</code><span> 别删）</span></p><p><span>同步原配置：</span><code>偏好设置 &gt; 登录账户 &gt; 同步 &gt; 配置同步 &gt; 下载配置</code></p><h3 id='chrome'><span>Chrome</span></h3><p><span>官网下载: </span><a href='https://www.google.cn/intl/zh-CN/chrome/' target='_blank' class='url'>https://www.google.cn/intl/zh-CN/chrome/</a></p><h4 id='扩展'><span>扩展</span></h4><ul><li><p><a href='http://cn.infinitynewtab.com/'><span>Infinity New Tab Pro</span></a><span>: 新标签页</span></p></li><li><p><a href='https://www.itab.link/'><span>iTab New Tab</span></a><span>: 新标签页</span></p></li><li><p><a href='https://www.baidufe.com/fehelper'><span>FeHelper</span></a><span>: 前端工具集（内含 JSON 美化对比、时间转换、编码转换等十几个小工具）</span></p></li><li><p><a href='https://adblockplus.org/'><span>Adblock Plus</span></a><span>: 广告净化</span></p></li><li><p><a href='http://ksria.com/simpread'><span>SimpRead</span></a><span>: 最佳阅读体验</span></p></li><li><p><a href='https://www.tampermonkey.net/'><span>Tampermonkey</span></a><span>: 油猴脚本管理</span></p></li><li><p><a href='http://www.pullywood.com/ImageAssistant'><span>ImageAssistant</span></a><span>: 图片助手，网页图片提取下载</span></p></li><li><p><a href='https://sourcegraph.com/'><span>SourceGraph</span></a><span>: GitHub 源码浏览神器</span></p></li></ul><h4 id='油猴脚本'><span>油猴脚本</span></h4><p><span>油猴脚本（用户脚本）是一段代码，它们能够优化您的网页浏览体验。安装之后，有些脚本能为网站添加新的功能，有些能使网站的界面更加易用，有些则能隐藏网站上烦人的部分内容。</span></p><p><a href='https://www.tampermonkey.net/'><span>Tampermonkey</span></a><span> 是一个可运行在 Chrome、Firefox、Safari、Edge 等浏览器的用户脚本管理扩展。</span></p><p><a href='https://greasyfork.org/'><span>Greasy Fork</span></a><span> 则是一个油猴脚本免费商店，绝大部分用户脚本都在上面有发布，方便查找、安装使用。</span></p><p><strong><span>安装方式</span></strong><span>：</span></p><ul><li><p><span>从 Greasy Fork 安装 例如 </span><a href='https://greasyfork.org/zh-CN/scripts/378351'><span>CSDNGreener</span></a><span>，打开后会显示安装按钮和界面</span></p></li><li><p><span>从 URL 安装 例如 Bilibili-Evolved 的脚本 URL 是 </span><a href='https://raw.githubusercontent.com/the1812/Bilibili-Evolved/master/dist/bilibili-evolved.user.js' target='_blank' class='url'>https://raw.githubusercontent.com/the1812/Bilibili-Evolved/master/dist/bilibili-evolved.user.js</a><span> 直接在 Tampermonkey </span><code>管理面板 &gt; 实用工具 &gt; 从 URL 安装</code><span>，粘贴脚本 URL，点击安装即可</span></p></li></ul><p><strong><span>推荐脚本</span></strong><span>：</span></p><ul><li><p><a href='https://github.com/the1812/Bilibili-Evolved'><span>Bilibili-Evolved</span></a><span> - B站增强 [</span><a href='https://raw.githubusercontent.com/the1812/Bilibili-Evolved/master/dist/bilibili-evolved.user.js'><span>脚本 URL</span><span>]</span></a></p></li><li><p><a href='https://github.com/adlered/CSDNGreener'><span>CSDNGreener</span></a><span> - CSDN 网站绿化 [</span><a href='https://greasyfork.org/zh-CN/scripts/378351'><span>Greasy Fork</span><span>]</span></a></p></li></ul><h3 id='alfred'><span>Alfred</span></h3><p><span>效率工具神器，可以快速的搜索本地应用、搜索本地文件、执行终端命令、浏览器搜索、打开网址、剪切板管理、翻译、文件管理、音乐控制等，也可以自定义工作流，与其他软件深度配合。</span></p><p><span>软件小巧、性能强悍、高级功能需付费，配置同步可用 iCloud 或 Git 或自己想办法。</span></p><p><span>官网: </span><a href='https://www.alfredapp.com/'><span>https://www.alfredapp.com</span></a></p><h4 id='常用配置'><span>常用配置</span></h4><ul><li><p><code>Features</code><span> &gt; </span><code>Web Search</code><span> &gt; 新增自定义搜索、关闭不需要的搜索</span></p></li><li><p><code>Features</code><span> &gt; </span><code>Default Results</code><span> &gt; </span><code>Setup fallback results</code><span> &gt; 设置使用搜索方式</span></p></li><li><p><code>Features</code><span> &gt; </span><code>Clipboard History</code><span> &gt; 勾选需要剪贴板存储的内容（文本、图片、文件）及保留时间</span></p></li><li><p><code>Appearance</code><span> &gt; 选择 </span><code>Alfred macOS</code><span> 切换主题样式，也可以自定义</span></p></li><li><p><code>Appearance</code><span> &gt; </span><code>Options</code><span> &gt; </span><code>Show Alfred on</code><span>：选择 </span><code>active screen</code><span> 或 </span><code>mouse screen</code><span>，因为默认为 </span><code>default screen</code><span> 即在默认显示屏打开 Alfred 窗口，多屏或多显示器时默认设置不够贴心。</span></p></li></ul><h4 id='workflows'><span>Workflows</span></h4><p><span>可参考下面两个收藏集合内的配置：</span></p><ul><li><p><a href='https://github.com/learn-anything/alfred-workflows'><span>learn-anything/alfred-workflows</span></a></p></li><li><p><a href='https://github.com/zenorocha/alfred-workflows'><span>zenorocha/alfred-workflows</span></a></p></li></ul><h3 id='shell-alias'><span>Shell Alias</span></h3><p><span>以下是常用命令，设置别名，使用更方便。添加到 </span><code>~/.zshrc</code><span>。</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4</code></th><th><code>alias ll=&#39;ls -Alh&#39; alias al=&#39;ls | sed &quot;s:^:</code><span>pwd</span><code>/:&quot;&#39; alias egrep=&#39;ps -ef | grep&#39; alias grep=&#39;grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}&#39;</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='autossh'><span>autossh</span></h3><blockquote><p><span>一个简单管理远程 SSH 账号的脚本工具</span></p></blockquote><ul><li><p><span>安装</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2</code></th><th><code>curl -o /usr/local/bin/autossh https://raw.githubusercontent.com/FeeiCN/autossh/master/autossh chmod +x /usr/local/bin/autossh</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>配置</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2</code></th><th><code>$ cat ~/.autosshrc server_name|192.168.1.110|root|password|port|is_bastion</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='开发软件'><span>开发软件</span></h3><ul><li><p><code>SourceTree</code><span>: Git 可视化（免费）</span></p></li><li><p><code>Navicat Premium</code><span>: 多种数据库管理工具</span></p></li><li><p><code>Sourcetrail</code><span>: 源码阅读神器（</span><a href='https://github.com/CoatiSoftware/Sourcetrail'><span>开源</span></a><span>）</span></p></li><li><p><code>Jetbrains IDE 系列</code></p></li><li><p><code>Postman</code><span>: 接口调试（免费）</span></p></li><li><p><code>htop</code><span>: 增强版 </span><code>top</code><span> 命令（</span><a href='https://github.com/htop-dev/htop'><span>开源</span></a><span>）</span></p></li><li><p><code>Visual Studio Code</code><span>: 强大的编辑器（</span><a href='https://code.visualstudio.com/'><span>开源</span></a><span>）</span></p></li><li><p><code>Proxyman</code><span>: 代理抓包工具（免费）</span></p></li></ul><h4 id='visual-studio-code'><span>Visual Studio Code</span></h4><p><span>官网下载: </span><a href='https://code.visualstudio.com/'><span>https://code.visualstudio.com</span></a></p><h5 id='配置终端-code-快捷打开'><span>配置终端 code 快捷打开</span></h5><p><span>安装 </span><code>code</code><span> 命令，支持在终端快捷打开 </span><code>VSCode</code><span>。</span></p><p><span>快捷键 </span><code>⌘ + ⇧ + P</code><span> 打开命令面板，输入 </span><code>shell</code><span>，选择 </span><code>Shell Command: Install &#39;code&#39; command in PATH</code><span>。</span></p><p><a href='https://shockerli.net/post/mac-initialize/media/install-code-in-path.jpg'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200004772.jpg" referrerpolicy="no-referrer" alt="install-code-command-in-path"></a></p><p><span>然后在终端输入 </span><code>code .</code><span> 或者 </span><code>code [path]</code><span> 直接在 </span><code>VSCode</code><span> 打开文件或目录。</span></p><h5 id='扩展-2'><span>扩展</span></h5><figure class='table-figure'><table><thead><tr><th><span>扩展</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><code>Chinese Language Pack for Visual Studio Code</code></td><td><span>中文语言包</span></td></tr><tr><td><code>IntelliJ IDEA Keybindings</code></td><td><span>IntelliJ IDEA 快捷键绑定</span></td></tr><tr><td><code>Code Runner</code></td><td><span>快捷运行代码文件</span></td></tr><tr><td><code>EditorConfig for VS Code</code></td><td><code>EditorConfig</code><span> 配置扩展，根据配置统一格式化风格</span></td></tr><tr><td><code>PPZ</code></td><td><span>关系型数据库图形管理</span></td></tr></tbody></table></figure><h4 id='sublime-text'><span>Sublime Text</span></h4><p><span>安装 </span><code>Package Control</code><span>: </span><a href='https://packagecontrol.io/installation' target='_blank' class='url'>https://packagecontrol.io/installation</a></p><p><span>中文插件: </span><code>ChineseLocalizations</code></p><ul><li><p><span>配置 </span><code>subl</code><span> 命令行打开文件</span></p></li></ul><blockquote><p><span>在 </span><code>~/.zshrc</code><span> 添加如下配置:</span></p></blockquote><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>alias subl=&quot;&#39;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&#39;&quot;</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>然后就可以使用 </span><code>subl [path]</code><span> 快捷打开文件或目录。</span></p><h3 id='其他软件'><span>其他软件</span></h3><ul><li><p><a href='https://justgetflux.com/'><code>f.lux</code></a><span>：自动调整屏幕色温的护眼程序（免费）</span></p></li><li><p><code>MonitorControl</code><span>：</span><a href='https://github.com/MonitorControl/MonitorControl'><code>开源</code></a><span> 显示器亮度、音量控制，支持外接显示器</span></p></li><li><p><code>万年历</code><span>：日历（免费）</span></p></li><li><p><code>网易有道词典</code><span>：翻译（免费）</span></p></li><li><p><code>iShot</code><span>：截图、长截图、录屏（基础免费）</span></p></li><li><p><code>嘀嗒清单</code><span>：时间与日程管理（基础免费）</span></p></li><li><p><code>MWeb</code><span> / </span><code>Typora</code><span> / </span><code>FSNotes</code><span>：Markdown 笔记管理</span></p></li><li><p><code>FastZip/MacZip</code><span>：解压缩（免费）</span></p></li><li><p><code>NTFS Disk by Omi</code><span>：免费的 NTFS 磁盘读写管理器（支持 M1）</span></p></li><li><p><code>OmniGraffle Pro</code><span>：图表/流程图等矢量图绘制</span></p></li><li><p><code>Reeder</code><span>：RSS 订阅</span></p></li><li><p><code>IINA</code><span>：</span><a href='https://github.com/iina/iina'><code>开源</code></a><span>音视频播放器</span></p></li><li><p><code>Beyond Compare</code><span>：文件/文本对比</span></p></li><li><p><code>Rectangle</code><span> - </span><a href='https://github.com/rxhanson/Rectangle'><code>开源</code></a><span>窗口整理/分屏</span></p></li><li><p><code>uTools</code><span>：类似 Alfred 的效率工具，跨平台（免费）</span></p></li><li><p><code>Brave Browser</code><span>：基于 </span><code>Chromium</code><span> 的</span><a href='https://github.com/brave/brave-browser'><code>开源</code></a><span>浏览器，号称能更好的保护隐私</span></p></li><li><p><code>Bitwarden</code><span>：</span><a href='https://github.com/bitwarden/clients'><code>开源</code></a><span> 密码管理器</span></p></li><li><p><code>Maccy</code><span>：</span><a href='https://github.com/p0deje/Maccy'><code>开源</code></a><span>剪切板管理工具</span></p></li><li><p><a href='https://www.better365.cn/FlyKey.html'><code>FlyKey</code></a><span> - 应用快捷键展示（免费）</span></p></li><li><p><code>Parallels Desktop</code><span> - 虚拟机</span></p></li><li><p><code>AlDente</code><span> - 电源管理，让电池更耐用（基础免费）</span></p></li><li><p><a href='https://github.com/warpdotdev/Warp'><span>warp</span></a><span> - 号称下一代终端神器（免费）</span></p></li><li><p><code>Bartender</code><span> - 菜单栏图标管理</span></p></li></ul><p><span>还有很多优秀软件没有推荐，后续单开一个专门介绍。</span></p><h2 id='开发环境'><span>开发环境</span></h2><h3 id='java'><span>Java</span></h3><h4 id='jdk'><span>JDK</span></h4><ul><li><p><code>JVM</code><span>：</span><code>Java Virtual Machine</code></p></li><li><p><code>JRE</code><span>：</span><code>Java Runtime Environment</code></p></li><li><p><code>JDK</code><span>：</span><code>Java SE Development Kit</code></p></li><li><p><code>SDK</code><span>：</span><code>Software Development Kit</code></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5 6 7 8 9 10 11 12 13</code></th><th><code>┌─    ┌──────────────────────────────────┐  │     │     Compiler, debugger, etc.     │  │     └──────────────────────────────────┘ JDK ┌─ ┌──────────────────────────────────┐  │  │  │                                  │  │ JRE │      JVM + Runtime Library       │  │  │  │                                  │  └─ └─ └──────────────────────────────────┘        ┌───────┐┌───────┐┌───────┐┌───────┐        │Windows││ Linux ││ macOS ││others │        └───────┘└───────┘└───────┘└───────┘ 图源自：https://www.liaoxuefeng.com/wiki/1252599548343744/1255876875896416</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h5 id='oraclejdk'><span>OracleJDK</span></h5><blockquote><p><span>仅 JDK 17 及以上版本才支持 Apple Silicon。</span></p><p><span>JDK 8 需登录 Oracle 账户才能下载，且没有 ARM 版本。（虽然 x64 版本也可以安装使用，但不清楚是否存在问题）</span></p><p><span>不是很推荐使用 OracleJDK，因为其协议已改为 </span><a href='https://www.oracle.com/java/technologies/javase/jdk-faqs.html'><span>OTN</span></a></p></blockquote><p><span>下载地址: </span><a href='https://www.oracle.com/java/technologies/downloads' target='_blank' class='url'>https://www.oracle.com/java/technologies/downloads</a></p><p><span>根据 CPU 选择包：</span></p><ul><li><p><strong><span>Intel</span></strong><span>: </span><code>x64 DMG Installer</code></p></li><li><p><strong><span>Apple Silicon</span></strong><span>: </span><code>Arm 64 DMG Installer</code></p></li></ul><p><span>下载安装，然后验证：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4</code></th><th><code>➜  ~ java -version java version &quot;1.8.0_311&quot; Java(TM) SE Runtime Environment (build 1.8.0_311-b11) Java HotSpot(TM) 64-Bit Server VM (build 25.311-b11, mixed mode)</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>配置 </span><code>JAVA_HOME</code><span> 环境变量：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_311.jdk/Contents/Home</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h5 id='openjdk'><span>OpenJDK</span></h5><p><span>OpenJDK 是 Sun 在 2006 年开源的 Java SE 免费开源版本，采用 </span><code>GPLv2+CE</code><span> 许可协议。该项目由 Oracle 主导，IBM、红帽、微软等均有参与。</span></p><p><span>官网: </span><a href='https://openjdk.org/'><span>https://openjdk.org</span></a></p><ul><li><p><span>Homebrew 安装</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5 6 7 8 9</code></th><th><code>// 搜索 brew search openjdk // 安装 // 苹果芯片不一定支持老版本，失败则可考虑安装 Zulu 版本 brew install openjdk@8 // 配置 sudo ln -sfn /opt/homebrew/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.jdk</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>Zulu 安装</span></p></li></ul><p><span>下载对应版本: </span><a href='https://www.azul.com/downloads/?version=java-8-lts&amp;os=macos&amp;architecture=arm-64-bit&amp;package=jdk' target='_blank' class='url'>https://www.azul.com/downloads/?version=java-8-lts&os=macos&architecture=arm-64-bit&package=jdk</a></p><p><span>对应的安装教程: </span><a href='https://docs.azul.com/core/zulu-openjdk/install/macos' target='_blank' class='url'>https://docs.azul.com/core/zulu-openjdk/install/macos</a></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4</code></th><th><code>➜ java -version openjdk version &quot;1.8.0_342&quot; OpenJDK Runtime Environment (Zulu 8.64.0.15-CA-macos-aarch64) (build 1.8.0_342-b07) OpenJDK 64-Bit Server VM (Zulu 8.64.0.15-CA-macos-aarch64) (build 25.342-b07, mixed mode)</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>对应的 </span><code>JAVA_HOME</code><span> 在 </span><code>/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home</code></p><h5 id='sdkman'><span>SDKMAN</span></h5><p><span>一个专门安装、管理 SKD 的跨平台 Shell 脚本软件，支持几乎所有厂商的 JDK 及常用 SDK。</span></p><p><span>官网及教程: </span><a href='https://sdkman.io/'><span>https://sdkman.io</span></a></p><p><span>以 JDK 为例，其他 SDK 类似。</span></p><ul><li><p><span>安装 SDKMAN</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2</code></th><th><code>curl -s &quot;https://get.sdkman.io&quot; | bash source &quot;$HOME/.sdkman/bin/sdkman-init.sh&quot;</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>安装目录 </span><code>$HOME/.sdkman</code></p><ul><li><p><span>查看支持的 JDK 版本列表</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20</code></th><th><code>================================================================================ Available Java Versions for macOS ARM 64bit ================================================================================ Vendor        | Use | Version      | Dist    | Status     | Identifier -------------------------------------------------------------------------------- Java.net      |     | 20.ea.9      | open    |            | 20.ea.9-open               |     | 20.ea.8      | open    |            | 20.ea.8-open               |     | 19.ea.34     | open    |            | 19.ea.34-open               |     | 19.ea.33     | open    |            | 19.ea.33-open               |     | 18.0.2       | open    |            | 18.0.2-open               |     | 18.0.1.1     | open    |            | 18.0.1.1-open Microsoft     |     | 17.0.4       | ms      |            | 17.0.4-ms               |     | 17.0.3       | ms      |            | 17.0.3-ms               |     | 11.0.16      | ms      |            | 11.0.16-ms               |     | 11.0.15      | ms      |            | 11.0.15-ms Oracle        |     | 18.0.2       | oracle  |            | 18.0.2-oracle               |     | 18.0.1       | oracle  |            | 18.0.1-oracle               |     | 17.0.4       | oracle  |            | 17.0.4-oracle               |     | 17.0.3       | oracle  |            | 17.0.3-oracle</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>安装 JDK</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5</code></th><th><code>// OracleJDK sdk install java x.y.z-oracle // OpenJDK sdk install java x.y.z-open</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>查看切换默认 JDK 版本</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5</code></th><th><code>// 查看当前版本 sdk current java // 切换默认版本 sdk default java x.y.z-open</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h5 id='idea'><span>IDEA</span></h5><p><code>IntelliJ IDEA</code><span> 提供了 JDK 管理功能，可添加已存在的 JDK，也可代为下载安装所需 JDK。</span></p><p><span>操作步骤：</span><code>MenuBar</code><span> → </span><code>File</code><span> → </span><code>Project Structure...</code><span>(</span><code>⌘ + ;</code><span>) → </span><code>SDKs</code><span> → </span><code>+</code><span> → </span><code>Download JDK</code></p><p><a href='https://shockerli.net/post/mac-initialize/media/idea-jdk-download.jpg'><img src="https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200004957.jpg" referrerpolicy="no-referrer" alt="idea-jdk-download"></a></p><h5 id='javahome'><span>JAVA_HOME</span></h5><p><span>查看已安装版本的 </span><code>JAVA_HOME</code><span>：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4</code></th><th><code>/usr/libexec/java_home /Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home /Library/Java/JavaVirtualMachines/zulu-11.jdk/Contents/Home</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>查看指定版本的 </span><code>JAVA_HOME</code><span>：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3</code></th><th><code>/usr/libexec/java_home -v8 /Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>单个版本配置（</span><code>~/.zshrc</code><span>）：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>export JAVA_HOME=$(/usr/libexec/java_home -v8)</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>多版本配置：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5 6 7 8 9 10</code></th><th><code># Java Home export JAVA_HOME=$(/usr/libexec/java_home -v11) export JAVA_8_HOME=$(/usr/libexec/java_home -v8) export JAVA_11_HOME=$(/usr/libexec/java_home -v11) alias java8=&#39;export JAVA_HOME=$JAVA_8_HOME&#39; alias java11=&#39;export JAVA_HOME=$JAVA_11_HOME&#39; # 默认为 Java 8 java8</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='maven'><span>Maven</span></h4><ul><li><p><span>安装</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew install maven</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><blockquote><p><span>如果只使用 </span><code>IDEA</code><span>，可无需安装，直接使用 IDE 内置的 Maven 即可。</span></p></blockquote><ul><li><p><span>国内镜像配置</span></p></li></ul><p><span>以 </span><a href='https://developer.aliyun.com/mvn/guide'><span>阿里云 Maven</span></a><span> 为例。打开或创建配置文件：</span><code>$HOME/.m2/settings.xml</code><span>，并修改：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5 6 7 8 9 10 11 12 13 14</code></th><th><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;settings xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;          xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;          xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&gt;    &lt;mirrors&gt;        &lt;mirror&gt;            &lt;!-- 文档: https://developer.aliyun.com/mvn/guide --&gt;            &lt;id&gt;aliyunmaven&lt;/id&gt;            &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;            &lt;name&gt;阿里云公共仓库&lt;/name&gt;            &lt;url&gt;https://maven.aliyun.com/repository/public&lt;/url&gt;        &lt;/mirror&gt;    &lt;/mirrors&gt; &lt;/settings&gt;</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h3 id='php'><span>PHP</span></h3><h4 id='安装'><span>安装</span></h4><ul><li><p><span>第三方源</span></p></li></ul><blockquote><p><span>由于官方维护的 PHP 版本都是最新的几个，对于比较老的版本，无法直接安装，如果需要可 Tap 第三方源</span></p></blockquote><p><span>强烈推荐: </span><a href='https://github.com/shivammathur/homebrew-php'><span>shivammathur/php</span></a></p><blockquote><p><span>添加 Tap</span></p></blockquote><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew tap shivammathur/php</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>安装 PHP</span></p></li></ul><blockquote><p><span>此处示例安装 </span><code>PHP 7.4</code></p></blockquote><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew install php@7.4</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><blockquote><p><span>将此版本替换为命令行默认版本</span></p></blockquote><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew link --overwrite --force php@7.4</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><blockquote><p><span>添加到 PATH</span></p></blockquote><figure class='table-figure'><table><thead><tr><th><code>1 2</code></th><th><code>echo &#39;export PATH=&quot;/opt/homebrew/opt/php@7.4/bin:$PATH&quot;&#39; &gt;&gt; ~/.zshrc echo &#39;export PATH=&quot;/opt/homebrew/opt/php@7.4/sbin:$PATH&quot;&#39; &gt;&gt; ~/.zshrc</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>配置</span></p></li></ul><blockquote><p><span>打开配置文件修改默认时区</span></p></blockquote><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>date.timezone = PRC</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='composer'><span>Composer</span></h4><ul><li><p><span>安装</span></p></li></ul><p><span>通过 brew 安装：</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew install composer</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>或者手动安装：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4</code></th><th><code>curl -o composer https://getcomposer.org/download/latest-stable/composer.phar chmod +x composer [ ! -d &quot;/usr/local/bin&quot; ] &amp;&amp; sudo mkdir /usr/local/bin sudo mv composer /usr/local/bin</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>降级</span></p></li></ul><p><span>如果一些老项目不支持 Composer V2，那么需要回退到 V1 版本</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>composer self-update --1</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>镜像</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5</code></th><th><code>// 设置镜像 composer config -g repo.packagist composer [mirrors-url] // 取消镜像 composer config -g --unset repos.packagist</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5 6 7 8 9</code></th><th><code>// 阿里云 官网: https://developer.aliyun.com/composer 镜像: https://mirrors.aliyun.com/composer/ // 腾讯云 // 出现过composer.lock文件中dist.reference与dist.url下载不一致的情况 // 即reference是最新commit，但镜像url下载的包却不非最新 官网: https://mirrors.cloud.tencent.com/help/composer.html 镜像: https://mirrors.cloud.tencent.com/composer/</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>其他镜像不是很稳定、或不是很全（一些下载量小的会 </span><code>404</code><span>），如有问题，轮换着试试。</span></p><h3 id='go'><span>Go</span></h3><h4 id='安装-2'><span>安装</span></h4><p><span>安装最新版本</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew install go</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>或者指定版本</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew install go@1.13</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>非最新版本，需要建立个链接，这样才能用到 Go 命令</span></p><figure class='table-figure'><table><thead><tr><th><code>1</code></th><th><code>brew link --overwrite --force go@1.13</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='配置-2'><span>配置</span></h4><ul><li><p><span>环境变量</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><code>1 2 3 4 5</code></th><th><code>export GO111MODULE=on export GOPATH=/Users/jioby/gowork export PATH=&quot;$GOPATH/bin:$PATH&quot; export GOPROXY=https://goproxy.cn,https://goproxy.io,direct export GOPRIVATE=*.your-private-git.com</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><ul><li><p><span>私有仓库</span></p></li></ul><p><span>终端运行命令 </span><code>git config --global -e</code><span>，添加如下类似配置并保持：</span></p><figure class='table-figure'><table><thead><tr><th><code>1 2</code></th><th><code>[url &quot;ssh://git@git.example.com:8182/&quot;]        insteadOf = https://git.example.com/</code></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><span>文章作者 Jioby</span></p><p><span>发布日期 2021-11-22</span></p><p><span>上次更新 2023-03-01</span></p><p><span>许可协议 </span><a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh'><span>CC BY-NC-ND 4.0</span></a><span>（请看</span><a href='https://shockerli.net/reprint-protocol'><span>转载要求</span></a><span>）</span></p><p><span>原文链接 </span><a href='https://shockerli.net/post/mac-initialize/' target='_blank' class='url'>https://shockerli.net/post/mac-initialize/</a></p></div></div>
+</body>
+</html>

@@ -268,4 +268,4 @@ for name in Operations*; do mv "${name}" "Op${name#Operations}"; done
 
 #删除下列文件名中的"source-wuxi" 并且替换成"source-xibei"
 
-![Linux 批量修改文件名_Linux 批量修改文件名](https://s2.51cto.com/images/blog/202208/11110726_62f4726e63fc049996.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk=/format,webp/resize,m_fixed,w_1184)
+![Linux 批量修改文件名_Linux 批量修改文件名](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200000494)

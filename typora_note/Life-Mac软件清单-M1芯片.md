@@ -104,7 +104,7 @@
     ```
 
     >   -   iTerm2 需要更换为powerline字体（可选Snazzy主题），并选中 use built-in powerline glyphs，和 Use ligatures等，[可参考此文章](https://blog.csdn.net/hiumanChung/article/details/111225497)
-    >       [![iTerm2设置备份](https://ghost.oss.sherlocky.com/halo/iTerm2%E8%AE%BE%E7%BD%AE%E5%A4%87%E4%BB%BD.png-halo)](https://ghost.oss.sherlocky.com/halo/iTerm2设置备份.png-halo)
+    >       [![iTerm2设置备份](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192318704.png-halo)](https://ghost.oss.sherlocky.com/halo/iTerm2设置备份.png-halo)
     >   -   [10 个 Terminal 主题，让你的 macOS 终端更好看](https://sspai.com/post/53008)
     >   -   [iTerm Color Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
 

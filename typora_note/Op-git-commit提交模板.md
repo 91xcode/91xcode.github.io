@@ -100,11 +100,11 @@ Changes to be committed:
 
 此时，Git会自动加载模板文件的内容到临时的编辑器文件中，如下图所示：
 
-![img](https://hellogitlab.com/img/20220320142253.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200000471.png)
 
 此时，我们就可以参考模板说明修改我们的提交日志了，如我修改完成后，日志信息如下：
 
-![img](https://hellogitlab.com/img/20220320142751.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312200000991.png)
 
 ```bash
 [mzh@MacBookPro git (master ✗)]$ git commit
