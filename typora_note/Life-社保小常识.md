@@ -8,13 +8,13 @@
 
 **人事解答**
 
-![img](https://rsc.bwu.edu.cn/__local/1/48/F0/336F92DCC51B72913B4105EA172_E88AE5BB_B212.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192303828.png)
 
 ## **医保个人账户规模？**
 
 **人事解答**
 
-![img](https://rsc.bwu.edu.cn/__local/D/90/99/F6B0652ECD5B7D20108D23F218C_E95623BC_6481.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192303802.png)
 
 ## **基本医疗保险支付范围？**
 
@@ -78,7 +78,7 @@
 
 **人事解答**
 
-![img](https://rsc.bwu.edu.cn/__local/7/25/92/37F51C49590AC974CC61E405671_7C7CA715_67A5.png)
+![img](https://testingcf.jsdelivr.net/gh/91xcode/typora_img/img/typora/202312192303176.png)
 
 以上就是社保小常识上期的内容，下一期我们将继续为大家介绍社保相关知识。
 
