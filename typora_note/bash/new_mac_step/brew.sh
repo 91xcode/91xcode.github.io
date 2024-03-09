@@ -39,11 +39,21 @@ brew install --cask phpstorm
 brew install --cask pycharm
 brew install --cask iina
 brew install --cask vlc
+brew install --cask navicat-premium
+brew install --cask typora
 brew install zsh zsh-completions
 brew install ripgrep
-brew install docker
-brew install nginx
-brew install php@7.2
+brew install colima
 brew install archey
+brew install htop
+brew install redis
+# brew install nginx
+# brew install php@7.2
+
 
 brew cleanup
+
+# 破解版的其他软件 可以登录 https://xmac.app/
+# PDF_Office_Max_8.0
+# Microsoft Office
+
