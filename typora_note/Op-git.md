@@ -130,6 +130,29 @@ git branch -a
 然后再次执行git branch -a就看不到啦
 ```
 
+### git log查询日志
+
+```
+使用命令git log查询日志，包含了多种快捷查询方式
+
+    最简单查询
+
+    $ git log
+
+    单行输出
+
+    $ git log --oneline
+
+    指定关键字查询
+
+    $ git log --grep 关键字
+
+    指定作者查询
+
+    $ git log --author 作者
+
+```
+
 
 
 
