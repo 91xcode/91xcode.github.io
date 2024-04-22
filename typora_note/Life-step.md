@@ -54,11 +54,13 @@ brew upgrade
 
 #runcat、typora、postman、wps
 
+
 #常用的工具包安装
 brew install --cask iterm2
 brew install --cask firefox
 brew install --cask google-chrome
 brew install --cask feishu
+brew install --cask postman
 brew install --cask wechat
 brew install --cask evernote
 brew install --cask keka
@@ -69,20 +71,25 @@ brew install --cask phpstorm
 brew install --cask pycharm
 brew install --cask iina
 brew install --cask vlc
+brew install --cask navicat-premium
+brew install --cask typora
 brew install --cask snipaste
-brew install --cask postman
 brew install zsh zsh-completions
-brew install nginx
+brew install ripgrep
+brew install colima
 brew install archey
 brew install htop
 brew install redis
-brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
-brew install ripgrep-bin
-brew install colima
-brew install docker docker-compose 
+# brew install nginx
+# brew install php@7.2
 
 
 brew cleanup
+
+# 破解版的其他软件 可以登录 https://xmac.app/
+# PDF_Office_Max_8.0
+# Microsoft Office
+# Little_Snitch_5.7.3.dmg 
 ```
 
 ### 2.安装oh-my-zsh

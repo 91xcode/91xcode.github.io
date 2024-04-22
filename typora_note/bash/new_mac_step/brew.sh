@@ -56,4 +56,5 @@ brew cleanup
 # 破解版的其他软件 可以登录 https://xmac.app/
 # PDF_Office_Max_8.0
 # Microsoft Office
+# Little_Snitch_5.7.3.dmg 
 
