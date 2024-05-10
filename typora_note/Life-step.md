@@ -82,6 +82,7 @@ brew install htop
 brew install redis
 # brew install nginx
 # brew install php@7.2
+brew install --cask shottr
 
 
 brew cleanup
@@ -90,6 +91,8 @@ brew cleanup
 # PDF_Office_Max_8.0
 # Microsoft Office
 # Little_Snitch_5.7.3.dmg 
+# Bartender 5
+# shottr
 ```
 
 ### 2.安装oh-my-zsh
