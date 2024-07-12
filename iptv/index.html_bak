@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="applicable-device" content="mobile">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>网络电视</title>
+    <meta name="description" content="电视直播网提供网络电视直播，网络电视在线观看,更多网络电视尽在电视直播网!">
+    <meta name="keywords" content="电视直播，网络电视,网络电视直播,网络电视在线直播">
+    <link rel="shortcut icon" href="https://qnoss.lanlanlife.com/07c0549dbae43a31c377e4b06e145b08_128x128.png" />
+    <link href="https://cdn.staticfile.org/video.js/7.3.0/video-js.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://testingcf.jsdelivr.net/gh/91xcode/static@master/online_iptv/static/style.css" />
+
+
+</head>
+
+<body>
+    <header class="header">
+        <a class="top-logo icon" href=""><span>电视直播</span></a>
+    </header>
+    <div class="wrap">
+        <div class="content">
+            <div class="big_title"><span></span>
+                <h2>央视频道</h2>
+            </div>
+            <div class="list-box J-medal">
+                <ul class="nav-type" id="cctv">
+
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div class="big_title"><span></span>
+                <h2>卫视频道</h2>
+            </div>
+            <div class="list-box J-medal">
+                <ul class="nav-type" id="local">
+
+                    <div class="clear"></div>
+                </ul>
+            </div>
+            <div class="big_title"><span></span>
+                <h2>其他频道</h2>
+            </div>
+            <div class="list-box J-medal">
+                <ul class="nav-type" id="other">
+
+                    <div class="clear"></div>
+                </ul>
+            </div>
+
+            <div class="footer_content">
+                <span style="CLEAR: both; MARGIN-: 10px; FONT-SIZE: 14px; COLOR: #666666; LINE-HEIGHT: 20px; FONT-FAMILY: arial; HEIGHT: 10px; TEXT-ALIGN: center">
+                    <a>友情链接：</a><br>
+                    <br><a href="https://app.movie/">App影院</a>&nbsp;&nbsp;&nbsp;
+                    <a href="https://www.wenyamh.com/">全网漫画</a>&nbsp;&nbsp;&nbsp;
+                    <a href="https://dingdian.org.cn/">顶点小说</a>&nbsp;&nbsp;&nbsp;
+                </span>
+            </div>
+            <div class="footer_content">
+                <center><span style="CLEAR: both; MARGIN-: 10px; FONT-SIZE: 14px; COLOR: #666666; LINE-HEIGHT: 20px; FONT-FAMILY: arial; HEIGHT: 10px; TEXT-ALIGN: center">
+                        <a id="powered_by_wenyateam">Powered by 91xcode</a>
+                        <br>&copy;2021-2022 All Rights Reserved &nbsp; <br>
+                    </span></center>
+            </div>
+            <div id="dplayer1">
+                <div id="dplayer" controls muted style="width:100%;height:100%;" playsinline webkit-playsinline></div>
+                <!-- <video id="dplayer" controls muted style="width:100%;height:100%;" playsinline webkit-playsinline></video> -->
+            </div>
+            <!--http://1252093142.vod2.myqcloud.com/4704461fvodcq1252093142/48c8a9475285890781000441992/playlist.m3u8-->
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+            <script type="text/javascript" src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
+            <link rel="stylesheet" href="https://testingcf.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
+            <script type="text/javascript" src="https://testingcf.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+            <script type="text/javascript" src="https://testingcf.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+            <script>
+                $.ajax({
+                    // 远程地址
+                    //url: "https://testingcf.jsdelivr.net/gh/91xcode/static@master/online_iptv/m3u8/tv_2022.json",
+                    // 本地地址
+                    url: "http://docker.php7.com/c.php",
+                    type: "get",
+                    dataType: "text",
+                    success: function(data, textStatus, jqxhr) {
+                        // console.log(data)
+                        data_json = $.parseJSON(data);
+                        console.log(data_json["cctv"])
+                        makeTbale(data_json)
+                    }
+                })
+
+
+                
+
+                function makeTbale(arrLi) {
+                    var _html = ""
+                    for (var i in arrLi["cctv"]) {
+                        url = arrLi["cctv"][i]["url"]
+                        _html += ' <li class="channel"><div class="channel-link-wrap"><a class="channel-link" url="' + url + '">' + arrLi["cctv"][i]["title"] + '</a></div></li>'
+                    }
+                    console.log(_html)
+                    document.getElementById("cctv").innerHTML = _html
+
+                    var _html_local = ""
+                    for (var i in arrLi["local"]) {
+                        url = arrLi["local"][i]["url"]
+                        _html_local += ' <li class="channel"><div class="channel-link-wrap"><a class="channel-link" url="' + url + '">' + arrLi["local"][i]["title"] + '</a></div></li>'
+                    }
+                    document.getElementById("local").innerHTML = _html_local
+
+                    var _html_other = ""
+                    for (var i in arrLi["other"]) {
+                        url = arrLi["other"][i]["url"]
+                        _html_other += ' <li class="channel"><div class="channel-link-wrap"><a class="channel-link" url="' + url + '">' + arrLi["other"][i]["title"] + '</a></div></li>'
+                    }
+                    document.getElementById("other").innerHTML = _html_other
+                }
+
+                  $(document).ready(function () {
+            $(".content").on("click", ".channel-link", function () {
+                var $this = $(this);
+                var n = $this.attr('url');
+
+                layer.open({
+                    type: 1,
+                    title: "播放窗口",
+                    maxmin: true,
+                    area: ["80%", "80%"],
+                    shade: 0.4,
+                    content: $("#dplayer1"),
+                    scrollbar: false,
+                    success: function (layero) {
+                        setTimeout(function () {
+                            $(layero).removeClass('layer-anim');
+                        }, 0);
+                    },
+                    cancel: function () {
+                        if (window.dp) {
+                            window.dp.destroy();
+                        }
+                    }
+                });
+
+                const video = document.createElement('video');
+                video.id = 'video';
+                video.controls = true;
+
+                const dpContainer = document.getElementById('dplayer');
+                dpContainer.innerHTML = '';
+                dpContainer.appendChild(video);
+
+                function isSafari() {
+                    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                }
+
+                // Check if the browser supports HLS.js or native HLS
+                if (Hls.isSupported() && !isSafari()) {
+                    console.log('Using HLS.js');
+                    const hls = new Hls();
+                    hls.loadSource(n);
+                    hls.attachMedia(video);
+                    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                        video.play().then(() => {
+                            console.log('Video is playing');
+                        }).catch(error => {
+                            console.error('Autoplay was prevented:', error);
+                            video.muted = true;
+                            video.play();
+                        });
+                    });
+
+                    hls.on(Hls.Events.ERROR, (event, data) => {
+                        console.error('HLS.js error:', data);
+                    });
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    console.log('Using native HLS');
+                    video.src = n;
+                    video.addEventListener('loadedmetadata', () => {
+                        video.play().catch(error => {
+                            console.error('Autoplay was prevented:', error);
+                            video.muted = true;
+                            video.play();
+                        });
+                    });
+                } else {
+                    console.error('HLS is not supported in this browser.');
+                }
+
+                // Handle autoplay restrictions
+                video.addEventListener('play', function () {
+                    if (video.muted) {
+                        video.muted = false;
+                    }
+                });
+
+                window.dp = {
+                    destroy: function () {
+                        if (video && video.parentNode) {
+                            video.parentNode.removeChild(video);
+                        }
+                    }
+                };
+            });
+        });
+
+    /*******************************************************
+     *
+     * 函数名称：DetectBrowser()()
+     * 功    能：自动判断当前使用浏览器
+     * 说 明：自动判断浏览器引擎，返回结果为当前浏览器名称
+     *
+     **********************************************************/
+    function DetectBrowser() {
+        var Sys = {};
+        var ua = navigator.userAgent.toLowerCase();
+        var s;
+        (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1]:
+            (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+            (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+            (s = ua.match(/rv:([\d.]+)/)) ? Sys.ie = s[1] :
+            (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+            (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+        var browser = "Unknown";
+        if (Sys.ie) { browser = "IE"; }
+        if (Sys.firefox) { browser = "Firefox"; }
+        if (Sys.chrome) { browser = "Chrome"; }
+        if (Sys.opera) { browser = "Opera"; }
+        if (Sys.safari) { browser = "Safari"; }
+        return browser;
+    }
+    </script>
+</body>
+
+</html>

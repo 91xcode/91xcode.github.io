@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-
+<html lang="zh-CN">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="applicable-device" content="mobile">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>网络电视</title>
-    <META name="description" content="电视直播网提供网络电视直播，网络电视在线观看,更多网络电视尽在电视直播网!">
-    <META name="keywords" content="电视直播，网络电视,网络电视直播,网络电视在线直播">
-    <link rel="shortcut icon" href="https://qnoss.lanlanlife.com/07c0549dbae43a31c377e4b06e145b08_128x128.png" />
-    <link href="https://cdn.staticfile.org/video.js/7.3.0/video-js.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://testingcf.jsdelivr.net/gh/91xcode/static@master/online_iptv/static/style.css" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/layer/2.3/skin/layer.css">
+    <link rel="stylesheet" href="https://testingcf.jsdelivr.net/gh/91xcode/static@master/online_iptv/static/style.css">
 </head>
-
 <body>
     <header class="header">
-        <a class="top-logo icon" href=""><span>电视直播</span></a>
+        <a class="top-logo icon" href="#"><span>电视直播</span></a>
     </header>
     <div class="wrap">
         <div class="content">
@@ -22,436 +17,170 @@
                 <h2>央视频道</h2>
             </div>
             <div class="list-box J-medal">
-                <ul class="nav-type" id="cctv">
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8');">CCTV1-综合</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv2.m3u8');">CCTV2-财经</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8');">CCTV3-综艺</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv4.m3u8');">CCTV4-国际</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('https://cctv5alih5c.v.myalicdn.com/live/cctv5_2/index.m3u8?contentid=2820180516001&uid=default');">CCTV5-体育</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8');">CCTV6-电影</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv7.m3u8');">CCTV7-军农</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv8hd.m3u8');">CCTV8-剧集</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv9.m3u8');">CCTV9-记录</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv10.m3u8');">CCTV10科教</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv11.m3u8');">CCTV11戏曲</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv12.m3u8');">CCTV12社会</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv13.m3u8');">CCTV13新闻</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv14.m3u8');">CCTV14少儿</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv15.m3u8');">CCTV15音乐</a></div>
-                    </li>
-                    <div class="clear"></div>
-                </ul>
+                <ul class="nav-type" id="cctv"></ul>
+                <div class="clear"></div>
             </div>
             <div class="big_title"><span></span>
                 <h2>卫视频道</h2>
             </div>
             <div class="list-box J-medal">
-                <ul class="nav-type" id="local">
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/hunanhd.m3u8');">湖南卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/dfhd.m3u8');">东方卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/zjhd.m3u8');">浙江卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/jshd.m3u8');">江苏卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/btv1hd.m3u8');">北京卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/ahhd.m3u8');">安徽卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/lnhd.m3u8');">辽宁卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/gdhd.m3u8');">广东卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/sdhd.m3u8');">山东卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/tjhd.m3u8');">天津卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/szhd.m3u8');">深圳卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cqhd.m3u8');">重庆卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/hbhd.m3u8');">湖北卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/jxtv.m3u8');">江西卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/dntv.m3u8');">福建卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/sctv.m3u8');">四川卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/gxtv.m3u8');">广西卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/hntv.m3u8');">河南卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/sxtv.m3u8');">陕西卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/jltv.m3u8');">吉林卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/hebtv.m3u8');">河北卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/sxrtv.m3u8');">山西卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/xmtv.m3u8');">厦门卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/yntv.m3u8');">云南卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/gztv.m3u8');">贵州卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/gstv.m3u8');">甘肃卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/nxtv.m3u8');">宁夏卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/qhtv.m3u8');">青海卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/xjtv.m3u8');">新疆卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/xztv.m3u8');">西藏卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/dftv.m3u8');">东方卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/bttv.m3u8');">兵团卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/lytv.m3u8');">旅游卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/nmtv.m3u8');">内蒙古卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/hljhd.m3u8');">黑龙江卫视</a></div>
-                    </li>
-                    <div class="clear"></div>
-                </ul>
+                <ul class="nav-type" id="local"></ul>
+                <div class="clear"></div>
             </div>
             <div class="big_title"><span></span>
                 <h2>其他频道</h2>
             </div>
             <div class="list-box J-medal">
-                <ul class="nav-type" id="other">
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/chchd.m3u8');">CHC电影</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/btv2hd.m3u8');">北京文艺</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/btv11hd.m3u8');">北京纪实</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/btv3.m3u8');">北京科教</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/btv4.m3u8');">北京影视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/btv5.m3u8');">北京财经</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/btv7.m3u8');">北京生活</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/btv8.m3u8');">北京青年</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/btv9.m3u8');">北京新闻</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/btv10.m3u8');">北京少儿</a></div>
-                    </li>
-                    <div class="clear"></div>
-                </ul>
+                <ul class="nav-type" id="other"></ul>
+                <div class="clear"></div>
             </div>
-<!--             <div class="big_title"><span></span>
-                <h2>体育频道</h2>
+
+            <div class="footer_content">
+                <span style="clear: both; margin: 10px; font-size: 14px; color: #666666; line-height: 20px; font-family: Arial; height: 10px; text-align: center">
+                    <a>友情链接：</a><br>
+                    <br><a href="https://app.movie/">App影院</a>&nbsp;&nbsp;&nbsp;
+                    <a href="https://www.wenyamh.com/">全网漫画</a>&nbsp;&nbsp;&nbsp;
+                    <a href="https://dingdian.org.cn/">顶点小说</a>&nbsp;&nbsp;&nbsp;
+                </span>
             </div>
-            <div class="list-box J-medal">
-                <ul class="nav-type">
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8');">CCTV5+体育</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://183.207.249.9/PLTV/2/224/3221226045/1.m3u8');">劲爆体育</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://klglive.imgo.tv/nn_live/nn_x64/aWQ9S0xDRE1QUDM2MCZjZG5leF9pZD1rbGNkLWxpdmU,/XFPYMPP360.m3u8');">先锋乒羽</a></div>
-                    </li>
-                    <div class="clear"></div>
-                </ul>
-            </div>
-            <div class="big_title"><span></span>
-                <h2>港台频道</h2>
-            </div>
-            <div class="list-box J-medal">
-                <ul class="nav-type">
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http%3a%2f%2f116.199.5.52%3a8114%2f00000000%2findex.m3u8%3f%26Fsv_ctype%3dLIVES%26Fsv_otype%3d1%26FvSeid%3d5abd1660af1babb4%26Fsv_filetype%3d1%26Fsv_ctype%3dLIVES%26Fsv_cid%3d0%26Fsv_chan_hls_se_idx%3d188%26Fsv_rate_id%3d0%26Fsv_SV_PARAM1%3d0%26Fsv_ShiftEnable%3d0%26Fsv_ShiftTsp%3d0%26Provider_id%3d%26Pcontent_id%3d%26Fsv_CMSID%3d%26Fsv_otype%3d1');">TVB翡翠台</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://223.110.245.167/ott.js.chinamobile.com/PLTV/3/224/3221226922/index.m3u8');">凤凰卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://223.110.245.167/ott.js.chinamobile.com/PLTV/3/224/3221226923/index.m3u8');">凤凰资讯</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://zhibo.hkstv.tv/livestream/zb2yhapo/playlist.m3u8');">香港卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://183.207.249.35/PLTV/3/224/3221226975/index.m3u8');">凤凰香港</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://stream.mastvnet.com/MASTV/sd/live.m3u8');">澳亚卫视</a></div>
-                    </li>
-                    <div class="clear"></div>
-                </ul>
-            </div>
-            <div class="big_title"><span></span>
-                <h2>其他频道</h2>
-            </div>
-            <div class="list-box J-medal">
-                <ul class="nav-type">
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://1252093142.vod2.myqcloud.com/4704461fvodcq1252093142/48c8a9475285890781000441992/playlist.m3u8');">m3u8测试</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://223.110.245.167/ott.js.chinamobile.com/PLTV/3/224/3221226922/index.m3u8');">凤凰卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://223.110.245.167/ott.js.chinamobile.com/PLTV/3/224/3221226923/index.m3u8');">凤凰资讯</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://zhibo.hkstv.tv/livestream/zb2yhapo/playlist.m3u8');">香港卫视</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://183.207.249.35/PLTV/3/224/3221226975/index.m3u8');">凤凰香港</a></div>
-                    </li>
-                    <li class="channel">
-                        <div class="channel-link-wrap"><a class="channel-link" href="javascript:play('http://stream.mastvnet.com/MASTV/sd/live.m3u8');">澳亚卫视</a></div>
-                    </li>
-                    <div class="clear"></div>
-                </ul>
+            <div class="footer_content">
+                <center>
+                    <span style="clear: both; margin: 10px; font-size: 14px; color: #666666; line-height: 20px; font-family: Arial; height: 10px; text-align: center">
+                        <a id="powered_by_wenyateam">Powered by 91xcode</a>
+                        <br>&copy;2021-2022 All Rights Reserved &nbsp; <br>
+                    </span>
+                </center>
             </div>
         </div>
-    </div> -->
-    <div class="footer_content">
-        <SPAN style="CLEAR: both; MARGIN-: 10px; FONT-SIZE: 14px; COLOR: #666666; LINE-HEIGHT: 20px; FONT-FAMILY: arial; HEIGHT: 10px; TEXT-ALIGN: center">
-            <a>友情链接：</a><br>
-            <br><a href="https://app.movie/">App影院</a>&nbsp;&nbsp;&nbsp;
-            <a href="https://www.wenyamh.com/">全网漫画</a>&nbsp;&nbsp;&nbsp;
-            <a href="https://dingdian.org.cn/">顶点小说</a>&nbsp;&nbsp;&nbsp;
-        </SPAN>
     </div>
-    <div class="footer_content">
-        <CENTER><SPAN style="CLEAR: both; MARGIN-: 10px; FONT-SIZE: 14px; COLOR: #666666; LINE-HEIGHT: 20px; FONT-FAMILY: arial; HEIGHT: 10px; TEXT-ALIGN: center">
-                <a id="powered_by_wenyateam">Powered by 91xcode</a>
-                <br>&copy;2021-2022 All Rights Reserved &nbsp; <br>
-            </SPAN></CENTER>
-    </div>
-    <div id="dplayer1">
-        <div id="dplayer"></div>
-    </div>
-    <!--http://1252093142.vod2.myqcloud.com/4704461fvodcq1252093142/48c8a9475285890781000441992/playlist.m3u8-->
+    
+    <!-- 引入必要的库 -->
     <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
-    <link rel="stylesheet" href="https://testingcf.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
-    <script type="text/javascript" src="https://testingcf.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
-    <script type="text/javascript" src="https://testingcf.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <!-- 视频容器 -->
+    <!-- <video id="dplayer1" controls muted style="width:100%;height:100%;" playsinline webkit-playsinline></video> -->
+    <video id="dplayer1" controls muted style="width:100%;height:100%; display: none;" playsinline webkit-playsinline></video>
+
     <script>
-    $.ajax({
-        // 远程地址
-        url: "https://testingcf.jsdelivr.net/gh/91xcode/static@master/online_iptv/m3u8/tv_2022.json",
-        // 本地地址
-        // url: "http://test.com/tv.json",
-        type: "get",
-        dataType: "text",
-        success: function(data, textStatus, jqxhr) {
-            data_json = $.parseJSON(data);
-            makeTbale(data_json)
-        }
-    })
-
-
-    function makeTbale(arrLi) {
-
-        var _html = ""
-        for (var i in arrLi["cctv"]) {
-            url = arrLi["cctv"][i]["url"]
-            _html += ' <li class="channel"><div class="channel-link-wrap"><a class="channel-link" url="' + url + '">' + arrLi["cctv"][i]["title"] + '</a></div></li>'
-        }
-        document.getElementById("cctv").innerHTML = _html
-
-        var _html_local = ""
-        for (var i in arrLi["local"]) {
-            url = arrLi["local"][i]["url"]
-            _html_local += ' <li class="channel"><div class="channel-link-wrap"><a class="channel-link" url="' + url + '">' + arrLi["local"][i]["title"] + '</a></div></li>'
-
-        }
-        document.getElementById("local").innerHTML = _html_local
+        $(document).ready(function () {
+            // 模拟的频道数据
+            const data = {"cctv":[{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV1HD/index.m3u8?gMac=unknown&livodToken=3f76fa247855b9f1507e08620e857dda1b4424839963e7074fc1ee72310d6023_1720504514_604800&fromCDN=ws","title":"CCTV-1综合"},{"url":"http://liveop.cctv.cn/hls/CCTV28bee868714f04ea2af79947bb9b46fc3H/playlist.m3u8","title":"CCTV-2财经"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV3_HD/index.m3u8?gMac=unknown&livodToken=f62fb091a195ebe647b1222ede2e69841a9077e00d7164564988bff3361446f2_1720504551_604800&fromCDN=ws","title":"CCTV-3综艺"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV4HD/index.m3u8?gMac=unknown&livodToken=d26bda0b501044353fe102fbe85cb45a6dfdaca26f4a7522f2b693761325ad82_1720504557_604800&fromCDN=ws","title":"CCTV-4中文国际"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV5_HD/index.m3u8?gMac=unknown&livodToken=aa173201e6b845bbee67f1b26f1a348b9e154cf79c6d52eef85063a55d21c61b_1720504563_604800&fromCDN=ws","title":"CCTV-5体育"},{"url":"http://mobilelive-ds.ysp.cctv.cn/ysp/2013693901.m3u8","title":"CCTV-6电影"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV8_HD/index.m3u8?gMac=unknown&livodToken=5054faa27b50dbbb99bd1082115e5860f6edb52038a9e0f954d26199625c8810_1720504606_604800&fromCDN=ws","title":"CCTV-8电视剧"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV9HD/index.m3u8?gMac=unknown&livodToken=7962fd0fc672036d700e4e49a432622a74e060a23f1b55b1cc1e2ee7ee13b4a9_1720504614_604800&fromCDN=ws","title":"CCTV-9纪录"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV10HD/index.m3u8?gMac=unknown&livodToken=fabd3816e5335ddba8d1d88c9536a13c2675337479957dee07e669564a88f4e7_1720504638_604800&fromCDN=ws","title":"CCTV-10科教"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV11HD/index.m3u8?gMac=unknown&livodToken=0034ae2fe24df5a14eb68b5de40ac5b36ab49542913cb5b015ae64ff49312f97_1720504669_604800&fromCDN=ws","title":"CCTV-11戏曲"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV12HD/index.m3u8?gMac=unknown&livodToken=2c98acaa80392eb7cfc5167a9a71482882518255259852ee6387715d5104fd23_1720504686_604800&fromCDN=ws","title":"CCTV-12社会与法"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV13HD/index.m3u8?gMac=unknown&livodToken=7ff060443836507a41a5214026042c9626a11fbff401291700ce35d59c3e6293_1720504703_604800&fromCDN=ws","title":"CCTV-13新闻"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV14HD/index.m3u8?gMac=unknown&livodToken=0d96180497a13efbadc909954e682aae4e63affa0ef1823b5c6dc5a73b461db4_1720504729_604800&fromCDN=ws","title":"CCTV-14少儿"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/CCTV15/index.m3u8?gMac=unknown&livodToken=b714fc4aa91983a115cdc86176cd98542fc7be2916c39a626ef88fe721f90859_1720504745_604800&fromCDN=ws","title":"CCTV-15音乐"},{"url":"http://27.222.3.214/liveali-tp4k.cctv.cn/live/4K10M.stream/playlist.m3u8","title":"CCTV-4K超高清"}],"local":[{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/BEIJHD/index.m3u8?gMac=unknown&livodToken=a03d2d8d7e5995cc88771669d9afacef2c4fd34206978b97b7f462f360cbde7c_1720504784_604800&fromCDN=ws","title":"北京卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/DONGFHD/index.m3u8?gMac=unknown&livodToken=b7bb48fb65bb7bd0e2ce4de6309c40e502d1cc91787b4b7c85cea02bf3d22638_1720504796_604800&fromCDN=ws","title":"东方卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/TIANJHD/index.m3u8?gMac=unknown&livodToken=977e71eed63ad14d681dbd5962343cae48fe3599170fe630e0e7aba01dfde99a_1720504813_604800&fromCDN=ws","title":"天津卫视"},{"url":"https://sjlivecdn9.cbg.cn/202407091235/app_2/_definst_/ls_2.stream/chunklist.m3u8","title":"重庆卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/HEILJHD/index.m3u8?gMac=unknown&livodToken=c5b025ddc821b9f62c0a17f301104df2af76e892f429b4636fa8c0f7e52d6506_1720504847_604800&fromCDN=ws","title":"黑龙江卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/JILHD/index.m3u8?gMac=unknown&livodToken=e3a5aac0b06b66cea1848a32750983dbca3a2b898dc6c5dbaf20e082eaa2120b_1720504879_604800&fromCDN=ws","title":"吉林卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/LIAONHD/index.m3u8?gMac=unknown&livodToken=8414e5e18ad89ea3c4592c9e0f82126f60694cbeec6ffe588614efa7dabe7ec8_1720504896_604800&fromCDN=ws","title":"辽宁卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/NMGWS/index.m3u8?gMac=unknown&livodToken=45f671f780a4313a8f00f533b032270414131071b89052a0db28d9c40fc7b280_1720504913_604800&fromCDN=ws","title":"内蒙古卫视"},{"url":"https://hls.ningxiahuangheyun.com/live/nxws1M.m3u8","title":"宁夏卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/GSWS/index.m3u8?gMac=unknown&livodToken=abae7cfdc425438c30f02fcfa56c8547560a619eefb5dc5e583cc0d3c225a6c3_1720504927_604800&fromCDN=ws","title":"甘肃卫视"},{"url":"http://stream.qhbtv.com/qhws/sd/live.m3u8?_upt=a5a3a04e1720508811","title":"青海卫视"},{"url":"http://stream.snrtv.com/sxbc-star-ckBCY6.m3u8","title":"陕西卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/HAIBHD/index.m3u8?gMac=unknown&livodToken=1496955be2e3c85f6ec35e2080cb5e644170c44157b6171095181e215cb2b392_1720504953_604800&fromCDN=ws","title":"河北卫视"},{"url":"https://livehhhttps.sxrtv.com/lsdream/q8RVWgs/1000/5sqnR0W.m3u8","title":"山西卫视"},{"url":"http://lives.jnnews.tv/video/s10001-SDTV/index.m3u8","title":"山东卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/ANHUIHD/index.m3u8?gMac=unknown&livodToken=2923444bead95427f28e1d92e80a38244cbaaaebd9e9a136112147831ad676e1_1720505005_604800&fromCDN=ws","title":"安徽卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/HENHD/index.m3u8?gMac=unknown&livodToken=8f3df88626853460a1d54ef589218045fdcfe63877800445b4cd7b0b39f8b9f6_1720505022_604800&fromCDN=ws","title":"河南卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/HUBEIHD/index.m3u8?gMac=unknown&livodToken=1176edf6948f37e79509982269638c9a3d831651cf925626072c7d35c59ab30d_1720505040_604800&fromCDN=ws","title":"湖北卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/HUNANHD/index.m3u8?gMac=unknown&livodToken=dac077f2344d86f6499d547255e452bc95ce6bc8399a6338d4b3c67eee105aea_1720505056_604800&fromCDN=ws","title":"湖南卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/JXWSHD/index.m3u8?gMac=unknown&livodToken=474c90d882097b2d562398658075287e1e21930013b659af3a1922509cd4bbd1_1720505073_604800&fromCDN=ws","title":"江西卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/JIANGSHD/index.m3u8?gMac=unknown&livodToken=9f2a7ee1dceb8fb0de4c36b3c04903e7e66e2b6428eedbbc68925456ffa75296_1720505091_604800&fromCDN=ws","title":"江苏卫视"},{"url":"http://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8","title":"浙江卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/DONGNHD/index.m3u8?gMac=unknown&livodToken=91f83145199e758c3ee0a369998a5cbe0e996afbeddd6593a0b69e0b6917bde9_1720505126_604800&fromCDN=ws","title":"东南卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/GUANGDHD/index.m3u8?gMac=unknown&livodToken=851dc3367c77a462130bed174d80940abd5a1763eaf3d6f9084d213c49bb0fda_1720505150_604800&fromCDN=ws","title":"广东卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/SHENZHD/index.m3u8?gMac=unknown&livodToken=710c541291228ce0cb2543d93616abf4d2906b24f5fd712fe1e4332d5e31a7f3_1720505175_604800&fromCDN=ws","title":"深圳卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/GUANGXHD/index.m3u8?gMac=unknown&livodToken=86a5fed20a305cd10cb1e1f3d81ca473de518a45b7e630fa7b7e66dcf2c2e316_1720505191_604800&fromCDN=ws","title":"广西卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/YUNNHD/index.m3u8?gMac=unknown&livodToken=4316b96111a2f4a0180625ace771506581add44ed643625ac56fa682704b4af4_1720505208_604800&fromCDN=ws","title":"云南卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/GUIZHD/index.m3u8?gMac=unknown&livodToken=6a5915a95f060a962a33247245c37399e22ab840d24f185001a19bada4f32095_1720505218_604800&fromCDN=ws","title":"贵州卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/SICHD/index.m3u8?gMac=unknown&livodToken=aae3b7d3f710cb95ac50e10fd1c8915cbd473aa1d627861a4e331b6470420b14_1720505236_604800&fromCDN=ws","title":"四川卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/XJWS/index.m3u8?gMac=unknown&livodToken=f414ce81db6d621fc92644857018571bcc9907b3b71b57e830db6f4be32d0294_1720505252_604800&fromCDN=ws","title":"新疆卫视"},{"url":"https://liveout.btzx.com.cn/62ds9e/yil08g.m3u8","title":"兵团卫视"},{"url":"https://tv.vtibet.cn/live/vuXz3cg3TmRUYg.m3u8?secret=ae96e9569da6f90946c83f3729ec5fbc&time=668cd3b4","title":"西藏卫视"},{"url":"http://jxcbn.ws-cdn.gitv.tv/hls/HAINHD/index.m3u8?gMac=unknown&livodToken=2b30d57372713ae10ee004113d8ce4b737f5bd7631a1bd4bf19aa667cd535f27_1720505278_604800&fromCDN=ws","title":"海南卫视"},{"url":"https://live2.hnntv.cn/srs/tv/ssws.m3u8?_upt=19c640ff1720506899","title":"三沙卫视"}],"other":[{"url":"http://hls.weathertv.cn/tslslive/qCFIfHB/hls/live_sd.m3u8","title":"中国天气"},{"url":"http://hwylivehd.centv.cn/cetv1/ypd.m3u8","title":"CETV1中国教育电视台一套"},{"url":"http://hwylivehd.centv.cn/cetv2/2020tsytk.m3u8","title":"CETV2中国教育电视台二套"},{"url":"http://hwylivehd.centv.cn/cetv3/bjdm.m3u8","title":"CETV3中国教育电视台三套"},{"url":"http://hwylivehd.centv.cn/cetv4/zjpd.m3u8","title":"CETV4空中课堂频道"}]}
 
 
 
-
-        var _html_other = ""
-        for (var i in arrLi["other"]) {
-            url = arrLi["other"][i]["url"]
-            _html_other += ' <li class="channel"><div class="channel-link-wrap"><a class="channel-link" url="' + url + '">' + arrLi["other"][i]["title"] + '</a></div></li>'
-
-        }
-        document.getElementById("other").innerHTML = _html_other
-    }
+             makeTable(data);
 
 
-    $(".content").on("click", ".channel-link", function() {
+            // $.ajax({
+            //     // url: "http://docker.php7.com/c.php",
+            //     url: "https://testingcf.jsdelivr.net/gh/91xcode/static@master/online_iptv/m3u8/tv_2022.json",
+            //     type: "get",
+            //     dataType: "text",
+            //     success: function (data) {
+            //         const data_json = $.parseJSON(data);
+            //         console.log('数据加载成功:', data_json);
+            //         makeTable(data_json);
+            //     },
+            //     error: function (xhr, status, error) {
+            //         console.error('数据加载失败:', error);
+            //     }
+            // });
 
-        var $this = $(this);
-        n = $this.attr('url');
-        var browser = DetectBrowser();
-        if (browser != "Safari") {
-            layer.alert("只支持Safari浏览器!");
-            return false;
-        }
+           
 
-        layer.open({
-            type: 1, //Layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）,
-            title: "播放窗口",
-            maxmin: !0,
-            //shadeClose: !0,
-            //area: ['500px', '330px'],   //宽高
-            //area: [(document.body.clientWidth, "px"), "43%"],
-            area: ["80%", "80%"],
-            shade: 0.4, //遮罩透明度
-            content: $("#dplayer1"), //支持获取DOM元素
-            scrollbar: false, //屏蔽浏览器滚动条
-            success: function(layero) {
-                //console.log(layero)
-                //处理layer层中video播放器全屏样式问题
-                setTimeout(function() {
-                    $(layero).removeClass('layer-anim');
-                }, 0);
-            },
+            function makeTable(data) {
+                const types = ["cctv", "local", "other"];
+                types.forEach(type => {
+                    if (!data[type]) {
+                        console.warn(`类型 ${type} 不存在`);
+                        return;
+                    }
 
-            cancel: function() {
-                dp.destroy()
+                    let html = "";
+                    data[type].forEach(channel => {
+                        html += `<li class="channel">
+                                    <div class="channel-link-wrap">
+                                        <a class="channel-link" href="#" data-url="${channel.url}">${channel.title}</a>
+                                    </div>
+                                 </li>`;
+                    });
+                    console.log(html)
+                    $(`#${type}`).html(html);
+                });
+
+                $('.channel-link').on('click', function (e) {
+                    e.preventDefault();
+                    const url = $(this).data('url');
+                    playChannel(url);
+                });
+            }
+
+            function playChannel(url) {
+                console.log("播放频道 URL: ", url); // 调试日志
+
+                // 弹出框
+                console.log("准备打开 layer"); // 调试日志
+                layer.open({
+                    type: 1,
+                    title: false,
+                    area: ['80%', '80%'],
+                    shadeClose: true,
+                    content: $("#dplayer1"), // 将容器传递给 layer
+                    end: function () {
+                        console.log("关闭 layer");
+                        const videoElement = document.getElementById('dplayer1');
+                        if (videoElement) {
+                            videoElement.pause(); // 暂停视频播放
+                            videoElement.currentTime = 0; // 可选：重置视频时间
+                            videoElement.src = ""; // 清空视频源，确保视频完全停止
+                        }
+                        if (hls) {
+                            hls.destroy();
+                        }
+                    }
+                });
+
+                let hls = null;
+
+                // 获取视频元素
+                const videoElement = document.getElementById('dplayer1');
+                videoElement.muted = false;  // 取消静音
+
+                if (Hls.isSupported() && !isSafari()) {
+                    console.log('Using HLS.js');
+                    hls = new Hls();
+                    hls.loadSource(url);
+                    hls.attachMedia(videoElement);
+                    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                        console.log("HLS manifest parsed, starting video playback");
+                        videoElement.play();
+                    });
+                    hls.on(Hls.Events.ERROR, function(event, data) {
+                        console.error("HLS error: ", data);
+                    });
+                } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
+                    videoElement.src = url;
+
+                    videoElement.addEventListener('loadedmetadata', function () {
+
+
+
+                                                console.log("Metadata loaded, starting video playback");
+                        videoElement.play();
+                    });
+                } else {
+                    console.error("HLS.js not supported and browser cannot play HLS streams directly");
+                    return;
+                }
             }
         });
 
-        var type = 'normal';
-        if (Hls.isSupported() && Hls.WEBRTC_SUPPORT) {
-            type = 'customHls';
-        }
-        const dp = new DPlayer({
-            container: document.getElementById('dplayer'),
-            autoplay: true,
-            video: {
-                url: n,
-                type: type,
-                customType: {
-                    'customHls': function(video, player) {
-                        const hls = new Hls({
-                            debug: false,
-                            // Other hlsjsConfig options provided by hls.js
-                            p2pConfig: {
-                                live: false, // 如果是直播设为true
-                                // Other p2pConfig options provided by CDNBye http://www.cdnbye.com/cn/
-                            }
-                        });
-                        hls.loadSource(video.src);
-                        hls.attachMedia(video);
-                    }
-                }
-            },
-        });
-    });
 
-
-
-
-    /*******************************************************
-     *
-     * 函数名称：DetectBrowser()()
-     * 功    能：自动判断当前使用浏览器
-     * 说 明：自动判断浏览器引擎，返回结果为当前浏览器名称
-     *
-     **********************************************************/
-    function DetectBrowser() {
-        var Sys = {};
-        var ua = navigator.userAgent.toLowerCase();
-        var s;
-        (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1]:
-            (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
-            (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
-            (s = ua.match(/rv:([\d.]+)/)) ? Sys.ie = s[1] :
-            (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
-            (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
-        var browser = "Unknown";
-        if (Sys.ie) { browser = "IE"; }
-        if (Sys.firefox) { browser = "Firefox"; }
-        if (Sys.chrome) { browser = "Chrome"; }
-        if (Sys.opera) { browser = "Opera"; }
-        if (Sys.safari) { browser = "Safari"; }
-        return browser;
+    function isSafari() {
+        return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     }
     </script>
 </body>
-
 </html>
